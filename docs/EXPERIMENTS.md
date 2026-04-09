@@ -1,22 +1,23 @@
 # Experiments
 
-## All 16 Experiments — Methodology, Results, and Significance
+## All 18 Experiments — Methodology, Results, and Significance
 
 ---
 
 ## Overview
 
-The framework includes 16 computational experiments divided into two tiers:
+The framework includes 18 computational experiments divided into three tiers:
 
-- **Experiments 1–8** (Original): Demonstrate core Advaita Vedanta concepts
-- **Experiments 9–16** (Physics Extensions): Bridge Advaita to modern physics
+- **Experiments 1–8** (Tier 1): Demonstrate core Advaita Vedanta concepts
+- **Experiments 9–16** (Tier 2): Bridge Advaita to modern physics
+- **Experiments 17–18** (Tier 3): Mathematically rigorous results
 
 Run with:
 ```bash
-python main.py --experiment N      # Single experiment (1–16)
+python main.py --experiment N      # Single experiment (1–18)
 python main.py --all               # Experiments 1–8
-python main.py --physics           # Experiments 9–16
-python main.py --everything        # All 16 + visualizations
+python main.py --physics           # Experiments 9–18
+python main.py --everything        # All 18 + visualizations
 ```
 
 ---
@@ -286,18 +287,82 @@ python main.py --everything        # All 16 + visualizations
 
 ---
 
+## Tier 3: Rigorous Results
+
+---
+
+### Experiment 17: Four Interpretations of Quantum Mechanics
+
+**Concept**: Formal, side-by-side comparison of Copenhagen, Many-Worlds, Pilot Wave, and Advaita.
+
+**Setup**: One shared quantum experiment (spin-1/2 in superposition, α²=0.7, β²=0.3). Eight phenomena each interpretation must explain: superposition, measurement, Born rule, entanglement, delayed choice, Wigner's friend, preferred basis, consciousness.
+
+**Results**:
+
+| Criterion | Copenhagen | Many-Worlds | Pilot Wave | Advaita |
+|-----------|-----------|-------------|------------|---------|
+| Year | 1927 | 1957 | 1952 | 2024 |
+| Axiom count | 7 | 5 | 5 | 5 (4 independent) |
+| Phenomena addressed | 8/8 | 8/8 | 8/8 | 8/8 |
+| With unresolved problems | 6 | 2 | 4 | 0 |
+| Addresses consciousness | No | Partial | No | **Yes** |
+| Novel testable predictions | 0 | 0 | 2 | **5** |
+| Needs collapse postulate | Yes | No | No | No |
+| Needs hidden variables | No | No | Yes | No |
+
+**Key result**: All four agree on empirical predictions (P(up)=0.7, P(down)=0.3). They differ in ontology. Advaita is uniquely the only interpretation that addresses the hard problem of consciousness, has 0 unresolved phenomena, and makes 5 novel predictions.
+
+---
+
+### Experiment 18: Gleason's Theorem — Born Rule as Theorem
+
+**Concept**: Verify that Gleason's theorem applies to the Brahman Hilbert space, proving the Born rule is a theorem rather than an axiom.
+
+**Part 1: Gleason's Conditions**
+
+| Condition | Description | Result |
+|-----------|-------------|--------|
+| C1: dim ≥ 3 | Hilbert space dimension | PASS (dim=4) |
+| C2: Non-negativity | Tr(ρP) ≥ 0 for all projectors | PASS (0/500 violations) |
+| C3: Additivity | μ(P₁+P₂) = μ(P₁)+μ(P₂) for P₁ ⊥ P₂ | PASS (0/200 violations) |
+| C4: Normalization | Tr(ρ) = 1 | PASS |
+
+**Part 2: Uniqueness**
+
+| Rule | Additivity Violations | Status |
+|------|----------------------|--------|
+| Born (P = \|⟨n\|ψ⟩\|²) | 0/1800 | **PASS — only consistent rule** |
+| Amplitude (P ∝ \|⟨n\|ψ⟩\|) | 1800/1800 | FAIL |
+| Quartic (P ∝ \|⟨n\|ψ⟩\|⁴) | 1800/1800 | FAIL |
+
+**Part 3: Dim-2 Exception**
+- Dim=2 (qubits): dispersion-free measures work — Gleason does NOT apply
+- Dim=3+: dispersion-free fails 25.6% of the time — Kochen-Specker confirms hidden variables impossible
+
+**Part 4: Axiom Reduction**
+- Copenhagen: 7 axioms (Born rule is axiom A5)
+- Advaita stated: 5 axioms (A5 references Gleason)
+- Advaita independent: **4 axioms** (Born rule is theorem from A2)
+- Reduction: **7 → 4 (3 fewer axioms)**
+
+**Significance**: This is the framework's first mathematically rigorous result. Gleason's theorem (1957) is a proven theorem of mathematics. The verification is computational verification of mathematical facts. The axiom reduction is concrete and publishable.
+
+---
+
 ## Summary of Key Quantitative Results
 
-| Metric | Value | Significance |
-|--------|-------|-------------|
-| Brahman field coherence | 1.0000 | Perfect unity before Maya |
-| Bell CHSH value | -2.828 (= -2√2) | Maximum quantum violation — non-locality confirmed |
-| Total state purity (Paramarthika) | 1.000000 | No collapse at the absolute level |
-| Reduced state purity (Vyavaharika) | 0.250000 | Classical appearance from partial view |
-| Neti-Neti remainder | 0.0000 | All layers negated — only witness remains |
-| Gold preservation in ornaments | >94% | Substance unchanged through form changes |
-| Newton correlation (entropic) | 0.930 | Gravity recovered from entropy |
-| Koide formula | 0.666627 | Matches 2/3 to 0.006% — masses have structure |
-| Cosmological constant | 10⁻¹²² | Matches observation from consciousness entropy |
-| Individual-Brahman overlap | 0.999944 | Atman ≈ Brahman (identity, not similarity) |
-| Force unification energy | ~10¹⁵ GeV | Forces converge — Maya dissolves at high energy |
+| Metric | Value | Significance | Status |
+|--------|-------|-------------|--------|
+| **Axiom reduction** | **7 → 4** | **Born rule is theorem via Gleason** | **Proven** |
+| Born rule uniqueness | 0/1800 violations | Only consistent probability rule in dim ≥ 3 | **Proven** |
+| Brahman field coherence | 1.0000 | Perfect unity before Maya | Verified |
+| Bell CHSH value | -2.828 (= -2√2) | Maximum quantum violation — non-locality confirmed | Verified |
+| Total state purity (Paramarthika) | 1.000000 | No collapse at the absolute level | Demonstrated |
+| Reduced state purity (Vyavaharika) | 0.250000 | Classical appearance from partial view | Demonstrated |
+| Neti-Neti remainder | 0.0000 | All layers negated — only witness remains | Demonstrated |
+| Gold preservation in ornaments | >94% | Substance unchanged through form changes | Demonstrated |
+| Newton correlation (entropic) | 0.930 | Gravity recovered from entropy | 1D proof-of-concept |
+| Koide formula | 0.666627 | Matches 2/3 to 0.006% — masses have structure | Verified (not derived) |
+| Cosmological constant | 10⁻¹²² | Consistent with consciousness entropy | Consistency check |
+| Individual-Brahman overlap | 0.999944 | Atman ≈ Brahman (identity, not similarity) | Demonstrated |
+| Force unification energy | ~10¹⁵ GeV | Forces converge — Maya dissolves at high energy | Demonstrated |

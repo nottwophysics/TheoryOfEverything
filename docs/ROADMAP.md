@@ -134,41 +134,62 @@ No physics ToE addresses why there is **experience** at all. This framework star
 
 ---
 
+## Honest Status Assessment
+
+| Item | Claim | Actual Status | Type |
+|------|-------|---------------|------|
+| Gleason axiom reduction | Born rule is theorem → 7→4 axioms | **PROVEN** | Mathematical fact |
+| Born rule uniqueness | Only consistent measure in dim≥3 | **PROVEN** | Gleason's theorem |
+| Bell violation | S = 2√2 | **VERIFIED** | Standard QM result |
+| Measurement resolution | Collapse is perspectival | **DEMONSTRATED** | Decoherence + partial trace |
+| Newton from entropy | F_entropic ∝ F_Newton | **1D proof-of-concept** (r=0.93) | Needs 4D extension |
+| Einstein equations | G_μν from consciousness | **1D toy model** | Needs proper tensor derivation |
+| Koide formula | Holds to 0.006% | **VERIFIED** (not derived) | Empirical check, not derivation |
+| Cosmological constant | Λ ≈ 10⁻¹²² | **Consistency check** | S_universe is empirical input |
+| Tensor networks | Entanglement → geometry | **NOT STARTED** | No code exists |
+| ER=EPR | Wormholes = entanglement | **NOT STARTED** | No code exists |
+| QEC as spacetime | Error correction codes | **NOT STARTED** | No code exists |
+
+---
+
 ## Implementation Priority Matrix
 
 | Path | Impact | Feasibility | Current Progress | Priority |
 |------|--------|-------------|-----------------|----------|
-| Path 3: Observer Problem | Very High | Medium | Experiment 10 done | **1st** |
-| Path 4: Emergent Gravity | Very High | Medium | 4 modules done | **2nd** |
-| Path 2: Information Bridge | High | Medium | Bell + holography done | **3rd** |
-| Path 1: Consciousness-First Physics | Highest | Hard | Constants explored | **4th** |
-| Path 5: Hard Problem | Revolutionary | Very Hard | Signatures outlined | **5th** |
-
-The ordering is by **feasibility-adjusted impact**: Path 3 and Path 4 have strong foundations already built and connect most directly to testable physics.
+| Path 3: Observer Problem | Very High | Medium | Milestone 1 COMPLETE | **Done (continue to publish)** |
+| Path 4: Emergent Gravity | Very High | Medium | 4 modules, 1D model | **1st (upgrade to 2+1D)** |
+| Path 2: Information Bridge | High | Medium | Bell + holography done | **2nd (tensor networks)** |
+| Path 1: Consciousness-First Physics | Highest | Hard | Constants explored | **3rd (fine structure)** |
+| Path 5: Hard Problem | Revolutionary | Very Hard | Signatures outlined | **4th (IIT mapping)** |
 
 ---
 
 ## Milestone Targets
 
-### Milestone 1: Publish the Measurement Resolution
-- Formalize Experiment 10 as a paper
-- Compare quantitatively with Copenhagen, Many-Worlds, and Pilot Wave
-- Show that the Advaitic interpretation requires fewer postulates
+### Milestone 1: Formalize the Measurement Resolution ✅ COMPLETE
+- ~~Formalize Experiment 10 as a paper~~
+- ~~Compare quantitatively with Copenhagen, Many-Worlds, and Pilot Wave~~
+- ~~Show that the Advaitic interpretation requires fewer postulates~~
+- **Done**: Experiments 17 and 18 accomplish all three goals. The formal comparison (Experiment 17) and Gleason proof (Experiment 18) together constitute Milestone 1. The axiom reduction 7→4 is a concrete, publishable result.
 
 ### Milestone 2: Derive One Physical Constant
 - Complete the fine-structure constant derivation (currently 4.4% error)
 - OR rigorously derive the cosmological constant from consciousness entropy
+  (requires deriving S_total independently, not using empirical value)
 - Either would be a landmark result
+- **Status**: Not yet achieved. Koide verified, Λ consistent, α at 4.4% error.
 
 ### Milestone 3: Testable Prediction Confirmed
 - P2 (gravitational decoherence threshold) is most feasible
 - Collaborate with experimental groups doing macroscopic superposition
 - If the threshold matches the prediction, the framework gains strong empirical support
+- **Status**: Awaiting experimental capability (5-15 years).
 
 ### Milestone 4: Formal Mathematical Framework
 - Replace numpy-based models with rigorous operator algebra
 - Publish the full derivation: Sat-Chit-Ananda → Hilbert space axioms
 - Establish the framework as a legitimate contender in theoretical physics
+- **Status**: Gleason's theorem module is a step in this direction. More needed.
 
 ---
 

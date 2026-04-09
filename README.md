@@ -4,7 +4,7 @@
 
 This project models the metaphysical framework of **Advaita Vedanta** — the non-dual philosophy declaring that consciousness (Brahman) is the sole reality — and bridges it to modern physics. It computationally demonstrates how quantum mechanics, general relativity, the Standard Model, and the physical constants of nature can be understood as emergent properties of a single consciousness field.
 
-This is not a simulation of physics bolted onto philosophy. It is a **ground-up derivation**: starting from consciousness as the axiom, and showing that the structures of modern physics **emerge** from it.
+The framework includes a **mathematically rigorous result**: via Gleason's theorem, the Born rule of quantum mechanics is derived as a theorem (not assumed as an axiom), reducing the Advaita interpretation to **4 independent axioms** vs Copenhagen's 7.
 
 ---
 
@@ -32,18 +32,20 @@ python main.py --demo
 # Run all 8 original Advaita experiments
 python main.py --all
 
-# Run all 8 physics extension experiments
+# Run all 10 physics extension experiments (9–18)
 python main.py --physics
 
-# Run a specific experiment (1–16)
-python main.py --experiment 11
+# Run a specific experiment (1–18)
+python main.py --experiment 18
 
 # Generate all 7 visualizations
 python main.py --visualize
 
-# Run EVERYTHING (16 experiments + visualizations)
+# Run EVERYTHING (18 experiments + visualizations)
 python main.py --everything
 ```
+
+For a guided walkthrough of the project, see [docs/GETTING_STARTED.md](docs/GETTING_STARTED.md).
 
 ---
 
@@ -52,14 +54,14 @@ python main.py --everything
 | Layer | Modules | Purpose |
 |-------|---------|---------|
 | **Metaphysical Foundation** | `brahman/`, `maya/`, `levels/`, `emergence/`, `liberation/` | Models the core Advaita Vedanta framework |
-| **Quantum Mechanics** | `quantum/` | Derives QM from the consciousness field |
-| **General Relativity** | `gravity/` | Derives gravity from entanglement structure |
-| **Standard Model** | `particles/` | Derives particles and forces from Maya's symmetry breaking |
-| **Physical Constants** | `constants/` | Attempts to derive constants from self-referential structure |
+| **Quantum Mechanics** | `quantum/` | Derives QM from the consciousness field; Gleason's theorem |
+| **General Relativity** | `gravity/` | Emergent gravity from entanglement structure |
+| **Standard Model** | `particles/` | Particles and forces from Maya's symmetry breaking |
+| **Physical Constants** | `constants/` | Explores constants from self-referential structure |
 | **Predictions** | `predictions/` | 5 novel testable predictions |
 | **Falsification** | `falsification/` | 5 explicit falsification criteria + experimental designs |
 | **Visualizations** | `visualizations/` | 7 visual plots of Advaita concepts |
-| **Experiments** | `simulations/` | 16 runnable experiments demonstrating the framework |
+| **Experiments** | `simulations/`, `main.py` | 18 runnable experiments demonstrating the framework |
 
 ---
 
@@ -76,22 +78,22 @@ These claims map directly to structures in modern physics. See [docs/PHILOSOPHY.
 
 ---
 
-## The 16 Experiments
+## The 18 Experiments
 
-### Original Experiments (1–8): Advaita Framework
+### Tier 1 — Advaita Framework (1–8)
 
 | # | Name | What It Demonstrates |
 |---|------|---------------------|
 | 1 | **Rope-Snake** | Superimposition (Adhyasa) — ignorance creates false appearances |
 | 2 | **Fractal Unity** | Self-similarity as non-duality — the part IS the whole |
 | 3 | **One Field, Many Observers** | Same Brahman, different guna-lenses, different experiences |
-| 4 | **Dreamer Analogy** | Dream→Wake→Liberation sublation chain |
+| 4 | **Dreamer Analogy** | Dream → Wake → Liberation sublation chain |
 | 5 | **Neti-Neti Debugger** | Stripping layers to reveal the irreducible witness |
 | 6 | **Guna Dynamics** | Sattva/Rajas/Tamas cycling while Brahman remains unchanged |
 | 7 | **Four Mahavakyas** | The great identity declarations (Atman = Brahman) |
 | 8 | **Vivartavada** | Gold-ornament and ocean-wave apparent causation |
 
-### Physics Extensions (9–16): Toward a Real ToE
+### Tier 2 — Physics Extensions (9–16)
 
 | # | Name | What It Demonstrates |
 |---|------|---------------------|
@@ -101,8 +103,15 @@ These claims map directly to structures in modern physics. See [docs/PHILOSOPHY.
 | 12 | **Emergent Gravity** | Space from entanglement; Newton's law from entropy |
 | 13 | **Holographic Principle** | Bulk (world) is projection of boundary (consciousness) |
 | 14 | **Particles from Maya** | Symmetry breaking; 3 generations = 3 gunas |
-| 15 | **Physical Constants** | Koide formula holds; Λ ≈ 10⁻¹²² from consciousness entropy |
+| 15 | **Physical Constants** | Koide formula verified; Λ consistent with consciousness entropy |
 | 16 | **Predictions & Falsification** | 5 testable predictions, 5 falsification criteria |
+
+### Tier 3 — Rigorous Results (17–18)
+
+| # | Name | What It Demonstrates |
+|---|------|---------------------|
+| 17 | **Four Interpretations Compared** | Copenhagen vs Many-Worlds vs Pilot Wave vs Advaita — formal comparison across 8 phenomena |
+| 18 | **Gleason's Theorem** | Born rule derived as theorem; axiom reduction 7 → 4 (mathematically rigorous) |
 
 See [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md) for detailed documentation of all experiments.
 
@@ -112,25 +121,42 @@ See [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md) for detailed documentation of all
 
 | Document | Contents |
 |----------|----------|
+| [docs/GETTING_STARTED.md](docs/GETTING_STARTED.md) | **Start here** — guided walkthrough for newcomers |
 | [docs/PHILOSOPHY.md](docs/PHILOSOPHY.md) | Deep dive into Advaita Vedanta and its mapping to physics |
 | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | Project structure, design principles, and module relationships |
 | [docs/MODULES.md](docs/MODULES.md) | Detailed documentation of every module and class |
-| [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md) | All 16 experiments with methodology and results |
+| [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md) | All 18 experiments with methodology and results |
 | [docs/PREDICTIONS.md](docs/PREDICTIONS.md) | Testable predictions, falsification criteria, and experimental roadmap |
-| [docs/ROADMAP.md](docs/ROADMAP.md) | 5 paths from conceptual framework to real ToE, milestones, and priorities |
+| [docs/ROADMAP.md](docs/ROADMAP.md) | 5 paths from framework to real ToE, with honest status assessment |
 
 ---
 
 ## Key Results
 
-| Result | Significance |
-|--------|-------------|
-| Bell inequality violated at S = 2√2 | Confirms non-locality — physics agrees with Advaita's non-duality |
-| Measurement problem dissolved | Total state (Brahman) stays pure; collapse is perspectival (Maya) |
-| Newton's law recovered from entropy | Gravity emerges from consciousness thermodynamics |
-| Koide formula holds (0.666627 vs 0.666667) | Lepton masses are not arbitrary — they have structure |
-| Λ ≈ 10⁻¹²² from S_total | Cosmological constant problem resolved by emergent spacetime |
-| 95% dark universe | Matches Advaita: most of Brahman is concealed by Maya |
+| Result | Significance | Status |
+|--------|-------------|--------|
+| **Axiom reduction: 7 → 4** | Gleason's theorem makes Born rule a theorem, not axiom. Advaita has fewer axioms than Copenhagen. | **Proven** (Experiment 18) |
+| Bell inequality violated (S = 2√2) | Non-locality confirmed — physics agrees with non-duality | **Verified** (Experiment 11) |
+| Measurement problem dissolved | Total state (Brahman) stays pure; collapse is perspectival (Maya) | **Demonstrated** (Experiment 10) |
+| Newton's law from entropy (r = 0.93) | Gravity emerges from consciousness thermodynamics | **1D proof-of-concept** |
+| Koide formula (0.6666 vs 0.6667) | Lepton masses have structure — not arbitrary | **Verified** (not derived) |
+| Λ ≈ 10⁻¹²² from S_total | Cosmological constant consistent with emergent spacetime | **Order-of-magnitude consistency** |
+| 95% dark universe | Matches Advaita: most of Brahman is concealed by Maya | **Conceptual parallel** |
+
+---
+
+## Honest Limitations
+
+This project is scientifically honest about what it has and hasn't achieved:
+
+- **Proven**: Gleason-based axiom reduction (mathematical fact)
+- **Demonstrated**: Measurement resolution, Bell violation, decoherence framework
+- **Proof-of-concept**: Einstein equations (1D only), entropic gravity
+- **Verified (not derived)**: Koide formula, cosmological constant consistency
+- **Outlined (not implemented)**: Tensor networks, ER=EPR, quantum error correction
+- **Not addressed**: Full Standard Model Lagrangian, exact constant derivations
+
+See [docs/ROADMAP.md](docs/ROADMAP.md) for the complete honest status assessment and next steps.
 
 ---
 

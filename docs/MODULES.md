@@ -414,6 +414,57 @@ Derives Hilbert space axioms from Sat-Chit-Ananda.
 
 ---
 
+### `quantum/gleason.py` — Gleason's Theorem (Born Rule as Theorem)
+
+**Class: `GleasonVerification`**
+
+The framework's most rigorous module. Verifies Gleason's theorem applies to the Brahman Hilbert space and proves the Born rule is the unique consistent probability measure.
+
+| Method | Description |
+|--------|-------------|
+| `GleasonVerification(dimension)` | Initialize with dimension ≥ 3 (raises error for dim < 3). |
+| `.verify_conditions(state)` | Verify all 4 Gleason conditions: C1 (dim≥3), C2 (non-negativity, 500 tests), C3 (additivity, 200 tests), C4 (normalization). |
+| `.demonstrate_uniqueness(state)` | Test Born rule vs alternatives (amplitude, quartic). Born: 0/1800 violations. Alternatives: 1800/1800 violations. |
+| `.demonstrate_dim2_exception()` | Show dim=2 allows non-Born measures (qubits CAN have hidden variables). Dim≥3: Kochen-Specker fails 25.6%. |
+| `.axiom_reduction_proof()` | Full proof chain: Sat-Chit-Ananda → Hilbert space → Gleason → Born rule → axiom reduction 7→4. |
+| `.full_demonstration()` | Run all four demonstrations. |
+
+**Key result**: Copenhagen has 7 axioms. Advaita has 4 independent axioms (Born rule is a theorem, not an axiom).
+
+---
+
+### `quantum/interpretations.py` — Four QM Interpretations Compared
+
+**Classes**: `Copenhagen`, `ManyWorlds`, `PilotWave`, `AdvaitaInterpretation`, `InterpretationComparison`
+
+Each interpretation class defines:
+- Axioms (with count)
+- Answers to 8 phenomena (with mechanisms, advantages, problems)
+- What it cannot explain
+- Novel predictions
+
+**Class: `InterpretationComparison`**
+
+| Method | Description |
+|--------|-------------|
+| `.axiom_comparison()` | Compare axiom counts. Ranking by Occam's razor. |
+| `.explanatory_scope()` | Count phenomena addressed, with/without problems. |
+| `.novel_predictions_comparison()` | Compare unique predictions per interpretation. |
+| `.consciousness_comparison()` | Who addresses the hard problem? |
+| `.empirical_agreement()` | Verify all 4 agree on observables (P(up), P(down)). |
+| `.advaita_measurement_demo()` | Quantitative measurement resolution: purity 1.0 vs 0.58. |
+| `.summary_table()` | The final comparison table across all criteria. |
+
+---
+
+### `quantum/interpretation_experiment.py` — Shared Experimental Setup
+
+**Class: `QuantumSetup`** — The physical scenario all interpretations must explain (spin-1/2, α²=0.7, β²=0.3, Bell state).
+
+**Dictionary: `PHENOMENA`** — 8 phenomena (P1–P8) with questions and observables that every interpretation must address.
+
+---
+
 ### `predictions/testable.py` — 5 Testable Predictions
 
 **Class: `TestablePredictions`**

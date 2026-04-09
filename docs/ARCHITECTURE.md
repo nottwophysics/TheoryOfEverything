@@ -14,11 +14,13 @@ TheoryOfEverything/
 ├── README.md                        # Project overview and quick start
 │
 ├── docs/                            # Documentation
+│   ├── GETTING_STARTED.md           # START HERE — guided walkthrough for newcomers
 │   ├── PHILOSOPHY.md                # Advaita Vedanta and physics mapping
 │   ├── ARCHITECTURE.md              # This file — project structure
 │   ├── MODULES.md                   # Detailed module documentation
-│   ├── EXPERIMENTS.md               # All 16 experiments documented
-│   └── PREDICTIONS.md               # Predictions and falsification
+│   ├── EXPERIMENTS.md               # All 18 experiments documented
+│   ├── PREDICTIONS.md               # Predictions and falsification
+│   └── ROADMAP.md                   # Path to real ToE with honest status
 │
 ├── brahman/                         # LAYER 0: The Ground Reality
 │   ├── __init__.py
@@ -55,7 +57,10 @@ TheoryOfEverything/
 │   ├── operators.py                 # Consciousness, Maya, and Sakshi operators
 │   ├── wave_function.py             # Wave function as Brahman's self-expression
 │   ├── measurement.py               # Measurement problem dissolved
-│   └── entanglement.py              # Non-dual entanglement and Bell violation
+│   ├── entanglement.py              # Non-dual entanglement and Bell violation
+│   ├── gleason.py                   # Gleason's theorem — Born rule as theorem (RIGOROUS)
+│   ├── interpretations.py           # 4 QM interpretations formally compared
+│   └── interpretation_experiment.py # Shared experimental setup for comparison
 │
 ├── gravity/                         # PHYSICS: General Relativity
 │   ├── __init__.py
@@ -177,8 +182,8 @@ Python 3.9+ required.
 |---------|-------------|
 | `python main.py` | Run quick demo |
 | `python main.py --demo` | Run quick demo (explicit) |
-| `python main.py --all` | Run original 8 experiments (1–8) |
-| `python main.py --physics` | Run physics extensions (9–16) |
-| `python main.py --experiment N` | Run experiment N (1–16) |
+| `python main.py --all` | Run original 8 Advaita experiments (1–8) |
+| `python main.py --physics` | Run physics extensions + rigorous results (9–18) |
+| `python main.py --experiment N` | Run experiment N (1–18) |
 | `python main.py --visualize` | Generate all 7 visualizations to `output/` |
-| `python main.py --everything` | Run all 16 experiments + all visualizations |
+| `python main.py --everything` | Run all 18 experiments + all visualizations |
