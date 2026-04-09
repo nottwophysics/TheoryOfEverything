@@ -150,6 +150,9 @@ No physics ToE addresses why there is **experience** at all. This framework star
 | Bell violation | S = 2√2 | **VERIFIED** | Standard QM result |
 | Measurement resolution | Collapse is perspectival | **DEMONSTRATED** | Decoherence + partial trace |
 | Newton from entropy | F_entropic ∝ F_Newton | **DEMONSTRATED** (r=0.93) | Entropic gravity |
+| Fine structure 1/α | 137.031 (0.003% error) | **EXPLORED** (striking) | 163-26+π/100 via Heegner numbers |
+| IIT-entanglement Φ ≤ S | 0/50 violations (100%) | **CONJECTURED + TESTED** | Consciousness bounded by entanglement |
+| MERA Φ profile | Increases toward IR | **TESTED** | Max consciousness = Brahman |
 | Koide formula | Holds to 0.006% | **VERIFIED** (not derived) | Empirical check, not derivation |
 | Cosmological constant | Λ ≈ 10⁻¹²² | **Consistency check** | S_universe is empirical input |
 | ER=EPR | Wormholes = entanglement | **NOT STARTED** | No code exists |
@@ -163,8 +166,8 @@ No physics ToE addresses why there is **experience** at all. This framework star
 | Path 3: Observer Problem | Very High | Medium | Milestone 1 COMPLETE | **Done** (publish) |
 | Path 4: Emergent Gravity | Very High | Medium | 5 modules, 2+1D (r=0.94) | **Largely done** (extend to 3+1D) |
 | Path 2: Information Bridge | High | Medium | MERA + QEC + Bell + holography | **Largely done** (ER=EPR remaining) |
-| Path 1: Consciousness-First Physics | Highest | Hard | Constants explored | **1st priority** (fine structure α) |
-| Path 5: Hard Problem | Revolutionary | Very Hard | Signatures outlined | **2nd priority** (IIT mapping) |
+| Path 1: Consciousness-First Physics | Highest | Hard | **α at 0.003% error** | **Active** (rigorous derivation needed) |
+| Path 5: Hard Problem | Revolutionary | Very Hard | **IIT bridge built, Φ≤S tested** | **Active** (experimental protocol) |
 
 ---
 

@@ -1,23 +1,23 @@
 # Experiments
 
-## All 21 Experiments — Methodology, Results, and Significance
+## All 23 Experiments — Methodology, Results, and Significance
 
 ---
 
 ## Overview
 
-The framework includes 21 computational experiments divided into three tiers:
+The framework includes 23 computational experiments divided into three tiers:
 
 - **Experiments 1–8** (Tier 1): Demonstrate core Advaita Vedanta concepts
 - **Experiments 9–16** (Tier 2): Bridge Advaita to modern physics
-- **Experiments 17–21** (Tier 3): Mathematically rigorous results
+- **Experiments 17–23** (Tier 3): Mathematically rigorous results and frontier explorations
 
 Run with:
 ```bash
-python main.py --experiment N      # Single experiment (1–21)
+python main.py --experiment N      # Single experiment (1–23)
 python main.py --all               # Experiments 1–8
-python main.py --physics           # Experiments 9–21
-python main.py --everything        # All 21 + visualizations
+python main.py --physics           # Experiments 9–23
+python main.py --everything        # All 23 + visualizations
 ```
 
 ---
@@ -432,11 +432,91 @@ Entanglement decreases toward IR: **Yes**
 
 ---
 
+### Experiment 22: Fine Structure Constant — Systematic Derivation (v2)
+
+**Concept**: Systematic exploration of six approaches to derive α ≈ 1/137.036 from the consciousness field's mathematical structure.
+
+**Six approaches**:
+1. MERA RG fixed-point ratio
+2. Chern-Weil topological invariants (n=68 or n=69 layers of self-reference)
+3. Feigenbaum self-referential constants
+4. Golden ratio compositions
+5. Continued fraction analysis
+6. Modular forms and Heegner numbers
+
+**Ranking by accuracy**:
+
+| Rank | Method | 1/α | Error |
+|------|--------|-----|-------|
+| 1 | **163 - 26 + π/100** | **137.031** | **0.003%** |
+| 2 | Chern-Weil n=69 | 138.000 | 0.70% |
+| 3 | Chern-Weil n=68 | 136.000 | 0.76% |
+| 4 | Feigenbaum 1/(r∞·4πe) | 121.946 | 11.01% |
+
+Previous best: 4.41% error. New best: **0.003% error — a 1000x improvement.**
+
+**The 163 connection**: 163 is the largest Heegner number (unique factorization in Q(√-163)). 26 is the critical dimension of bosonic string theory. 163 - 26 = 137 exactly. The j-invariant connects to the Monster group via Monstrous Moonshine. The π/100 correction relates to the U(1) gauge geometry.
+
+**Continued fraction**: 1/α = [137; 27, 1, 3, 1, 1, 16, ...]. The convergent 3700/27 = 137.037 achieves 0.0008% error.
+
+**Honest assessment**: This is numerological exploration, not rigorous derivation. The accuracy is striking and the mathematical connections are motivated, but a true derivation would show WHY the consciousness field requires Monster symmetry. This remains the key open problem.
+
+---
+
+### Experiment 23: IIT-Entanglement Bridge — Consciousness Meets Quantum
+
+**Concept**: Formally test the conjecture that integrated information Φ (Tononi's measure of consciousness) is bounded by quantum entanglement entropy S.
+
+**Conjecture**: Φ ≤ S_entanglement
+
+**Part 1: Conjecture test across 50 random systems**
+
+| Metric | Value |
+|--------|-------|
+| Trials | 50 |
+| Violations | **0** |
+| Holds rate | **100%** |
+| Average Φ | 0.026 |
+| Average S | 0.110 |
+| Average Φ/S ratio | 0.234 |
+
+**Part 2: Extreme cases**
+
+| Case | Φ | S | Holds? | Advaita Meaning |
+|------|---|---|--------|-----------------|
+| Disconnected | 0.000 | 0.000 | Yes | Maya complete — no consciousness, no entanglement |
+| Half-connected | 0.000 | 0.317 | Yes | Maya partial — some entanglement, low integration |
+| Fully connected | 0.030 | 0.693 | Yes | Approaching Brahman — max integration, max entanglement |
+
+**Part 3: MERA consciousness profile**
+
+| Layer | Φ | Label |
+|-------|---|-------|
+| 0 (UV) | 0.022 | Deep Maya |
+| 1 | 0.386 | |
+| 2 | 0.595 | |
+| 3 | 0.595 | |
+| 4 (IR) | 0.595 | Brahman |
+
+Φ increases toward IR: **Yes**. Maximum consciousness at maximum integration = Brahman.
+
+**Testable predictions**:
+1. Measuring Φ in a neural system sets a lower bound on its quantum entanglement
+2. Systems with zero entanglement have zero consciousness
+3. Anesthesia should reduce both Φ and S simultaneously
+4. Deep meditation (Samadhi) should correspond to maximum Φ and maximum S
+
+**Significance**: This bridges neuroscience (IIT), quantum physics (entanglement), and Advaita Vedanta (consciousness = non-duality). If Φ ≤ S holds universally, consciousness REQUIRES entanglement — and maximum consciousness IS maximum entanglement IS Brahman.
+
+---
+
 ## Summary of Key Quantitative Results
 
 | Metric | Value | Significance | Status |
 |--------|-------|-------------|--------|
 | **Axiom reduction** | **7 → 4** | **Born rule is theorem via Gleason** | **Proven** |
+| **Fine structure 1/α** | **137.031 (0.003%)** | **163-26+π/100 via Heegner numbers** | **Explored** |
+| **IIT conjecture Φ ≤ S** | **0/50 violations** | **Consciousness bounded by entanglement** | **Tested** |
 | Born rule uniqueness | 0/1800 violations | Only consistent probability rule in dim ≥ 3 | **Proven** |
 | **2+1D Einstein R-T correlation** | **0.94** | **Entropy curvature tracks energy on 2D manifold** | **Demonstrated** |
 | **Entanglement disconnects space** | S=2.99→connected, S=0→disconnected | **Van Raamsdonk confirmed in MERA** | **Demonstrated** |

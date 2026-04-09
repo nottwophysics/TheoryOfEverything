@@ -476,6 +476,64 @@ Jacobson's thermodynamic derivation on a proper 2D discrete manifold (Delaunay t
 
 ---
 
+### `constants/fine_structure_v2.py` — Fine Structure Constant (v2, Systematic)
+
+**Classes**: `FineStructureFromMERA`, `FineStructureFromTopology`, `FineStructureFromSelfReference`, `FineStructureFromModular`, `FineStructureV2`
+
+Systematic exploration of 6 approaches to derive α ≈ 1/137.036.
+
+| Class | Method | Best Result |
+|-------|--------|-------------|
+| `FineStructureFromMERA` | `.rg_fixed_point_ratio()` | RG ratio → 1/α (high error) |
+| `FineStructureFromTopology` | `.chern_weil_approach()` | n=69 → 1/α=138 (0.70% error) |
+| `FineStructureFromSelfReference` | `.logistic_map_approach()` | Feigenbaum constants |
+| `FineStructureFromSelfReference` | `.continued_fraction_approach()` | CF analysis of 1/α |
+| `FineStructureFromSelfReference` | `.golden_ratio_approach()` | φ-based formulas |
+| `FineStructureFromModular` | `.dedekind_eta_approach()` | **163-26+π/100 → 0.003% error** |
+
+**Class: `FineStructureV2`** — Orchestrator
+
+| Method | Description |
+|--------|-------------|
+| `.run_all_approaches()` | Run all 6 approaches, rank by accuracy, report best result. |
+
+**Key result**: 1/α ≈ 163 - 26 + π/100 = 137.031 (0.003% error). Connects Heegner number 163, bosonic string dimension 26, and Monster group.
+
+---
+
+### `predictions/iit_bridge.py` — IIT-Entanglement Bridge
+
+**Classes**: `IntegratedInformation`, `EntanglementEntropy`, `IITEntanglementBridge`
+
+Formally bridges Tononi's IIT (consciousness measure Φ) with quantum entanglement entropy (S).
+
+**Class: `IntegratedInformation`**
+
+| Method | Description |
+|--------|-------------|
+| `.compute_phi(connectivity, state)` | Compute Φ by finding the Minimum Information Partition. |
+
+**Class: `EntanglementEntropy`**
+
+| Method | Description |
+|--------|-------------|
+| `.von_neumann_entropy(rho)` | S(ρ) = -Tr(ρ log ρ). |
+| `.entanglement_entropy(state, partition)` | S for a bipartition via partial trace. |
+| `.total_entanglement(state)` | Average S over all bipartitions. |
+
+**Class: `IITEntanglementBridge`**
+
+| Method | Description |
+|--------|-------------|
+| `.test_conjecture(num_trials)` | Test Φ ≤ S across random systems. Returns hold rate, correlation, ratio. |
+| `.demonstrate_extremes()` | Disconnected (Φ=0,S=0), half (Φ=0,S=0.32), full (Φ=0.03,S=0.69). |
+| `.mera_consciousness_profile()` | Compute Φ at each MERA layer. Prediction: Φ increases toward IR (Brahman). |
+| `.full_demonstration()` | Run all tests + generate testable predictions. |
+
+**Key result**: Φ ≤ S holds in 100% of 50 trials. Φ increases toward IR in MERA.
+
+---
+
 ### `quantum/gleason.py` — Gleason's Theorem (Born Rule as Theorem)
 
 **Class: `GleasonVerification`**

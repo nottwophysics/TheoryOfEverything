@@ -18,9 +18,10 @@ TheoryOfEverything/
 │   ├── PHILOSOPHY.md                # Advaita Vedanta and physics mapping
 │   ├── ARCHITECTURE.md              # This file — project structure
 │   ├── MODULES.md                   # Detailed module documentation
-│   ├── EXPERIMENTS.md               # All 21 experiments documented
+│   ├── EXPERIMENTS.md               # All 23 experiments documented
 │   ├── PREDICTIONS.md               # Predictions and falsification
-│   └── ROADMAP.md                   # Path to real ToE with honest status
+│   ├── ROADMAP.md                   # Path to real ToE with honest status
+│   └── PAPER.md                     # Paper-ready summary for academic audiences
 │
 ├── brahman/                         # LAYER 0: The Ground Reality
 │   ├── __init__.py
@@ -81,14 +82,16 @@ TheoryOfEverything/
 ├── constants/                       # PHYSICS: Physical Constants
 │   ├── __init__.py
 │   ├── derivation.py                # Constants from self-referential structure
-│   ├── fine_structure.py            # Fine structure constant derivation attempts
+│   ├── fine_structure.py            # Fine structure constant derivation attempts (v1)
+│   ├── fine_structure_v2.py         # Systematic α derivation: 6 approaches, 0.003% best
 │   └── cosmological.py              # Cosmological constant resolution
 │
 ├── predictions/                     # SCIENCE: Testable Predictions
 │   ├── __init__.py
 │   ├── testable.py                  # 5 novel testable predictions (P1–P5)
 │   ├── consciousness_signatures.py  # Observable markers of fundamental consciousness
-│   └── cosmological_predictions.py  # Large-scale predictions
+│   ├── cosmological_predictions.py  # Large-scale predictions
+│   └── iit_bridge.py               # IIT-Entanglement bridge (Φ ≤ S conjecture)
 │
 ├── falsification/                   # SCIENCE: Falsification Criteria
 │   ├── __init__.py
@@ -186,7 +189,7 @@ Python 3.9+ required.
 | `python main.py` | Run quick demo |
 | `python main.py --demo` | Run quick demo (explicit) |
 | `python main.py --all` | Run original 8 Advaita experiments (1–8) |
-| `python main.py --physics` | Run physics extensions + rigorous results (9–21) |
-| `python main.py --experiment N` | Run experiment N (1–21) |
+| `python main.py --physics` | Run physics extensions + rigorous results (9–23) |
+| `python main.py --experiment N` | Run experiment N (1–23) |
 | `python main.py --visualize` | Generate all 7 visualizations to `output/` |
-| `python main.py --everything` | Run all 21 experiments + all visualizations |
+| `python main.py --everything` | Run all 23 experiments + all visualizations |

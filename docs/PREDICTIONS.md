@@ -253,6 +253,9 @@ In addition to the 5 predictions and 5 falsifiers, the framework has produced on
 | Axiom reduction: 7 → 4 | Copenhagen needs Born rule as axiom; Advaita derives it | **Proven** |
 | Born rule is UNIQUE | Alternative rules (amplitude, quartic) fail additivity: 1800/1800 violations | **Proven** |
 | Hidden variables impossible in dim ≥ 3 | Kochen-Specker (consequence of Gleason): dispersion-free fails 25.6% | **Proven** |
+| Fine structure 1/α = 137.031 | 163-26+π/100 via Heegner numbers (0.003% error) | **Explored (striking)** |
+| IIT-entanglement: Φ ≤ S | Consciousness bounded by entanglement, 0/50 violations | **Conjectured + tested** |
+| MERA Φ increases toward IR | Integrated information grows toward Brahman | **Tested** |
 | 2+1D Einstein: R ∝ T (r=0.94) | Jacobson derivation on 80-point Delaunay manifold | **Demonstrated** |
 | Entanglement determines geometry | MERA: cut entanglement = disconnect space | **Demonstrated** |
 | Spacetime is QEC code | [5,1] holographic code: 80% erasure recoverable | **Demonstrated** |
