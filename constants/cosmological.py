@@ -72,19 +72,27 @@ class CosmologicalConstant:
             "traditional_problem": "QFT gives Λ ≈ 1 (in Planck units)",
             "consciousness_prediction": float(lambda_from_entropy),
             "observed": self.LAMBDA_PLANCK,
-            "match": "Order of magnitude matches!",
+            "match": "Order of magnitude consistency",
             "reasoning": [
                 "1. Spacetime is emergent from consciousness (not fundamental)",
                 "2. Vacuum energy = residual entanglement entropy of Brahman field",
-                "3. Total entropy of the consciousness field S ≈ 10^122",
-                "4. Λ ∝ 1/S_total ≈ 10^-122",
-                "5. This matches the observed value!",
+                "3. Total entropy of the observable universe S ≈ 10^122 (empirical)",
+                "4. IF Λ ∝ 1/S_total THEN Λ ≈ 10^-122",
+                "5. This is consistent with the observed value",
+            ],
+            "caveats": [
+                "S_universe ≈ 10^122 is an empirical input, not derived from the framework",
+                "The proportionality Λ ∝ 1/S is hypothesized, not proven",
+                "This is an order-of-magnitude consistency check, not a derivation",
+                "A true derivation would independently predict S_total from "
+                "the consciousness field's structure",
             ],
             "insight": (
-                "The cosmological constant problem dissolves when spacetime "
-                "is emergent. The 'vacuum energy' is not a sum over modes "
-                "in a pre-existing space — it's the residual Maya in the "
-                "consciousness field. Naturally tiny because the field is vast."
+                "The cosmological constant problem CHANGES CHARACTER when spacetime "
+                "is emergent. The naive QFT sum over modes is invalid if spacetime "
+                "is not fundamental. The consciousness framework suggests Λ should "
+                "be related to the total information content of the field, which "
+                "is consistent with observation — but this remains to be rigorously derived."
             ),
         }
 

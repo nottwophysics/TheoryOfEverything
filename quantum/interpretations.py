@@ -384,8 +384,8 @@ class AdvaitaInterpretation(Interpretation):
             "A3: Time evolution is always unitary — no collapse (same as Many-Worlds A3)",
             "A4: The appearance of definite outcomes arises from entanglement with "
                 "the environment (Maya/decoherence) and partial tracing (limited perspective)",
-            "A5: The Born rule follows from the structure of the consciousness field "
-                "(Gleason's theorem applied to the Brahman Hilbert space)",
+            "A5: Probability is the unique non-contextual measure on the Hilbert space "
+                "(Gleason's theorem — a mathematical consequence of A2, not a separate postulate)",
         ]
 
         self._answers = {
@@ -406,12 +406,15 @@ class AdvaitaInterpretation(Interpretation):
                 "demonstration": "Experiment 10: total purity = 1.000, reduced purity = 0.250",
             },
             "P3_born_rule": {
-                "answer": "The Born rule follows from Gleason's theorem: in any Hilbert space of dimension ≥ 3, "
-                          "the ONLY consistent probability measure is |⟨aₙ|ψ⟩|². "
-                          "Since Brahman's Hilbert space satisfies the conditions, the Born rule is not "
-                          "an independent axiom — it is a theorem.",
-                "mechanism": "Gleason's theorem applied to axiom A2",
-                "advantage": "Born rule DERIVED, not assumed (unlike Copenhagen A5 and Bohm A4)",
+                "answer": "Gleason's theorem (1957) proves: in any Hilbert space of dimension ≥ 3, "
+                          "the ONLY consistent probability measure on subspaces is P(aₙ) = Tr(ρ Pₙ), "
+                          "which for pure states gives |⟨aₙ|ψ⟩|². "
+                          "We verify that Brahman's Hilbert space satisfies Gleason's conditions "
+                          "(dimension ≥ 3, non-contextual measure). The Born rule then follows as a "
+                          "theorem, not an independent axiom.",
+                "mechanism": "Gleason's theorem verified for Brahman Hilbert space (see quantum/gleason.py)",
+                "advantage": "Born rule is a THEOREM in this framework, not an axiom "
+                             "(unlike Copenhagen A5 and Bohm A4). Reduces axiom count.",
             },
             "P4_entanglement": {
                 "answer": "Entanglement is the NATURAL state — non-duality (Advaita) at the quantum level. "

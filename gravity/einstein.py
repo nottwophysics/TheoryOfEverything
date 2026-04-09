@@ -1,14 +1,16 @@
 """
-Emergent Einstein Equations from Consciousness Thermodynamics
+Toward Emergent Einstein Equations from Consciousness Thermodynamics
 
 Jacobson (1995) showed that Einstein's field equations can be derived
 from thermodynamics: entropy + Clausius relation → G_μν = 8πG T_μν.
 
-In this framework: consciousness has entropy (via Maya/entanglement),
-and the thermodynamic relations naturally hold, so Einstein's
-equations EMERGE from consciousness dynamics.
+This module implements a 1D PROOF-OF-CONCEPT demonstrating that
+consciousness-field entropy and energy density produce Einstein-like
+correlations. This is a toy model following Jacobson's logic, not
+a full derivation of 4D Einstein equations.
 
-This is not merely an analogy — it's a derivation path.
+STATUS: Proof-of-concept (1D). Full 4D derivation is future work.
+The correlation G~T is demonstrated (~93%), not the exact tensorial equation.
 """
 
 import numpy as np
@@ -114,13 +116,16 @@ class EmergentEinstein:
                 "2. Maya creates effective temperature T = a/(2π)",
                 "3. Clausius relation: δQ = T dS",
                 "4. Identify thermodynamic quantities with geometric ones",
-                "5. → Einstein field equations emerge",
+                "5. In 1D: G_00 proxy (d²S/dx²) correlates with T_00",
             ],
+            "status": "1D proof-of-concept — NOT a full 4D derivation",
             "insight": (
-                "Einstein's equations are NOT fundamental laws. "
-                "They are thermodynamic equations of the consciousness field. "
-                f"G-T correlation: {correlation:.4f}. "
-                "Gravity is emergent — it's the 'weight' of Maya."
+                "This 1D toy model shows that entropy curvature correlates "
+                f"with energy density (correlation: {correlation:.4f}). "
+                "Following Jacobson's thermodynamic derivation path, "
+                "the full 4D Einstein equations should emerge — but that "
+                "requires proper tensor calculus on a discrete manifold, "
+                "which is future work."
             ),
         }
 

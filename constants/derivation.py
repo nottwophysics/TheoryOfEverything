@@ -209,9 +209,11 @@ class ConstantsFromConsciousness:
             },
             "interpretation": (
                 f"The Koide formula gives {koide_ratio:.6f} vs target {koide_target:.6f}. "
-                "This unexplained relation between lepton masses suggests a deeper structure. "
-                "In Advaita: the three generations (gunas) are related by a "
-                "specific mathematical structure — not arbitrary."
+                "NOTE: This is a VERIFICATION of an empirically observed relation, "
+                "not a derivation from first principles. We confirm the formula holds "
+                "but do not yet explain WHY from consciousness structure. "
+                "The unexplained regularity suggests a deeper structure that "
+                "a complete framework should derive."
             ),
         }
 
