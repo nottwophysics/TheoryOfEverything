@@ -117,6 +117,7 @@ See [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md) for detailed documentation of all
 | [docs/MODULES.md](docs/MODULES.md) | Detailed documentation of every module and class |
 | [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md) | All 16 experiments with methodology and results |
 | [docs/PREDICTIONS.md](docs/PREDICTIONS.md) | Testable predictions, falsification criteria, and experimental roadmap |
+| [docs/ROADMAP.md](docs/ROADMAP.md) | 5 paths from conceptual framework to real ToE, milestones, and priorities |
 
 ---
 
