@@ -137,7 +137,6 @@ See [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md) for detailed documentation of all
 | [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md) | All 23 experiments with methodology and results |
 | [docs/PREDICTIONS.md](docs/PREDICTIONS.md) | Testable predictions, falsification criteria, and experimental roadmap |
 | [docs/ROADMAP.md](docs/ROADMAP.md) | 5 paths from framework to real ToE, with honest status assessment |
-| [docs/PAPER.md](docs/PAPER.md) | Paper-ready summary of key results for academic audiences |
 
 ---
 

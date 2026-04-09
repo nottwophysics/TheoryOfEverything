@@ -4,4 +4,5 @@ __pycache__/
 output/*.png
 .DS_Store
 .git-credentials
-.git-credentials
+docs/PAPER.md
+docs/PAPER_v2.md
