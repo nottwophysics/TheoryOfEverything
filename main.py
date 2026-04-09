@@ -358,6 +358,136 @@ def predictions_experiment():
     return {"status": "completed", "experiment": "predictions_falsification"}
 
 
+def interpretations_experiment():
+    """Experiment 17: Four Interpretations of QM — Formal Comparison."""
+    print("\n" + "=" * 70)
+    print("  EXPERIMENT 17: FOUR INTERPRETATIONS OF QUANTUM MECHANICS")
+    print("  Formal Comparison: Copenhagen vs Many-Worlds vs Pilot Wave vs Advaita")
+    print("=" * 70)
+
+    from quantum.interpretations import InterpretationComparison
+
+    comp = InterpretationComparison()
+
+    # 1. Axiom comparison
+    print("\n" + "-" * 60)
+    print("  PART 1: AXIOM COUNT (Occam's Razor)")
+    print("-" * 60)
+    axioms = comp.axiom_comparison()
+    for key in ["copenhagen", "many_worlds", "pilot_wave", "advaita"]:
+        a = axioms[key]
+        print(f"\n  {a['name']}: {a['axiom_count']} axioms")
+        for ax in a['axioms']:
+            print(f"    {ax}")
+    print(f"\n  Ranking (fewest axioms = most parsimonious):")
+    for r in axioms['ranking_by_parsimony']:
+        print(f"    {r}")
+
+    # 2. Empirical agreement
+    print("\n" + "-" * 60)
+    print("  PART 2: EMPIRICAL PREDICTIONS (must all agree)")
+    print("-" * 60)
+    agreement = comp.empirical_agreement()
+    print(f"\n  P(up) = {agreement['P_up']:.4f}")
+    print(f"  P(down) = {agreement['P_down']:.4f}")
+    print(f"  All agree on P(up): {agreement['all_agree_on_P_up']}")
+    print(f"  All agree on P(down): {agreement['all_agree_on_P_down']}")
+    print(f"  Note: {agreement['note']}")
+
+    # 3. Explanatory scope
+    print("\n" + "-" * 60)
+    print("  PART 3: EXPLANATORY SCOPE (8 phenomena)")
+    print("-" * 60)
+    scope = comp.explanatory_scope()
+    for key in ["copenhagen", "many_worlds", "pilot_wave", "advaita"]:
+        s = scope[key]
+        print(f"\n  {s['name']}:")
+        print(f"    Phenomena addressed: {s['phenomena_addressed']}/8")
+        print(f"    With unresolved problems: {s['phenomena_with_problems']}")
+        print(f"    Cleanly resolved: {s['phenomena_clean']}")
+        print(f"    Cannot explain:")
+        for item in s['cannot_explain'][:3]:
+            print(f"      - {item[:80]}")
+
+    # 4. The Consciousness Test
+    print("\n" + "-" * 60)
+    print("  PART 4: THE CONSCIOUSNESS TEST (the hard problem)")
+    print("-" * 60)
+    consciousness = comp.consciousness_comparison()
+    for key in ["copenhagen", "many_worlds", "pilot_wave", "advaita"]:
+        c = consciousness[key]
+        status = "YES" if c['addresses_consciousness'] else "NO"
+        print(f"\n  {c['name']}:")
+        print(f"    Addresses consciousness: {status}")
+        ans = c['answer']
+        if len(ans) > 120:
+            print(f"    Answer: {ans[:120]}...")
+        else:
+            print(f"    Answer: {ans}")
+
+    # 5. Novel predictions
+    print("\n" + "-" * 60)
+    print("  PART 5: NOVEL PREDICTIONS (what makes each unique)")
+    print("-" * 60)
+    preds = comp.novel_predictions_comparison()
+    for key in ["copenhagen", "many_worlds", "pilot_wave", "advaita"]:
+        p = preds[key]
+        print(f"\n  {p['name']}: {p['num_predictions']} prediction(s)")
+        for pred in p['novel_predictions']:
+            print(f"    - {pred[:90]}")
+
+    # 6. Advaita measurement demonstration
+    print("\n" + "-" * 60)
+    print("  PART 6: ADVAITA MEASUREMENT RESOLUTION (quantitative)")
+    print("-" * 60)
+    demo = comp.advaita_measurement_demo()
+    print(f"\n  Total state purity (Brahman):  {demo['total_state_purity']:.6f}")
+    print(f"  Total collapsed:               {demo['total_collapsed']}")
+    print(f"  Reduced state purity (Jiva):   {demo['reduced_state_purity']:.6f}")
+    print(f"  Appears collapsed:             {demo['reduced_appears_collapsed']}")
+    print(f"  Coherence remaining:           {demo['coherence_remaining']:.6f}")
+    print(f"  Classical probabilities:       {[f'{p:.4f}' for p in demo['classical_probabilities']]}")
+
+    # 7. Summary table
+    print("\n" + "-" * 60)
+    print("  PART 7: SUMMARY COMPARISON TABLE")
+    print("-" * 60)
+    table = comp.summary_table()
+    print(f"\n  {'Criterion':<35} {'Copenhagen':>12} {'Many-Worlds':>12} {'Pilot Wave':>12} {'Advaita':>12}")
+    print(f"  {'-'*35} {'-'*12} {'-'*12} {'-'*12} {'-'*12}")
+
+    keys = ["copenhagen", "many_worlds", "pilot_wave", "advaita"]
+    row = lambda field: [str(table[k][field]) for k in keys]
+
+    rows_to_print = [
+        ("Year", "year"),
+        ("Axiom count", "axiom_count"),
+        ("Phenomena addressed", "phenomena_addressed"),
+        ("With problems", "phenomena_with_problems"),
+        ("Addresses consciousness", "addresses_consciousness"),
+        ("Novel predictions", "novel_predictions"),
+        ("Needs collapse postulate", "needs_collapse_postulate"),
+        ("Needs hidden variables", "needs_hidden_variables"),
+        ("Needs branching", "needs_branching"),
+    ]
+    for label, field_name in rows_to_print:
+        vals = row(field_name)
+        print(f"  {label:<35} {vals[0]:>12} {vals[1]:>12} {vals[2]:>12} {vals[3]:>12}")
+
+    print(f"\n  VERDICT:")
+    print(f"  - All four agree on empirical predictions (Born rule, Bell violation, etc.)")
+    print(f"  - Copenhagen: 7 axioms, silent on consciousness, no novel predictions")
+    print(f"  - Many-Worlds: 5 axioms, silent on consciousness, no testable predictions")
+    print(f"  - Pilot Wave: 5 axioms, silent on consciousness, 2 novel predictions")
+    print(f"  - Advaita: 5 axioms, ADDRESSES consciousness, 5 novel predictions")
+    print(f"  ")
+    print(f"  Advaita matches the parsimony of Many-Worlds and Pilot Wave (5 axioms),")
+    print(f"  while being the ONLY interpretation that addresses the hard problem")
+    print(f"  of consciousness — and it makes 5 testable predictions.")
+
+    return {"status": "completed", "experiment": "interpretations_comparison"}
+
+
 def run_physics_experiments():
     """Run all physics extension experiments (9-16)."""
     print("\n" + "#" * 70)
@@ -375,6 +505,7 @@ def run_physics_experiments():
         particle_zoo_experiment,
         constants_experiment,
         predictions_experiment,
+        interpretations_experiment,
     ]
 
     results = []
@@ -505,8 +636,8 @@ def main():
         description="Theory of Everything — Advaita Vedanta Computational Framework"
     )
     parser.add_argument(
-        "--experiment", type=int, choices=range(1, 17),
-        help="Run a specific experiment (1-16)",
+        "--experiment", type=int, choices=range(1, 18),
+        help="Run a specific experiment (1-17)",
     )
     parser.add_argument(
         "--visualize", action="store_true",
@@ -522,11 +653,11 @@ def main():
     )
     parser.add_argument(
         "--physics", action="store_true",
-        help="Run physics extension experiments (9-16)",
+        help="Run physics extension experiments (9-17)",
     )
     parser.add_argument(
         "--everything", action="store_true",
-        help="Run ALL experiments (1-16) + visualizations",
+        help="Run ALL experiments (1-17) + visualizations",
     )
 
     args = parser.parse_args()
@@ -548,6 +679,7 @@ def main():
         14: particle_zoo_experiment,
         15: constants_experiment,
         16: predictions_experiment,
+        17: interpretations_experiment,
     }
 
     if args.everything:
