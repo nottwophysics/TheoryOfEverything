@@ -195,7 +195,17 @@ Gravity is not added as a separate force. It **emerges** from the consciousness 
 
 **2+1D Einstein Equations (Jacobson, discrete)**: This project upgrades the thermodynamic derivation to a genuine 2D discrete manifold (80-point Delaunay triangulation) and achieves R-T correlation of **0.94** — demonstrating that Einstein's equations hold on non-trivial discrete geometry when entropy comes from the consciousness field (Experiment 20).
 
-### 3.4 The Standard Model from Maya
+### 3.4 Observer Centrality and Perspectival Asymmetry
+
+Two philosophical concepts central to the submitted paper are demonstrated computationally in the framework:
+
+**Perspectival Asymmetry** (Experiment 25): The total quantum state is always pure (purity = 1.0, exact to machine precision 10⁻¹⁶). The observer's reduced state is always mixed (for non-trivial superpositions). This holds for ALL initial states, ALL environment sizes, and ALL measurement bases. "Collapse" is not a physical event — it is the mathematical consequence of describing a subsystem's perspective on a larger whole. In Advaita terms: from the absolute level (*Paramarthika*), reality is undivided. From the empirical level (*Vyavaharika*), definite outcomes appear. The levels do not contradict — they are descriptions at different scopes of the same unified state.
+
+**Observer Centrality** (Experiment 26): Decoherence selects the pointer basis (which outcomes are possible) but does NOT select which outcome is experienced. To bridge this gap, every interpretation of quantum mechanics invokes the concept of "observer." But only the Advaita interpretation provides an explicit ontological analysis of what the observer IS: a localized perspective of the universal subject (*Sakshi* as the witness, *jiva* as the localized perspective). This maps precisely to the Advaitic teaching that individual consciousness (*Atman*) is not separate from universal consciousness (*Brahman*) — it is Brahman seen from a particular vantage point.
+
+The paper's hidden premise — that observer ontology is part of the interpretive burden, not an optional philosophical add-on — follows from the observation that "observer" does essential, non-trivial work in the formalism. Leaving it unanalyzed is not neutrality; it is an unexamined commitment.
+
+### 3.5 The Standard Model from Maya
 
 Particles are not fundamental substances — they are **excitation modes** of the Brahman field, differentiated by Maya:
 
@@ -212,7 +222,7 @@ Particles are not fundamental substances — they are **excitation modes** of th
 - Weak force → Maya's transformation (Rajas aspect — changes particle identity)
 - Strong force → Maya's binding (Tamas aspect — confines quarks, creates solidity)
 
-### 3.5 The Measurement Problem — Dissolved
+### 3.6 The Measurement Problem — Dissolved
 
 The measurement problem asks: *why does a superposition collapse to a definite outcome?*
 
@@ -230,7 +240,7 @@ Mathematically:
 
 The "collapse" is not a physical event. It is a **perspectival artifact** of looking at only part of a non-dual whole. This is Maya operating at the quantum level.
 
-### 3.6 The Cosmological Constant — Resolved
+### 3.7 The Cosmological Constant — Resolved
 
 QFT predicts Λ ≈ 10¹²⁰ × observed value. This is the worst prediction in all of physics.
 
@@ -243,7 +253,7 @@ In the consciousness framework:
 
 This matches the observed value. The cosmological constant problem dissolves when spacetime is not assumed to be fundamental.
 
-### 3.7 Dark Energy and Dark Matter
+### 3.8 Dark Energy and Dark Matter
 
 The universe is 68.3% dark energy, 26.8% dark matter, and 4.9% ordinary matter.
 

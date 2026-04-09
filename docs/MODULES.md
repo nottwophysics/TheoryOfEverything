@@ -585,6 +585,56 @@ Each interpretation class defines:
 
 ---
 
+### `quantum/operational_equivalence.py` — Everett-Advaita Equivalence Proof
+
+**Class: `OperationalEquivalence`**
+
+Proves the paper's central claim: Everett and Advaita make identical empirical predictions.
+
+| Method | Description |
+|--------|-------------|
+| `.test_probabilities()` | Born rule probabilities identical under both interpretations. |
+| `.test_time_evolution()` | Unitary evolution at 5 time steps — identical states. |
+| `.test_measurement_statistics(num_trials)` | 10,000 measurement outcomes — identical distributions. |
+| `.test_entanglement_correlations()` | Bell CHSH = -2.83, entanglement entropy — identical. |
+| `.test_decoherence()` | Total purity, reduced purity, pointer states — identical. |
+| `.test_where_they_diverge()` | Documents 5 ontological divergences with 0 measurable consequences. |
+| `.full_equivalence_test()` | Run all 6 tests. Summary: 5/5 empirical identical, 5 ontological divergences. |
+
+---
+
+### `quantum/perspectival_asymmetry.py` — Generalized Measurement Resolution
+
+**Class: `PerspectivalAsymmetry`**
+
+Proves that "total pure, reduced mixed" holds for ALL quantum scenarios, not just one example.
+
+| Method | Description |
+|--------|-------------|
+| `.test_varying_states(num_states)` | 20 states (equal, biased, random, basis) — all total pure. |
+| `.test_varying_environment_size()` | Environment dim 3–64 — total purity 1.0 for all. |
+| `.test_varying_basis()` | 5 random measurement bases — perspectival asymmetry in every basis. |
+| `.test_asymmetry_is_exact()` | 100 random states — max deviation from purity 1.0: 8.88×10⁻¹⁶. |
+| `.full_test()` | Run all 4 tests. Summary: perspectival asymmetry is exact. |
+
+---
+
+### `quantum/observer_centrality.py` — Hidden Premise Demonstration
+
+**Class: `ObserverCentrality`**
+
+Demonstrates the paper's hidden premise: observer ontology is part of the interpretive burden.
+
+| Method | Description |
+|--------|-------------|
+| `.step1_decoherence_selects_basis()` | Standard physics: pointer states selected, coherence = 0. |
+| `.step2_decoherence_does_not_select_outcome()` | Gap: P(↑)=0.5, P(↓)=0.5, but which is experienced? Undefined. |
+| `.step3_observer_required_for_outcomes()` | All 4 interpretations invoke "observer" — only Advaita analyzes it. |
+| `.step4_unanalyzed_observer_is_a_gap()` | Formalism determines 5 things, leaves 4 open — all involving observer. |
+| `.full_demonstration()` | Run all 4 steps. Argument chain → observer ontology is not optional. |
+
+---
+
 ### `predictions/testable.py` — 5 Testable Predictions
 
 **Class: `TestablePredictions`**

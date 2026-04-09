@@ -36,16 +36,16 @@ python main.py --demo
 # Run all 8 original Advaita experiments
 python main.py --all
 
-# Run all 15 physics extension experiments (9–23)
+# Run all 18 physics extension experiments (9–26)
 python main.py --physics
 
-# Run a specific experiment (1–23)
-python main.py --experiment 22
+# Run a specific experiment (1–26)
+python main.py --experiment 24
 
 # Generate all 7 visualizations
 python main.py --visualize
 
-# Run EVERYTHING (23 experiments + visualizations)
+# Run EVERYTHING (26 experiments + visualizations)
 python main.py --everything
 ```
 
@@ -65,7 +65,7 @@ For a guided walkthrough of the project, see [docs/GETTING_STARTED.md](docs/GETT
 | **Predictions** | `predictions/` | 5 testable predictions + IIT-entanglement bridge |
 | **Falsification** | `falsification/` | 5 explicit falsification criteria + experimental designs |
 | **Visualizations** | `visualizations/` | 7 visual plots of Advaita concepts |
-| **Experiments** | `simulations/`, `main.py` | 23 runnable experiments demonstrating the framework |
+| **Experiments** | `simulations/`, `main.py` | 26 runnable experiments demonstrating the framework |
 
 ---
 
@@ -122,6 +122,14 @@ These claims map directly to structures in modern physics. See [docs/PHILOSOPHY.
 | 22 | **Fine Structure Constant v2** | 6 systematic approaches; best: 163-26+π/100 = 0.003% error (1000x improvement) |
 | 23 | **IIT-Entanglement Bridge** | Φ ≤ S conjecture holds 100%; consciousness bounded by entanglement; MERA Φ increases toward Brahman |
 
+### Tier 4 — Paper Companion Experiments (24–26)
+
+| # | Name | What It Demonstrates |
+|---|------|---------------------|
+| 24 | **Everett-Advaita Operational Equivalence** | 5 empirical tests all identical; 5 ontological divergences, 0 measurable |
+| 25 | **Perspectival Asymmetry (Generalized)** | Total purity = 1.0 for ALL states, bases, environment sizes; exact to 10⁻¹⁶ |
+| 26 | **Observer Centrality** | Decoherence selects basis but NOT outcome; "observer" does essential work in the formalism |
+
 See [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md) for detailed documentation of all experiments.
 
 ---
@@ -134,7 +142,7 @@ See [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md) for detailed documentation of all
 | [docs/PHILOSOPHY.md](docs/PHILOSOPHY.md) | Deep dive into Advaita Vedanta and its mapping to physics |
 | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | Project structure, design principles, and module relationships |
 | [docs/MODULES.md](docs/MODULES.md) | Detailed documentation of every module and class |
-| [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md) | All 23 experiments with methodology and results |
+| [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md) | All 26 experiments with methodology and results |
 | [docs/PREDICTIONS.md](docs/PREDICTIONS.md) | Testable predictions, falsification criteria, and experimental roadmap |
 | [docs/ROADMAP.md](docs/ROADMAP.md) | 5 paths from framework to real ToE, with honest status assessment |
 

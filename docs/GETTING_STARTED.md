@@ -32,7 +32,7 @@ This is not a new idea. It is the central claim of **Advaita Vedanta**, a 3000-y
 
 The project is:
 - **A computational framework** — real Python code you can run
-- **23 experiments** — each demonstrating a specific concept with quantitative results
+- **26 experiments** — each demonstrating a specific concept with quantitative results
 - **7 visualizations** — publication-quality plots
 - **1 mathematically rigorous result** — the Born rule derived via Gleason's theorem
 - **5 testable predictions** and **5 falsification criteria** — real science
@@ -158,10 +158,11 @@ python main.py --everything
 
 ```bash
 python main.py --experiment 18    # Gleason's theorem (most rigorous)
+python main.py --experiment 24    # Everett-Advaita equivalence (paper's central claim)
+python main.py --experiment 25    # Perspectival asymmetry (measurement resolution proven)
+python main.py --experiment 26    # Observer centrality (hidden premise demonstrated)
 python main.py --experiment 22    # Fine structure constant (0.003% error!)
-python main.py --experiment 23    # IIT-entanglement bridge (consciousness)
 python main.py --experiment 20    # 2+1D Einstein equations (gravity emergence)
-python main.py --experiment 19    # MERA tensor network (space from entanglement)
 python main.py --experiment 11    # Bell inequality violation
 python main.py --experiment 10    # Measurement problem dissolved
 python main.py --experiment 1     # Rope-snake (simplest)
@@ -408,6 +409,11 @@ This project is honest about its status. Here is the complete picture:
 - Koide formula: verified to 0.006% against empirical data
 - Cosmological constant: order-of-magnitude consistency (with caveats)
 
+### Paper companion (computationally proving the submitted paper's claims)
+- Everett-Advaita operational equivalence: 5/5 tests identical, 0 measurable divergences (Experiment 24)
+- Perspectival asymmetry: exact to 10⁻¹⁶ across all states, bases, and environment sizes (Experiment 25)
+- Observer centrality: 4 open questions all involve observer; hidden premise demonstrated (Experiment 26)
+
 ### Explored (systematic, not yet rigorous derivation)
 - Fine structure constant: 0.003% error via Heegner number 163 (Experiment 22)
 - IIT-entanglement conjecture Φ ≤ S: holds 100% in 50 trials (Experiment 23)
@@ -515,7 +521,7 @@ These five experiments form a coherent story: entanglement structure (Exp 19) pr
 Go directly to:
 1. [docs/PREDICTIONS.md](PREDICTIONS.md) — the 5 predictions and 5 falsifiers
 2. [docs/ROADMAP.md](ROADMAP.md) — the honest status assessment
-3. Run Experiments 17–21 (the rigorous results)
+3. Run Experiments 17–26 (the rigorous results and paper companions)
 4. Check the "Honest Limitations" section of [README.md](../README.md)
 
 ---
@@ -569,7 +575,7 @@ Experiment 18 is the most rigorous (mathematical proof). Experiment 22 has the m
 
 After reading this guide, you might want to:
 
-1. **Run all 23 experiments**: `python main.py --everything`
+1. **Run all 26 experiments**: `python main.py --everything`
 2. **Read the philosophy**: [docs/PHILOSOPHY.md](PHILOSOPHY.md)
 3. **Understand the roadmap**: [docs/ROADMAP.md](ROADMAP.md)
 4. **Look at the module details**: [docs/MODULES.md](MODULES.md)

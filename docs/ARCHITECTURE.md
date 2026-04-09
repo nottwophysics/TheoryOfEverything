@@ -18,7 +18,7 @@ TheoryOfEverything/
 │   ├── PHILOSOPHY.md                # Advaita Vedanta and physics mapping
 │   ├── ARCHITECTURE.md              # This file — project structure
 │   ├── MODULES.md                   # Detailed module documentation
-│   ├── EXPERIMENTS.md               # All 23 experiments documented
+│   ├── EXPERIMENTS.md               # All 26 experiments documented
 │   ├── PREDICTIONS.md               # Predictions and falsification
 │   ├── ROADMAP.md                   # Path to real ToE with honest status
 │   └── PAPER.md                     # Paper-ready summary for academic audiences
@@ -63,7 +63,10 @@ TheoryOfEverything/
 │   ├── tensor_network.py            # MERA tensor network — spacetime from entanglement
 │   ├── error_correction.py          # QEC as spacetime (Almheiri-Dong-Harlow)
 │   ├── interpretations.py           # 4 QM interpretations formally compared
-│   └── interpretation_experiment.py # Shared experimental setup for comparison
+│   ├── interpretation_experiment.py # Shared experimental setup for comparison
+│   ├── operational_equivalence.py   # Everett-Advaita operational equivalence proof
+│   ├── perspectival_asymmetry.py    # Generalized measurement resolution (all cases)
+│   └── observer_centrality.py       # Observer centrality — hidden premise demonstration
 │
 ├── gravity/                         # PHYSICS: General Relativity
 │   ├── __init__.py
@@ -189,7 +192,7 @@ Python 3.9+ required.
 | `python main.py` | Run quick demo |
 | `python main.py --demo` | Run quick demo (explicit) |
 | `python main.py --all` | Run original 8 Advaita experiments (1–8) |
-| `python main.py --physics` | Run physics extensions + rigorous results (9–23) |
-| `python main.py --experiment N` | Run experiment N (1–23) |
+| `python main.py --physics` | Run physics extensions + rigorous results (9–26) |
+| `python main.py --experiment N` | Run experiment N (1–26) |
 | `python main.py --visualize` | Generate all 7 visualizations to `output/` |
-| `python main.py --everything` | Run all 23 experiments + all visualizations |
+| `python main.py --everything` | Run all 26 experiments + all visualizations |
