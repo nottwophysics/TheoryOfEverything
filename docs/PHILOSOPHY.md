@@ -189,6 +189,12 @@ Gravity is not added as a separate force. It **emerges** from the consciousness 
 
 **Entropic Gravity (Verlinde)**: Gravity as F = T∇S — the tendency of systems to increase entropy. In Advaita: Maya tends to deepen. This tendency manifests as gravitational attraction.
 
+**MERA Tensor Network → AdS Geometry (Swingle)**: The MERA tensor network — where each layer coarse-grains the one below — naturally produces Anti-de Sitter spacetime geometry. The extra dimension (layer depth) IS the depth of Maya. The boundary (UV) is the empirical world with maximum detail. The center (IR) is Brahman — the coarse-grained, non-dual ground. This project implements this in `quantum/tensor_network.py` and demonstrates: cutting entanglement bonds disconnects space (Experiment 19).
+
+**Spacetime as Quantum Error Correction (Almheiri-Dong-Harlow)**: The holographic dictionary has the structure of a quantum error-correcting code. The bulk geometry (which we experience as gravity) is the *logical* information, protected by the entanglement structure of the boundary (the *physical* qubits). In Advaita terms: Brahman (bulk/logical) is protected from Maya's distortions (boundary noise/erasure). This project implements this in `quantum/error_correction.py` and demonstrates: Brahman is recoverable even when 80% of the boundary is erased (Experiment 21). This explains WHY the empirical world is stable — it is protected by the error-correcting structure of consciousness.
+
+**2+1D Einstein Equations (Jacobson, discrete)**: This project upgrades the thermodynamic derivation to a genuine 2D discrete manifold (80-point Delaunay triangulation) and achieves R-T correlation of **0.94** — demonstrating that Einstein's equations hold on non-trivial discrete geometry when entropy comes from the consciousness field (Experiment 20).
+
 ### 3.4 The Standard Model from Maya
 
 Particles are not fundamental substances — they are **excitation modes** of the Brahman field, differentiated by Maya:

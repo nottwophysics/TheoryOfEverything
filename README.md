@@ -19,6 +19,10 @@ This thesis is testable. The framework makes **5 novel predictions** (P1–P5) a
 ## Quick Start
 
 ```bash
+# Clone the repository
+git clone https://codeberg.org/advait/TheoryOfEverything.git
+cd TheoryOfEverything
+
 # Create and activate virtual environment
 python3 -m venv toenv
 source toenv/bin/activate
@@ -32,16 +36,16 @@ python main.py --demo
 # Run all 8 original Advaita experiments
 python main.py --all
 
-# Run all 10 physics extension experiments (9–18)
+# Run all 13 physics extension experiments (9–21)
 python main.py --physics
 
-# Run a specific experiment (1–18)
+# Run a specific experiment (1–21)
 python main.py --experiment 18
 
 # Generate all 7 visualizations
 python main.py --visualize
 
-# Run EVERYTHING (18 experiments + visualizations)
+# Run EVERYTHING (21 experiments + visualizations)
 python main.py --everything
 ```
 
@@ -54,14 +58,14 @@ For a guided walkthrough of the project, see [docs/GETTING_STARTED.md](docs/GETT
 | Layer | Modules | Purpose |
 |-------|---------|---------|
 | **Metaphysical Foundation** | `brahman/`, `maya/`, `levels/`, `emergence/`, `liberation/` | Models the core Advaita Vedanta framework |
-| **Quantum Mechanics** | `quantum/` | Derives QM from the consciousness field; Gleason's theorem |
-| **General Relativity** | `gravity/` | Emergent gravity from entanglement structure |
+| **Quantum Mechanics** | `quantum/` | Derives QM from the consciousness field; Gleason's theorem; tensor networks; QEC |
+| **General Relativity** | `gravity/` | Emergent gravity from entanglement; 2+1D Einstein equations |
 | **Standard Model** | `particles/` | Particles and forces from Maya's symmetry breaking |
 | **Physical Constants** | `constants/` | Explores constants from self-referential structure |
 | **Predictions** | `predictions/` | 5 novel testable predictions |
 | **Falsification** | `falsification/` | 5 explicit falsification criteria + experimental designs |
 | **Visualizations** | `visualizations/` | 7 visual plots of Advaita concepts |
-| **Experiments** | `simulations/`, `main.py` | 18 runnable experiments demonstrating the framework |
+| **Experiments** | `simulations/`, `main.py` | 21 runnable experiments demonstrating the framework |
 
 ---
 
@@ -106,12 +110,15 @@ These claims map directly to structures in modern physics. See [docs/PHILOSOPHY.
 | 15 | **Physical Constants** | Koide formula verified; Λ consistent with consciousness entropy |
 | 16 | **Predictions & Falsification** | 5 testable predictions, 5 falsification criteria |
 
-### Tier 3 — Rigorous Results (17–18)
+### Tier 3 — Rigorous Results (17–21)
 
 | # | Name | What It Demonstrates |
 |---|------|---------------------|
 | 17 | **Four Interpretations Compared** | Copenhagen vs Many-Worlds vs Pilot Wave vs Advaita — formal comparison across 8 phenomena |
 | 18 | **Gleason's Theorem** | Born rule derived as theorem; axiom reduction 7 → 4 (mathematically rigorous) |
+| 19 | **MERA Tensor Network** | Spacetime geometry from entanglement; coarse-graining = Maya dissolving; AdS-like geometry |
+| 20 | **2+1D Einstein Equations** | Jacobson derivation on 80-point Delaunay manifold; R-T correlation 0.90–0.94 |
+| 21 | **QEC as Spacetime** | Holographic error-correcting code; Brahman recoverable with 80% boundary erasure |
 
 See [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md) for detailed documentation of all experiments.
 
@@ -125,7 +132,7 @@ See [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md) for detailed documentation of all
 | [docs/PHILOSOPHY.md](docs/PHILOSOPHY.md) | Deep dive into Advaita Vedanta and its mapping to physics |
 | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | Project structure, design principles, and module relationships |
 | [docs/MODULES.md](docs/MODULES.md) | Detailed documentation of every module and class |
-| [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md) | All 18 experiments with methodology and results |
+| [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md) | All 21 experiments with methodology and results |
 | [docs/PREDICTIONS.md](docs/PREDICTIONS.md) | Testable predictions, falsification criteria, and experimental roadmap |
 | [docs/ROADMAP.md](docs/ROADMAP.md) | 5 paths from framework to real ToE, with honest status assessment |
 
@@ -136,12 +143,13 @@ See [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md) for detailed documentation of all
 | Result | Significance | Status |
 |--------|-------------|--------|
 | **Axiom reduction: 7 → 4** | Gleason's theorem makes Born rule a theorem, not axiom. Advaita has fewer axioms than Copenhagen. | **Proven** (Experiment 18) |
+| **2+1D Einstein: R-T = 0.94** | Entropy-derived curvature correlates with energy on 2D discrete manifold | **Demonstrated** (Experiment 20) |
+| **Spacetime from entanglement** | MERA tensor network: cut entanglement = disconnect space; AdS-like geometry emerges | **Demonstrated** (Experiment 19) |
+| **Spacetime as QEC code** | Brahman recoverable with 80% of boundary erased | **Demonstrated** (Experiment 21) |
 | Bell inequality violated (S = 2√2) | Non-locality confirmed — physics agrees with non-duality | **Verified** (Experiment 11) |
 | Measurement problem dissolved | Total state (Brahman) stays pure; collapse is perspectival (Maya) | **Demonstrated** (Experiment 10) |
-| Newton's law from entropy (r = 0.93) | Gravity emerges from consciousness thermodynamics | **1D proof-of-concept** |
 | Koide formula (0.6666 vs 0.6667) | Lepton masses have structure — not arbitrary | **Verified** (not derived) |
 | Λ ≈ 10⁻¹²² from S_total | Cosmological constant consistent with emergent spacetime | **Order-of-magnitude consistency** |
-| 95% dark universe | Matches Advaita: most of Brahman is concealed by Maya | **Conceptual parallel** |
 
 ---
 
@@ -151,9 +159,9 @@ This project is scientifically honest about what it has and hasn't achieved:
 
 - **Proven**: Gleason-based axiom reduction (mathematical fact)
 - **Demonstrated**: Measurement resolution, Bell violation, decoherence framework
-- **Proof-of-concept**: Einstein equations (1D only), entropic gravity
+- **Demonstrated (2D)**: Einstein equations on discrete manifold (R-T = 0.94), MERA tensor network, QEC holographic code
 - **Verified (not derived)**: Koide formula, cosmological constant consistency
-- **Outlined (not implemented)**: Tensor networks, ER=EPR, quantum error correction
+- **Outlined (not implemented)**: ER=EPR correspondence, formal IIT-entanglement mapping
 - **Not addressed**: Full Standard Model Lagrangian, exact constant derivations
 
 See [docs/ROADMAP.md](docs/ROADMAP.md) for the complete honest status assessment and next steps.

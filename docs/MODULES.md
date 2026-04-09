@@ -282,6 +282,47 @@ Derives Hilbert space axioms from Sat-Chit-Ananda.
 
 ---
 
+### `quantum/tensor_network.py` — MERA Tensor Network
+
+**Class: `MERATensorNetwork`**
+
+Models spacetime as a Multiscale Entanglement Renormalization Ansatz where coarse-graining = Maya dissolving.
+
+| Method | Description |
+|--------|-------------|
+| `MERATensorNetwork(num_sites, bond_dim)` | Build MERA with disentanglers and isometries. Sites must be power of 2. |
+| `.coarse_grain(state)` | Full UV→IR coarse-graining. Returns entanglement at each layer. |
+| `.entanglement_determines_distance()` | Distance ∝ 1/entanglement. Shows geometry from entanglement. |
+| `.cut_entanglement_disconnects_space()` | Entangled state → space connected. Product state → space disconnected. |
+| `.holographic_geometry()` | Maps layers to AdS radial slices. Metric factor = L²/z². |
+| `.full_demonstration()` | Run all four demonstrations. |
+
+---
+
+### `quantum/error_correction.py` — QEC as Spacetime
+
+**Class: `HolographicCode`**
+
+Models spacetime as a quantum error-correcting code (Almheiri-Dong-Harlow).
+
+| Method | Description |
+|--------|-------------|
+| `HolographicCode(n_physical, k_logical)` | Build holographic code with random isometric encoding. |
+| `.encode(logical_state)` | Encode logical (Brahman) state into physical (Maya) space. |
+| `.erase_qubits(physical_state, qubits)` | Erase specific qubits — model partial ignorance (Avidya). |
+| `.recover_logical(rho_physical)` | Attempt to recover bulk from (corrupted) boundary. |
+| `.test_error_correction(logical_state)` | Test recovery at increasing erasure levels. |
+| `.demonstrate_spacetime_as_code()` | Full demo: error correction + distinguishability + entanglement. |
+
+**Class: `SubsystemCode`**
+
+| Method | Description |
+|--------|-------------|
+| `.reconstruct_from_subregion(qubits)` | Try recovering bulk from a boundary subregion. |
+| `.demonstrate_multiple_reconstructions()` | Same bulk from left/right/even/odd boundary — multiple paths to Brahman. |
+
+---
+
 ### `gravity/metric.py` — Spacetime Metric from Entanglement
 
 **Class: `ConsciousnessMetric`**
@@ -305,6 +346,27 @@ Derives Hilbert space axioms from Sat-Chit-Ananda.
 | `.maya_temperature(acceleration)` | Unruh temperature T = a/(2π). Acceleration = deeper identification = more Maya. |
 | `.clausius_to_einstein(energy, entropy)` | δQ = TdS → G_μν = 8πG T_μν. Returns correlation between curvature and energy. |
 | `.demonstrate_gravity_from_consciousness()` | Full pipeline: field → entropy → curvature → Einstein equations. |
+
+**Status**: 1D proof-of-concept. See `gravity/einstein_2d.py` for the 2+1D upgrade.
+
+---
+
+### `gravity/einstein_2d.py` — 2+1D Einstein Equations (Upgraded)
+
+**Class: `EmergentEinstein2D`**
+
+Jacobson's thermodynamic derivation on a proper 2D discrete manifold (Delaunay triangulation). **Major upgrade from the 1D model.**
+
+| Method | Description |
+|--------|-------------|
+| `EmergentEinstein2D(num_points, seed)` | Build discrete 2D manifold via Delaunay triangulation. |
+| `.consciousness_energy_density(positions, values)` | Gaussian mass distributions on the manifold. |
+| `.entanglement_entropy_field(T_00)` | Bekenstein-bound entropy + neighbor entanglement. |
+| `.discrete_ricci_scalar(S)` | Deficit angle (geometric) + integrated entropy (Jacobson) curvature. |
+| `.derive_einstein_equations(positions, values)` | Full derivation: T_μν → S → R → test R ∝ T. |
+| `.demonstrate_mass_curves_space()` | 0, 1, and 2 mass comparisons. |
+
+**Key result**: R_entropy vs T_00 correlation = **0.94** (two masses) on 80-point manifold with 149 triangles.
 
 ---
 

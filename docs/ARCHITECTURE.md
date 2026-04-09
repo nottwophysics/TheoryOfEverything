@@ -18,7 +18,7 @@ TheoryOfEverything/
 │   ├── PHILOSOPHY.md                # Advaita Vedanta and physics mapping
 │   ├── ARCHITECTURE.md              # This file — project structure
 │   ├── MODULES.md                   # Detailed module documentation
-│   ├── EXPERIMENTS.md               # All 18 experiments documented
+│   ├── EXPERIMENTS.md               # All 21 experiments documented
 │   ├── PREDICTIONS.md               # Predictions and falsification
 │   └── ROADMAP.md                   # Path to real ToE with honest status
 │
@@ -59,13 +59,16 @@ TheoryOfEverything/
 │   ├── measurement.py               # Measurement problem dissolved
 │   ├── entanglement.py              # Non-dual entanglement and Bell violation
 │   ├── gleason.py                   # Gleason's theorem — Born rule as theorem (RIGOROUS)
+│   ├── tensor_network.py            # MERA tensor network — spacetime from entanglement
+│   ├── error_correction.py          # QEC as spacetime (Almheiri-Dong-Harlow)
 │   ├── interpretations.py           # 4 QM interpretations formally compared
 │   └── interpretation_experiment.py # Shared experimental setup for comparison
 │
 ├── gravity/                         # PHYSICS: General Relativity
 │   ├── __init__.py
 │   ├── metric.py                    # Spacetime metric from entanglement
-│   ├── einstein.py                  # Einstein equations from thermodynamics
+│   ├── einstein.py                  # Einstein equations from thermodynamics (1D)
+│   ├── einstein_2d.py               # 2+1D Einstein on Delaunay manifold (UPGRADED)
 │   ├── entropic.py                  # Verlinde's entropic gravity
 │   └── holographic.py               # Holographic principle — bulk from boundary
 │
@@ -183,7 +186,7 @@ Python 3.9+ required.
 | `python main.py` | Run quick demo |
 | `python main.py --demo` | Run quick demo (explicit) |
 | `python main.py --all` | Run original 8 Advaita experiments (1–8) |
-| `python main.py --physics` | Run physics extensions + rigorous results (9–18) |
-| `python main.py --experiment N` | Run experiment N (1–18) |
+| `python main.py --physics` | Run physics extensions + rigorous results (9–21) |
+| `python main.py --experiment N` | Run experiment N (1–21) |
 | `python main.py --visualize` | Generate all 7 visualizations to `output/` |
-| `python main.py --everything` | Run all 18 experiments + all visualizations |
+| `python main.py --everything` | Run all 21 experiments + all visualizations |
