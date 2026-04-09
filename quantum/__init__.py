@@ -6,6 +6,9 @@ from .wave_function import BrahmanWaveFunction
 from .gleason import GleasonVerification
 from .tensor_network import MERATensorNetwork
 from .error_correction import HolographicCode, SubsystemCode
+from .operational_equivalence import OperationalEquivalence
+from .perspectival_asymmetry import PerspectivalAsymmetry
+from .observer_centrality import ObserverCentrality
 from .interpretations import (
     Copenhagen,
     ManyWorlds,
@@ -26,6 +29,9 @@ __all__ = [
     "MERATensorNetwork",
     "HolographicCode",
     "SubsystemCode",
+    "OperationalEquivalence",
+    "PerspectivalAsymmetry",
+    "ObserverCentrality",
     "Copenhagen",
     "ManyWorlds",
     "PilotWave",

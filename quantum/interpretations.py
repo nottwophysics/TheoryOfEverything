@@ -378,32 +378,34 @@ class AdvaitaInterpretation(Interpretation):
         self._founders = ["Shankaracharya (8th c.)", "This framework (2024)"]
 
         self._axioms = [
-            "A1: Consciousness (Brahman) is fundamental — not emergent from matter",
-            "A2: The state of reality is described by Brahman's self-awareness, "
-                "formally a vector |ψ⟩ in Hilbert space (derived from Sat-Chit-Ananda)",
-            "A3: Time evolution is always unitary — no collapse (same as Many-Worlds A3)",
-            "A4: The appearance of definite outcomes arises from entanglement with "
-                "the environment (Maya/decoherence) and partial tracing (limited perspective)",
-            "A5: Probability is the unique non-contextual measure on the Hilbert space "
-                "(Gleason's theorem — a mathematical consequence of A2, not a separate postulate)",
+            "A1: Consciousness (universal subject) is the ontological primitive — not emergent from matter "
+                "(distinctive metaphysical commitment)",
+            "A2: The state of reality is represented by |ψ⟩ in Hilbert space "
+                "(shared with Everett — the interpretive claim is that H describes the subject's structure)",
+            "A3: Time evolution is always unitary — no collapse (shared with Everett)",
+            "A4: Definite outcomes arise from decoherence + partial tracing "
+                "(shared with Everett — novelty is ontological, not dynamical)",
+            "A5: Born rule follows from Gleason's theorem given non-contextuality and H "
+                "(shared with Everett — not a novel observation)",
         ]
 
         self._answers = {
             "P1_superposition": {
-                "answer": "The superposition IS reality — Brahman holds all possibilities simultaneously. "
-                          "This is not ignorance of a hidden state. It is the genuine non-dual nature "
-                          "of consciousness prior to Maya's differentiation.",
-                "mechanism": "Axiom A2 — Brahman as Hilbert space",
-                "advantage": "Superposition has a natural ontology: it is consciousness in its undifferentiated mode",
+                "answer": "Superposition is the natural state of the universal subject prior to any "
+                          "particular perspective. This is not ignorance of a hidden state — it is the "
+                          "genuine mode of undifferentiated awareness. Operationally identical to Everett.",
+                "mechanism": "Axiom A2 — Hilbert space as structure of the universal subject",
+                "advantage": "Superposition has a natural ontology in this framework",
+                "shared_with_everett": True,
             },
             "P2_measurement": {
-                "answer": "No collapse. The system becomes entangled with the apparatus and environment (Maya). "
-                          "The total state remains pure (Brahman is unchanged). "
-                          "The observer's REDUCED state appears mixed — this is the 'collapse.' "
-                          "It is perspectival, not physical.",
-                "mechanism": "Decoherence + partial trace (A4)",
-                "advantage": "No collapse postulate. No Heisenberg cut. No new axiom needed.",
+                "answer": "No collapse. System + apparatus + environment become entangled. "
+                          "The total state remains pure. The observer's reduced state appears mixed. "
+                          "This is perspectival, not physical. Operationally identical to Everett.",
+                "mechanism": "Decoherence + partial trace (A4) — shared with Everett",
+                "advantage": "No collapse postulate needed. Novelty is ontological, not dynamical.",
                 "demonstration": "Experiment 10: total purity = 1.000, reduced purity = 0.250",
+                "shared_with_everett": True,
             },
             "P3_born_rule": {
                 "answer": "Gleason's theorem (1957) proves: in any Hilbert space of dimension ≥ 3, "
@@ -451,23 +453,26 @@ class AdvaitaInterpretation(Interpretation):
                              "the decoherence basis is the pattern of Maya's interaction with Brahman",
             },
             "P8_consciousness": {
-                "answer": "THIS IS WHERE ADVAITA IS UNIQUE. "
-                          "Consciousness is not produced by measurement — consciousness IS the ground. "
-                          "The subjective experience of one outcome arises because the individual observer (jiva) "
-                          "is a localized perspective within Brahman, correlated with one branch via decoherence. "
-                          "The 'hard problem' dissolves: consciousness was never something that needed to emerge "
-                          "from matter. Matter emerged from consciousness.",
-                "mechanism": "Axiom A1 — consciousness is fundamental",
-                "advantage": "THE ONLY INTERPRETATION THAT ADDRESSES THE HARD PROBLEM. "
-                             "Copenhagen, Many-Worlds, and Pilot Wave are all silent on consciousness.",
-                "demonstration": "Experiments 5, 6, 7 (Neti-Neti, Sakshi, Mahavakyas)",
+                "answer": "This is where the interpretation is distinctive. "
+                          "Consciousness is not produced by measurement — it is the ontological primitive (A1). "
+                          "The subjective experience of one outcome arises because the observer "
+                          "is a localized perspective within the universal subject, correlated with "
+                          "one branch via decoherence. The hard problem is REFRAMED (not solved): "
+                          "the question shifts from cross-categorial (why does matter produce experience?) "
+                          "to intra-categorial (why does the universal subject have Hilbert space structure?).",
+                "mechanism": "Axiom A1 — consciousness as ontological primitive",
+                "advantage": "Engages the hard problem explicitly, which standard realist interpretations "
+                             "typically do not prioritize. Does not claim to solve it.",
+                "residual_question": "Why does the universal subject have this particular mathematical structure? "
+                                    "This is analogous to asking why spacetime has the metric it does.",
             },
         }
 
         self._cannot_explain = [
-            "The exact values of physical constants from first principles (work in progress — see constants/)",
-            "The full Standard Model Lagrangian from the Brahman field (future work)",
-            "Whether P4 (consciousness decoherence signature) will be experimentally confirmed",
+            "Currently empirically equivalent to Everett — no experiment distinguishes them",
+            "Why the universal subject has Hilbert space structure (the transformed hard problem)",
+            "Whether the ontological additions over Everett justify the metaphysical commitments",
+            "Whether consciousness as primitive is explanatory or merely relocates the mystery",
         ]
 
         self._novel_predictions = [
@@ -574,7 +579,7 @@ class InterpretationComparison:
             has_problem = 0
             for pid, answer in report["answers"].items():
                 addressed += 1
-                if "problem" in answer:
+                if "problem" in answer or "residual_question" in answer:
                     has_problem += 1
 
             result[key] = {
@@ -655,7 +660,7 @@ class InterpretationComparison:
         for key, interp in self.interpretations.items():
             report = interp.full_report()
             answers = report["answers"]
-            problems = sum(1 for a in answers.values() if "problem" in a)
+            problems = sum(1 for a in answers.values() if "problem" in a or "residual_question" in a)
             p8 = answers.get("P8_consciousness", {})
 
             rows[key] = {

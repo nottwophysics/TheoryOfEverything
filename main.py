@@ -892,6 +892,152 @@ def iit_bridge_experiment():
     return {"status": "completed", "experiment": "iit_bridge"}
 
 
+def operational_equivalence_experiment():
+    """Experiment 24: Everett-Advaita Operational Equivalence."""
+    print("\n" + "=" * 70)
+    print("  EXPERIMENT 24: EVERETT-ADVAITA OPERATIONAL EQUIVALENCE")
+    print("  Proving the Paper's Central Claim: Identical Predictions")
+    print("=" * 70)
+
+    from quantum.operational_equivalence import OperationalEquivalence
+
+    oe = OperationalEquivalence(dimension=4)
+    results = oe.full_equivalence_test()
+
+    # Show each test
+    for key in ["probabilities", "time_evolution", "measurement_statistics",
+                "entanglement", "decoherence"]:
+        r = results[key]
+        status = "IDENTICAL" if r.get("identical", r.get("all_identical", r.get("numbers_identical", False))) else "CHECK"
+        print(f"\n  Test: {r['test']} — [{status}]")
+        print(f"    {r['note'][:120]}")
+
+    # Show divergences
+    div = results["divergences"]
+    print(f"\n  ONTOLOGICAL DIVERGENCES (not measurable):")
+    for key, val in div["divergences"].items():
+        print(f"    {key}:")
+        print(f"      Everett: {val['everett'][:80]}")
+        print(f"      Advaita: {val['advaita'][:80]}")
+        print(f"      Measurable? {val['measurable_difference']}")
+
+    # Summary
+    s = results["summary"]
+    print(f"\n  SUMMARY:")
+    print(f"    Empirical tests: {s['empirical_tests_passed']} — all identical: {s['all_empirically_identical']}")
+    print(f"    Ontological divergences: {s['ontological_divergences']}")
+    print(f"    Measurable divergences: {s['measurable_divergences']}")
+    print(f"\n  {s['conclusion']}")
+
+    return {"status": "completed", "experiment": "operational_equivalence"}
+
+
+def perspectival_asymmetry_experiment():
+    """Experiment 25: Perspectival Asymmetry — Generalized."""
+    print("\n" + "=" * 70)
+    print("  EXPERIMENT 25: PERSPECTIVAL ASYMMETRY (Generalized)")
+    print("  Total State Pure, Reduced State Mixed — For ALL Cases")
+    print("=" * 70)
+
+    from quantum.perspectival_asymmetry import PerspectivalAsymmetry
+
+    pa = PerspectivalAsymmetry()
+    results = pa.full_test()
+
+    # Varying states
+    vs = results["varying_states"]
+    print(f"\n  Test 1: Varying initial states ({vs['num_states']} states)")
+    for r in vs["results"][:5]:  # Show first 5
+        print(f"    {r['state']:20s}: total={r['total_purity']:.6f}  "
+              f"reduced={r['reduced_purity']:.6f}  holds={r['perspectival_holds']}")
+    if vs["num_states"] > 5:
+        remaining = sum(1 for r in vs["results"][5:] if r["perspectival_holds"])
+        print(f"    ... and {remaining}/{vs['num_states']-5} more hold")
+    print(f"  All hold: {vs['all_hold']}")
+
+    # Varying environment
+    ve = results["varying_environment"]
+    print(f"\n  Test 2: Varying environment size")
+    for r in ve["results"]:
+        print(f"    env_dim={r['env_dim']:3d}: total={r['total_purity']:.6f}  "
+              f"reduced={r['reduced_purity']:.6f}  coherence={r['coherence']:.6f}")
+    print(f"  All total pure: {ve['all_total_pure']}")
+
+    # Varying basis
+    vb = results["varying_basis"]
+    print(f"\n  Test 3: Varying measurement basis ({vb['num_bases']} bases)")
+    print(f"  All total pure: {vb['all_total_pure']}")
+    print(f"  All reduced mixed: {vb['all_reduced_mixed']}")
+
+    # Exactness
+    ex = results["exactness"]
+    print(f"\n  Test 4: Exactness ({ex['num_random_states']} random states)")
+    print(f"  Max deviation from purity 1.0: {ex['max_deviation_from_purity_1']:.2e}")
+    print(f"  Is exact: {ex['is_exact']}")
+
+    # Summary
+    s = results["summary"]
+    print(f"\n  SUMMARY: All perspectival: {s['all_perspectival']}")
+    print(f"  {s['conclusion'][:200]}")
+
+    return {"status": "completed", "experiment": "perspectival_asymmetry"}
+
+
+def observer_centrality_experiment():
+    """Experiment 26: Observer Centrality — The Hidden Premise."""
+    print("\n" + "=" * 70)
+    print("  EXPERIMENT 26: OBSERVER CENTRALITY")
+    print("  Why Observer Ontology Is Part of the Interpretive Burden")
+    print("=" * 70)
+
+    from quantum.observer_centrality import ObserverCentrality
+
+    oc = ObserverCentrality()
+    results = oc.full_demonstration()
+
+    # Step 1
+    s1 = results["step_1"]
+    print(f"\n  STEP 1: {s1['description']}")
+    print(f"    Pointer states: {s1['pointer_states']}")
+    print(f"    Reduced state diagonal: {[f'{d:.4f}' for d in s1['reduced_state_diagonal']]}")
+    print(f"    Off-diagonal coherence: {s1['off_diagonal_coherence']:.10f}")
+    print(f"    {s1['what_physics_gives_us'][:120]}")
+
+    # Step 2
+    s2 = results["step_2"]
+    print(f"\n  STEP 2: {s2['description']}")
+    print(f"    P(↑) = {s2['P_up']:.4f}, P(↓) = {s2['P_down']:.4f}")
+    print(f"    Which outcome experienced? {s2['which_outcome_experienced']}")
+    print(f"    THE GAP: {s2['the_gap'][:150]}...")
+
+    # Step 3
+    s3 = results["step_3"]
+    print(f"\n  STEP 3: {s3['description']}")
+    for name, interp in s3["interpretations"].items():
+        analyzed = "YES" if interp["observer_analyzed"] else "NO"
+        print(f"    {name:12s}: observer analyzed = {analyzed}")
+        print(f"      {interp['mechanism'][:80]}")
+    print(f"    {s3['key_finding'][:150]}...")
+
+    # Step 4
+    s4 = results["step_4"]
+    print(f"\n  STEP 4: {s4['description']}")
+    print(f"    Formalism determines: {s4['num_determined']} things")
+    print(f"    Formalism leaves open: {s4['num_open']} things")
+    for item in s4["formalism_leaves_open"]:
+        print(f"      - {item}")
+    print(f"\n    {s4['the_argument'][:200]}...")
+
+    # Summary
+    sm = results["summary"]
+    print(f"\n  ARGUMENT CHAIN:")
+    for step in sm["argument_chain"]:
+        print(f"    {step}")
+    print(f"\n  {sm['conclusion'][:200]}...")
+
+    return {"status": "completed", "experiment": "observer_centrality"}
+
+
 def run_physics_experiments():
     """Run all physics extension experiments (9-16)."""
     print("\n" + "#" * 70)
@@ -916,6 +1062,9 @@ def run_physics_experiments():
         error_correction_experiment,
         fine_structure_v2_experiment,
         iit_bridge_experiment,
+        operational_equivalence_experiment,
+        perspectival_asymmetry_experiment,
+        observer_centrality_experiment,
     ]
 
     results = []
@@ -1046,8 +1195,8 @@ def main():
         description="Theory of Everything — Advaita Vedanta Computational Framework"
     )
     parser.add_argument(
-        "--experiment", type=int, choices=range(1, 24),
-        help="Run a specific experiment (1-23)",
+        "--experiment", type=int, choices=range(1, 27),
+        help="Run a specific experiment (1-26)",
     )
     parser.add_argument(
         "--visualize", action="store_true",
@@ -1096,6 +1245,9 @@ def main():
         21: error_correction_experiment,
         22: fine_structure_v2_experiment,
         23: iit_bridge_experiment,
+        24: operational_equivalence_experiment,
+        25: perspectival_asymmetry_experiment,
+        26: observer_centrality_experiment,
     }
 
     if args.everything:
