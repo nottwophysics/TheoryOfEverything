@@ -4,6 +4,8 @@ from .measurement import AdvaiticMeasurement
 from .entanglement import NonDualEntanglement
 from .wave_function import BrahmanWaveFunction
 from .gleason import GleasonVerification
+from .tensor_network import MERATensorNetwork
+from .error_correction import HolographicCode, SubsystemCode
 from .interpretations import (
     Copenhagen,
     ManyWorlds,
@@ -21,6 +23,9 @@ __all__ = [
     "NonDualEntanglement",
     "BrahmanWaveFunction",
     "GleasonVerification",
+    "MERATensorNetwork",
+    "HolographicCode",
+    "SubsystemCode",
     "Copenhagen",
     "ManyWorlds",
     "PilotWave",

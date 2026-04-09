@@ -581,6 +581,200 @@ def gleason_experiment():
     return {"status": "completed", "experiment": "gleason_theorem"}
 
 
+def tensor_network_experiment():
+    """Experiment 19: MERA Tensor Network — Spacetime from Entanglement."""
+    print("\n" + "=" * 70)
+    print("  EXPERIMENT 19: MERA TENSOR NETWORK")
+    print("  Spacetime Geometry from Entanglement Structure")
+    print("=" * 70)
+
+    from quantum.tensor_network import MERATensorNetwork
+
+    mera = MERATensorNetwork(num_sites=16, bond_dim=2)
+
+    # Part 1: Coarse-graining (UV → IR = Maya → Brahman)
+    print("\n" + "-" * 60)
+    print("  PART 1: COARSE-GRAINING (Maya → Brahman)")
+    print("-" * 60)
+    cg = mera.coarse_grain()
+    for layer in cg["layers"]:
+        ent = layer["entanglement"]
+        sites = layer["num_sites"]
+        bar = "#" * int(ent * 20) if ent > 0 else ""
+        print(f"  Layer {layer['layer']:2d}: sites={sites:4d}  "
+              f"S={ent:.4f} [{bar:20s}]  {layer['label']}")
+    print(f"\n  Entanglement decreases toward IR: {cg['entanglement_decreases']}")
+
+    # Part 2: Geometry from entanglement
+    print("\n" + "-" * 60)
+    print("  PART 2: GEOMETRY FROM ENTANGLEMENT")
+    print("-" * 60)
+    geo = mera.entanglement_determines_distance()
+    for d in geo["geometry_from_entanglement"]:
+        ent = d["entanglement"]
+        dist = d["emergent_distance"]
+        dist_str = f"{dist:.4f}" if dist < 1000 else "∞"
+        print(f"  Layer {d['layer']}: entanglement={ent:.4f}  →  "
+              f"distance={dist_str}  (sites={d['num_sites']})")
+    print(f"\n  {geo['teaching'][:120]}...")
+
+    # Part 3: Cut entanglement → disconnect space
+    print("\n" + "-" * 60)
+    print("  PART 3: CUT ENTANGLEMENT = DISCONNECT SPACE")
+    print("-" * 60)
+    cut = mera.cut_entanglement_disconnects_space()
+    ent_state = cut["entangled_state"]
+    prod_state = cut["product_state"]
+    print(f"  Entangled state: S={ent_state['entanglement']:.4f}, "
+          f"space connected={ent_state['space_connected']}")
+    print(f"  Product state:  S={prod_state['entanglement']:.4f}, "
+          f"space connected={prod_state['space_connected']}")
+    print(f"\n  {cut['insight'][:150]}...")
+
+    # Part 4: Holographic (AdS) geometry
+    print("\n" + "-" * 60)
+    print("  PART 4: AdS-LIKE HOLOGRAPHIC GEOMETRY")
+    print("-" * 60)
+    holo = mera.holographic_geometry()
+    for s in holo["ads_slices"]:
+        z = s["radial_coordinate_z"]
+        g = s["effective_metric_factor"]
+        print(f"  z={z:2d}: metric_factor={g:.4f}  "
+              f"sites={s['num_sites']:4d}  S={s['entanglement']:.4f}  "
+              f"| {s['advaita_label']}")
+
+    print(f"\n  Metric: {holo['ads_metric']}")
+    for key, val in holo["mapping"].items():
+        print(f"    {key}: {val}")
+
+    return {"status": "completed", "experiment": "tensor_network"}
+
+
+def einstein_2d_experiment():
+    """Experiment 20: 2+1D Einstein Equations from Consciousness."""
+    print("\n" + "=" * 70)
+    print("  EXPERIMENT 20: 2+1D EINSTEIN EQUATIONS")
+    print("  Jacobson's Thermodynamic Derivation on Discrete Manifold")
+    print("=" * 70)
+
+    from gravity.einstein_2d import EmergentEinstein2D
+
+    ee = EmergentEinstein2D(num_points=80, seed=42)
+
+    # Part 1: Full Einstein derivation
+    print("\n" + "-" * 60)
+    print("  PART 1: JACOBSON DERIVATION (2D discrete manifold)")
+    print("-" * 60)
+    result = ee.derive_einstein_equations()
+
+    print(f"\n  Manifold: {result['num_points']} points, {result['num_triangles']} triangles")
+    print(f"  Total energy: {result['energy_momentum']['total_energy']:.4f}")
+    print(f"  Total entropy: {result['entropy_field']['total_entropy']:.4f}")
+
+    et = result["einstein_equation_test"]
+    print(f"\n  EINSTEIN EQUATION TEST:")
+    print(f"    R_entropy vs T_00 correlation:   {et['R_entropy_T_correlation']:.4f}")
+    print(f"    R_geometric vs T_00 correlation:  {et['R_geometric_T_correlation']:.4f}")
+    print(f"    Effective G:                      {et['effective_G']:.6f}")
+    print(f"    Passes (|r| > 0.7):               {et['passes']}")
+
+    print(f"\n  Derivation steps:")
+    for step in result["jacobson_derivation"]:
+        print(f"    {step}")
+
+    print(f"\n  {result['improvement_over_1d']}")
+
+    # Part 2: Mass curves space
+    print("\n" + "-" * 60)
+    print("  PART 2: MASS CURVES CONSCIOUSNESS-GEOMETRY")
+    print("-" * 60)
+    curves = ee.demonstrate_mass_curves_space()
+
+    for case in ["no_mass", "one_mass", "two_masses"]:
+        c = curves[case]
+        print(f"\n  {case.replace('_', ' ').title()}:")
+        print(f"    Total energy:    {c['total_energy']:.4f}")
+        print(f"    Total entropy:   {c['total_entropy']:.4f}")
+        print(f"    R-T correlation: {c['R_T_correlation']:.4f}")
+
+    print(f"\n  {curves['insight']}")
+
+    return {"status": "completed", "experiment": "einstein_2d"}
+
+
+def error_correction_experiment():
+    """Experiment 21: Quantum Error Correction as Spacetime."""
+    print("\n" + "=" * 70)
+    print("  EXPERIMENT 21: QUANTUM ERROR CORRECTION AS SPACETIME")
+    print("  Almheiri-Dong-Harlow: Brahman Protected by Maya's Structure")
+    print("=" * 70)
+
+    from quantum.error_correction import HolographicCode, SubsystemCode
+
+    # Part 1: Error correction test
+    print("\n" + "-" * 60)
+    print("  PART 1: ERROR CORRECTION THRESHOLD")
+    print("-" * 60)
+    hc = HolographicCode(n_physical=5, k_logical=1)
+    ec = hc.test_error_correction()
+
+    params = ec["code_parameters"]
+    print(f"\n  Code: [{params['n_physical']},{params['k_logical']}] "
+          f"(distance={params['code_distance']})")
+    print(f"  Max correctable erasure: {params['max_correctable_erasure']}")
+
+    print(f"\n  Erasure tests:")
+    for test in ec["erasure_tests"]:
+        status = "RECOVERABLE" if test["is_recoverable"] else "LOST"
+        bar = "#" * int(test["recovery_fidelity"] * 20)
+        print(f"    Erased {test['qubits_erased']}/{params['n_physical']}: "
+              f"fidelity={test['recovery_fidelity']:.4f} [{bar:20s}] {status}")
+        print(f"      Maya: {test['maya_interpretation']}")
+
+    print(f"\n  Threshold: {ec['error_correction_threshold']}/{params['n_physical']} "
+          f"({ec['threshold_fraction']:.0%} of boundary erasable)")
+    print(f"\n  {ec['insight'][:150]}...")
+
+    # Part 2: Full spacetime-as-code demonstration
+    print("\n" + "-" * 60)
+    print("  PART 2: SPACETIME AS ERROR-CORRECTING CODE")
+    print("-" * 60)
+    demo = hc.demonstrate_spacetime_as_code()
+
+    dist = demo["distinguishability"]
+    print(f"\n  Logical overlap (before erasure): {dist['logical_overlap']:.6f}")
+    print(f"  Overlap after 1-qubit erasure:    {dist['physical_overlap_after_erasure']:.6f}")
+    print(f"  States still distinguishable:     {dist['states_still_distinguishable']}")
+
+    ent = demo["entanglement_structure"]
+    print(f"\n  Codeword entanglement: {ent['codeword_entanglement']:.4f}")
+    print(f"  Highly entangled: {ent['highly_entangled']}")
+    print(f"  {ent['note'][:100]}...")
+
+    print(f"\n  Advaita mapping:")
+    for key, val in demo["advaita_mapping"].items():
+        print(f"    {key}: {val[:80]}")
+
+    # Part 3: Multiple reconstruction paths
+    print("\n" + "-" * 60)
+    print("  PART 3: MULTIPLE PATHS TO BRAHMAN")
+    print("-" * 60)
+    sc = SubsystemCode(n_boundary=6, n_bulk=2)
+    recon = sc.demonstrate_multiple_reconstructions()
+
+    for key, val in recon.items():
+        if key == "insight":
+            print(f"\n  {val[:150]}...")
+            continue
+        if isinstance(val, dict) and "recovery_fidelity" in val:
+            status = "YES" if val["is_recoverable"] else "NO"
+            print(f"  {key:15s}: fidelity={val['recovery_fidelity']:.4f}  "
+                  f"recoverable={status}  "
+                  f"(using {val['subregion_fraction']:.0%} of boundary)")
+
+    return {"status": "completed", "experiment": "error_correction"}
+
+
 def run_physics_experiments():
     """Run all physics extension experiments (9-16)."""
     print("\n" + "#" * 70)
@@ -600,6 +794,9 @@ def run_physics_experiments():
         predictions_experiment,
         interpretations_experiment,
         gleason_experiment,
+        tensor_network_experiment,
+        einstein_2d_experiment,
+        error_correction_experiment,
     ]
 
     results = []
@@ -730,8 +927,8 @@ def main():
         description="Theory of Everything — Advaita Vedanta Computational Framework"
     )
     parser.add_argument(
-        "--experiment", type=int, choices=range(1, 19),
-        help="Run a specific experiment (1-18)",
+        "--experiment", type=int, choices=range(1, 22),
+        help="Run a specific experiment (1-21)",
     )
     parser.add_argument(
         "--visualize", action="store_true",
@@ -775,6 +972,9 @@ def main():
         16: predictions_experiment,
         17: interpretations_experiment,
         18: gleason_experiment,
+        19: tensor_network_experiment,
+        20: einstein_2d_experiment,
+        21: error_correction_experiment,
     }
 
     if args.everything:
