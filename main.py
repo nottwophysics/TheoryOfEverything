@@ -10,12 +10,11 @@ what was always the case.
 Usage:
     python main.py                    # Quick demo
     python main.py --demo             # Quick demo of core concepts
-    python main.py --all              # Run all 8 original experiments
-    python main.py --experiment N     # Run experiment N (1-8)
-    python main.py --physics          # Run physics extension experiments (9-16)
-    python main.py --experiment N     # Run experiment N (1-16)
+    python main.py --all              # Run all 8 original Advaita experiments
+    python main.py --physics          # Run physics extension experiments (9-26)
+    python main.py --experiment N     # Run experiment N (1-26)
     python main.py --visualize        # Generate all visualizations
-    python main.py --everything       # Run ALL experiments (1-16) + visualizations
+    python main.py --everything       # Run ALL experiments (1-26) + visualizations
 """
 
 import sys
@@ -68,7 +67,7 @@ def _print_result(title, result, indent=0):
                 print(f"{prefix}  {key}: {value}")
 
 
-# ===== PHYSICS EXTENSION EXPERIMENTS (9-16) =====
+# ===== PHYSICS EXTENSION EXPERIMENTS (9-26) =====
 
 def quantum_hilbert_experiment():
     """Experiment 9: Quantum Mechanics from Brahman."""
@@ -1039,7 +1038,7 @@ def observer_centrality_experiment():
 
 
 def run_physics_experiments():
-    """Run all physics extension experiments (9-16)."""
+    """Run all physics extension experiments (9-26)."""
     print("\n" + "#" * 70)
     print("#" + " " * 68 + "#")
     print("#   PHYSICS EXTENSIONS — TOWARD A REAL THEORY OF EVERYTHING" + " " * 9 + "#")
@@ -1090,7 +1089,7 @@ def run_physics_experiments():
 
 
 def run_everything():
-    """Run ALL experiments (1-16) and generate visualizations."""
+    """Run ALL experiments (1-26) and generate visualizations."""
     run_all_experiments()
     Brahman.reset()
     run_physics_experiments()
@@ -1212,11 +1211,11 @@ def main():
     )
     parser.add_argument(
         "--physics", action="store_true",
-        help="Run physics extension experiments (9-17)",
+        help="Run physics extension experiments (9-26)",
     )
     parser.add_argument(
         "--everything", action="store_true",
-        help="Run ALL experiments (1-17) + visualizations",
+        help="Run ALL experiments (1-26) + visualizations",
     )
 
     args = parser.parse_args()

@@ -14,8 +14,8 @@ This guide is for anyone who wants to understand the Theory of Everything projec
 4. [Your First Run](#4-your-first-run)
 5. [Understanding the Layers](#5-understanding-the-layers)
 6. [The Advaita Experiments (1–8)](#6-the-advaita-experiments-18)
-7. [The Physics Experiments (9–16)](#7-the-physics-experiments-916)
-8. [The Rigorous Results (17–18)](#8-the-rigorous-results-1718)
+7. [The Physics Experiments (9–16, overview)](#7-the-physics-experiments-916)
+8. [The Rigorous Results and Paper Companions (17–26)](#8-the-rigorous-results-1718)
 9. [The Visualizations](#9-the-visualizations)
 10. [What's Real and What's Aspirational](#10-whats-real-and-whats-aspirational)
 11. [How to Contribute](#11-how-to-contribute)
@@ -147,10 +147,10 @@ This runs 7 mini-demonstrations in under 2 seconds:
 # Original 8 Advaita experiments
 python main.py --all
 
-# 10 Physics extension experiments
+# 18 Physics extension experiments (9-26)
 python main.py --physics
 
-# Everything (18 experiments + 7 visualizations)
+# Everything (26 experiments + 7 visualizations)
 python main.py --everything
 ```
 
@@ -323,7 +323,7 @@ python main.py --experiment 15
 
 ---
 
-## 8. The Rigorous Results (17–18)
+## 8. The Rigorous Results and Paper Companions (17–26)
 
 These are the framework's strongest contributions.
 

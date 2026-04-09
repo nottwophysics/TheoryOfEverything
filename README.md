@@ -82,7 +82,7 @@ These claims map directly to structures in modern physics. See [docs/PHILOSOPHY.
 
 ---
 
-## The 18 Experiments
+## The 26 Experiments
 
 ### Tier 1 — Advaita Framework (1–8)
 
