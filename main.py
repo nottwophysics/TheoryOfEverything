@@ -775,6 +775,123 @@ def error_correction_experiment():
     return {"status": "completed", "experiment": "error_correction"}
 
 
+def fine_structure_v2_experiment():
+    """Experiment 22: Fine Structure Constant — Systematic Derivation."""
+    print("\n" + "=" * 70)
+    print("  EXPERIMENT 22: FINE STRUCTURE CONSTANT — SYSTEMATIC DERIVATION")
+    print("  Target: 1/α = 137.035999084")
+    print("=" * 70)
+
+    from constants.fine_structure_v2 import FineStructureV2
+
+    fs = FineStructureV2()
+    results = fs.run_all_approaches()
+
+    # Show ranking of all approaches
+    print("\n" + "-" * 60)
+    print("  RANKING OF ALL APPROACHES (by accuracy)")
+    print("-" * 60)
+    print(f"\n  {'Rank':<5} {'Method':<40} {'1/α':<12} {'Error %':<10}")
+    print(f"  {'-'*5} {'-'*40} {'-'*12} {'-'*10}")
+    for i, r in enumerate(results["ranking"]):
+        marker = " ←BEST" if i == 0 else ""
+        print(f"  {i+1:<5} {r['method']:<40} {r['alpha_inv']:<12.4f} {r['error']:<10.2f}{marker}")
+
+    print(f"\n  Target: 1/α = {results['target']}")
+
+    # Highlight best result
+    best = results["best_result"]
+    print(f"\n  BEST RESULT: {best['method']}")
+    print(f"    1/α = {best['alpha_inv']:.6f}")
+    print(f"    Error: {best['error']:.2f}%")
+    print(f"    Previous best: {results['previous_best_error']:.2f}%")
+
+    # Continued fraction analysis
+    print("\n" + "-" * 60)
+    print("  CONTINUED FRACTION STRUCTURE OF 1/α")
+    print("-" * 60)
+    cf = results["approaches"]["continued_fraction"]
+    print(f"\n  1/α = [{cf['continued_fraction_terms'][0]}; "
+          f"{', '.join(str(t) for t in cf['continued_fraction_terms'][1:8])}...]")
+    print(f"\n  Convergents:")
+    for c in cf["convergents"][:6]:
+        print(f"    {c['p/q']:>15s} = {c['value']:.6f}  (error: {c['error_percent']:.4f}%)")
+
+    # 163 connection
+    print("\n" + "-" * 60)
+    print("  THE 163 CONNECTION (Heegner numbers)")
+    print("-" * 60)
+    mod = results["approaches"]["modular"]
+    print(f"\n  {mod['163_connection'][:300]}...")
+
+    print(f"\n  {results['improvement']}")
+    print(f"\n  {results['honest_assessment'][:200]}...")
+
+    return {"status": "completed", "experiment": "fine_structure_v2"}
+
+
+def iit_bridge_experiment():
+    """Experiment 23: IIT-Entanglement Bridge — Consciousness Meets Quantum."""
+    print("\n" + "=" * 70)
+    print("  EXPERIMENT 23: IIT-ENTANGLEMENT BRIDGE")
+    print("  Conjecture: Φ (Consciousness) ≤ S (Entanglement)")
+    print("=" * 70)
+
+    from predictions.iit_bridge import IITEntanglementBridge
+
+    bridge = IITEntanglementBridge(num_nodes=4)
+
+    # Part 1: Test the conjecture
+    print("\n" + "-" * 60)
+    print("  PART 1: CONJECTURE TEST (50 random systems)")
+    print("-" * 60)
+    conj = bridge.test_conjecture(num_trials=50)
+    print(f"\n  Conjecture: {conj['conjecture']}")
+    print(f"  Holds in: {conj['conjecture_holds_rate']:.0%} of trials")
+    print(f"  Violations: {conj['violations']}/{conj['num_trials']}")
+    print(f"  Average Φ: {conj['avg_phi']:.6f}")
+    print(f"  Average S: {conj['avg_S_entanglement']:.6f}")
+    print(f"  Φ-S correlation: {conj['phi_S_correlation']:.4f}")
+    print(f"  Average Φ/S ratio: {conj['avg_ratio_phi_over_S']:.4f}")
+    print(f"\n  {conj['result']}")
+
+    # Part 2: Extreme cases
+    print("\n" + "-" * 60)
+    print("  PART 2: EXTREME CASES")
+    print("-" * 60)
+    extremes = bridge.demonstrate_extremes()
+    for key in ["disconnected", "half_connected", "fully_connected"]:
+        e = extremes[key]
+        status = "HOLDS" if e["conjecture"] else "VIOLATED"
+        print(f"\n  {key}:")
+        print(f"    Φ = {e['phi']:.6f}, S = {e['S']:.6f}, Φ ≤ S: {status}")
+        print(f"    {e['label']}")
+
+    # Part 3: MERA consciousness profile
+    print("\n" + "-" * 60)
+    print("  PART 3: CONSCIOUSNESS PROFILE ACROSS MERA LAYERS")
+    print("-" * 60)
+    mera = bridge.mera_consciousness_profile()
+    for layer in mera["layers"]:
+        bar = "#" * int(layer["phi"] * 50) if layer["phi"] > 0 else ""
+        print(f"  Depth {layer['depth']}: Φ={layer['phi']:.4f} "
+              f"[{bar:25s}] {layer['label']}")
+    print(f"\n  Φ increases toward IR (Brahman): {mera['phi_increases_toward_ir']}")
+    print(f"\n  {mera['prediction'][:200]}...")
+
+    # Testable predictions
+    print("\n" + "-" * 60)
+    print("  PART 4: TESTABLE PREDICTIONS")
+    print("-" * 60)
+    demo = bridge.full_demonstration()
+    preds = demo["testable_prediction"].split(". ")
+    for i, pred in enumerate(preds):
+        if pred.strip():
+            print(f"  {i+1}. {pred.strip()}")
+
+    return {"status": "completed", "experiment": "iit_bridge"}
+
+
 def run_physics_experiments():
     """Run all physics extension experiments (9-16)."""
     print("\n" + "#" * 70)
@@ -797,6 +914,8 @@ def run_physics_experiments():
         tensor_network_experiment,
         einstein_2d_experiment,
         error_correction_experiment,
+        fine_structure_v2_experiment,
+        iit_bridge_experiment,
     ]
 
     results = []
@@ -927,8 +1046,8 @@ def main():
         description="Theory of Everything — Advaita Vedanta Computational Framework"
     )
     parser.add_argument(
-        "--experiment", type=int, choices=range(1, 22),
-        help="Run a specific experiment (1-21)",
+        "--experiment", type=int, choices=range(1, 24),
+        help="Run a specific experiment (1-23)",
     )
     parser.add_argument(
         "--visualize", action="store_true",
@@ -975,6 +1094,8 @@ def main():
         19: tensor_network_experiment,
         20: einstein_2d_experiment,
         21: error_correction_experiment,
+        22: fine_structure_v2_experiment,
+        23: iit_bridge_experiment,
     }
 
     if args.everything:
