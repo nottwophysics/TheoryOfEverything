@@ -9,6 +9,7 @@ from quantum.wave_function import BrahmanWaveFunction
 from quantum.measurement import AdvaiticMeasurement
 from quantum.entanglement import NonDualEntanglement
 from quantum.gleason import GleasonVerification
+from quantum.er_epr import EREqualsEPR
 
 
 class TestBrahmanHilbertSpace:
@@ -318,3 +319,53 @@ class TestGleasonVerification:
         result = gv.axiom_reduction_proof()
         assert result["axiom_counts"]["copenhagen"] == 7
         assert result["axiom_counts"]["advaita_independent"] == 4
+
+
+class TestEREqualsEPR:
+    def test_thermofield_double_pure(self):
+        er = EREqualsEPR(dimension=4)
+        tfd = er.thermofield_double(beta=1.0)
+        assert tfd["total_state_pure"] == True
+        assert tfd["er_epr_identity"] == True
+
+    def test_thermofield_high_temperature_high_entanglement(self):
+        er = EREqualsEPR(dimension=4)
+        hot = er.thermofield_double(beta=0.1)
+        cold = er.thermofield_double(beta=5.0)
+        assert hot["entanglement_entropy"] > cold["entanglement_entropy"]
+
+    def test_wormhole_from_entanglement(self):
+        er = EREqualsEPR(dimension=2)
+        wh = er.wormhole_from_entanglement(1.0)
+        assert wh["wormhole_exists"] == True
+        assert wh["wormhole_throat_area"] > 0
+
+    def test_no_entanglement_no_wormhole(self):
+        er = EREqualsEPR(dimension=2)
+        wh = er.wormhole_from_entanglement(0.0)
+        assert wh["wormhole_exists"] == False
+
+    def test_throat_area_increases_with_entanglement(self):
+        er = EREqualsEPR(dimension=2)
+        wh_low = er.wormhole_from_entanglement(0.3)
+        wh_high = er.wormhole_from_entanglement(1.0)
+        assert wh_high["wormhole_throat_area"] > wh_low["wormhole_throat_area"]
+
+    def test_cutting_entanglement_disconnects(self):
+        er = EREqualsEPR(dimension=2)
+        result = er.cutting_entanglement_destroys_geometry()
+        assert result["connected_at_zero"] == False
+        assert result["connected_at_max"] == True
+
+    def test_non_traversability(self):
+        er = EREqualsEPR(dimension=4)
+        result = er.non_traversability_from_monogamy()
+        assert result["non_traversable"] is True
+        assert result["max_entanglement_AB"] > 0
+
+    def test_full_demonstration(self):
+        er = EREqualsEPR(dimension=2)
+        result = er.full_demonstration()
+        assert result["summary"]["er_equals_epr"] == True
+        assert "thermofield_double" in result
+        assert "van_raamsdonk" in result

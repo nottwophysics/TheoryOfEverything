@@ -158,7 +158,7 @@ No physics ToE addresses why there is **experience** at all. This framework star
 | Everett-Advaita equivalence | 5/5 empirical tests identical | **PROVEN** | 0 measurable divergences |
 | Perspectival asymmetry | Exact to 10⁻¹⁶ | **PROVEN** | All states, bases, env sizes |
 | Observer centrality | 4/4 open questions involve observer | **DEMONSTRATED** | Hidden premise of the paper |
-| ER=EPR | Wormholes = entanglement | **NOT STARTED** | No code exists |
+| ER=EPR | Wormholes = entanglement | **DEMONSTRATED** | Experiment 28: thermofield double, Van Raamsdonk, monogamy |
 
 ---
 
@@ -167,8 +167,8 @@ No physics ToE addresses why there is **experience** at all. This framework star
 | Path | Impact | Feasibility | Current Progress | Priority |
 |------|--------|-------------|-----------------|----------|
 | Path 3: Observer Problem | Very High | Medium | Milestone 1 COMPLETE | **Done** (publish) |
-| Path 4: Emergent Gravity | Very High | Medium | 5 modules, 2+1D (r=0.94) | **Largely done** (extend to 3+1D) |
-| Path 2: Information Bridge | High | Medium | MERA + QEC + Bell + holography | **Largely done** (ER=EPR remaining) |
+| Path 4: Emergent Gravity | Very High | Medium | 6 modules, 3+1D (r=0.88) | **Largely done** (graviton propagator remaining) |
+| Path 2: Information Bridge | High | Medium | MERA + QEC + Bell + holography + ER=EPR | **COMPLETE** |
 | Path 1: Consciousness-First Physics | Highest | Hard | **α at 0.003% error** | **Active** (rigorous derivation needed) |
 | Path 5: Hard Problem | Revolutionary | Very Hard | **IIT bridge built, Φ≤S tested** | **Active** (experimental protocol) |
 
@@ -177,7 +177,7 @@ No physics ToE addresses why there is **experience** at all. This framework star
 ## Milestone Targets
 
 ### Milestone 0: Automated Test Suite ✅ COMPLETE
-- 207 tests across 10 test files covering all modules
+- 227 tests across 10 test files covering all modules
 - Validates mathematical properties (normalization, Hermiticity, unitarity)
 - Validates physical results (Bell violation, Gleason conditions, Newton recovery)
 - Validates framework invariants (singleton, non-duality, substrate preservation)

@@ -36,16 +36,16 @@ python main.py --demo
 # Run all 8 original Advaita experiments
 python main.py --all
 
-# Run all 18 physics extension experiments (9–26)
+# Run all 21 physics extension experiments (9–29)
 python main.py --physics
 
-# Run a specific experiment (1–26)
+# Run a specific experiment (1–29)
 python main.py --experiment 24
 
 # Generate all 7 visualizations
 python main.py --visualize
 
-# Run EVERYTHING (26 experiments + visualizations)
+# Run EVERYTHING (29 experiments + visualizations)
 python main.py --everything
 
 # Run the test suite (207 tests)
@@ -69,8 +69,8 @@ For a guided walkthrough of the project, see [docs/GETTING_STARTED.md](docs/GETT
 | **Predictions** | `predictions/` | 5 testable predictions + IIT-entanglement bridge |
 | **Falsification** | `falsification/` | 5 explicit falsification criteria + experimental designs |
 | **Visualizations** | `visualizations/` | 7 visual plots of Advaita concepts |
-| **Experiments** | `simulations/`, `main.py` | 26 runnable experiments demonstrating the framework |
-| **Test Suite** | `tests/` | 207 automated tests validating all modules |
+| **Experiments** | `simulations/`, `main.py` | 29 runnable experiments demonstrating the framework |
+| **Test Suite** | `tests/` | 227 automated tests validating all modules |
 
 ---
 
@@ -135,6 +135,14 @@ These claims map directly to structures in modern physics. See [docs/PHILOSOPHY.
 | 25 | **Perspectival Asymmetry (Generalized)** | Total purity = 1.0 for ALL states, bases, environment sizes; exact to 10⁻¹⁶ |
 | 26 | **Observer Centrality** | Decoherence selects basis but NOT outcome; "observer" does essential work in the formalism |
 
+### Tier 5 — Physics Extensions (27–29)
+
+| # | Name | What It Demonstrates |
+|---|------|---------------------|
+| 27 | **3+1D Einstein Equations** | Full spacetime Jacobson derivation on 3D Delaunay tetrahedralization; R-T correlation ~0.88 |
+| 28 | **ER=EPR Correspondence** | Wormholes = entanglement; thermofield double, Van Raamsdonk disconnection, monogamy non-traversability |
+| 29 | **Fine Structure v3** | Rigorous derivation attempts: self-referential, modular bootstrap, holographic constraint; continued fraction analysis |
+
 See [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md) for detailed documentation of all experiments.
 
 ---
@@ -147,7 +155,7 @@ See [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md) for detailed documentation of all
 | [docs/PHILOSOPHY.md](docs/PHILOSOPHY.md) | Deep dive into Advaita Vedanta and its mapping to physics |
 | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | Project structure, design principles, and module relationships |
 | [docs/MODULES.md](docs/MODULES.md) | Detailed documentation of every module and class |
-| [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md) | All 26 experiments with methodology and results |
+| [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md) | All 29 experiments with methodology and results |
 | [docs/PREDICTIONS.md](docs/PREDICTIONS.md) | Testable predictions, falsification criteria, and experimental roadmap |
 | [docs/ROADMAP.md](docs/ROADMAP.md) | 5 paths from framework to real ToE, with honest status assessment |
 
@@ -179,7 +187,8 @@ This project is scientifically honest about what it has and hasn't achieved:
 - **Demonstrated (2D)**: Einstein equations on discrete manifold (R-T = 0.94), MERA tensor network, QEC holographic code
 - **Explored (systematic)**: Fine structure constant at 0.003% error via Heegner numbers; IIT-entanglement bridge (Φ ≤ S holds 100%)
 - **Verified (not derived)**: Koide formula, cosmological constant consistency
-- **Outlined (not implemented)**: ER=EPR correspondence
+- **Demonstrated (3D)**: 3+1D Einstein equations on discrete manifold (R-T = 0.88); gravitational wave propagation
+- **Demonstrated**: ER=EPR correspondence — wormhole throat = 4G × entanglement entropy; space disconnects at zero entanglement
 - **Not addressed**: Full Standard Model Lagrangian, exact constant derivations
 
 See [docs/ROADMAP.md](docs/ROADMAP.md) for the complete honest status assessment and next steps.

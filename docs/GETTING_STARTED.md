@@ -33,7 +33,7 @@ This is not a new idea. It is the central claim of **Advaita Vedanta**, a 3000-y
 
 The project is:
 - **A computational framework** — real Python code you can run
-- **26 experiments** — each demonstrating a specific concept with quantitative results
+- **29 experiments** — each demonstrating a specific concept with quantitative results
 - **7 visualizations** — publication-quality plots
 - **1 mathematically rigorous result** — the Born rule derived via Gleason's theorem
 - **5 testable predictions** and **5 falsification criteria** — real science
@@ -151,10 +151,10 @@ This runs 7 mini-demonstrations in under 2 seconds:
 # Original 8 Advaita experiments
 python main.py --all
 
-# 18 Physics extension experiments (9-26)
+# 21 Physics extension experiments (9-29)
 python main.py --physics
 
-# Everything (26 experiments + 7 visualizations)
+# Everything (29 experiments + 7 visualizations)
 python main.py --everything
 ```
 
@@ -391,7 +391,7 @@ Generates 7 PNG files in the `output/` directory:
 
 ## 10. Running the Tests
 
-The project includes a comprehensive test suite with **207 automated tests** covering every module. Tests validate mathematical properties (normalization, Hermiticity, unitarity), physical results (Bell violation, Gleason conditions, entropy bounds), and framework invariants (singleton behavior, non-duality, sublation).
+The project includes a comprehensive test suite with **227 automated tests** covering every module. Tests validate mathematical properties (normalization, Hermiticity, unitarity), physical results (Bell violation, Gleason conditions, entropy bounds), and framework invariants (singleton behavior, non-duality, sublation).
 
 ### Run All Tests
 
@@ -424,9 +424,9 @@ pytest tests/test_predictions.py -v # Predictions and falsification
 | `test_levels.py` | levels | 20 | Sublation chain, observer state routing |
 | `test_emergence.py` | emergence | 22 | Spacetime metric symmetry, substrate preservation |
 | `test_liberation.py` | liberation | 12 | Neti-neti remainder, mahavakya structure |
-| `test_quantum.py` | quantum | 42 | Hermiticity, unitarity, Bell S=2√2, Gleason C1–C4 |
-| `test_gravity.py` | gravity | 18 | R-T correlation, Newton recovery, metric properties |
-| `test_constants.py` | constants | 11 | Golden ratio, Koide formula, fine structure |
+| `test_quantum.py` | quantum | 50 | Hermiticity, unitarity, Bell S=2√2, Gleason C1–C4, ER=EPR |
+| `test_gravity.py` | gravity | 25 | R-T correlation (2D+3D), Newton recovery, gravitational waves |
+| `test_constants.py` | constants | 16 | Golden ratio, Koide formula, fine structure v1–v3 |
 | `test_particles.py` | particles | 11 | Symmetry breaking, guna association, maya depth |
 | `test_predictions.py` | predictions | 14 | Prediction structure, falsification criteria |
 
@@ -628,7 +628,7 @@ Experiment 18 is the most rigorous (mathematical proof). Experiment 22 has the m
 
 After reading this guide, you might want to:
 
-1. **Run all 26 experiments**: `python main.py --everything`
+1. **Run all 29 experiments**: `python main.py --everything`
 2. **Read the philosophy**: [docs/PHILOSOPHY.md](PHILOSOPHY.md)
 3. **Understand the roadmap**: [docs/ROADMAP.md](ROADMAP.md)
 4. **Look at the module details**: [docs/MODULES.md](MODULES.md)

@@ -18,7 +18,7 @@ TheoryOfEverything/
 │   ├── PHILOSOPHY.md                # Advaita Vedanta and physics mapping
 │   ├── ARCHITECTURE.md              # This file — project structure
 │   ├── MODULES.md                   # Detailed module documentation
-│   ├── EXPERIMENTS.md               # All 26 experiments documented
+│   ├── EXPERIMENTS.md               # All 29 experiments documented
 │   ├── PREDICTIONS.md               # Predictions and falsification
 │   ├── ROADMAP.md                   # Path to real ToE with honest status
 │   └── PAPER.md                     # Paper-ready summary for academic audiences
@@ -66,13 +66,15 @@ TheoryOfEverything/
 │   ├── interpretation_experiment.py # Shared experimental setup for comparison
 │   ├── operational_equivalence.py   # Everett-Advaita operational equivalence proof
 │   ├── perspectival_asymmetry.py    # Generalized measurement resolution (all cases)
-│   └── observer_centrality.py       # Observer centrality — hidden premise demonstration
+│   ├── observer_centrality.py       # Observer centrality — hidden premise demonstration
+│   └── er_epr.py                    # ER=EPR correspondence — wormholes = entanglement
 │
 ├── gravity/                         # PHYSICS: General Relativity
 │   ├── __init__.py
 │   ├── metric.py                    # Spacetime metric from entanglement
 │   ├── einstein.py                  # Einstein equations from thermodynamics (1D)
-│   ├── einstein_2d.py               # 2+1D Einstein on Delaunay manifold (UPGRADED)
+│   ├── einstein_2d.py               # 2+1D Einstein on Delaunay manifold
+│   ├── einstein_3d.py               # 3+1D Einstein on Delaunay tetrahedralization (FULL SPACETIME)
 │   ├── entropic.py                  # Verlinde's entropic gravity
 │   └── holographic.py               # Holographic principle — bulk from boundary
 │
@@ -87,6 +89,7 @@ TheoryOfEverything/
 │   ├── derivation.py                # Constants from self-referential structure
 │   ├── fine_structure.py            # Fine structure constant derivation attempts (v1)
 │   ├── fine_structure_v2.py         # Systematic α derivation: 6 approaches, 0.003% best
+│   ├── fine_structure_v3.py         # Rigorous α derivation: modular bootstrap, holographic, self-referential
 │   └── cosmological.py              # Cosmological constant resolution
 │
 ├── predictions/                     # SCIENCE: Testable Predictions
@@ -215,9 +218,9 @@ Python 3.10+ required. Configuration in `pyproject.toml`.
 | `python main.py` | Run quick demo |
 | `python main.py --demo` | Run quick demo (explicit) |
 | `python main.py --all` | Run original 8 Advaita experiments (1–8) |
-| `python main.py --physics` | Run physics extensions + rigorous results (9–26) |
-| `python main.py --experiment N` | Run experiment N (1–26) |
+| `python main.py --physics` | Run physics extensions + rigorous results (9–29) |
+| `python main.py --experiment N` | Run experiment N (1–29) |
 | `python main.py --visualize` | Generate all 7 visualizations to `output/` |
-| `python main.py --everything` | Run all 26 experiments + all visualizations |
-| `pytest tests/ -v` | Run the full test suite (207 tests) |
+| `python main.py --everything` | Run all 29 experiments + all visualizations |
+| `pytest tests/ -v` | Run the full test suite (227 tests) |
 | `pytest tests/test_quantum.py` | Run tests for a specific module |

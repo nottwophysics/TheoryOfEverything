@@ -6,6 +6,7 @@ import pytest
 from gravity.metric import ConsciousnessMetric
 from gravity.einstein import EmergentEinstein
 from gravity.einstein_2d import EmergentEinstein2D
+from gravity.einstein_3d import EmergentEinstein3D
 from gravity.entropic import EntropicGravity
 
 
@@ -81,6 +82,52 @@ class TestEmergentEinstein2D:
         ee2d = EmergentEinstein2D(num_points=30, seed=42)
         result = ee2d.demonstrate_mass_curves_space()
         assert "empty" in result or "one_mass" in result or isinstance(result, dict)
+
+
+class TestEmergentEinstein3D:
+    def test_geometry_built(self):
+        ee3d = EmergentEinstein3D(num_points=30, seed=42)
+        assert ee3d.points is not None
+        assert ee3d.points.shape == (30, 3)
+        assert ee3d.triangulation is not None
+
+    def test_tetra_volumes_positive(self):
+        ee3d = EmergentEinstein3D(num_points=30, seed=42)
+        assert np.all(ee3d.tetra_volumes >= 0)
+
+    def test_vertex_volumes_positive(self):
+        ee3d = EmergentEinstein3D(num_points=30, seed=42)
+        assert np.all(ee3d.vertex_volumes >= 0)
+
+    def test_energy_density(self):
+        ee3d = EmergentEinstein3D(num_points=30, seed=42)
+        mass_pos = [np.array([0.0, 0.0, 0.0])]
+        mass_val = [5.0]
+        T = ee3d.consciousness_energy_density(mass_pos, mass_val)
+        assert len(T) == 30
+        assert np.all(T >= 0)
+
+    def test_einstein_equations_correlation(self):
+        ee3d = EmergentEinstein3D(num_points=50, seed=42)
+        result = ee3d.derive_einstein_equations(
+            [np.array([0.0, 0.0, 0.0])], [5.0]
+        )
+        test = result["einstein_equation_test"]
+        assert test["R_entropy_T_correlation"] > 0.5
+        assert result["dimensions"] == 3
+
+    def test_mass_curves_3d_space(self):
+        ee3d = EmergentEinstein3D(num_points=40, seed=42)
+        result = ee3d.demonstrate_mass_curves_3d_space()
+        assert "single_mass" in result
+        assert "binary_system" in result
+        assert "mass_shell" in result
+
+    def test_gravitational_wave(self):
+        ee3d = EmergentEinstein3D(num_points=40, seed=42)
+        gw = ee3d.gravitational_wave_signature()
+        assert gw["wave_amplitude"] > 0
+        assert gw["propagates"] == True
 
 
 class TestEntropicGravity:

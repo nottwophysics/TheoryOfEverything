@@ -6,6 +6,7 @@ import pytest
 from constants.derivation import ConstantsFromConsciousness
 from constants.fine_structure import FineStructureDerivation
 from constants.cosmological import CosmologicalConstant
+from constants.fine_structure_v3 import FineStructureV3, SelfReferentialDerivation, ModularBootstrap, HolographicConstraint
 
 
 class TestConstantsFromConsciousness:
@@ -77,3 +78,40 @@ class TestCosmologicalConstant:
         result = cc.run_all()
         assert isinstance(result, dict)
         assert len(result) > 0
+
+
+class TestFineStructureV3:
+    def test_self_referential_logistic(self):
+        sr = SelfReferentialDerivation()
+        result = sr.logistic_fixed_point()
+        assert "feigenbaum_delta" in result
+        assert abs(result["feigenbaum_delta"] - 4.669) < 0.01
+        assert len(result["attempts"]) >= 3
+
+    def test_continued_fraction(self):
+        sr = SelfReferentialDerivation()
+        result = sr.continued_fraction_analysis()
+        assert result["cf_coefficients"][0] == 137
+        assert len(result["convergents"]) > 0
+
+    def test_modular_bootstrap(self):
+        mb = ModularBootstrap()
+        result = mb.j_invariant_approach()
+        assert result["heegner_number"] == 163
+        # Best result should be under 1% error
+        assert result["best"]["error_pct"] < 1.0
+
+    def test_holographic_constraint(self):
+        hc = HolographicConstraint()
+        result = hc.holographic_alpha()
+        assert result["spacetime_dimensions"] == 4
+        assert result["charged_species"] == 9
+        assert len(result["attempts"]) >= 3
+
+    def test_run_all_approaches(self):
+        fs = FineStructureV3()
+        result = fs.run_all_approaches()
+        assert "ranking" in result
+        assert "best_result" in result
+        assert result["best_result"]["error_pct"] < 1.0
+        assert result["target"] == 137.035999084
