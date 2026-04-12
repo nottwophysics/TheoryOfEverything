@@ -21,6 +21,12 @@ python main.py --physics           # Experiments 9–26
 python main.py --everything        # All 26 + visualizations
 ```
 
+Validate with the automated test suite (207 tests):
+```bash
+pytest tests/ -v                   # Run all tests
+pytest tests/test_quantum.py -v    # Test quantum module only
+```
+
 ---
 
 ## Tier 1: Advaita Framework Experiments

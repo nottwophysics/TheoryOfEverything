@@ -17,10 +17,11 @@ This guide is for anyone who wants to understand the Theory of Everything projec
 7. [The Physics Experiments (9–16, overview)](#7-the-physics-experiments-916)
 8. [The Rigorous Results and Paper Companions (17–26)](#8-the-rigorous-results-1718)
 9. [The Visualizations](#9-the-visualizations)
-10. [What's Real and What's Aspirational](#10-whats-real-and-whats-aspirational)
-11. [How to Contribute](#11-how-to-contribute)
-12. [Learning Paths](#12-learning-paths)
-13. [Frequently Asked Questions](#13-frequently-asked-questions)
+10. [Running the Tests](#10-running-the-tests)
+11. [What's Real and What's Aspirational](#11-whats-real-and-whats-aspirational)
+12. [How to Contribute](#12-how-to-contribute)
+13. [Learning Paths](#13-learning-paths)
+14. [Frequently Asked Questions](#14-frequently-asked-questions)
 
 ---
 
@@ -111,6 +112,9 @@ source toenv/bin/activate
 
 # Install dependencies
 pip install numpy matplotlib scipy
+
+# Install test dependencies
+pip install pytest
 ```
 
 ### Verify it works
@@ -385,7 +389,54 @@ Generates 7 PNG files in the `output/` directory:
 
 ---
 
-## 10. What's Real and What's Aspirational
+## 10. Running the Tests
+
+The project includes a comprehensive test suite with **207 automated tests** covering every module. Tests validate mathematical properties (normalization, Hermiticity, unitarity), physical results (Bell violation, Gleason conditions, entropy bounds), and framework invariants (singleton behavior, non-duality, sublation).
+
+### Run All Tests
+
+```bash
+source toenv/bin/activate
+pytest tests/ -v
+```
+
+### Run Tests for a Specific Module
+
+```bash
+pytest tests/test_brahman.py -v     # Consciousness field and Sat-Chit-Ananda
+pytest tests/test_quantum.py -v     # Hilbert space, operators, Gleason, Bell, measurement
+pytest tests/test_gravity.py -v     # Metric, Einstein 1D/2D, entropic gravity
+pytest tests/test_maya.py -v        # Superimposition, gunas, nama-rupa
+pytest tests/test_levels.py -v      # Three reality levels and engine
+pytest tests/test_emergence.py -v   # Spacetime, causation, observer
+pytest tests/test_liberation.py -v  # Neti-neti, mahavakyas
+pytest tests/test_constants.py -v   # Physical constants derivation
+pytest tests/test_particles.py -v   # Symmetry breaking, particle zoo
+pytest tests/test_predictions.py -v # Predictions and falsification
+```
+
+### What the Tests Cover
+
+| Test File | Module | Tests | Key Validations |
+|-----------|--------|-------|-----------------|
+| `test_brahman.py` | brahman | 20 | Singleton, normalization, coherence, self-reference |
+| `test_maya.py` | maya | 25 | Superimposition mechanics, guna dynamics, nama-rupa |
+| `test_levels.py` | levels | 20 | Sublation chain, observer state routing |
+| `test_emergence.py` | emergence | 22 | Spacetime metric symmetry, substrate preservation |
+| `test_liberation.py` | liberation | 12 | Neti-neti remainder, mahavakya structure |
+| `test_quantum.py` | quantum | 42 | Hermiticity, unitarity, Bell S=2√2, Gleason C1–C4 |
+| `test_gravity.py` | gravity | 18 | R-T correlation, Newton recovery, metric properties |
+| `test_constants.py` | constants | 11 | Golden ratio, Koide formula, fine structure |
+| `test_particles.py` | particles | 11 | Symmetry breaking, guna association, maya depth |
+| `test_predictions.py` | predictions | 14 | Prediction structure, falsification criteria |
+
+### Test Design
+
+Tests are isolated via the `conftest.py` fixture that resets the Brahman singleton before each test. This prevents state leakage between tests — each test starts with a fresh consciousness field.
+
+---
+
+## 11. What's Real and What's Aspirational
 
 This project is honest about its status. Here is the complete picture:
 
@@ -429,7 +480,7 @@ This project is honest about its status. Here is the complete picture:
 
 ---
 
-## 11. How to Contribute
+## 12. How to Contribute
 
 ### Areas Where Help Is Needed
 
@@ -443,9 +494,11 @@ This project is honest about its status. Here is the complete picture:
 
 1. Write the experiment function in the relevant module
 2. Add it to `main.py` (follow the pattern of existing experiments)
-3. Update the experiment map and CLI argument range
-4. Run it and verify output
-5. Document in `docs/EXPERIMENTS.md`
+3. Add tests in the corresponding `tests/test_*.py` file
+4. Run `pytest tests/ -v` and verify all tests pass
+5. Update the experiment map and CLI argument range
+6. Run it and verify output
+7. Document in `docs/EXPERIMENTS.md`
 
 ### Code Standards
 
@@ -456,7 +509,7 @@ This project is honest about its status. Here is the complete picture:
 
 ---
 
-## 12. Learning Paths
+## 13. Learning Paths
 
 ### Path A: I'm a physicist who knows no Indian philosophy
 
@@ -526,7 +579,7 @@ Go directly to:
 
 ---
 
-## 13. Frequently Asked Questions
+## 14. Frequently Asked Questions
 
 ### Is this a religious project?
 

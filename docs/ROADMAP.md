@@ -176,6 +176,14 @@ No physics ToE addresses why there is **experience** at all. This framework star
 
 ## Milestone Targets
 
+### Milestone 0: Automated Test Suite ✅ COMPLETE
+- 207 tests across 10 test files covering all modules
+- Validates mathematical properties (normalization, Hermiticity, unitarity)
+- Validates physical results (Bell violation, Gleason conditions, Newton recovery)
+- Validates framework invariants (singleton, non-duality, substrate preservation)
+- Test isolation via Brahman singleton reset per test
+- Configuration in `pyproject.toml`; run with `pytest tests/ -v`
+
 ### Milestone 1: Formalize the Measurement Resolution ✅ COMPLETE
 - ~~Formalize Experiment 10 as a paper~~
 - ~~Compare quantitatively with Copenhagen, Many-Worlds, and Pilot Wave~~

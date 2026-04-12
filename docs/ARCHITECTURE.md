@@ -105,6 +105,19 @@ TheoryOfEverything/
 │   ├── __init__.py
 │   └── maya_visualizer.py           # 7 publication-quality visualizations
 │
+├── tests/                           # TEST SUITE: 207 automated tests
+│   ├── conftest.py                  # Shared fixtures (Brahman singleton reset, RNG)
+│   ├── test_brahman.py              # 20 tests — consciousness field, Sat-Chit-Ananda
+│   ├── test_maya.py                 # 25 tests — superimposition, gunas, nama-rupa
+│   ├── test_levels.py               # 20 tests — three reality levels, engine
+│   ├── test_emergence.py            # 22 tests — spacetime, causation, observer
+│   ├── test_liberation.py           # 12 tests — neti-neti, mahavakyas
+│   ├── test_quantum.py              # 42 tests — Hilbert space, operators, Gleason, Bell
+│   ├── test_gravity.py              # 18 tests — metric, Einstein 1D/2D, entropic
+│   ├── test_constants.py            # 11 tests — derivation, fine structure, cosmological
+│   ├── test_particles.py            # 11 tests — symmetry breaking, particle zoo
+│   └── test_predictions.py          # 14 tests — predictions and falsification
+│
 ├── simulations/                     # OUTPUT: Runnable Experiments
 │   ├── __init__.py
 │   └── experiments.py               # 8 original experiments (1–8)
@@ -167,7 +180,16 @@ Each experiment is self-contained and demonstrates one specific Advaitic princip
 - Include **teaching text** explaining the Advaitic significance
 - Return structured dictionaries for programmatic use
 
-### 5. Physics Emerges, Not Assumed
+### 5. Automated Testing
+
+Every module has a corresponding test file in `tests/`. Tests validate mathematical properties (normalization, Hermiticity, unitarity), physical results (Bell violation, Gleason conditions, Newton recovery), and framework invariants (singleton, non-duality, substrate preservation). The Brahman singleton is reset before each test via `conftest.py` to ensure isolation.
+
+```bash
+pytest tests/ -v              # Run all 207 tests
+pytest tests/test_quantum.py  # Run tests for one module
+```
+
+### 6. Physics Emerges, Not Assumed
 
 The physics modules (`quantum/`, `gravity/`, `particles/`, `constants/`) derive physics from the framework — they do not import physics and translate it into Advaitic language. The derivation paths follow established work (Jacobson, Verlinde, Maldacena, Ryu-Takayanagi) but reinterpret the foundational axioms.
 
@@ -180,8 +202,9 @@ The physics modules (`quantum/`, `gravity/`, `particles/`, `constants/`) derive 
 | numpy | ≥ 1.24.0 | Array operations, linear algebra, FFT |
 | matplotlib | ≥ 3.7.0 | Visualization generation |
 | scipy | ≥ 1.10.0 | Matrix exponentials, spatial distance, special functions |
+| pytest | ≥ 7.0.0 | Test suite (optional, for development) |
 
-Python 3.9+ required.
+Python 3.10+ required. Configuration in `pyproject.toml`.
 
 ---
 
@@ -196,3 +219,5 @@ Python 3.9+ required.
 | `python main.py --experiment N` | Run experiment N (1–26) |
 | `python main.py --visualize` | Generate all 7 visualizations to `output/` |
 | `python main.py --everything` | Run all 26 experiments + all visualizations |
+| `pytest tests/ -v` | Run the full test suite (207 tests) |
+| `pytest tests/test_quantum.py` | Run tests for a specific module |

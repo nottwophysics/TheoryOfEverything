@@ -47,6 +47,10 @@ python main.py --visualize
 
 # Run EVERYTHING (26 experiments + visualizations)
 python main.py --everything
+
+# Run the test suite (207 tests)
+pip install pytest
+pytest tests/ -v
 ```
 
 For a guided walkthrough of the project, see [docs/GETTING_STARTED.md](docs/GETTING_STARTED.md).
@@ -66,6 +70,7 @@ For a guided walkthrough of the project, see [docs/GETTING_STARTED.md](docs/GETT
 | **Falsification** | `falsification/` | 5 explicit falsification criteria + experimental designs |
 | **Visualizations** | `visualizations/` | 7 visual plots of Advaita concepts |
 | **Experiments** | `simulations/`, `main.py` | 26 runnable experiments demonstrating the framework |
+| **Test Suite** | `tests/` | 207 automated tests validating all modules |
 
 ---
 
@@ -168,6 +173,7 @@ See [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md) for detailed documentation of all
 
 This project is scientifically honest about what it has and hasn't achieved:
 
+- **Tested**: Full test suite (207 tests) covering every module — run with `pytest tests/ -v`
 - **Proven**: Gleason-based axiom reduction (mathematical fact)
 - **Demonstrated**: Measurement resolution, Bell violation, decoherence framework
 - **Demonstrated (2D)**: Einstein equations on discrete manifold (R-T = 0.94), MERA tensor network, QEC holographic code

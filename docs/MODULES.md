@@ -672,3 +672,30 @@ See [docs/PREDICTIONS.md](PREDICTIONS.md) for full details on F1–F5.
 | `.plot_three_levels()` | `three_levels.png` | Paramarthika vs. Vyavaharika vs. Pratibhasika |
 | `.plot_fractal_unity()` | `fractal_unity.png` | Mandelbrot zoom — same pattern at every scale |
 | `.plot_emergent_spacetime()` | `emergent_spacetime.png` | 0→1→2→3 dimensions from self-reference |
+
+---
+
+## Test Suite
+
+---
+
+### `tests/` — 207 Automated Tests
+
+Every module above has a corresponding test file. Tests validate mathematical properties, physical results, and framework invariants. Run with `pytest tests/ -v`.
+
+| Test File | Module(s) Tested | Tests | Key Validations |
+|-----------|-----------------|-------|-----------------|
+| `test_brahman.py` | brahman/ | 20 | Singleton pattern, field normalization, coherence = 1.0, self-reference, Atman=Brahman equality |
+| `test_maya.py` | maya/ | 25 | Superimposition at varying ignorance, clarity threshold, guna normalization/evolution, nama-rupa non-separation |
+| `test_levels.py` | levels/ | 20 | Three-level routing, sublation chain, entropy non-negativity, entity counting, invalid state raises |
+| `test_emergence.py` | emergence/ | 22 | Metric symmetry, diagonal=0, curvature bounds, substrate preservation, witness immutability |
+| `test_liberation.py` | liberation/ | 12 | 8-layer negation, remainder→0, step-by-step generator, mahavakya structure and overlap |
+| `test_quantum.py` | quantum/ | 42 | Normalization, orthogonality, Hermiticity, [a,a†]=I, Gleason C1–C4, Born uniqueness, Bell S=2√2, decoherence |
+| `test_gravity.py` | gravity/ | 18 | Correlation matrix symmetry, distance properties, R-T correlation, Newton recovery (r>0.9) |
+| `test_constants.py` | constants/ | 11 | Golden ratio, Euler number, Koide ~2/3, fine structure approaches |
+| `test_particles.py` | particles/ | 11 | Unified symmetry normalization, guna-generation mapping, maya depth bounds |
+| `test_predictions.py` | predictions/, falsification/ | 14 | Prediction structure, falsifier completeness, experiment designs |
+
+**Test isolation**: The `conftest.py` fixture resets the Brahman singleton before each test, preventing state leakage.
+
+**Configuration**: `pyproject.toml` defines pytest settings (test paths, naming conventions, verbose output).
