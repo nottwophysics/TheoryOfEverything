@@ -10,6 +10,7 @@ from quantum.measurement import AdvaiticMeasurement
 from quantum.entanglement import NonDualEntanglement
 from quantum.gleason import GleasonVerification
 from quantum.er_epr import EREqualsEPR
+from quantum.unity_of_experience import UnityOfExperience
 
 
 class TestBrahmanHilbertSpace:
@@ -369,3 +370,65 @@ class TestEREqualsEPR:
         assert result["summary"]["er_equals_epr"] == True
         assert "thermofield_double" in result
         assert "van_raamsdonk" in result
+
+
+class TestUnityOfExperience:
+    def test_invalid_n_outcomes_raises(self):
+        with pytest.raises(ValueError):
+            UnityOfExperience(n_outcomes=1)
+
+    def test_post_measurement_state_is_pure(self):
+        u = UnityOfExperience(n_outcomes=3)
+        sb = u.post_measurement_state()
+        assert abs(sb["total_purity"] - 1.0) < 1e-10
+
+    def test_reduced_state_is_diagonal_in_pointer_basis(self):
+        u = UnityOfExperience(n_outcomes=3)
+        sb = u.post_measurement_state()
+        rho_sa = u.reduced_SA(sb)
+        einsel = u.einselection_diagnostic(rho_sa)
+        assert einsel["is_diagonal_pointer_basis"] is True
+        assert einsel["off_diagonal_norm"] < 1e-10
+
+    def test_reduced_state_trace_one(self):
+        u = UnityOfExperience(n_outcomes=4)
+        sb = u.post_measurement_state()
+        rho_sa = u.reduced_SA(sb)
+        assert abs(float(np.real(np.trace(rho_sa))) - 1.0) < 1e-10
+
+    def test_reduced_state_is_mixed(self):
+        u = UnityOfExperience(n_outcomes=3)
+        sb = u.post_measurement_state()
+        rho_sa = u.reduced_SA(sb)
+        purity = float(np.real(np.trace(rho_sa @ rho_sa)))
+        assert purity < 1.0 - 1e-6
+
+    def test_distinct_cardinalities_across_interpretations(self):
+        u = UnityOfExperience(n_outcomes=3)
+        result = u.underdetermination_test()
+        assert result["distinct_cardinalities_count"] >= 2
+
+    def test_decoherence_underdetermines_experience(self):
+        u = UnityOfExperience(n_outcomes=3)
+        result = u.underdetermination_test()
+        assert result["decoherence_underdetermines_experience"] is True
+
+    def test_all_interpretations_consistent_with_rho(self):
+        u = UnityOfExperience(n_outcomes=3)
+        result = u.underdetermination_test()
+        for interp in result["interpretations"]:
+            assert interp["consistent_with_rho_sa"] is True
+            assert interp["justification_by_decoherence"] is False
+
+    def test_robustness_all_trials_pass(self):
+        u = UnityOfExperience(n_outcomes=3)
+        robust = u.sweep_robustness(n_trials=20)
+        assert robust["success_rate"] == 1.0
+        assert robust["robust"] is True
+
+    def test_run_all_orchestrator(self):
+        u = UnityOfExperience(n_outcomes=3)
+        result = u.run_all()
+        assert "main_result" in result
+        assert "robustness" in result
+        assert result["main_result"]["decoherence_underdetermines_experience"] is True

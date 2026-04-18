@@ -9,6 +9,7 @@ from .error_correction import HolographicCode, SubsystemCode
 from .operational_equivalence import OperationalEquivalence
 from .perspectival_asymmetry import PerspectivalAsymmetry
 from .observer_centrality import ObserverCentrality
+from .unity_of_experience import UnityOfExperience
 from .interpretations import (
     Copenhagen,
     ManyWorlds,
@@ -32,6 +33,7 @@ __all__ = [
     "OperationalEquivalence",
     "PerspectivalAsymmetry",
     "ObserverCentrality",
+    "UnityOfExperience",
     "Copenhagen",
     "ManyWorlds",
     "PilotWave",

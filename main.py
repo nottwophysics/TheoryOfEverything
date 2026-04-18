@@ -11,10 +11,10 @@ Usage:
     python main.py                    # Quick demo
     python main.py --demo             # Quick demo of core concepts
     python main.py --all              # Run all 8 original Advaita experiments
-    python main.py --physics          # Run physics extension experiments (9-26)
-    python main.py --experiment N     # Run experiment N (1-29)
+    python main.py --physics          # Run physics extension experiments (9-30)
+    python main.py --experiment N     # Run experiment N (1-30)
     python main.py --visualize        # Generate all visualizations
-    python main.py --everything       # Run ALL experiments (1-29) + visualizations
+    python main.py --everything       # Run ALL experiments (1-30) + visualizations
 """
 
 import sys
@@ -1197,8 +1197,50 @@ def fine_structure_v3_experiment():
     return {"status": "completed", "experiment": 29}
 
 
+def unity_of_experience_experiment():
+    """Experiment 30: Unity of Experience — Experiential Underdetermination."""
+    print("\n" + "=" * 70)
+    print("  EXPERIMENT 30: UNITY OF EXPERIENCE")
+    print("  Paper claim: decoherence fixes rho_SA but not experiential ontology")
+    print("=" * 70)
+
+    from quantum.unity_of_experience import UnityOfExperience
+
+    u = UnityOfExperience(n_outcomes=3, seed=42)
+    result = u.run_all()
+
+    main = result["main_result"]
+    einsel = main["einselection"]
+    print("\n  REDUCED STATE rho_SA (after tracing environment)")
+    print("  " + "-" * 60)
+    print(f"    Trace:              {main['rho_SA_trace']:.6f}")
+    print(f"    Purity:             {main['rho_SA_purity']:.6f}  (mixed: purity < 1)")
+    print(f"    Off-diagonal norm:  {einsel['off_diagonal_norm']:.2e}")
+    print(f"    Diagonal in pointer basis: {einsel['is_diagonal_pointer_basis']}")
+    print(f"    Rank:               {einsel['rank']}")
+
+    print("\n  EXPERIENTIAL INTERPRETATIONS CONSISTENT WITH THE SAME rho_SA")
+    print("  " + "-" * 60)
+    print(f"    {'Interpretation':<50} {'N unified':<10}")
+    print(f"    {'-'*50} {'-'*10}")
+    for interp in main["interpretations"]:
+        print(f"    {interp['name']:<50} {interp['n_unified_experiences']:<10}")
+
+    print("\n  UNDERDETERMINATION RESULT")
+    print("  " + "-" * 60)
+    print(f"    Distinct cardinalities: {main['distinct_cardinalities_count']}")
+    print(f"    Underdetermined:        {main['decoherence_underdetermines_experience']}")
+
+    robust = result["robustness"]
+    print(f"\n    Robustness sweep: {robust['success_count']}/{robust['trials']} trials")
+    print(f"    Success rate:     {robust['success_rate']*100:.1f}%")
+
+    print(f"\n  {main['conclusion']}")
+    return {"status": "completed", "experiment": 30}
+
+
 def run_physics_experiments():
-    """Run all physics extension experiments (9-29)."""
+    """Run all physics extension experiments (9-30)."""
     print("\n" + "#" * 70)
     print("#" + " " * 68 + "#")
     print("#   PHYSICS EXTENSIONS — TOWARD A REAL THEORY OF EVERYTHING" + " " * 9 + "#")
@@ -1227,6 +1269,7 @@ def run_physics_experiments():
         einstein_3d_experiment,
         er_epr_experiment,
         fine_structure_v3_experiment,
+        unity_of_experience_experiment,
     ]
 
     results = []
@@ -1357,8 +1400,8 @@ def main():
         description="Theory of Everything — Advaita Vedanta Computational Framework"
     )
     parser.add_argument(
-        "--experiment", type=int, choices=range(1, 30),
-        help="Run a specific experiment (1-29)",
+        "--experiment", type=int, choices=range(1, 31),
+        help="Run a specific experiment (1-30)",
     )
     parser.add_argument(
         "--visualize", action="store_true",
@@ -1374,11 +1417,11 @@ def main():
     )
     parser.add_argument(
         "--physics", action="store_true",
-        help="Run physics extension experiments (9-29)",
+        help="Run physics extension experiments (9-30)",
     )
     parser.add_argument(
         "--everything", action="store_true",
-        help="Run ALL experiments (1-29) + visualizations",
+        help="Run ALL experiments (1-30) + visualizations",
     )
 
     args = parser.parse_args()
@@ -1413,6 +1456,7 @@ def main():
         27: einstein_3d_experiment,
         28: er_epr_experiment,
         29: fine_structure_v3_experiment,
+        30: unity_of_experience_experiment,
     }
 
     if args.everything:

@@ -1,28 +1,28 @@
 # Experiments
 
-## All 26 Experiments — Methodology, Results, and Significance
+## All 30 Experiments — Methodology, Results, and Significance
 
 ---
 
 ## Overview
 
-The framework includes 29 computational experiments divided into five tiers:
+The framework includes 30 computational experiments divided into five tiers:
 
 - **Experiments 1–8** (Tier 1): Demonstrate core Advaita Vedanta concepts
 - **Experiments 9–16** (Tier 2): Bridge Advaita to modern physics
 - **Experiments 17–23** (Tier 3): Mathematically rigorous results and frontier explorations
-- **Experiments 24–26** (Tier 4): Paper companion — proving the submitted paper's claims
+- **Experiments 24–26, 30** (Tier 4): Paper companion — supporting the submitted paper's claims
 - **Experiments 27–29** (Tier 5): Physics extensions — 3+1D gravity, ER=EPR, rigorous α derivation
 
 Run with:
 ```bash
-python main.py --experiment N      # Single experiment (1–29)
+python main.py --experiment N      # Single experiment (1–30)
 python main.py --all               # Experiments 1–8
-python main.py --physics           # Experiments 9–29
-python main.py --everything        # All 29 + visualizations
+python main.py --physics           # Experiments 9–30
+python main.py --everything        # All 30 + visualizations
 ```
 
-Validate with the automated test suite (207 tests):
+Validate with the automated test suite (237 tests):
 ```bash
 pytest tests/ -v                   # Run all tests
 pytest tests/test_quantum.py -v    # Test quantum module only
@@ -684,6 +684,34 @@ python main.py --experiment 29
 
 ---
 
+### Experiment 30: Unity of Experience — Experiential Underdetermination
+
+```bash
+python main.py --experiment 30
+```
+
+**Purpose**: Quantitatively supports the submitted paper's §4.3.2(b) claim that decoherence leaves the unity of experience unexplained. Shows that multiple, pairwise-incompatible experiential ontologies — Everett-unified, Everett-superposed, Copenhagen-classical, and consciousness-primitive — are all consistent with the *same* reduced density matrix rho_SA.
+
+**Method**:
+1. Construct the standard post-measurement state |Ψ⟩ = Σ c_n |n⟩_S |n⟩_A |E_n⟩ with orthogonal environment pointers.
+2. Trace out the environment to obtain rho_SA.
+3. Verify einselection: rho_SA is diagonal in the pointer basis with off-diagonal norm < 10⁻¹⁰.
+4. Enumerate four experiential interpretations and their asserted cardinalities of unified experience.
+5. Test whether rho_SA alone discriminates among them.
+6. Sweep 30 random amplitude profiles to check robustness.
+
+**Key results**:
+- Reduced state rho_SA has trace 1, rank N, and is diagonal in the pointer basis (off-diagonal norm ≈ 0).
+- Four interpretations map to identical rho_SA but disagree on cardinality of unified experience: {0, 1, N}.
+- Robustness: 30/30 trials confirm underdetermination across random amplitudes.
+- Conclusion: the identification of pointer states with unified experiences is a postulate ADDED to decoherence, not derived from it.
+
+**Paper support**: Makes §4.3.2(b) quantitatively defensible. Everett must assert unity alongside decoherence; the consciousness-primitive framework grounds unity in axiom A1 (the universal subject). The repository now contains a numerical demonstration that referees can run.
+
+**Supporting note**: [`docs/GLEASON_PROBABILITY_GAP.md`](GLEASON_PROBABILITY_GAP.md) addresses the related Kent/Baker critiques of Gleason-based Born rule derivations.
+
+---
+
 ## Summary of Key Quantitative Results
 
 | Metric | Value | Significance | Status |
@@ -694,6 +722,7 @@ python main.py --experiment 29
 | **Everett-Advaita equivalence** | **5/5 tests identical** | **0 measurable divergences** | **Proven** |
 | **Perspectival asymmetry** | **Exact (10⁻¹⁶)** | **All states, bases, env sizes — total always pure** | **Proven** |
 | **Observer centrality** | **4/4 open questions involve observer** | **Observer ontology is part of interpretive burden** | **Demonstrated** |
+| **Experiential underdetermination** | **30/30 trials, 3 distinct cardinalities** | **Decoherence does not fix experiential ontology (paper §4.3.2b)** | **Demonstrated** |
 | Born rule uniqueness | 0/1800 violations | Only consistent probability rule in dim ≥ 3 | **Proven** |
 | **2+1D Einstein R-T correlation** | **0.94** | **Entropy curvature tracks energy on 2D manifold** | **Demonstrated** |
 | **3+1D Einstein R-T correlation** | **0.88** | **Full spacetime: entropy curvature tracks energy in 3D** | **Demonstrated** |

@@ -36,19 +36,19 @@ python main.py --demo
 # Run all 8 original Advaita experiments
 python main.py --all
 
-# Run all 21 physics extension experiments (9–29)
+# Run all 22 physics extension experiments (9–30)
 python main.py --physics
 
-# Run a specific experiment (1–29)
+# Run a specific experiment (1–30)
 python main.py --experiment 24
 
 # Generate all 7 visualizations
 python main.py --visualize
 
-# Run EVERYTHING (29 experiments + visualizations)
+# Run EVERYTHING (30 experiments + visualizations)
 python main.py --everything
 
-# Run the test suite (207 tests)
+# Run the test suite (237 tests)
 pip install pytest
 pytest tests/ -v
 ```
@@ -155,7 +155,7 @@ See [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md) for detailed documentation of all
 | [docs/PHILOSOPHY.md](docs/PHILOSOPHY.md) | Deep dive into Advaita Vedanta and its mapping to physics |
 | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | Project structure, design principles, and module relationships |
 | [docs/MODULES.md](docs/MODULES.md) | Detailed documentation of every module and class |
-| [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md) | All 29 experiments with methodology and results |
+| [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md) | All 30 experiments with methodology and results |
 | [docs/PREDICTIONS.md](docs/PREDICTIONS.md) | Testable predictions, falsification criteria, and experimental roadmap |
 | [docs/ROADMAP.md](docs/ROADMAP.md) | 5 paths from framework to real ToE, with honest status assessment |
 | [docs/GLEASON_PROBABILITY_GAP.md](docs/GLEASON_PROBABILITY_GAP.md) | Technical note engaging Kent (2010) and Baker (2007) critiques of Gleason-based Born rule derivations |
