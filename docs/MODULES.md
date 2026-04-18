@@ -635,6 +635,29 @@ Demonstrates the paper's hidden premise: observer ontology is part of the interp
 
 ---
 
+### `quantum/unity_of_experience.py` — Experiential Underdetermination
+
+**Class: `UnityOfExperience`**
+
+Quantitatively supports the paper's §4.3.2(b) claim: decoherence fixes the reduced density matrix ρ_SA but does NOT fix experiential ontology. Multiple, pairwise-incompatible interpretations — Everett-unified, Everett-superposed, Copenhagen-classical, consciousness-primitive — all map to the same ρ_SA while disagreeing on the cardinality of unified experience.
+
+| Method | Description |
+|--------|-------------|
+| `.post_measurement_state(amplitudes)` | Build entangled S+A+E pure state with orthogonal pointer environment. |
+| `.reduced_SA(state_bundle)` | Trace out the environment to obtain ρ_SA. |
+| `.einselection_diagnostic(rho_sa)` | Verify pointer-basis diagonality (off-diagonal norm < 10⁻¹⁰). |
+| `.everett_unified_map(...)` | Branches-as-unified-experiences interpretation; cardinality = N. |
+| `.everett_superposed_map(...)` | Non-unified-experience interpretation; cardinality = 0. |
+| `.copenhagen_classical_map(...)` | Collapse-to-one-classical-outcome; cardinality = 1. |
+| `.subject_modes_map(...)` | One subject, N perspective-modes; cardinality = 1. |
+| `.underdetermination_test()` | Confirm 4 interpretations consistent with same ρ_SA, distinct cardinalities. |
+| `.sweep_robustness(n_trials)` | Repeat across random amplitude profiles (default 30/30 pass). |
+| `.run_all()` | Orchestrator. Returns full report supporting paper §4.3.2(b). |
+
+Companion technical note: [`docs/GLEASON_PROBABILITY_GAP.md`](GLEASON_PROBABILITY_GAP.md) addresses the related Kent (2010) and Baker (2007) critiques of Gleason-based Born rule derivations.
+
+---
+
 ### `predictions/testable.py` — 5 Testable Predictions
 
 **Class: `TestablePredictions`**
@@ -679,7 +702,7 @@ See [docs/PREDICTIONS.md](PREDICTIONS.md) for full details on F1–F5.
 
 ---
 
-### `tests/` — 227 Automated Tests
+### `tests/` — 237 Automated Tests
 
 Every module above has a corresponding test file. Tests validate mathematical properties, physical results, and framework invariants. Run with `pytest tests/ -v`.
 
@@ -690,7 +713,7 @@ Every module above has a corresponding test file. Tests validate mathematical pr
 | `test_levels.py` | levels/ | 20 | Three-level routing, sublation chain, entropy non-negativity, entity counting, invalid state raises |
 | `test_emergence.py` | emergence/ | 22 | Metric symmetry, diagonal=0, curvature bounds, substrate preservation, witness immutability |
 | `test_liberation.py` | liberation/ | 12 | 8-layer negation, remainder→0, step-by-step generator, mahavakya structure and overlap |
-| `test_quantum.py` | quantum/ | 42 | Normalization, orthogonality, Hermiticity, [a,a†]=I, Gleason C1–C4, Born uniqueness, Bell S=2√2, decoherence |
+| `test_quantum.py` | quantum/ | 63 | Normalization, orthogonality, Hermiticity, [a,a†]=I, Gleason C1–C4, Born uniqueness, Bell S=2√2, decoherence, ER=EPR, **experiential underdetermination (Exp 30)** |
 | `test_gravity.py` | gravity/ | 18 | Correlation matrix symmetry, distance properties, R-T correlation, Newton recovery (r>0.9) |
 | `test_constants.py` | constants/ | 11 | Golden ratio, Euler number, Koide ~2/3, fine structure approaches |
 | `test_particles.py` | particles/ | 11 | Unified symmetry normalization, guna-generation mapping, maya depth bounds |

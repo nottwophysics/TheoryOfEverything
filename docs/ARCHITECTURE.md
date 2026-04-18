@@ -18,7 +18,8 @@ TheoryOfEverything/
 │   ├── PHILOSOPHY.md                # Advaita Vedanta and physics mapping
 │   ├── ARCHITECTURE.md              # This file — project structure
 │   ├── MODULES.md                   # Detailed module documentation
-│   ├── EXPERIMENTS.md               # All 29 experiments documented
+│   ├── EXPERIMENTS.md               # All 30 experiments documented
+│   ├── GLEASON_PROBABILITY_GAP.md   # Technical note: Kent (2010) and Baker (2007) critiques
 │   ├── PREDICTIONS.md               # Predictions and falsification
 │   ├── ROADMAP.md                   # Path to real ToE with honest status
 │   └── PAPER.md                     # Paper-ready summary for academic audiences
@@ -67,7 +68,8 @@ TheoryOfEverything/
 │   ├── operational_equivalence.py   # Everett-Advaita operational equivalence proof
 │   ├── perspectival_asymmetry.py    # Generalized measurement resolution (all cases)
 │   ├── observer_centrality.py       # Observer centrality — hidden premise demonstration
-│   └── er_epr.py                    # ER=EPR correspondence — wormholes = entanglement
+│   ├── er_epr.py                    # ER=EPR correspondence — wormholes = entanglement
+│   └── unity_of_experience.py       # Experiential underdetermination by decoherence (paper §4.3.2b)
 │
 ├── gravity/                         # PHYSICS: General Relativity
 │   ├── __init__.py
@@ -188,7 +190,7 @@ Each experiment is self-contained and demonstrates one specific Advaitic princip
 Every module has a corresponding test file in `tests/`. Tests validate mathematical properties (normalization, Hermiticity, unitarity), physical results (Bell violation, Gleason conditions, Newton recovery), and framework invariants (singleton, non-duality, substrate preservation). The Brahman singleton is reset before each test via `conftest.py` to ensure isolation.
 
 ```bash
-pytest tests/ -v              # Run all 207 tests
+pytest tests/ -v              # Run all 237 tests
 pytest tests/test_quantum.py  # Run tests for one module
 ```
 
@@ -218,9 +220,9 @@ Python 3.10+ required. Configuration in `pyproject.toml`.
 | `python main.py` | Run quick demo |
 | `python main.py --demo` | Run quick demo (explicit) |
 | `python main.py --all` | Run original 8 Advaita experiments (1–8) |
-| `python main.py --physics` | Run physics extensions + rigorous results (9–29) |
-| `python main.py --experiment N` | Run experiment N (1–29) |
+| `python main.py --physics` | Run physics extensions + rigorous results (9–30) |
+| `python main.py --experiment N` | Run experiment N (1–30) |
 | `python main.py --visualize` | Generate all 7 visualizations to `output/` |
-| `python main.py --everything` | Run all 29 experiments + all visualizations |
-| `pytest tests/ -v` | Run the full test suite (227 tests) |
+| `python main.py --everything` | Run all 30 experiments + all visualizations |
+| `pytest tests/ -v` | Run the full test suite (237 tests) |
 | `pytest tests/test_quantum.py` | Run tests for a specific module |

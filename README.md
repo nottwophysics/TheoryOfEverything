@@ -182,7 +182,7 @@ See [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md) for detailed documentation of all
 
 This project is scientifically honest about what it has and hasn't achieved:
 
-- **Tested**: Full test suite (207 tests) covering every module — run with `pytest tests/ -v`
+- **Tested**: Full test suite (237 tests) covering every module — run with `pytest tests/ -v`
 - **Proven**: Gleason-based axiom reduction (mathematical fact)
 - **Demonstrated**: Measurement resolution, Bell violation, decoherence framework
 - **Demonstrated (2D)**: Einstein equations on discrete manifold (R-T = 0.94), MERA tensor network, QEC holographic code
