@@ -158,6 +158,7 @@ See [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md) for detailed documentation of all
 | [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md) | All 29 experiments with methodology and results |
 | [docs/PREDICTIONS.md](docs/PREDICTIONS.md) | Testable predictions, falsification criteria, and experimental roadmap |
 | [docs/ROADMAP.md](docs/ROADMAP.md) | 5 paths from framework to real ToE, with honest status assessment |
+| [docs/GLEASON_PROBABILITY_GAP.md](docs/GLEASON_PROBABILITY_GAP.md) | Technical note engaging Kent (2010) and Baker (2007) critiques of Gleason-based Born rule derivations |
 
 ---
 
