@@ -18,40 +18,43 @@ TheoryOfEverything/
 │   ├── PHILOSOPHY.md                # Advaita Vedanta and physics mapping
 │   ├── ARCHITECTURE.md              # This file — project structure
 │   ├── MODULES.md                   # Detailed module documentation
-│   ├── EXPERIMENTS.md               # All 30 experiments documented
+│   ├── EXPERIMENTS.md               # All 31 experiments documented
 │   ├── GLEASON_PROBABILITY_GAP.md   # Technical note: Kent (2010) and Baker (2007) critiques
 │   ├── PREDICTIONS.md               # Predictions and falsification
 │   ├── ROADMAP.md                   # Path to real ToE with honest status
 │   └── PAPER.md                     # Paper-ready summary for academic audiences
 │
-├── brahman/                         # LAYER 0: The Ground Reality
+├── philosophy/                      # INTERPRETIVE LAYER (not empirical — see philosophy/README.md)
 │   ├── __init__.py
-│   ├── consciousness.py             # Brahman class (singleton consciousness field)
-│   └── sat_chit_ananda.py           # Three aspects: Existence-Consciousness-Bliss
-│
-├── maya/                            # LAYER 1: The Appearance Engine
-│   ├── __init__.py
-│   ├── superimposition.py           # Adhyasa — projection of forms onto the formless
-│   ├── nama_rupa.py                 # Name-and-form differentiation engine
-│   └── gunas.py                     # Sattva/Rajas/Tamas dynamics
-│
-├── levels/                          # LAYER 2: Three Levels of Reality
-│   ├── __init__.py
-│   ├── paramarthika.py              # Absolute level — only Brahman
-│   ├── vyavaharika.py               # Empirical level — the everyday world
-│   ├── pratibhasika.py              # Illusory level — dreams, errors
-│   └── reality_engine.py            # Orchestrator — sublation between levels
+│   ├── README.md                    # States plainly: interpretive scaffolding, not physics
+│   ├── brahman/                     # LAYER 0: The Ground Reality
+│   │   ├── __init__.py
+│   │   ├── consciousness.py         # Brahman class (singleton consciousness field)
+│   │   └── sat_chit_ananda.py       # Three aspects: Existence-Consciousness-Bliss
+│   │
+│   ├── maya/                        # LAYER 1: The Appearance Engine
+│   │   ├── __init__.py
+│   │   ├── superimposition.py       # Adhyasa — projection of forms onto the formless
+│   │   ├── nama_rupa.py             # Name-and-form differentiation engine
+│   │   └── gunas.py                 # Sattva/Rajas/Tamas dynamics
+│   │
+│   ├── levels/                      # LAYER 2: Three Levels of Reality
+│   │   ├── __init__.py
+│   │   ├── paramarthika.py          # Absolute level — only Brahman
+│   │   ├── vyavaharika.py           # Empirical level — the everyday world
+│   │   ├── pratibhasika.py          # Illusory level — dreams, errors
+│   │   └── reality_engine.py        # Orchestrator — sublation between levels
+│   │
+│   └── liberation/                  # LAYER 4: The Path Back to Unity
+│       ├── __init__.py
+│       ├── neti_neti.py             # "Not this, not this" — stripping layers
+│       └── mahavakya.py             # The four great identity declarations
 │
 ├── emergence/                       # LAYER 3: How Physics Emerges
 │   ├── __init__.py
 │   ├── spacetime.py                 # Emergent spacetime from consciousness
 │   ├── causation.py                 # Vivartavada — apparent transformation
 │   └── observer.py                  # Sakshi — the witness consciousness
-│
-├── liberation/                      # LAYER 4: The Path Back to Unity
-│   ├── __init__.py
-│   ├── neti_neti.py                 # "Not this, not this" — stripping layers
-│   └── mahavakya.py                 # The four great identity declarations
 │
 ├── quantum/                         # PHYSICS: Quantum Mechanics
 │   ├── __init__.py
@@ -110,18 +113,23 @@ TheoryOfEverything/
 │   ├── __init__.py
 │   └── maya_visualizer.py           # 7 publication-quality visualizations
 │
-├── tests/                           # TEST SUITE: 207 automated tests
+├── tests/                           # TEST SUITE: 265 automated tests
 │   ├── conftest.py                  # Shared fixtures (Brahman singleton reset, RNG)
 │   ├── test_brahman.py              # 20 tests — consciousness field, Sat-Chit-Ananda
-│   ├── test_maya.py                 # 25 tests — superimposition, gunas, nama-rupa
-│   ├── test_levels.py               # 20 tests — three reality levels, engine
-│   ├── test_emergence.py            # 22 tests — spacetime, causation, observer
-│   ├── test_liberation.py           # 12 tests — neti-neti, mahavakyas
-│   ├── test_quantum.py              # 42 tests — Hilbert space, operators, Gleason, Bell
-│   ├── test_gravity.py              # 18 tests — metric, Einstein 1D/2D, entropic
-│   ├── test_constants.py            # 11 tests — derivation, fine structure, cosmological
-│   ├── test_particles.py            # 11 tests — symmetry breaking, particle zoo
-│   └── test_predictions.py          # 14 tests — predictions and falsification
+│   ├── test_maya.py                 # 30 tests — superimposition, gunas, nama-rupa
+│   ├── test_levels.py               # 22 tests — three reality levels, engine
+│   ├── test_emergence.py            # 23 tests — spacetime, causation, observer
+│   ├── test_liberation.py           # 11 tests — neti-neti, mahavakyas
+│   ├── test_quantum.py              # 63 tests — Hilbert space, operators, Gleason, Bell
+│   ├── test_gravity.py              # 23 tests — metric, Einstein 1D/2D/3D, entropic
+│   ├── test_constants.py            # 18 tests — cosmological, Koide (verification split)
+│   ├── test_particles.py            # 13 tests — symmetry breaking, particle zoo
+│   ├── test_predictions.py          # 16 tests — predictions and falsification
+│   ├── test_numerology.py           #  6 tests — look-elsewhere family + main.py demo
+│   ├── test_cross_validation.py     #  3 tests — α cross-constant recipe hold-out
+│   ├── test_iit_rigorous.py         #  4 tests — non-circular Φ/S bridge + null
+│   ├── test_pyphi_benchmark.py      #  5 tests — framework Φ vs canonical PyPhi Φ
+│   └── test_decoherence_calculator.py #  8 tests — DP vs environmental decoherence
 │
 ├── simulations/                     # OUTPUT: Runnable Experiments
 │   ├── __init__.py
@@ -190,7 +198,7 @@ Each experiment is self-contained and demonstrates one specific Advaitic princip
 Every module has a corresponding test file in `tests/`. Tests validate mathematical properties (normalization, Hermiticity, unitarity), physical results (Bell violation, Gleason conditions, Newton recovery), and framework invariants (singleton, non-duality, substrate preservation). The Brahman singleton is reset before each test via `conftest.py` to ensure isolation.
 
 ```bash
-pytest tests/ -v              # Run all 237 tests
+pytest tests/ -v              # Run all 265 tests
 pytest tests/test_quantum.py  # Run tests for one module
 ```
 
@@ -220,9 +228,9 @@ Python 3.10+ required. Configuration in `pyproject.toml`.
 | `python main.py` | Run quick demo |
 | `python main.py --demo` | Run quick demo (explicit) |
 | `python main.py --all` | Run original 8 Advaita experiments (1–8) |
-| `python main.py --physics` | Run physics extensions + rigorous results (9–30) |
-| `python main.py --experiment N` | Run experiment N (1–30) |
+| `python main.py --physics` | Run physics extensions + rigorous results (9–31) |
+| `python main.py --experiment N` | Run experiment N (1–31) |
 | `python main.py --visualize` | Generate all 7 visualizations to `output/` |
-| `python main.py --everything` | Run all 30 experiments + all visualizations |
-| `pytest tests/ -v` | Run the full test suite (237 tests) |
+| `python main.py --everything` | Run all 31 experiments + all visualizations |
+| `pytest tests/ -v` | Run the full test suite (265 tests) |
 | `pytest tests/test_quantum.py` | Run tests for a specific module |

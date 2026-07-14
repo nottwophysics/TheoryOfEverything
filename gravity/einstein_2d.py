@@ -69,9 +69,12 @@ class EmergentEinstein2D:
         # Vertex areas (Voronoi dual area for each vertex)
         self.vertex_areas = np.zeros(n)
         for simplex in self.simplices:
-            # Triangle area via cross product
+            # Triangle area via 2-D cross product (scalar z-component).
+            # np.cross on 2-D vectors was removed in NumPy 2.0, so compute
+            # the z-component explicitly for forward compatibility.
             p0, p1, p2 = self.points[simplex]
-            area = 0.5 * abs(np.cross(p1 - p0, p2 - p0))
+            v1, v2 = p1 - p0, p2 - p0
+            area = 0.5 * abs(v1[0] * v2[1] - v1[1] * v2[0])
             for idx in simplex:
                 self.vertex_areas[idx] += area / 3.0
 
@@ -234,8 +237,10 @@ class EmergentEinstein2D:
         else:
             geo_correlation = 0.0
 
-        # Effective gravitational constant (from the proportionality)
-        if np.std(T_00[mask]) > 1e-10:
+        # Effective gravitational constant (from the proportionality).
+        # Guard against an empty/singleton mask (e.g. the no-mass case), where
+        # np.std over a zero-length slice raises "Degrees of freedom <= 0".
+        if np.sum(mask) > 1 and np.std(T_00[mask]) > 1e-10:
             G_eff = float(np.mean(R_entropy[mask] / (T_00[mask] + 1e-15)))
         else:
             G_eff = 0.0

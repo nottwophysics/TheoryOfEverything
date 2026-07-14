@@ -98,18 +98,38 @@ class TestablePredictions:
             ("cat", 4.0, 0.2),
         ]
 
+        # Coherence cutoff: an object can still show interference if its
+        # gravitational decoherence time exceeds a chosen observation time.
+        tau_obs = 1.0  # seconds (explicit, tunable observation window)
+
         results = {}
         for name, mass, radius in test_cases:
             tau = decoherence_time(mass, radius)
             results[name] = {
                 "mass_kg": mass,
                 "decoherence_time_s": float(tau),
-                "can_show_interference": tau > 1.0,
+                "can_show_interference": tau > tau_obs,
             }
 
+        # Derive the threshold rather than hard-coding it: solve
+        # tau(m, R) = tau_obs for m assuming a fixed solid density, so that
+        # R(m) = (3 m / 4 pi rho)^(1/3). Then G m^2 / R = hbar / tau_obs gives
+        # m^(5/3) (4 pi rho / 3)^(1/3) = hbar / (G tau_obs).
+        rho = 2000.0  # kg/m^3, representative solid density
+        rhs = hbar / (G * tau_obs)
+        m_threshold = (rhs / (4.0 * np.pi * rho / 3.0) ** (1.0 / 3.0)) ** (3.0 / 5.0)
+
         return {
-            "prediction": "Objects above ~10^-14 kg spontaneously decohere "
-                          "due to gravitational self-energy",
+            "prediction": (
+                f"For an observation window of {tau_obs:.0f} s and solid density "
+                f"rho={rho:.0f} kg/m^3, gravitational (Diosi-Penrose) decoherence "
+                f"suppresses interference above m ~ {m_threshold:.2e} kg. The "
+                "threshold is decoherence-time- and density-dependent, not a single "
+                "universal mass."
+            ),
+            "threshold_mass_kg": float(m_threshold),
+            "observation_time_s": tau_obs,
+            "assumed_density_kg_m3": rho,
             "test_cases": results,
             "experimental_approach": [
                 "Perform matter-wave interferometry with increasing masses",
@@ -193,16 +213,28 @@ class TestablePredictions:
         at the Planck scale (~10^-35 m).
         """
         l_planck = 1.616e-35  # meters
-        t_planck = 5.391e-44  # seconds
+        c = 2.998e8           # m/s
+        arm_length = 40.0     # m (Fermilab Holometer arm length)
 
-        # Holographic noise amplitude
-        noise_amplitude = np.sqrt(l_planck)  # ~10^-17.5 m
+        # Hogan holographic-noise scaling, dimensionally consistent:
+        #   RMS transverse displacement over an arm of length L:
+        #       Δx_rms ~ sqrt(l_P · L)          [units: m]
+        #   Displacement amplitude spectral density (band-limited to f ~ c/L):
+        #       ASD ~ sqrt(l_P · L^2 / c) = L·sqrt(l_P / c)   [units: m/√Hz]
+        # NOTE: the previous version used sqrt(l_P), which has units of √m and is
+        # not a physical length; this is the corrected, dimensionally valid form.
+        rms_displacement_m = np.sqrt(l_planck * arm_length)          # meters
+        noise_asd_m_per_sqrtHz = arm_length * np.sqrt(l_planck / c)  # m/√Hz
 
         return {
-            "prediction": "Correlated holographic noise in interferometer outputs "
-                          f"at amplitude ~{noise_amplitude:.2e} m/√Hz",
+            "prediction": "Correlated holographic transverse-position noise in a "
+                          f"Michelson interferometer of arm length {arm_length:.0f} m: "
+                          f"RMS displacement ~{rms_displacement_m:.2e} m, "
+                          f"amplitude spectral density ~{noise_asd_m_per_sqrtHz:.2e} m/√Hz",
             "planck_length": l_planck,
-            "noise_amplitude_m": float(noise_amplitude),
+            "arm_length_m": arm_length,
+            "rms_displacement_m": float(rms_displacement_m),
+            "noise_asd_m_per_sqrtHz": float(noise_asd_m_per_sqrtHz),
             "experimental_approach": [
                 "Cross-correlate signals from co-located interferometers",
                 "Holometer experiment at Fermilab (already running)",

@@ -15,8 +15,8 @@ Analogy: dream objects are real within the dream.
 """
 
 import numpy as np
-from brahman.consciousness import Brahman
-from maya.gunas import Gunas, GunaBalance
+from philosophy.brahman.consciousness import Brahman
+from philosophy.maya.gunas import Gunas, GunaBalance
 
 
 class Vyavaharika:

@@ -3,8 +3,8 @@
 import numpy as np
 import pytest
 
-from liberation.neti_neti import NetiNeti, Layer
-from liberation.mahavakya import Mahavakya
+from philosophy.liberation.neti_neti import NetiNeti, Layer
+from philosophy.liberation.mahavakya import Mahavakya
 
 
 class TestLayer:

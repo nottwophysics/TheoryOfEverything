@@ -3,12 +3,12 @@
 import numpy as np
 import pytest
 
-from levels.paramarthika import Paramarthika
-from levels.vyavaharika import Vyavaharika
-from levels.pratibhasika import Pratibhasika
-from levels.reality_engine import RealityEngine
-from brahman.consciousness import Brahman
-from maya.gunas import GunaBalance
+from philosophy.levels.paramarthika import Paramarthika
+from philosophy.levels.vyavaharika import Vyavaharika
+from philosophy.levels.pratibhasika import Pratibhasika
+from philosophy.levels.reality_engine import RealityEngine
+from philosophy.brahman.consciousness import Brahman
+from philosophy.maya.gunas import GunaBalance
 
 
 class TestParamarthika:

@@ -8,7 +8,7 @@ how each sublates (negates) the one below it.
 from .paramarthika import Paramarthika
 from .vyavaharika import Vyavaharika
 from .pratibhasika import Pratibhasika
-from brahman.consciousness import Brahman
+from philosophy.brahman.consciousness import Brahman
 
 
 class RealityEngine:

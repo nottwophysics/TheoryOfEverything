@@ -25,6 +25,14 @@ class TestTestablePredictions:
         tp = TestablePredictions()
         result = tp.prediction_2_decoherence_mass_threshold()
         assert isinstance(result, dict)
+        # Threshold must be a derived, physically sensible mass, and must be
+        # consistent with the per-object table (objects below it can show
+        # interference; objects far above it cannot).
+        m_thr = result["threshold_mass_kg"]
+        assert 1e-18 < m_thr < 1e-6, f"threshold mass unphysical: {m_thr}"
+        cases = result["test_cases"]
+        assert cases["cat"]["can_show_interference"] is False
+        assert cases["electron"]["can_show_interference"] is True
 
     def test_prediction_3(self):
         tp = TestablePredictions()
@@ -40,6 +48,13 @@ class TestTestablePredictions:
         tp = TestablePredictions()
         result = tp.prediction_5_holographic_noise()
         assert isinstance(result, dict)
+        # RMS displacement must be a physical length, bounded below by the
+        # Planck length and above by the interferometer arm length. (Guards the
+        # earlier sqrt(l_planck) dimensional bug, which had units of sqrt(m).)
+        rms = result["rms_displacement_m"]
+        assert result["planck_length"] < rms < result["arm_length_m"], (
+            f"holographic RMS displacement not lengthlike: {rms}")
+        assert result["noise_asd_m_per_sqrtHz"] > 0
 
 
 class TestConsciousnessSignatures:

@@ -1,0 +1,146 @@
+[
+  {
+    "id": 0,
+    "name": "basic",
+    "n": 3,
+    "framework_phi": 0.693147
+  },
+  {
+    "id": 1,
+    "name": "xor",
+    "n": 3,
+    "framework_phi": 0.0
+  },
+  {
+    "id": 2,
+    "name": "xor2",
+    "n": 3,
+    "framework_phi": 0.0
+  },
+  {
+    "id": 3,
+    "name": "xor3",
+    "n": 5,
+    "framework_phi": 0.265289
+  },
+  {
+    "id": 4,
+    "name": "xor4",
+    "n": 4,
+    "framework_phi": 0.0
+  },
+  {
+    "id": 5,
+    "name": "xor5",
+    "n": 5,
+    "framework_phi": 0.02429
+  },
+  {
+    "id": 6,
+    "name": "xor6",
+    "n": 4,
+    "framework_phi": 0.37489
+  },
+  {
+    "id": 7,
+    "name": "xor7",
+    "n": 3,
+    "framework_phi": 0.346574
+  },
+  {
+    "id": 8,
+    "name": "xor8",
+    "n": 4,
+    "framework_phi": 0.0
+  },
+  {
+    "id": 9,
+    "name": "xor9",
+    "n": 4,
+    "framework_phi": 0.036497
+  },
+  {
+    "id": 10,
+    "name": "xor10",
+    "n": 4,
+    "framework_phi": 0.405465
+  },
+  {
+    "id": 11,
+    "name": "xor11",
+    "n": 5,
+    "framework_phi": 0.0
+  },
+  {
+    "id": 12,
+    "name": "xor12",
+    "n": 4,
+    "framework_phi": 0.302392
+  },
+  {
+    "id": 13,
+    "name": "xor13",
+    "n": 5,
+    "framework_phi": 0.0
+  },
+  {
+    "id": 14,
+    "name": "xor14",
+    "n": 3,
+    "framework_phi": 0.0
+  },
+  {
+    "id": 15,
+    "name": "xor15",
+    "n": 4,
+    "framework_phi": 0.0
+  },
+  {
+    "id": 16,
+    "name": "xor16",
+    "n": 4,
+    "framework_phi": 0.0
+  },
+  {
+    "id": 17,
+    "name": "xor17",
+    "n": 5,
+    "framework_phi": 0.017824
+  },
+  {
+    "id": 18,
+    "name": "xor18",
+    "n": 5,
+    "framework_phi": 0.160262
+  },
+  {
+    "id": 19,
+    "name": "xor19",
+    "n": 5,
+    "framework_phi": 0.231049
+  },
+  {
+    "id": 20,
+    "name": "xor20",
+    "n": 5,
+    "framework_phi": 0.0
+  },
+  {
+    "id": 21,
+    "name": "xor21",
+    "n": 3,
+    "framework_phi": 0.693147
+  },
+  {
+    "id": 22,
+    "name": "xor22",
+    "n": 4,
+    "framework_phi": 0.301776
+  },
+  {
+    "id": 23,
+    "name": "xor23",
+    "n": 3,
+    "framework_phi": 0.0
+  }
+]

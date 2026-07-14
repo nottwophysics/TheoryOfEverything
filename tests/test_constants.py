@@ -3,10 +3,10 @@
 import numpy as np
 import pytest
 
-from constants.derivation import ConstantsFromConsciousness
-from constants.fine_structure import FineStructureDerivation
+from numerology.derivation import ConstantsFromConsciousness
+from numerology.fine_structure import FineStructureDerivation
 from constants.cosmological import CosmologicalConstant
-from constants.fine_structure_v3 import FineStructureV3, SelfReferentialDerivation, ModularBootstrap, HolographicConstraint
+from numerology.fine_structure_v3 import FineStructureV3, SelfReferentialDerivation, ModularBootstrap, HolographicConstraint
 
 
 class TestConstantsFromConsciousness:
@@ -115,3 +115,19 @@ class TestFineStructureV3:
         assert "best_result" in result
         assert result["best_result"]["error_pct"] < 1.0
         assert result["target"] == 137.035999084
+
+
+class TestKoideRelation:
+    def test_q_value_verification(self):
+        from constants.koide import KoideRelation
+        q = KoideRelation().q_value()
+        assert q["holds_to_1e-3"]
+        assert q["rel_error_pct"] < 0.1
+        assert q["citation"] == "10.1103/PhysRevLett.47.1241"
+
+    def test_tau_holdout_prediction(self):
+        from constants.koide import KoideRelation
+        p = KoideRelation().predict_tau()
+        assert p["free_parameters"] == 0
+        assert p["rel_error_pct"] < 0.05
+        assert 1770 < p["m_tau_predicted_MeV"] < 1785

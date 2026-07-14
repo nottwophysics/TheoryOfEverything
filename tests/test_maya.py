@@ -3,9 +3,9 @@
 import numpy as np
 import pytest
 
-from maya.superimposition import Adhyasa, SuperimposedObject
-from maya.gunas import Gunas, GunaBalance, GunaState
-from maya.nama_rupa import NamaRupa, NamedForm
+from philosophy.maya.superimposition import Adhyasa, SuperimposedObject
+from philosophy.maya.gunas import Gunas, GunaBalance, GunaState
+from philosophy.maya.nama_rupa import NamaRupa, NamedForm
 
 
 class TestSuperimposedObject:

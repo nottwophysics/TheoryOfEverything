@@ -3,7 +3,7 @@
 import numpy as np
 import pytest
 
-from brahman.consciousness import Brahman
+from philosophy.brahman.consciousness import Brahman
 
 
 @pytest.fixture(autouse=True)

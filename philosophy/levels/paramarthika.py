@@ -10,7 +10,7 @@ it was never there as an independent reality.
 """
 
 import numpy as np
-from brahman.consciousness import Brahman
+from philosophy.brahman.consciousness import Brahman
 
 
 class Paramarthika:

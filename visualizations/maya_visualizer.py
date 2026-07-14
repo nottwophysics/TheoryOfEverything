@@ -19,10 +19,10 @@ import sys
 import os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
-from brahman.consciousness import Brahman
-from maya.superimposition import Adhyasa
-from maya.gunas import Gunas, GunaBalance
-from maya.nama_rupa import NamaRupa
+from philosophy.brahman.consciousness import Brahman
+from philosophy.maya.superimposition import Adhyasa
+from philosophy.maya.gunas import Gunas, GunaBalance
+from philosophy.maya.nama_rupa import NamaRupa
 from emergence.spacetime import ConsciousnessField
 
 
@@ -180,7 +180,7 @@ class MayaVisualizer:
         Visualize the Neti-Neti process — stripping away layers
         to reveal the witness.
         """
-        from liberation.neti_neti import NetiNeti
+        from philosophy.liberation.neti_neti import NetiNeti
 
         inquiry = NetiNeti(field_size=256)
         result = inquiry.inquire(verbose=False)

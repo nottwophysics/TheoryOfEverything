@@ -3,8 +3,8 @@
 import numpy as np
 import pytest
 
-from brahman.consciousness import Brahman
-from brahman.sat_chit_ananda import SatChitAnanda
+from philosophy.brahman.consciousness import Brahman
+from philosophy.brahman.sat_chit_ananda import SatChitAnanda
 
 
 class TestBrahmanSingleton:

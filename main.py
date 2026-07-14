@@ -25,17 +25,17 @@ import json
 # Ensure project root is in path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from brahman.consciousness import Brahman
-from brahman.sat_chit_ananda import SatChitAnanda
-from maya.superimposition import Adhyasa
-from maya.nama_rupa import NamaRupa
-from maya.gunas import Gunas, GunaBalance
-from levels.reality_engine import RealityEngine
+from philosophy.brahman.consciousness import Brahman
+from philosophy.brahman.sat_chit_ananda import SatChitAnanda
+from philosophy.maya.superimposition import Adhyasa
+from philosophy.maya.nama_rupa import NamaRupa
+from philosophy.maya.gunas import Gunas, GunaBalance
+from philosophy.levels.reality_engine import RealityEngine
 from emergence.spacetime import ConsciousnessField, EmergentSpacetime
 from emergence.causation import Vivartavada
 from emergence.observer import Sakshi, Experience
-from liberation.neti_neti import NetiNeti
-from liberation.mahavakya import Mahavakya
+from philosophy.liberation.neti_neti import NetiNeti
+from philosophy.liberation.mahavakya import Mahavakya
 from simulations.experiments import (
     rope_snake_experiment,
     fractal_unity_experiment,
@@ -269,8 +269,8 @@ def constants_experiment():
     print("  EXPERIMENT 15: PHYSICAL CONSTANTS FROM CONSCIOUSNESS")
     print("=" * 70)
 
-    from constants.derivation import ConstantsFromConsciousness
-    from constants.fine_structure import FineStructureDerivation
+    from numerology.derivation import ConstantsFromConsciousness
+    from numerology.fine_structure import FineStructureDerivation
     from constants.cosmological import CosmologicalConstant
 
     print("\n--- Self-Reference Constants ---")
@@ -781,7 +781,7 @@ def fine_structure_v2_experiment():
     print("  Target: 1/α = 137.035999084")
     print("=" * 70)
 
-    from constants.fine_structure_v2 import FineStructureV2
+    from numerology.fine_structure_v2 import FineStructureV2
 
     fs = FineStructureV2()
     results = fs.run_all_approaches()
@@ -1162,7 +1162,7 @@ def fine_structure_v3_experiment():
     print("  Target: 1/α = 137.035999084")
     print("=" * 70)
 
-    from constants.fine_structure_v3 import FineStructureV3
+    from numerology.fine_structure_v3 import FineStructureV3
 
     fs = FineStructureV3()
     results = fs.run_all_approaches()
@@ -1239,8 +1239,60 @@ def unity_of_experience_experiment():
     return {"status": "completed", "experiment": 30}
 
 
+def look_elsewhere_experiment():
+    """Experiment 31: Look-Elsewhere Effect — why the alpha 'derivation' is numerology.
+
+    This is a self-critical teaching demo. The framework's celebrated result is
+    1/alpha ~ 163 - 26 + pi/100 = 137.0314 (0.0033 % error). This experiment
+    shows *how easily* a target of that precision is hit by a large family of
+    equally simple formulas, so the reader can judge the claim for themselves.
+    """
+    print("\n" + "=" * 70)
+    print("  EXPERIMENT 31: THE LOOK-ELSEWHERE EFFECT (numerology demonstrator)")
+    print("  Question: how special is 1/alpha = 163 - 26 + pi/100 ?")
+    print("=" * 70)
+
+    from numerology.look_elsewhere import LookElsewhereAnalysis
+
+    lea = LookElsewhereAnalysis()
+    r = lea.full_report()
+
+    print("\n  THE CLAIMED FORMULA")
+    print("  " + "-" * 60)
+    print(f"    Formula:          {r['claimed_formula']}")
+    print(f"    Value:            {r['claimed_value']:.6f}")
+    print(f"    Relative error:   {r['claimed_rel_error']*100:.4f} %")
+
+    print("\n  THE LOOK-ELSEWHERE EFFECT")
+    print("  " + "-" * 60)
+    print(f"    Formulas in the same simple family: {r['family_size_corrections']:,}")
+    print(f"    Family members matching 1/alpha at the claim's own precision:")
+    print(f"      -> {r['n_formulas_matching_alpha_at_claim_precision']} distinct formulas")
+    print(f"    Closest family value:  {r['closest_family_value_to_alpha']:.8f} "
+          f"(error {r['closest_family_rel_error']*100:.6f} %)")
+    print(f"    ...that is {r['claimed_rel_error']/r['closest_family_rel_error']:.0f}x "
+          f"more accurate than the celebrated formula.")
+
+    print("\n  HOW EASILY ANY TARGET IS HIT")
+    print("  " + "-" * 60)
+    print(f"    Coverage of the window 130-145 at 1e-4 tolerance: "
+          f"{r['coverage_130_145_at_1e-4']*100:.1f} %")
+    print(f"    Coverage of the broad range 0.1-2000 at 1e-4:      "
+          f"{r['coverage_broad_at_1e-4']*100:.1f} %")
+    print(f"    Fraction of 25 real physics constants hit at 1e-4: "
+          f"{r['basket_fraction_hit_at_1e-4']*100:.0f} %")
+
+    print("\n  CONCLUSION")
+    print("  " + "-" * 60)
+    print("    A formula family this rich hits essentially ANY target to this")
+    print("    precision. Matching 1/alpha is therefore expected by chance, not")
+    print("    evidence of a derivation. This is the look-elsewhere effect, and")
+    print("    it is why the constants work lives in numerology/, not constants/.")
+    return {"status": "completed", "experiment": 31}
+
+
 def run_physics_experiments():
-    """Run all physics extension experiments (9-30)."""
+    """Run all physics extension experiments (9-31)."""
     print("\n" + "#" * 70)
     print("#" + " " * 68 + "#")
     print("#   PHYSICS EXTENSIONS — TOWARD A REAL THEORY OF EVERYTHING" + " " * 9 + "#")
@@ -1270,6 +1322,7 @@ def run_physics_experiments():
         er_epr_experiment,
         fine_structure_v3_experiment,
         unity_of_experience_experiment,
+        look_elsewhere_experiment,
     ]
 
     results = []
@@ -1400,8 +1453,8 @@ def main():
         description="Theory of Everything — Advaita Vedanta Computational Framework"
     )
     parser.add_argument(
-        "--experiment", type=int, choices=range(1, 31),
-        help="Run a specific experiment (1-30)",
+        "--experiment", type=int, choices=range(1, 32),
+        help="Run a specific experiment (1-31)",
     )
     parser.add_argument(
         "--visualize", action="store_true",
@@ -1457,6 +1510,7 @@ def main():
         28: er_epr_experiment,
         29: fine_structure_v3_experiment,
         30: unity_of_experience_experiment,
+        31: look_elsewhere_experiment,
     }
 
     if args.everything:

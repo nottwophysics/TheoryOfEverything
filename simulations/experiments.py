@@ -12,17 +12,17 @@ import os
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
-from brahman.consciousness import Brahman
-from brahman.sat_chit_ananda import SatChitAnanda
-from maya.superimposition import Adhyasa
-from maya.nama_rupa import NamaRupa
-from maya.gunas import Gunas, GunaBalance
-from levels.reality_engine import RealityEngine
+from philosophy.brahman.consciousness import Brahman
+from philosophy.brahman.sat_chit_ananda import SatChitAnanda
+from philosophy.maya.superimposition import Adhyasa
+from philosophy.maya.nama_rupa import NamaRupa
+from philosophy.maya.gunas import Gunas, GunaBalance
+from philosophy.levels.reality_engine import RealityEngine
 from emergence.spacetime import ConsciousnessField, EmergentSpacetime
 from emergence.causation import Vivartavada
 from emergence.observer import Sakshi, Experience
-from liberation.neti_neti import NetiNeti
-from liberation.mahavakya import Mahavakya
+from philosophy.liberation.neti_neti import NetiNeti
+from philosophy.liberation.mahavakya import Mahavakya
 
 
 def _print_section(title: str, content: dict, indent: int = 0):

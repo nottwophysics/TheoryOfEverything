@@ -27,31 +27,39 @@ cd TheoryOfEverything
 python3 -m venv toenv
 source toenv/bin/activate
 
-# Install dependencies
-pip install numpy matplotlib scipy
+# Install the package and its dependencies (editable install).
+# This registers all sub-packages on the import path, so you no longer
+# need to set PYTHONPATH or run from the repository root.
+pip install -e .
 
-# Run the quick demo
-python main.py --demo
+# Run the quick demo — either form works after install:
+theory-of-everything          # console entry point (runs from anywhere)
+python main.py --demo         # or the script directly
 
 # Run all 8 original Advaita experiments
 python main.py --all
 
-# Run all 22 physics extension experiments (9–30)
+# Run all 23 physics extension experiments (9–31)
 python main.py --physics
 
-# Run a specific experiment (1–30)
+# Run a specific experiment (1–31)
 python main.py --experiment 24
 
 # Generate all 7 visualizations
 python main.py --visualize
 
-# Run EVERYTHING (30 experiments + visualizations)
+# Run EVERYTHING (31 experiments + visualizations)
 python main.py --everything
 
-# Run the test suite (237 tests)
-pip install pytest
-pytest tests/ -v
+# Run the test suite (265 tests) — install the test extra, then run from anywhere
+pip install -e ".[test]"
+pytest                        # testpaths=tests is configured in pyproject.toml
 ```
+
+> **Note on imports.** After `pip install -e .` every sub-package
+> (`constants`, `numerology`, `predictions`, `gravity`, `quantum`, …) is
+> importable from any working directory. The previous requirement to prefix
+> commands with `PYTHONPATH=.` is gone.
 
 For a guided walkthrough of the project, see [docs/GETTING_STARTED.md](docs/GETTING_STARTED.md).
 
@@ -61,7 +69,7 @@ For a guided walkthrough of the project, see [docs/GETTING_STARTED.md](docs/GETT
 
 | Layer | Modules | Purpose |
 |-------|---------|---------|
-| **Metaphysical Foundation** | `brahman/`, `maya/`, `levels/`, `emergence/`, `liberation/` | Models the core Advaita Vedanta framework |
+| **Metaphysical Foundation** (interpretive, not empirical) | `philosophy/` (`brahman/`, `maya/`, `levels/`, `liberation/`), `emergence/` | Models the core Advaita Vedanta framework — see `philosophy/README.md` |
 | **Quantum Mechanics** | `quantum/` | QM from consciousness; Gleason's theorem; tensor networks; QEC; 4 interpretations |
 | **General Relativity** | `gravity/` | Emergent gravity from entanglement; 2+1D Einstein equations |
 | **Standard Model** | `particles/` | Particles and forces from Maya's symmetry breaking |
@@ -69,8 +77,8 @@ For a guided walkthrough of the project, see [docs/GETTING_STARTED.md](docs/GETT
 | **Predictions** | `predictions/` | 5 testable predictions + IIT-entanglement bridge |
 | **Falsification** | `falsification/` | 5 explicit falsification criteria + experimental designs |
 | **Visualizations** | `visualizations/` | 7 visual plots of Advaita concepts |
-| **Experiments** | `simulations/`, `main.py` | 29 runnable experiments demonstrating the framework |
-| **Test Suite** | `tests/` | 227 automated tests validating all modules |
+| **Experiments** | `simulations/`, `main.py` | 31 runnable experiments demonstrating the framework |
+| **Test Suite** | `tests/` | 265 automated tests validating all modules |
 
 ---
 
@@ -87,7 +95,7 @@ These claims map directly to structures in modern physics. See [docs/PHILOSOPHY.
 
 ---
 
-## The 26 Experiments
+## The 31 Experiments
 
 ### Tier 1 — Advaita Framework (1–8)
 
@@ -135,13 +143,15 @@ These claims map directly to structures in modern physics. See [docs/PHILOSOPHY.
 | 25 | **Perspectival Asymmetry (Generalized)** | Total purity = 1.0 for ALL states, bases, environment sizes; exact to 10⁻¹⁶ |
 | 26 | **Observer Centrality** | Decoherence selects basis but NOT outcome; "observer" does essential work in the formalism |
 
-### Tier 5 — Physics Extensions (27–29)
+### Tier 5 — Physics Extensions (27–31)
 
 | # | Name | What It Demonstrates |
 |---|------|---------------------|
 | 27 | **3+1D Einstein Equations** | Full spacetime Jacobson derivation on 3D Delaunay tetrahedralization; R-T correlation ~0.88 |
 | 28 | **ER=EPR Correspondence** | Wormholes = entanglement; thermofield double, Van Raamsdonk disconnection, monogamy non-traversability |
 | 29 | **Fine Structure v3** | Rigorous derivation attempts: self-referential, modular bootstrap, holographic constraint; continued fraction analysis |
+| 30 | **Unity of Experience** | Experiential underdetermination — decoherence fixes ρ_SA but not experiential ontology |
+| 31 | **Look-Elsewhere Effect** | Self-critical numerology demo: 125 equally-simple formulas match 1/α at the claimed precision, so the α "derivation" is a coincidence, not a result |
 
 See [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md) for detailed documentation of all experiments.
 
@@ -155,7 +165,7 @@ See [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md) for detailed documentation of all
 | [docs/PHILOSOPHY.md](docs/PHILOSOPHY.md) | Deep dive into Advaita Vedanta and its mapping to physics |
 | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | Project structure, design principles, and module relationships |
 | [docs/MODULES.md](docs/MODULES.md) | Detailed documentation of every module and class |
-| [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md) | All 30 experiments with methodology and results |
+| [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md) | All 31 experiments with methodology and results |
 | [docs/PREDICTIONS.md](docs/PREDICTIONS.md) | Testable predictions, falsification criteria, and experimental roadmap |
 | [docs/ROADMAP.md](docs/ROADMAP.md) | 5 paths from framework to real ToE, with honest status assessment |
 | [docs/GLEASON_PROBABILITY_GAP.md](docs/GLEASON_PROBABILITY_GAP.md) | Technical note engaging Kent (2010) and Baker (2007) critiques of Gleason-based Born rule derivations |
@@ -182,7 +192,7 @@ See [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md) for detailed documentation of all
 
 This project is scientifically honest about what it has and hasn't achieved:
 
-- **Tested**: Full test suite (237 tests) covering every module — run with `pytest tests/ -v`
+- **Tested**: Full test suite (265 tests) covering every module — run with `pytest`
 - **Proven**: Gleason-based axiom reduction (mathematical fact)
 - **Demonstrated**: Measurement resolution, Bell violation, decoherence framework
 - **Demonstrated (2D)**: Einstein equations on discrete manifold (R-T = 0.94), MERA tensor network, QEC holographic code

@@ -1,0 +1,47 @@
+# Forgejo Actions CI (Codeberg-native).
+# Runs the test suite on every push and pull request across the supported
+# Python versions, using the packaged install so it exercises the same
+# `pip install -e .` path documented in the README (no PYTHONPATH).
+#
+# Codeberg CI must be enabled for the repo (Settings -> Actions) and a runner
+# must be available. The workflow is GitHub-Actions-compatible; a mirror lives
+# at .github/workflows/ci.yml for forks hosted on GitHub.
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: docker
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12", "3.13"]
+    container:
+      image: python:${{ matrix.python-version }}-slim
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Show Python version
+        run: python --version
+
+      - name: Install package with test extras
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[test]"
+
+      - name: Verify import works without PYTHONPATH
+        # Run from a directory that is NOT the repo root, proving the packaged
+        # install (not the cwd) resolves the imports.
+        run: |
+          cd /tmp
+          python -c "import constants, numerology, predictions, gravity, quantum; from constants.koide import KoideRelation; print('imports OK:', KoideRelation().q_value()['holds_to_1e-3'])"
+
+      - name: Run test suite
+        run: |
+          cd /tmp
+          python -m pytest "$GITHUB_WORKSPACE/tests" -q

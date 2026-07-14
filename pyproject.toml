@@ -1,3 +1,7 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "theory-of-everything"
 version = "0.1.0"
@@ -11,6 +15,25 @@ dependencies = [
 
 [project.optional-dependencies]
 test = ["pytest>=7.0.0"]
+
+[project.scripts]
+# `theory-of-everything` runs the full demonstration (formerly `python main.py`).
+theory-of-everything = "main:main"
+
+# The repository uses a flat layout with many top-level packages, so setuptools'
+# automatic discovery is ambiguous; enumerate the importable packages explicitly
+# and expose `main.py` as a top-level module. `tests`, build artefacts, and the
+# analysis figures are intentionally excluded from the installed distribution.
+[tool.setuptools]
+py-modules = ["main"]
+
+[tool.setuptools.packages.find]
+include = [
+    "philosophy*", "constants*", "emergence*", "falsification*", "gravity*",
+    "numerology*", "particles*",
+    "predictions*", "quantum*", "simulations*", "visualizations*",
+]
+exclude = ["tests*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

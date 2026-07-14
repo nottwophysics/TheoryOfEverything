@@ -13,7 +13,7 @@ These are not philosophical claims but pointers to direct realization.
 """
 
 import numpy as np
-from brahman.consciousness import Brahman
+from philosophy.brahman.consciousness import Brahman
 
 
 class Mahavakya:

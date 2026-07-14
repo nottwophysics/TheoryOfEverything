@@ -235,7 +235,9 @@ class EmergentEinstein3D:
         else:
             geo_correlation = 0.0
 
-        if np.std(T_00[mask]) > 1e-10:
+        # Guard against an empty/singleton mask (no-mass case), where np.std
+        # over a zero-length slice raises "Degrees of freedom <= 0".
+        if np.sum(mask) > 1 and np.std(T_00[mask]) > 1e-10:
             G_eff = float(np.mean(R_entropy[mask] / (T_00[mask] + 1e-15)))
         else:
             G_eff = 0.0
