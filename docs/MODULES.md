@@ -6,9 +6,12 @@
 
 ## Metaphysical Foundation Modules
 
+> These modules live under `philosophy/` and are the **interpretive layer** —
+> Advaita scaffolding, not empirical physics. See [`philosophy/README.md`](../philosophy/README.md).
+
 ---
 
-### `brahman/consciousness.py` — The Singular Reality
+### `philosophy/brahman/consciousness.py` — The Singular Reality
 
 **Class: `Brahman`**
 
@@ -28,7 +31,7 @@ The non-dual ground of all existence. Implemented as a singleton — there can o
 
 ---
 
-### `brahman/sat_chit_ananda.py` — Three Aspects of Brahman
+### `philosophy/brahman/sat_chit_ananda.py` — Three Aspects of Brahman
 
 **Class: `SatChitAnanda`**
 
@@ -43,7 +46,7 @@ Three orthogonal projections of the same field, each revealing a different aspec
 
 ---
 
-### `maya/superimposition.py` — Adhyasa
+### `philosophy/maya/superimposition.py` — Adhyasa
 
 **Class: `Adhyasa`**
 
@@ -66,7 +69,7 @@ The core mechanism of Maya — projecting familiar patterns onto ambiguous perce
 
 ---
 
-### `maya/nama_rupa.py` — Name and Form
+### `philosophy/maya/nama_rupa.py` — Name and Form
 
 **Class: `NamaRupa`**
 
@@ -80,7 +83,7 @@ Differentiates a unified field into apparently distinct entities.
 
 ---
 
-### `maya/gunas.py` — Three Qualities
+### `philosophy/maya/gunas.py` — Three Qualities
 
 **Class: `Gunas`**
 
@@ -95,7 +98,7 @@ Models the three fundamental qualities of experience.
 
 ---
 
-### `levels/reality_engine.py` — Three Levels of Reality
+### `philosophy/levels/reality_engine.py` — Three Levels of Reality
 
 **Class: `RealityEngine`**
 
@@ -160,7 +163,7 @@ The unchanging witness of all experience.
 
 ---
 
-### `liberation/neti_neti.py` — "Not This, Not This"
+### `philosophy/liberation/neti_neti.py` — "Not This, Not This"
 
 **Class: `NetiNeti`**
 
@@ -175,7 +178,7 @@ Systematic negation of false identifications.
 
 ---
 
-### `liberation/mahavakya.py` — The Four Great Sayings
+### `philosophy/liberation/mahavakya.py` — The Four Great Sayings
 
 **Class: `Mahavakya`**
 
@@ -439,7 +442,18 @@ Jacobson's thermodynamic derivation on a proper 2D discrete manifold (Delaunay t
 
 ---
 
-### `constants/derivation.py` — Physical Constants from Consciousness
+## Numerology Modules (candidly walled off)
+
+> The `numerology/` package holds the fine-structure "derivations." They are
+> **numerical curve-fitting presented honestly as such**, not physics — moved out
+> of `constants/` and renamed so they can be judged on their own terms. The two
+> hold-out modules below (`cross_validation.py`, `look_elsewhere.py`) exist
+> precisely to show why: a genuine law predicts a *second* constant with no
+> re-tuning, and survives a look-elsewhere correction. These do not.
+
+---
+
+### `numerology/derivation.py` — Physical Constants from Consciousness
 
 **Class: `ConstantsFromConsciousness`**
 
@@ -452,7 +466,7 @@ Jacobson's thermodynamic derivation on a proper 2D discrete manifold (Delaunay t
 
 ---
 
-### `constants/fine_structure.py` — The Fine Structure Constant
+### `numerology/fine_structure.py` — The Fine Structure Constant
 
 **Class: `FineStructureDerivation`**
 
@@ -476,7 +490,7 @@ Jacobson's thermodynamic derivation on a proper 2D discrete manifold (Delaunay t
 
 ---
 
-### `constants/fine_structure_v2.py` — Fine Structure Constant (v2, Systematic)
+### `numerology/fine_structure_v2.py` — Fine Structure Constant (v2, Systematic)
 
 **Classes**: `FineStructureFromMERA`, `FineStructureFromTopology`, `FineStructureFromSelfReference`, `FineStructureFromModular`, `FineStructureV2`
 
@@ -498,6 +512,81 @@ Systematic exploration of 6 approaches to derive α ≈ 1/137.036.
 | `.run_all_approaches()` | Run all 6 approaches, rank by accuracy, report best result. |
 
 **Key result**: 1/α ≈ 163 - 26 + π/100 = 137.031 (0.003% error). Connects Heegner number 163, bosonic string dimension 26, and Monster group.
+
+---
+
+### `numerology/fine_structure_v3.py` — Fine Structure Constant (v3, Rigorous)
+
+**Classes**: `ModularBootstrap`, `HolographicAlpha`, `SelfReferentialAlpha`, `FineStructureV3`
+
+The most careful of the three attempts: modular-bootstrap, holographic, and
+self-referential routes to α ≈ 1/137.036, each reporting its own error honestly.
+
+| Method | Description |
+|--------|-------------|
+| `.run_all_approaches()` | Run every v3 route, rank by accuracy, and report the residual error of each. |
+
+**Framing**: v3 tightens the arithmetic but does not change the verdict — see the
+two hold-out tests below, which are the actual arbiters of whether any of this is
+physics or coincidence.
+
+---
+
+### `numerology/cross_validation.py` — Hold-Out Cross-Validation
+
+**Class: `CrossValidation`**
+
+A genuine formula-generating *principle* can be fixed on one constant and then
+**predict a second, independent constant with no re-tuning**. This module runs
+that standard hold-out test on the fine-structure "rule."
+
+| Method | Description |
+|--------|-------------|
+| `.fit_on(constant)` | Tune the recipe's free integers on a single target constant. |
+| `.predict_held_out(recipe)` | Apply the fitted recipe, unchanged, to a different constant. |
+| `.run()` | Full fit → predict → report. Reports the held-out error (large → curve-fit). |
+
+**Key result**: the recipe fitted on 1/α does **not** transfer — the held-out
+prediction is off by orders of magnitude more than the in-sample "hit." Produces
+`alpha_cross_validation.png`.
+
+---
+
+### `numerology/look_elsewhere.py` — Look-Elsewhere Analysis
+
+**Class: `LookElsewhere`**
+
+Counts how many equally-simple integer/π/e expressions land within the same
+tolerance of 1/α by chance, quantifying the multiple-comparisons ("look-elsewhere")
+penalty behind the `163 - 26 + π/100` coincidence.
+
+| Method | Description |
+|--------|-------------|
+| `.enumerate_expressions(depth)` | Generate the space of comparably-simple candidate formulas. |
+| `.count_near_hits(tolerance)` | How many land as close as the reported "derivation." |
+| `.run()` | Full sweep + report of the effective trials factor. |
+
+**Key result**: many independent simple expressions hit 1/α to the same
+precision, so the near-match carries little evidential weight. Produces
+`alpha_look_elsewhere.png`.
+
+---
+
+### `constants/koide.py` — Koide Relation (Verification, NOT Derivation)
+
+**Class: `KoideRelation`**
+
+The Koide relation is an empirical near-coincidence among the charged-lepton
+masses: Q = (mₑ+m_μ+m_τ)/(√mₑ+√m_μ+√m_τ)² ≈ 2/3. This module **verifies** it
+against measured masses and states plainly that the framework does not *derive*
+it. (Split out of the old `constants/derivation.py` so verification is not
+mistaken for derivation.)
+
+| Method | Description |
+|--------|-------------|
+| `.compute_Q(masses)` | Evaluate Q from the three measured lepton masses (with uncertainties). |
+| `.distance_from_two_thirds()` | How close Q sits to 2/3, in σ. |
+| `.verify()` | Full report: value, error bars, and an explicit "not derived here" note. |
 
 ---
 
@@ -531,6 +620,77 @@ Formally bridges Tononi's IIT (consciousness measure Φ) with quantum entangleme
 | `.full_demonstration()` | Run all tests + generate testable predictions. |
 
 **Key result**: Φ ≤ S holds in 100% of 50 trials. Φ increases toward IR in MERA.
+
+> **Caveat (addressed by the two modules below):** the original test is
+> *circular* — it draws both Φ and S from the same scalar (total connectivity of
+> one random matrix), and `compute_phi` is a "simplified IIT-like" measure, not
+> canonical IIT Φ. `iit_entanglement_rigorous.py` removes the circularity;
+> `pyphi_benchmark.py` checks the measure against the reference implementation.
+
+---
+
+### `predictions/iit_entanglement_rigorous.py` — Non-Circular Φ/S Bridge
+
+**Class: `RigorousIITEntanglementBridge`**
+
+Re-runs the Φ ≤ S test **without the circularity**: Φ is computed from a system's
+causal structure and S from an *independently prepared* quantum state, so a
+correlation (if any) is not built in by construction. Includes a null control.
+
+| Method | Description |
+|--------|-------------|
+| `.independent_phi_and_S(trials)` | Draw Φ and S from separate sources; record both. |
+| `.null_control(trials)` | Shuffle the pairing to establish the chance baseline. |
+| `.test_conjecture(trials)` | Compare observed Φ–S relationship against the null. |
+
+**Purpose**: tells apart a real Φ ≤ S regularity from an artifact of sharing one
+random scalar between the two quantities.
+
+---
+
+### `predictions/pyphi_benchmark.py` — Framework Φ vs Canonical IIT Φ
+
+**Class: `PyPhiBenchmark`**
+
+Tests the implicit claim that `iit_bridge.compute_phi` approximates the Φ that
+IIT actually defines, by comparing it system-for-system against **PyPhi 1.2.0**
+(Mayner et al., *PLOS Comput. Biol.* 2018, `10.1371/journal.pcbi.1006343`), the
+reference IIT 3.0 implementation. Runs offline against checked-in fixtures
+(`tests/fixtures/pyphi_benchmark_{framework,reference}.json`) so PyPhi need not be
+installed to reproduce the comparison.
+
+| Method | Description |
+|--------|-------------|
+| `.canonical_networks()` | PyPhi's own example networks + small XOR-logic systems (3–5 nodes). |
+| `.compare(system)` | Framework Φ vs PyPhi Φ for a single system with a reachable state. |
+| `.run(regenerate=False)` | Full benchmark; by default reads fixtures, optionally recomputes. |
+
+**Purpose**: quantifies how far the "simplified IIT-like" measure sits from
+canonical Φ, so the docstring's implied equivalence can be judged.
+
+---
+
+### `predictions/decoherence_calculator.py` — Decoherence-Threshold Calculator
+
+**Class: `DecoherenceCalculator`**
+
+Turns prediction **P2** into a real quantitative tool. Interference is visible
+only where gravitational (Diósi–Penrose) collapse is faster than *every*
+environmental decoherence channel, yet still slow enough to run an experiment.
+This computes all three channels and finds that window.
+
+| Channel | Formula | Reference |
+|---------|---------|-----------|
+| Gravitational (DP) | τ = ħ / ΔE_grav (uniform-sphere self-energy) | Diósi 1989 `10.1103/PhysRevA.40.1165`; Penrose 1996 `10.1007/BF02105068` |
+| Gas collisions | τ = 1/(n v̄ σ) | Joos & Zeh 1985 `10.1007/BF01725541` |
+| Thermal photons | τ = 1/(Λ Δx²), Λ = 8.55 ζ(9) c R⁶ (k_BT/ħc)⁹ | Schlosshauer 2005 `10.1103/RevModPhys.76.1267` |
+
+| Method | Description |
+|--------|-------------|
+| `.dp_time(radius, delta_x)` | Gravitational collapse time for a sphere superposed at separation Δx. |
+| `.gas_time(radius, pressure, T)` | Collisional decoherence time. |
+| `.photon_time(radius, delta_x, T)` | Thermal-photon decoherence time. |
+| `.observable_window(...)` | Mass/pressure/temperature region where DP collapse wins. Produces `decoherence_envelopes.png`. |
 
 ---
 
@@ -702,22 +862,27 @@ See [docs/PREDICTIONS.md](PREDICTIONS.md) for full details on F1–F5.
 
 ---
 
-### `tests/` — 237 Automated Tests
+### `tests/` — 265 Automated Tests
 
 Every module above has a corresponding test file. Tests validate mathematical properties, physical results, and framework invariants. Run with `pytest tests/ -v`.
 
 | Test File | Module(s) Tested | Tests | Key Validations |
 |-----------|-----------------|-------|-----------------|
-| `test_brahman.py` | brahman/ | 20 | Singleton pattern, field normalization, coherence = 1.0, self-reference, Atman=Brahman equality |
-| `test_maya.py` | maya/ | 25 | Superimposition at varying ignorance, clarity threshold, guna normalization/evolution, nama-rupa non-separation |
-| `test_levels.py` | levels/ | 20 | Three-level routing, sublation chain, entropy non-negativity, entity counting, invalid state raises |
-| `test_emergence.py` | emergence/ | 22 | Metric symmetry, diagonal=0, curvature bounds, substrate preservation, witness immutability |
-| `test_liberation.py` | liberation/ | 12 | 8-layer negation, remainder→0, step-by-step generator, mahavakya structure and overlap |
+| `test_brahman.py` | philosophy/brahman/ | 20 | Singleton pattern, field normalization, coherence = 1.0, self-reference, Atman=Brahman equality |
+| `test_maya.py` | philosophy/maya/ | 30 | Superimposition at varying ignorance, clarity threshold, guna normalization/evolution, nama-rupa non-separation |
+| `test_levels.py` | philosophy/levels/ | 22 | Three-level routing, sublation chain, entropy non-negativity, entity counting, invalid state raises |
+| `test_emergence.py` | emergence/ | 23 | Metric symmetry, diagonal=0, curvature bounds, substrate preservation, witness immutability |
+| `test_liberation.py` | philosophy/liberation/ | 11 | 8-layer negation, remainder→0, step-by-step generator, mahavakya structure and overlap |
 | `test_quantum.py` | quantum/ | 63 | Normalization, orthogonality, Hermiticity, [a,a†]=I, Gleason C1–C4, Born uniqueness, Bell S=2√2, decoherence, ER=EPR, **experiential underdetermination (Exp 30)** |
-| `test_gravity.py` | gravity/ | 18 | Correlation matrix symmetry, distance properties, R-T correlation, Newton recovery (r>0.9) |
-| `test_constants.py` | constants/ | 11 | Golden ratio, Euler number, Koide ~2/3, fine structure approaches |
-| `test_particles.py` | particles/ | 11 | Unified symmetry normalization, guna-generation mapping, maya depth bounds |
-| `test_predictions.py` | predictions/, falsification/ | 14 | Prediction structure, falsifier completeness, experiment designs |
+| `test_gravity.py` | gravity/ | 23 | Correlation matrix symmetry, distance properties, R-T correlation, Newton recovery (r>0.9), 2+1D & 3+1D deficit-angle curvature |
+| `test_constants.py` | constants/ | 18 | Cosmological constant resolution, Koide ~2/3 verification with error bars |
+| `test_particles.py` | particles/ | 13 | Unified symmetry normalization, guna-generation mapping, maya depth bounds |
+| `test_predictions.py` | predictions/, falsification/ | 16 | Prediction structure, falsifier completeness, experiment designs |
+| `test_numerology.py` | numerology/ | 6 | Fine-structure recipe families reproduce their reported hits; main.py demo runs |
+| `test_cross_validation.py` | numerology/ | 3 | Fit-on-one / predict-another hold-out fails as expected (curve-fit, not law) |
+| `test_iit_rigorous.py` | predictions/ | 4 | Non-circular Φ/S bridge behaves vs. null control |
+| `test_pyphi_benchmark.py` | predictions/ | 5 | Framework Φ vs canonical PyPhi Φ against checked-in fixtures (no PyPhi needed) |
+| `test_decoherence_calculator.py` | predictions/ | 8 | DP vs gas vs thermal-photon channels; physics-limit sanity checks |
 
 **Test isolation**: The `conftest.py` fixture resets the Brahman singleton before each test, preventing state leakage.
 

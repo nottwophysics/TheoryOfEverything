@@ -33,7 +33,7 @@ This is not a new idea. It is the central claim of **Advaita Vedanta**, a 3000-y
 
 The project is:
 - **A computational framework** — real Python code you can run
-- **30 experiments** — each demonstrating a specific concept with quantitative results
+- **31 experiments** — each demonstrating a specific concept with quantitative results
 - **7 visualizations** — publication-quality plots
 - **1 mathematically rigorous result** — the Born rule derived via Gleason's theorem
 - **5 testable predictions** and **5 falsification criteria** — real science
@@ -151,10 +151,10 @@ This runs 7 mini-demonstrations in under 2 seconds:
 # Original 8 Advaita experiments
 python main.py --all
 
-# 22 Physics extension experiments (9-30)
+# 23 Physics extension experiments (9–31)
 python main.py --physics
 
-# Everything (30 experiments + 7 visualizations)
+# Everything (31 experiments + 7 visualizations)
 python main.py --everything
 ```
 
@@ -178,20 +178,23 @@ python main.py --experiment 1     # Rope-snake (simplest)
 
 The project is organized in ontological layers — from the most fundamental to the most derived:
 
+The interpretive Advaita layers (0, 1, 2, 4) live under `philosophy/`; the physics
+and science layers are separate.
+
 ```
-Layer 0: BRAHMAN (brahman/)
+Layer 0: BRAHMAN (philosophy/brahman/)
     │     Pure consciousness. The singleton field. Everything else emerges from here.
     │
-Layer 1: MAYA (maya/)
+Layer 1: MAYA (philosophy/maya/)
     │     The appearance engine. Superimposition, names-and-forms, three qualities.
     │
-Layer 2: LEVELS (levels/)
+Layer 2: LEVELS (philosophy/levels/)
     │     Three levels of reality. The orchestrator of sublation.
     │
 Layer 3: EMERGENCE (emergence/)
     │     How physics emerges. Spacetime, causation, the witness.
     │
-Layer 4: LIBERATION (liberation/)
+Layer 4: LIBERATION (philosophy/liberation/)
     │     The path back. Neti-neti, the four great sayings.
     │
 Layer 5: PHYSICS (quantum/, gravity/, particles/, constants/)
@@ -201,15 +204,20 @@ Layer 6: SCIENCE (predictions/, falsification/)
           Testable predictions and falsification criteria.
 ```
 
-**Key principle**: Higher layers depend on lower ones. `brahman/` depends on nothing. Everything else depends on `brahman/`.
+The fine-structure "derivations" are deliberately **not** in this dependency
+chain — they live in `numerology/`, walled off and candidly labelled as
+curve-fitting rather than physics (with hold-out and look-elsewhere tests that
+show why).
+
+**Key principle**: Higher layers depend on lower ones. `philosophy/brahman/` depends on nothing. Everything else depends on it.
 
 ### Reading Order for the Code
 
 If you want to read the source code, here is the recommended order:
 
-1. **`brahman/consciousness.py`** — The foundation. Understand this first.
-2. **`maya/superimposition.py`** — How the one appears as many.
-3. **`levels/reality_engine.py`** — The three-level framework.
+1. **`philosophy/brahman/consciousness.py`** — The foundation. Understand this first.
+2. **`philosophy/maya/superimposition.py`** — How the one appears as many.
+3. **`philosophy/levels/reality_engine.py`** — The three-level framework.
 4. **`quantum/measurement.py`** — The measurement problem dissolved.
 5. **`quantum/gleason.py`** — The rigorous result (Born rule as theorem).
 6. **`quantum/interpretations.py`** — The formal comparison of 4 interpretations.
@@ -391,7 +399,7 @@ Generates 7 PNG files in the `output/` directory:
 
 ## 10. Running the Tests
 
-The project includes a comprehensive test suite with **227 automated tests** covering every module. Tests validate mathematical properties (normalization, Hermiticity, unitarity), physical results (Bell violation, Gleason conditions, entropy bounds), and framework invariants (singleton behavior, non-duality, sublation).
+The project includes a comprehensive test suite with **265 automated tests** covering every module. Tests validate mathematical properties (normalization, Hermiticity, unitarity), physical results (Bell violation, Gleason conditions, entropy bounds), and framework invariants (singleton behavior, non-duality, sublation).
 
 ### Run All Tests
 
@@ -419,16 +427,21 @@ pytest tests/test_predictions.py -v # Predictions and falsification
 
 | Test File | Module | Tests | Key Validations |
 |-----------|--------|-------|-----------------|
-| `test_brahman.py` | brahman | 20 | Singleton, normalization, coherence, self-reference |
-| `test_maya.py` | maya | 25 | Superimposition mechanics, guna dynamics, nama-rupa |
-| `test_levels.py` | levels | 20 | Sublation chain, observer state routing |
-| `test_emergence.py` | emergence | 22 | Spacetime metric symmetry, substrate preservation |
-| `test_liberation.py` | liberation | 12 | Neti-neti remainder, mahavakya structure |
-| `test_quantum.py` | quantum | 50 | Hermiticity, unitarity, Bell S=2√2, Gleason C1–C4, ER=EPR |
-| `test_gravity.py` | gravity | 25 | R-T correlation (2D+3D), Newton recovery, gravitational waves |
-| `test_constants.py` | constants | 16 | Golden ratio, Koide formula, fine structure v1–v3 |
-| `test_particles.py` | particles | 11 | Symmetry breaking, guna association, maya depth |
-| `test_predictions.py` | predictions | 14 | Prediction structure, falsification criteria |
+| `test_brahman.py` | philosophy/brahman | 20 | Singleton, normalization, coherence, self-reference |
+| `test_maya.py` | philosophy/maya | 30 | Superimposition mechanics, guna dynamics, nama-rupa |
+| `test_levels.py` | philosophy/levels | 22 | Sublation chain, observer state routing |
+| `test_emergence.py` | emergence | 23 | Spacetime metric symmetry, substrate preservation |
+| `test_liberation.py` | philosophy/liberation | 11 | Neti-neti remainder, mahavakya structure |
+| `test_quantum.py` | quantum | 63 | Hermiticity, unitarity, Bell S=2√2, Gleason C1–C4, ER=EPR |
+| `test_gravity.py` | gravity | 23 | R-T correlation (2D+3D), Newton recovery, deficit-angle curvature |
+| `test_constants.py` | constants | 18 | Cosmological constant resolution, Koide ~2/3 verification |
+| `test_particles.py` | particles | 13 | Symmetry breaking, guna association, maya depth |
+| `test_predictions.py` | predictions/falsification | 16 | Prediction structure, falsification criteria |
+| `test_numerology.py` | numerology | 6 | Fine-structure recipe families reproduce their reported hits |
+| `test_cross_validation.py` | numerology | 3 | Fit-one/predict-another hold-out fails (curve-fit, not law) |
+| `test_iit_rigorous.py` | predictions | 4 | Non-circular Φ/S bridge vs null control |
+| `test_pyphi_benchmark.py` | predictions | 5 | Framework Φ vs canonical PyPhi Φ (fixtures, no PyPhi needed) |
+| `test_decoherence_calculator.py` | predictions | 8 | DP vs gas vs thermal-photon channels; physics-limit checks |
 
 ### Test Design
 
@@ -543,8 +556,8 @@ python main.py --experiment 14   # Three gunas = three generations of particles
 
 **Start here**: Read [docs/ARCHITECTURE.md](ARCHITECTURE.md) for the project structure. Then read the source files in this order:
 
-1. `brahman/consciousness.py` (the singleton)
-2. `maya/superimposition.py` (the core engine)
+1. `philosophy/brahman/consciousness.py` (the singleton)
+2. `philosophy/maya/superimposition.py` (the core engine)
 3. `quantum/hilbert_space.py` (the physics bridge)
 4. `quantum/gleason.py` (the rigorous result)
 5. `quantum/interpretations.py` (the formal comparison)
@@ -628,7 +641,7 @@ Experiment 18 is the most rigorous (mathematical proof). Experiment 22 has the m
 
 After reading this guide, you might want to:
 
-1. **Run all 30 experiments**: `python main.py --everything`
+1. **Run all 31 experiments**: `python main.py --everything`
 2. **Read the philosophy**: [docs/PHILOSOPHY.md](PHILOSOPHY.md)
 3. **Understand the roadmap**: [docs/ROADMAP.md](ROADMAP.md)
 4. **Look at the module details**: [docs/MODULES.md](MODULES.md)

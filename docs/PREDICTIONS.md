@@ -63,6 +63,8 @@ If the falsifiers are confirmed, the metaphysics must be revised.
 
 **Current status**: Experiments approaching this regime. MAQRO (proposed space mission), OTIMA (molecular interferometry), levitated nanoparticles.
 
+**Quantitative tool**: `predictions/decoherence_calculator.py` turns this prediction into a real calculation. The table above uses only the Diósi–Penrose collapse time, but interference is visible only where DP collapse is faster than *every* competing environmental channel — gas collisions (Joos & Zeh 1985) and thermal photons (Schlosshauer 2005) — yet still slow enough to run an experiment. The module computes all three channels and reports the narrow mass/pressure/temperature window where gravitational collapse actually dominates. That window, not the naive DP threshold alone, is where P2 is observable.
+
 **Distinguishes from**: Standard QM predicts interference at ANY mass (if environment is perfectly isolated). This prediction says no — gravity itself prevents it.
 
 **Timeline**: 5–15 years.
@@ -253,8 +255,8 @@ In addition to the 5 predictions and 5 falsifiers, the framework has produced on
 | Axiom reduction: 7 → 4 | Copenhagen needs Born rule as axiom; Advaita derives it | **Proven** |
 | Born rule is UNIQUE | Alternative rules (amplitude, quartic) fail additivity: 1800/1800 violations | **Proven** |
 | Hidden variables impossible in dim ≥ 3 | Kochen-Specker (consequence of Gleason): dispersion-free fails 25.6% | **Proven** |
-| Fine structure 1/α = 137.031 | 163-26+π/100 via Heegner numbers (0.003% error) | **Explored (striking)** |
-| IIT-entanglement: Φ ≤ S | Consciousness bounded by entanglement, 0/50 violations | **Conjectured + tested** |
+| Fine structure 1/α = 137.031 | 163-26+π/100 via Heegner numbers (0.003% error) | **Numerology — fails hold-out** (`numerology/cross_validation.py`, `look_elsewhere.py`) |
+| IIT-entanglement: Φ ≤ S | Consciousness bounded by entanglement, 0/50 violations | **Conjectured; original test was circular** (non-circular retest + PyPhi benchmark now added) |
 | MERA Φ increases toward IR | Integrated information grows toward Brahman | **Tested** |
 | 2+1D Einstein: R ∝ T (r=0.94) | Jacobson derivation on 80-point Delaunay manifold | **Demonstrated** |
 | Entanglement determines geometry | MERA: cut entanglement = disconnect space | **Demonstrated** |
@@ -270,7 +272,7 @@ These are not predictions awaiting experimental confirmation. They are mathemati
 |----|---------------------|--------|---------|
 | **R1** | **Axiom reduction 7→4 (Gleason)** | **Proven** | **Framework strengthened** |
 | P1 | Entanglement → gravity | Not yet testable | Open |
-| P2 | Decoherence mass threshold | Approaching testability | Open |
+| P2 | Decoherence mass threshold | Approaching testability; multi-channel calculator built | Open |
 | P3 | Vacuum entanglement structure | Partially tested (Casimir) | Consistent |
 | P4 | Consciousness decoherence | Not yet testable | Open |
 | P5 | Holographic noise | Tested (Holometer) | No detection yet |
@@ -278,9 +280,9 @@ These are not predictions awaiting experimental confirmation. They are mathemati
 | F2 | Local hidden variables | Ruled out (Bell tests) | **Framework confirmed** |
 | F3 | Spacetime fundamental | Not tested | Open |
 | F4 | No gravitational decoherence | Not tested | Open |
-| F5 | Constants arbitrary | Koide holds | Framework favored |
+| F5 | Constants arbitrary | Koide holds (verified, not derived); α "derivation" fails hold-out | Mixed |
 
-**Current tally**: 1 proven result (Gleason axiom reduction), 1 confirmed (F2 ruled out), 1 favored (F5), 0 falsified, 8 open.
+**Current tally**: 1 proven result (Gleason axiom reduction), 1 confirmed (F2 ruled out), F5 mixed (Koide verified but the α recipe is numerology by its own hold-out tests), 0 falsified, 8 open.
 
 ---
 

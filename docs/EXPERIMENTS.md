@@ -18,11 +18,11 @@ Run with:
 ```bash
 python main.py --experiment N      # Single experiment (1–30)
 python main.py --all               # Experiments 1–8
-python main.py --physics           # Experiments 9–30
-python main.py --everything        # All 30 + visualizations
+python main.py --physics           # Experiments 9–31
+python main.py --everything        # All 31 + visualizations
 ```
 
-Validate with the automated test suite (237 tests):
+Validate with the automated test suite (265 tests):
 ```bash
 pytest tests/ -v                   # Run all tests
 pytest tests/test_quantum.py -v    # Test quantum module only
@@ -712,13 +712,44 @@ python main.py --experiment 30
 
 ---
 
+### Experiment 31: The Look-Elsewhere Effect — Why the α "Derivation" Is Numerology
+
+```bash
+python main.py --experiment 31
+```
+
+**Purpose**: A deliberately **self-critical** demonstration. The framework's most
+striking numerical result is 1/α ≈ 163 − 26 + π/100 = 137.0314 (0.0033% error).
+This experiment shows how easily a target of that precision is hit by a large
+family of equally simple formulas, so a reader can judge the claim honestly rather
+than take the near-match as evidence of a derivation.
+
+**Method** (via `numerology/look_elsewhere.py`):
+1. Enumerate the family of comparably-simple integer/π/e expressions.
+2. Count how many land within the claim's own precision of 1/α.
+3. Measure how densely the family covers the window 130–145, the broad range
+   0.1–2000, and a basket of 25 real physics constants — all at 10⁻⁴ tolerance.
+
+**Key results**:
+- Many distinct family members match 1/α at the celebrated formula's precision;
+  the closest is *more* accurate than 163 − 26 + π/100 itself.
+- The family covers essentially any target in the tested ranges to 10⁻⁴, and hits
+  a large fraction of 25 unrelated physics constants to the same tolerance.
+- **Conclusion**: matching 1/α is expected by chance (the look-elsewhere effect),
+  not evidence of a law. This is precisely why the constants work lives in
+  `numerology/`, not `constants/`. The companion `numerology/cross_validation.py`
+  reinforces this: a recipe fitted on one constant fails to predict another.
+
+---
+
 ## Summary of Key Quantitative Results
 
 | Metric | Value | Significance | Status |
 |--------|-------|-------------|--------|
 | **Axiom reduction** | **7 → 4** | **Born rule is theorem via Gleason** | **Proven** |
-| **Fine structure 1/α** | **137.031 (0.003%)** | **163-26+π/100 via Heegner numbers** | **Explored** |
-| **IIT conjecture Φ ≤ S** | **0/50 violations** | **Consciousness bounded by entanglement** | **Tested** |
+| **Fine structure 1/α** | **137.031 (0.003%)** | **163-26+π/100 via Heegner numbers** | **Numerology (fails hold-out, Exp 31)** |
+| **Look-elsewhere on 1/α** | **whole ranges covered at 1e-4** | **the near-match is expected by chance, not a law** | **Demonstrated (Exp 31)** |
+| **IIT conjecture Φ ≤ S** | **0/50 violations** | **Consciousness bounded by entanglement (original test circular; non-circular retest + PyPhi benchmark added)** | **Tested** |
 | **Everett-Advaita equivalence** | **5/5 tests identical** | **0 measurable divergences** | **Proven** |
 | **Perspectival asymmetry** | **Exact (10⁻¹⁶)** | **All states, bases, env sizes — total always pure** | **Proven** |
 | **Observer centrality** | **4/4 open questions involve observer** | **Observer ontology is part of interpretive burden** | **Demonstrated** |

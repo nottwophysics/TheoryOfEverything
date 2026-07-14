@@ -89,20 +89,29 @@ TheoryOfEverything/
 │   ├── particle_zoo.py              # 17 particles mapped to Maya depth
 │   └── forces.py                    # Four forces as aspects of Maya
 │
-├── constants/                       # PHYSICS: Physical Constants
+├── constants/                       # PHYSICS: Physical Constants (verification, not fitting)
+│   ├── __init__.py
+│   ├── cosmological.py              # Cosmological constant resolution
+│   └── koide.py                     # Koide lepton-mass relation — verification (NOT a derivation)
+│
+├── numerology/                      # CANDID: fine-structure "derivations" (curve-fitting, walled off)
 │   ├── __init__.py
 │   ├── derivation.py                # Constants from self-referential structure
 │   ├── fine_structure.py            # Fine structure constant derivation attempts (v1)
 │   ├── fine_structure_v2.py         # Systematic α derivation: 6 approaches, 0.003% best
 │   ├── fine_structure_v3.py         # Rigorous α derivation: modular bootstrap, holographic, self-referential
-│   └── cosmological.py              # Cosmological constant resolution
+│   ├── cross_validation.py          # Hold-out test: fit on one constant, PREDICT another (fails → curve-fit)
+│   └── look_elsewhere.py            # Look-elsewhere analysis: how many near-hits by chance
 │
 ├── predictions/                     # SCIENCE: Testable Predictions
 │   ├── __init__.py
 │   ├── testable.py                  # 5 novel testable predictions (P1–P5)
 │   ├── consciousness_signatures.py  # Observable markers of fundamental consciousness
 │   ├── cosmological_predictions.py  # Large-scale predictions
-│   └── iit_bridge.py               # IIT-Entanglement bridge (Φ ≤ S conjecture)
+│   ├── iit_bridge.py                # IIT-Entanglement bridge (Φ ≤ S conjecture)
+│   ├── iit_entanglement_rigorous.py # Non-circular Φ/S bridge test (independent Φ and S) + null control
+│   ├── pyphi_benchmark.py           # Framework Φ vs canonical IIT Φ (PyPhi reference implementation)
+│   └── decoherence_calculator.py    # P2 as a quantitative tool: gravitational vs gas vs thermal channels
 │
 ├── falsification/                   # SCIENCE: Falsification Criteria
 │   ├── __init__.py
@@ -154,23 +163,27 @@ TheoryOfEverything/
 Modules are organized by their ontological level, mirroring the Advaitic hierarchy:
 
 ```
-                    Brahman (brahman/)
+              Brahman (philosophy/brahman/)
                          │
-                    Maya (maya/)
+              Maya (philosophy/maya/)
                          │
               ┌──────────┼──────────┐
               │          │          │
          Paramarthika  Vyavaharika  Pratibhasika
-          (levels/)    (levels/)    (levels/)
+      (philosophy/levels/, all three)
               │          │
          Emergence    Physics Extensions
         (emergence/)  (quantum/, gravity/, particles/, constants/)
               │
          Liberation   Scientific Validation
-        (liberation/) (predictions/, falsification/)
+   (philosophy/liberation/) (predictions/, falsification/)
 ```
 
-Higher modules depend on lower ones. `brahman/` depends on nothing. Everything depends on `brahman/`.
+Higher modules depend on lower ones. `philosophy/brahman/` depends on nothing. The
+interpretive layer (`philosophy/`) is deliberately walled off from the physics and
+science modules — see `philosophy/README.md`. The `numerology/` package is likewise
+isolated: it holds the fine-structure "derivations" that are candidly labelled as
+curve-fitting rather than physics.
 
 ### 2. Brahman as Singleton
 

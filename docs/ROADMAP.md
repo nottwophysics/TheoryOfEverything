@@ -45,7 +45,7 @@ Needed:    Brahman field → Maya projection → Schrödinger equation
 
 - Replace `Gunas.apply_to_field()` with actual quantum operators (partially done in `quantum/operators.py`)
 - Show that the `ConsciousnessField.differentiate()` process produces a spacetime metric that satisfies Einstein's equations (started in `gravity/einstein.py`)
-- Derive the fine-structure constant, particle masses, or cosmological constant from properties of the Brahman field (explored in `constants/`)
+- Derive the fine-structure constant, particle masses, or cosmological constant from properties of the Brahman field (fine-structure attempts live in `numerology/`, candidly walled off as curve-fitting; cosmological-constant and Koide checks in `constants/`)
 
 **If any physical constant falls out of the model's structure, that's a genuine ToE contribution.**
 
@@ -81,8 +81,8 @@ This connects directly to cutting-edge physics (ER=EPR, holographic principle, q
 The biggest unsolved problem in quantum mechanics is the **measurement problem** — what causes wavefunction collapse? This framework already has:
 
 - `Sakshi` (witness) — a model of the observer (`emergence/observer.py`)
-- `Adhyasa` — a model of how observation creates apparent reality (`maya/superimposition.py`)
-- Three levels of reality — maps to quantum/classical/error regimes (`levels/`)
+- `Adhyasa` — a model of how observation creates apparent reality (`philosophy/maya/superimposition.py`)
+- Three levels of reality — maps to quantum/classical/error regimes (`philosophy/levels/`)
 
 **If this framework can produce a mathematically precise model of how observation collapses the wavefunction, that alone would be a major contribution to physics.**
 
@@ -129,10 +129,10 @@ No physics ToE addresses why there is **experience** at all. This framework star
 
 **That fills the gap no other ToE candidate addresses.**
 
-**Current status:** The `predictions/consciousness_signatures.py` module outlines predicted neural signatures of fundamental consciousness, including quantum coherence in neural systems, non-computational processing, and anesthesia-entanglement connections.
+**Current status:** The `predictions/consciousness_signatures.py` module outlines predicted neural signatures of fundamental consciousness, including quantum coherence in neural systems, non-computational processing, and anesthesia-entanglement connections. The Φ↔entanglement mapping now has a **non-circular** test (`predictions/iit_entanglement_rigorous.py`, with a null control) and a **calibration against canonical IIT** (`predictions/pyphi_benchmark.py`, comparing the framework's simplified Φ to PyPhi's reference Φ) — both added after review flagged the original `iit_bridge.py` test as circular.
 
 **Next steps:**
-- Develop a formal mapping between integrated information (Φ from IIT) and entanglement entropy
+- Tighten the formal mapping between integrated information (Φ from IIT) and entanglement entropy now that the circular baseline is replaced
 - Model the "filter theory" of consciousness: brain as reducer of awareness, not producer
 - Formalize the prediction that brain damage can sometimes expand awareness (savant syndrome, NDE)
 
@@ -150,8 +150,8 @@ No physics ToE addresses why there is **experience** at all. This framework star
 | Bell violation | S = 2√2 | **VERIFIED** | Standard QM result |
 | Measurement resolution | Collapse is perspectival | **DEMONSTRATED** | Decoherence + partial trace |
 | Newton from entropy | F_entropic ∝ F_Newton | **DEMONSTRATED** (r=0.93) | Entropic gravity |
-| Fine structure 1/α | 137.031 (0.003% error) | **EXPLORED** (striking) | 163-26+π/100 via Heegner numbers |
-| IIT-entanglement Φ ≤ S | 0/50 violations (100%) | **CONJECTURED + TESTED** | Consciousness bounded by entanglement |
+| Fine structure 1/α | 137.031 (0.003% error) | **NUMEROLOGY** (fails hold-out) | 163-26+π/100; cross-validation + look-elsewhere show it is curve-fitting, not a law |
+| IIT-entanglement Φ ≤ S | 0/50 violations (100%) | **CONJECTURED; baseline was circular** | Original test shared one scalar; non-circular retest + PyPhi benchmark now added |
 | MERA Φ profile | Increases toward IR | **TESTED** | Max consciousness = Brahman |
 | Koide formula | Holds to 0.006% | **VERIFIED** (not derived) | Empirical check, not derivation |
 | Cosmological constant | Λ ≈ 10⁻¹²² | **Consistency check** | S_universe is empirical input |
@@ -177,7 +177,7 @@ No physics ToE addresses why there is **experience** at all. This framework star
 ## Milestone Targets
 
 ### Milestone 0: Automated Test Suite ✅ COMPLETE
-- 237 tests across 10 test files covering all modules
+- 265 tests across 15 test files covering all modules
 - Validates mathematical properties (normalization, Hermiticity, unitarity)
 - Validates physical results (Bell violation, Gleason conditions, Newton recovery)
 - Validates framework invariants (singleton, non-duality, substrate preservation)
@@ -199,13 +199,13 @@ No physics ToE addresses why there is **experience** at all. This framework star
 - OR rigorously derive the cosmological constant from consciousness entropy
   (requires deriving S_total independently, not using empirical value)
 - Either would be a landmark result
-- **Status**: Experiment 22 achieved 0.003% error on α via 163-26+π/100 (Heegner connection). This is a striking numerical result but remains numerological — not a rigorous derivation. The π/100 correction is ad hoc. A true derivation would show WHY the consciousness field requires Monster symmetry. Koide verified (0.006%), Λ consistent (order of magnitude).
+- **Status**: Experiment 22 achieved 0.003% error on α via 163-26+π/100 (Heegner connection). This is a striking numerical result but remains numerological — not a rigorous derivation. The π/100 correction is ad hoc. Two hold-out tests now make this explicit: `numerology/cross_validation.py` (fit the recipe on one constant, fail to predict another) and `numerology/look_elsewhere.py` (many equally-simple expressions hit the same tolerance by chance). A true derivation would show WHY the consciousness field requires Monster symmetry. Koide verified (0.006%), Λ consistent (order of magnitude).
 
 ### Milestone 3: Testable Prediction Confirmed — AWAITING EXPERIMENTS
 - P2 (gravitational decoherence threshold) is most feasible
 - Collaborate with experimental groups doing macroscopic superposition
 - If the threshold matches the prediction, the framework gains strong empirical support
-- **Status**: Awaiting experimental capability (5-15 years). No experiment currently distinguishes this interpretation from Everett (confirmed by Experiment 24).
+- **Status**: P2 is now a quantitative tool — `predictions/decoherence_calculator.py` computes the Diósi–Penrose collapse time against the competing gas-collision and thermal-photon channels and locates the mass/pressure/temperature window where gravitational collapse actually dominates (the only regime where the prediction is observable). Still awaiting experimental capability (5–15 years); no experiment currently distinguishes this interpretation from Everett (confirmed by Experiment 24).
 
 ### Milestone 4: Formal Mathematical Framework — PARTIALLY ACHIEVED
 - Replace numpy-based models with rigorous operator algebra
