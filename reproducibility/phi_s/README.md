@@ -40,6 +40,9 @@ pair, for a byte-level cross-check.
   - `S` = entanglement entropy across a bipartition of the transverse-field Ising
     ground state (h = 1) built from the **same** coupling matrix W.
 - **`data/phi_s_partial_correlation.json`** — the partial-correlation result.
+- **`data/validated_phi_check.csv`** — the PyPhi **validation anchor**: `basic_network`
+  Φ = 2.3125 (computed) = 2.3125 (reference), plus `xor_network` — confirming the
+  Φ pipeline computes canonical IIT Φ before the 216-system family is processed.
 
 ## Regenerating Φ and S from scratch (upstream — requires the PyPhi env)
 
