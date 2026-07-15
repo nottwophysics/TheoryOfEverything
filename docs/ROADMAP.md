@@ -129,10 +129,10 @@ No physics ToE addresses why there is **experience** at all. This framework star
 
 **That fills the gap no other ToE candidate addresses.**
 
-**Current status:** The `predictions/consciousness_signatures.py` module outlines predicted neural signatures of fundamental consciousness, including quantum coherence in neural systems, non-computational processing, and anesthesia-entanglement connections. The Φ↔entanglement mapping now has a **non-circular** test (`predictions/iit_entanglement_rigorous.py`, with a null control) and a **calibration against canonical IIT** (`predictions/pyphi_benchmark.py`, comparing the framework's simplified Φ to PyPhi's reference Φ) — both added after review flagged the original `iit_bridge.py` test as circular.
+**Current status:** The `predictions/consciousness_signatures.py` module outlines predicted neural signatures of fundamental consciousness, including quantum coherence in neural systems, non-computational processing, and anesthesia-entanglement connections. The Φ↔entanglement mapping has been rebuilt and tested with a Φ **validated against canonical IIT**. The original `iit_bridge.py` bound was circular; the validated retest (`predictions/phi_s_systems.py` + `validated_phi.py` + `entanglement_entropy.py`: PyPhi Φ vs. transverse-field Ising ground-state entanglement from the same couplings, N=216, seed 42) **refutes Φ ≤ S** — every one of the 23 nonzero-Φ systems violates it, because Φ is not capped by the bipartition entropy that limits S. What survives is a genuine but weaker Φ–S correlation (r≈+0.65) driven by shared connectivity.
 
 **Next steps:**
-- Tighten the formal mapping between integrated information (Φ from IIT) and entanglement entropy now that the circular baseline is replaced
+- The surviving claim is the Φ–S *correlation*, not the bound; a decisive test of even that awaits Φ estimators validated on larger systems
 - Model the "filter theory" of consciousness: brain as reducer of awareness, not producer
 - Formalize the prediction that brain damage can sometimes expand awareness (savant syndrome, NDE)
 
@@ -151,7 +151,7 @@ No physics ToE addresses why there is **experience** at all. This framework star
 | Measurement resolution | Collapse is perspectival | **DEMONSTRATED** | Decoherence + partial trace |
 | Newton from entropy | F_entropic ∝ F_Newton | **DEMONSTRATED** (r=0.93) | Entropic gravity |
 | Fine structure 1/α | 137.031 (0.003% error) | **NUMEROLOGY** (fails hold-out) | 163-26+π/100; cross-validation + look-elsewhere show it is curve-fitting, not a law |
-| IIT-entanglement Φ ≤ S | 0/50 violations (100%) | **CONJECTURED; baseline was circular** | Original test shared one scalar; non-circular retest + PyPhi benchmark now added |
+| IIT-entanglement Φ ≤ S | falsified (validated PyPhi Φ, N=216) | **REFUTED** | Every nonzero-Φ system violates it; canonical Φ (~2.4 bits) not capped by bipartition S (~0.8 bits); Φ–S correlate r≈+0.65 |
 | MERA Φ profile | Increases toward IR | **TESTED** | Max consciousness = Brahman |
 | Koide formula | Holds to 0.006% | **VERIFIED** (not derived) | Empirical check, not derivation |
 | Cosmological constant | Λ ≈ 10⁻¹²² | **Consistency check** | S_universe is empirical input |
@@ -170,7 +170,7 @@ No physics ToE addresses why there is **experience** at all. This framework star
 | Path 4: Emergent Gravity | Very High | Medium | 6 modules, 3+1D (r=0.88) | **Largely done** (graviton propagator remaining) |
 | Path 2: Information Bridge | High | Medium | MERA + QEC + Bell + holography + ER=EPR | **COMPLETE** |
 | Path 1: Consciousness-First Physics | Highest | Hard | **α at 0.003% error** | **Active** (rigorous derivation needed) |
-| Path 5: Hard Problem | Revolutionary | Very Hard | **IIT bridge built, Φ≤S tested** | **Active** (experimental protocol) |
+| Path 5: Hard Problem | Revolutionary | Very Hard | **IIT bridge built; Φ≤S falsified (validated), Φ–S correlation survives** | **Active** (experimental protocol) |
 
 ---
 

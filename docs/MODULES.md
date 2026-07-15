@@ -619,13 +619,22 @@ Formally bridges Tononi's IIT (consciousness measure Φ) with quantum entangleme
 | `.mera_consciousness_profile()` | Compute Φ at each MERA layer. Prediction: Φ increases toward IR (Brahman). |
 | `.full_demonstration()` | Run all tests + generate testable predictions. |
 
-**Key result**: Φ ≤ S holds in 100% of 50 trials. Φ increases toward IR in MERA.
+**Key result (superseded — circular).** This module reports Φ ≤ S holding in 100%
+of 50 trials with Φ rising toward the MERA IR. That result is an artifact.
 
-> **Caveat (addressed by the two modules below):** the original test is
+> **⚠️ The bound is falsified by a validated test.** The original test is
 > *circular* — it draws both Φ and S from the same scalar (total connectivity of
 > one random matrix), and `compute_phi` is a "simplified IIT-like" measure, not
-> canonical IIT Φ. `iit_entanglement_rigorous.py` removes the circularity;
-> `pyphi_benchmark.py` checks the measure against the reference implementation.
+> canonical IIT Φ (`pyphi_benchmark.py` finds them uncorrelated, r ≈ −0.01).
+> `iit_entanglement_rigorous.py` removes the circularity; the **validated** rebuild
+> (`phi_s_systems.py` + `validated_phi.py` + `entanglement_entropy.py`: canonical
+> PyPhi Φ vs. transverse-field Ising ground-state entanglement from the same
+> couplings, N = 216, seed 42) **refutes Φ ≤ S** — the 89% hold rate is only the
+> trivial Φ = 0 systems and equals the permutation null, while **every one of the
+> 23 nonzero-Φ systems violates the bound** (canonical Φ up to ≈ 2.4 bits is not
+> capped by the bipartition entropy that limits S at ≈ 0.8 bits). Φ and S do
+> correlate (r ≈ +0.65) via shared connectivity — that correlation, not the
+> inequality, is what survives.
 
 ---
 

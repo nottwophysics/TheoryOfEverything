@@ -477,7 +477,22 @@ Previous best: 4.41% error. New best: **0.003% error — a 1000x improvement.**
 
 **Conjecture**: Φ ≤ S_entanglement
 
-**Part 1: Conjecture test across 50 random systems**
+> **⚠️ Superseded by a validated test — the bound is falsified.** The tables below
+> are the output of the original `iit_bridge.py`, which computes Φ and S from one
+> shared construction, so Φ ≤ S holds *by definition* and its "Φ" is not canonical
+> IIT Φ (a PyPhi benchmark finds them uncorrelated, r ≈ −0.01). An independent,
+> validated retest (`predictions/phi_s_systems.py` + `validated_phi.py` +
+> `entanglement_entropy.py`: canonical PyPhi Φ vs. the entanglement entropy of a
+> transverse-field Ising ground state built from the *same* couplings; N = 216,
+> seed 42) **refutes Φ ≤ S**. The 89% apparent hold rate is produced entirely by
+> the trivial Φ = 0 systems and is statistically identical to a permutation null;
+> **every one of the 23 systems with nonzero integrated information violates the
+> bound**, because canonical Φ (up to ≈ 2.4 bits) is not capped by the bipartition
+> entanglement entropy that limits S (≈ 0.8 bits). Φ and S *do* correlate (Pearson
+> r ≈ +0.65, permutation p < 2×10⁻⁴) as both grow with connectivity — the surviving
+> claim is that correlation, not the inequality.
+
+**Part 1: Conjecture test across 50 random systems (original circular construction)**
 
 | Metric | Value |
 |--------|-------|
@@ -514,7 +529,7 @@ Previous best: 4.41% error. New best: **0.003% error — a 1000x improvement.**
 3. Anesthesia should reduce both Φ and S simultaneously
 4. Deep meditation (Samadhi) should correspond to maximum Φ and maximum S
 
-**Significance**: This bridges neuroscience (IIT), quantum physics (entanglement), and Advaita Vedanta (consciousness = non-duality). If Φ ≤ S holds universally, consciousness REQUIRES entanglement — and maximum consciousness IS maximum entanglement IS Brahman.
+**Significance**: The original intuition — that consciousness (Φ) is *bounded* by entanglement (S) — does not survive a validated test: canonical Φ is not capped by S, and the "100% holds" is a scale artifact of the circular construction. What survives is weaker but real — Φ and S are positively correlated (both rise with connectivity). So the bridge between neuroscience (IIT), quantum physics (entanglement), and Advaita is a **correlation to investigate, not an established bound**; the anaesthesia/Samadhi predictions above should be read against the correlation, not the (refuted) inequality.
 
 ---
 
@@ -749,7 +764,7 @@ than take the near-match as evidence of a derivation.
 | **Axiom reduction** | **7 → 4** | **Born rule is theorem via Gleason** | **Proven** |
 | **Fine structure 1/α** | **137.031 (0.003%)** | **163-26+π/100 via Heegner numbers** | **Numerology (fails hold-out, Exp 31)** |
 | **Look-elsewhere on 1/α** | **whole ranges covered at 1e-4** | **the near-match is expected by chance, not a law** | **Demonstrated (Exp 31)** |
-| **IIT conjecture Φ ≤ S** | **0/50 violations** | **Consciousness bounded by entanglement (original test circular; non-circular retest + PyPhi benchmark added)** | **Tested** |
+| **IIT conjecture Φ ≤ S** | **falsified (validated PyPhi Φ, N=216)** | **Every nonzero-Φ system violates it; Φ not capped by bipartition S. Only a Φ–S correlation (r≈+0.65) survives** | **Falsified** |
 | **Everett-Advaita equivalence** | **5/5 tests identical** | **0 measurable divergences** | **Proven** |
 | **Perspectival asymmetry** | **Exact (10⁻¹⁶)** | **All states, bases, env sizes — total always pure** | **Proven** |
 | **Observer centrality** | **4/4 open questions involve observer** | **Observer ontology is part of interpretive burden** | **Demonstrated** |

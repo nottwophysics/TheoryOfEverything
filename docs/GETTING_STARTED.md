@@ -480,7 +480,7 @@ This project is honest about its status. Here is the complete picture:
 
 ### Explored (systematic, not yet rigorous derivation)
 - Fine structure constant: 0.003% error via Heegner number 163 (Experiment 22)
-- IIT-entanglement conjecture Φ ≤ S: holds 100% in 50 trials (Experiment 23)
+- IIT-entanglement bound Φ ≤ S: **falsified** by a validated retest (canonical PyPhi Φ, N=216 — every nonzero-Φ system violates it); only a Φ–S correlation (r≈+0.65) survives (Experiment 23)
 
 ### Outlined (not yet implemented)
 - ER=EPR correspondence

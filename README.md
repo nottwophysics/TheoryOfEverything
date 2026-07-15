@@ -133,7 +133,7 @@ These claims map directly to structures in modern physics. See [docs/PHILOSOPHY.
 | 20 | **2+1D Einstein Equations** | Jacobson derivation on 80-point Delaunay manifold; R-T correlation 0.90–0.94 |
 | 21 | **QEC as Spacetime** | Holographic error-correcting code; Brahman recoverable with 80% boundary erasure |
 | 22 | **Fine Structure Constant v2** | 6 systematic approaches; best: 163-26+π/100 = 0.003% error (1000x improvement) |
-| 23 | **IIT-Entanglement Bridge** | Φ ≤ S conjecture holds 100%; consciousness bounded by entanglement; MERA Φ increases toward Brahman |
+| 23 | **IIT-Entanglement Bridge** | Original Φ ≤ S "holds 100%" is circular; a validated retest (canonical PyPhi Φ, N=216) **falsifies** the bound — every nonzero-Φ system violates it — leaving only a Φ–S correlation (r≈+0.65) |
 
 ### Tier 4 — Paper Companion Experiments (24–26)
 
@@ -178,7 +178,7 @@ See [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md) for detailed documentation of all
 |--------|-------------|--------|
 | **Axiom reduction: 7 → 4** | Gleason's theorem makes Born rule a theorem, not axiom. Advaita has fewer axioms than Copenhagen. | **Proven** (Experiment 18) |
 | **Fine structure: 0.003% error** | 163-26+π/100 = 137.031 vs 137.036 — Heegner number connection | **Explored** (Experiment 22) |
-| **IIT-Entanglement: Φ ≤ S** | Consciousness bounded by entanglement; holds 100% (0/50 violations) | **Conjectured + tested** (Experiment 23) |
+| **IIT-Entanglement: Φ ≤ S** | Validated test (canonical PyPhi Φ) **falsifies** the bound — every nonzero-Φ system violates it; only a Φ–S correlation (r≈+0.65) survives | **Falsified** (validated retest) |
 | **2+1D Einstein: R-T = 0.94** | Entropy-derived curvature correlates with energy on 2D discrete manifold | **Demonstrated** (Experiment 20) |
 | **Spacetime from entanglement** | MERA tensor network: cut entanglement = disconnect space; AdS-like geometry | **Demonstrated** (Experiment 19) |
 | **Spacetime as QEC code** | Brahman recoverable with 80% of boundary erased | **Demonstrated** (Experiment 21) |
@@ -196,7 +196,7 @@ This project is scientifically honest about what it has and hasn't achieved:
 - **Proven**: Gleason-based axiom reduction (mathematical fact)
 - **Demonstrated**: Measurement resolution, Bell violation, decoherence framework
 - **Demonstrated (2D)**: Einstein equations on discrete manifold (R-T = 0.94), MERA tensor network, QEC holographic code
-- **Explored (systematic)**: Fine structure constant at 0.003% error via Heegner numbers; IIT-entanglement bridge (Φ ≤ S holds 100%)
+- **Explored (systematic)**: Fine structure constant at 0.003% error via Heegner numbers (fails hold-out — numerology); IIT-entanglement bound Φ ≤ S **falsified** by a validated (PyPhi) retest, leaving only a Φ–S correlation
 - **Verified (not derived)**: Koide formula, cosmological constant consistency
 - **Demonstrated (3D)**: 3+1D Einstein equations on discrete manifold (R-T = 0.88); gravitational wave propagation
 - **Demonstrated**: ER=EPR correspondence — wormhole throat = 4G × entanglement entropy; space disconnects at zero entanglement
