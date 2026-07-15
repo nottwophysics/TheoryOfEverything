@@ -632,9 +632,10 @@ of 50 trials with Φ rising toward the MERA IR. That result is an artifact.
 > couplings, N = 216, seed 42) **refutes Φ ≤ S** — the 89% hold rate is only the
 > trivial Φ = 0 systems and equals the permutation null, while **every one of the
 > 23 nonzero-Φ systems violates the bound** (canonical Φ up to ≈ 2.4 bits is not
-> capped by the bipartition entropy that limits S at ≈ 0.8 bits). Φ and S do
-> correlate (r ≈ +0.65) via shared connectivity — that correlation, not the
-> inequality, is what survives.
+> capped by the bipartition entropy that limits S at ≈ 0.8 bits). The raw Φ–S
+> correlation (r ≈ +0.65) is a **connectivity confound**: controlling for
+> connectivity collapses it to r ≈ −0.02 (p = 0.77; with system size, +0.09,
+> p = 0.17), so **no residual Φ–S association survives** — §8 retains no claim.
 
 ---
 

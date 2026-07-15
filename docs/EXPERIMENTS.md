@@ -488,9 +488,10 @@ Previous best: 4.41% error. New best: **0.003% error — a 1000x improvement.**
 > the trivial Φ = 0 systems and is statistically identical to a permutation null;
 > **every one of the 23 systems with nonzero integrated information violates the
 > bound**, because canonical Φ (up to ≈ 2.4 bits) is not capped by the bipartition
-> entanglement entropy that limits S (≈ 0.8 bits). Φ and S *do* correlate (Pearson
-> r ≈ +0.65, permutation p < 2×10⁻⁴) as both grow with connectivity — the surviving
-> claim is that correlation, not the inequality.
+> entanglement entropy that limits S (≈ 0.8 bits). The raw Φ–S correlation
+> (Pearson r ≈ +0.65) is a **connectivity confound**: controlling for connectivity
+> collapses it to r ≈ −0.02 (permutation p = 0.77; with system size, +0.09,
+> p = 0.17), so **no residual Φ–S association survives** — §8 retains no claim.
 
 **Part 1: Conjecture test across 50 random systems (original circular construction)**
 
@@ -529,7 +530,7 @@ Previous best: 4.41% error. New best: **0.003% error — a 1000x improvement.**
 3. Anesthesia should reduce both Φ and S simultaneously
 4. Deep meditation (Samadhi) should correspond to maximum Φ and maximum S
 
-**Significance**: The original intuition — that consciousness (Φ) is *bounded* by entanglement (S) — does not survive a validated test: canonical Φ is not capped by S, and the "100% holds" is a scale artifact of the circular construction. What survives is weaker but real — Φ and S are positively correlated (both rise with connectivity). So the bridge between neuroscience (IIT), quantum physics (entanglement), and Advaita is a **correlation to investigate, not an established bound**; the anaesthesia/Samadhi predictions above should be read against the correlation, not the (refuted) inequality.
+**Significance**: The original intuition — that consciousness (Φ) is *bounded* by entanglement (S) — does not survive a validated test: canonical Φ is not capped by S, and the "100% holds" is a scale artifact of the circular construction. Nor does a weaker claim survive: the raw Φ–S correlation (r ≈ +0.65) is a **connectivity confound** — controlling for connectivity collapses it to r ≈ −0.02 (p = 0.77) — so the bridge between neuroscience (IIT), quantum physics (entanglement), and Advaita has **no established quantitative form** in this test, and the anaesthesia/Samadhi predictions above are not supported by it.
 
 ---
 
@@ -764,7 +765,7 @@ than take the near-match as evidence of a derivation.
 | **Axiom reduction** | **7 → 4** | **Born rule is theorem via Gleason** | **Proven** |
 | **Fine structure 1/α** | **137.031 (0.003%)** | **163-26+π/100 via Heegner numbers** | **Numerology (fails hold-out, Exp 31)** |
 | **Look-elsewhere on 1/α** | **whole ranges covered at 1e-4** | **the near-match is expected by chance, not a law** | **Demonstrated (Exp 31)** |
-| **IIT conjecture Φ ≤ S** | **falsified (validated PyPhi Φ, N=216)** | **Every nonzero-Φ system violates it; Φ not capped by bipartition S. Only a Φ–S correlation (r≈+0.65) survives** | **Falsified** |
+| **IIT conjecture Φ ≤ S** | **falsified (validated PyPhi Φ, N=216)** | **Every nonzero-Φ system violates it; Φ not capped by bipartition S. Raw Φ–S correlation (r≈+0.65) is a connectivity confound (partial r≈−0.02, p=0.77) — nothing survives** | **Falsified** |
 | **Everett-Advaita equivalence** | **5/5 tests identical** | **0 measurable divergences** | **Proven** |
 | **Perspectival asymmetry** | **Exact (10⁻¹⁶)** | **All states, bases, env sizes — total always pure** | **Proven** |
 | **Observer centrality** | **4/4 open questions involve observer** | **Observer ontology is part of interpretive burden** | **Demonstrated** |
