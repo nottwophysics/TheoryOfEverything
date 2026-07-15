@@ -1,0 +1,9 @@
+regime,N,n_samples,ground_truth,mean_state
+independent,4,20000,none,0.501
+redundant,4,20000,redundancy,0.504
+synergistic,4,20000,synergy,0.500
+ising_b0.0,4,20000,coupling_beta=0.0,0.501
+ising_b0.25,4,20000,coupling_beta=0.25,0.501
+ising_b0.5,4,20000,coupling_beta=0.5,0.501
+ising_b1.0,4,20000,coupling_beta=1.0,0.514
+ising_b2.0,4,20000,coupling_beta=2.0,0.686

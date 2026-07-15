@@ -39,3 +39,7 @@ not-two-*.png
 *.log
 __pyphi_cache__/
 .pytest_cache/
+
+# Internal review/strategy docs (kept private, per ideation/briefing convention)
+PAPER_ANALYSIS_AND_UPDATES.md
+FEEDBACK_USECASE_ASSESSMENT.md
