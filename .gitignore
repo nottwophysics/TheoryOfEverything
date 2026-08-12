@@ -43,3 +43,5 @@ __pyphi_cache__/
 # Internal review/strategy docs (kept private, per ideation/briefing convention)
 PAPER_ANALYSIS_AND_UPDATES.md
 FEEDBACK_USECASE_ASSESSMENT.md
+integration/
+tests/test_integration_pkg.py
