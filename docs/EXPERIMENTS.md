@@ -533,7 +533,7 @@ Previous best: 4.41% error. New best: **0.003% error — a 1000x improvement.**
 3. Anesthesia should reduce both Φ and S simultaneously
 4. Deep meditation (Samadhi) should correspond to maximum Φ and maximum S
 
-**Significance**: The original intuition — that consciousness (Φ) is *bounded* by entanglement (S) — does not survive a validated test: canonical Φ is not capped by S, and the "100% holds" is a scale artifact of the circular construction. Nor does a weaker claim survive: the raw Φ–S correlation (r ≈ +0.65) is a **connectivity confound** — controlling for connectivity collapses it to r ≈ −0.02 (p = 0.77) — so the bridge between neuroscience (IIT), quantum physics (entanglement), and Advaita has **no established quantitative form** in this test, and the anaesthesia/Samadhi predictions above are not supported by it.
+**Significance**: The original intuition — that consciousness (Φ) is *bounded* by entanglement (S) — does not survive a validated test: canonical Φ is not capped by S, and the "100% holds" is a scale artifact of the circular construction. Nor does a weaker claim survive: the raw Φ–S correlation (r ≈ +0.64) is a **connectivity confound** — controlling for connectivity collapses it to r ≈ −0.07 (p = 0.29) — so the bridge between neuroscience (IIT), quantum physics (entanglement), and Advaita has **no established quantitative form** in this test, and the anaesthesia/Samadhi predictions above are not supported by it.
 
 ---
 
