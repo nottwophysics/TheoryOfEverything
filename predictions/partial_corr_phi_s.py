@@ -107,6 +107,7 @@ def main():
     ap.add_argument("--S", dest="s")
     ap.add_argument("--seed", type=int, default=42)
     ap.add_argument("--nperm", type=int, default=10000)
+    ap.add_argument("--out", help="optional JSON output path")
     args = ap.parse_args()
 
     if args.csv:
@@ -148,6 +149,17 @@ def main():
     print("\n--> paste r(Phi,S | sum|W|, n) and its perm p into the v2 placeholder;")
     print("    if |r| is small and p is large -> confound (raw corr does not survive);")
     print("    if |r| stays clear and p is small -> a residual Phi-S association survives.")
+
+    if args.out:
+        json.dump({
+            "n_systems": len(P), "dropped_phi_none": dropped,
+            "raw_pearson_r_phi_s": round(pearson(P, S), 3),
+            "partial_r_phi_s_given_sumW": round(r1, 3), "perm_p_given_sumW": round(p1, 4),
+            "partial_r_phi_s_given_sumW_and_n": round(r2, 3), "perm_p_given_sumW_and_n": round(p2, 4),
+            "nonzero_phi_subset_N": int(nz.sum()),
+            "nonzero_phi_subset_raw_r": round(pearson(P[nz], S[nz]), 3) if nz.sum() >= 4 else None,
+            "n_perm": args.nperm, "seed": args.seed,
+        }, open(args.out, "w"), indent=1)
 
 
 if __name__ == "__main__":

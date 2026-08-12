@@ -629,13 +629,14 @@ of 50 trials with Φ rising toward the MERA IR. That result is an artifact.
 > `iit_entanglement_rigorous.py` removes the circularity; the **validated** rebuild
 > (`phi_s_systems.py` + `validated_phi.py` + `entanglement_entropy.py`: canonical
 > PyPhi Φ vs. transverse-field Ising ground-state entanglement from the same
-> couplings, N = 216, seed 42) **refutes Φ ≤ S** — the 89% hold rate is only the
-> trivial Φ = 0 systems and equals the permutation null, while **every one of the
-> 23 nonzero-Φ systems violates the bound** (canonical Φ up to ≈ 2.4 bits is not
-> capped by the bipartition entropy that limits S at ≈ 0.8 bits). The raw Φ–S
-> correlation (r ≈ +0.65) is a **connectivity confound**: controlling for
-> connectivity collapses it to r ≈ −0.02 (p = 0.77; with system size, +0.09,
-> p = 0.17), so **no residual Φ–S association survives** — §8 retains no claim.
+> couplings, N = 216, seed 42; numbers per the 2026-08-12 TPM-ordering audit)
+> **refutes Φ ≤ S** — the 77% hold rate is almost entirely the trivial Φ = 0
+> systems and equals the permutation null (0.7685 vs 0.7789), while **50 of the
+> 51 nonzero-Φ systems violate the bound** (canonical Φ up to ≈ 4.0 bits is not
+> capped by the bipartition entropy that limits S at ≈ 0.83 bits). The raw Φ–S
+> correlation (r ≈ +0.64) is a **connectivity confound**: controlling for
+> connectivity collapses it to r ≈ −0.07 (p = 0.29; with system size, +0.06,
+> p = 0.38), so **no residual Φ–S association survives** — §8 retains no claim.
 
 ---
 

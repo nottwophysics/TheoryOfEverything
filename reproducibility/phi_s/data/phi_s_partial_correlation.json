@@ -1,16 +1,13 @@
 {
- "analysis": "R3 \u2014 partial correlation of Phi and S controlling for connectivity (and system size)",
- "input": "phi_s_validated_results.csv (216 systems, seed-42 family)",
  "n_systems": 216,
  "dropped_phi_none": 0,
- "raw_pearson_r_phi_s": 0.65,
- "partial_r_phi_s_given_sumW": -0.02,
- "perm_p_given_sumW": 0.7731,
- "partial_r_phi_s_given_sumW_and_n": 0.093,
- "perm_p_given_sumW_and_n": 0.1748,
- "nonzero_phi_subset_N": 23,
- "nonzero_phi_subset_raw_r": 0.216,
+ "raw_pearson_r_phi_s": 0.643,
+ "partial_r_phi_s_given_sumW": -0.074,
+ "perm_p_given_sumW": 0.2884,
+ "partial_r_phi_s_given_sumW_and_n": 0.062,
+ "perm_p_given_sumW_and_n": 0.3789,
+ "nonzero_phi_subset_N": 51,
+ "nonzero_phi_subset_raw_r": 0.717,
  "n_perm": 10000,
- "seed": 42,
- "verdict": "The raw Phi-S correlation (+0.65) is a CONNECTIVITY CONFOUND. Controlling for connectivity (sum|W|) collapses it to -0.02 (perm p=0.77); adding system size n leaves it at +0.09 (p=0.17), indistinguishable from zero. No residual Phi-S association survives the control. Combined with the earlier finding that Phi<=S is falsified for every nonzero-Phi system, section 8 retains no defensible claim: the bound is false AND the apparent correlation is an artifact of both quantities rising with network connectivity."
+ "seed": 42
 }

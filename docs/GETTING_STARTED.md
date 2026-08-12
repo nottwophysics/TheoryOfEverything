@@ -480,7 +480,7 @@ This project is honest about its status. Here is the complete picture:
 
 ### Explored (systematic, not yet rigorous derivation)
 - Fine structure constant: 0.003% error via Heegner number 163 (Experiment 22)
-- IIT-entanglement bound Φ ≤ S: **falsified** by a validated retest (canonical PyPhi Φ, N=216 — every nonzero-Φ system violates it); the raw Φ–S correlation (r≈+0.65) is a connectivity confound that does not survive control (partial r≈−0.02, p=0.77), so nothing residual survives (Experiment 23)
+- IIT-entanglement bound Φ ≤ S: **falsified** by a validated retest (canonical PyPhi Φ, N=216, ordering-audit-corrected — 50 of 51 nonzero-Φ systems violate it); the raw Φ–S correlation (r≈+0.64) is a connectivity confound that does not survive control (partial r≈−0.07, p=0.29), so nothing residual survives (Experiment 23)
 
 ### Outlined (not yet implemented)
 - ER=EPR correspondence

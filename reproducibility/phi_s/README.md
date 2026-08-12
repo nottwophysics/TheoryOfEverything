@@ -19,15 +19,28 @@ numbers. Needs only `numpy` + `scipy` (the `toenv`/`tofe` env).
 
 ## What each §8 statement maps to
 
-| §8 statement | value | produced by |
-|---|---|---|
-| 216 systems, seed 42 | 216 | `predictions/phi_s_systems.py::make_family` |
-| apparent Φ≤S hold rate ≈ permutation null | 0.89 ≈ 0.89 | `phi_s_verdict.py` |
-| every nonzero-Φ system violates the bound | 23 violations; hold-rate-among-Φ>0 = 0.0 | `phi_s_verdict.py` |
-| Φ reaches ≈2.4 bits; S ≤ ≈0.8 bits | max Φ ≈ 2.38, max S ≈ 0.83 | `phi_s_verdict.py` |
-| Pearson r(Φ,S) ≈ +0.65 | +0.65 (perm p < 2e-4) | `phi_s_verdict.py` |
-| partial r(Φ,S \| Σ\|W\|) = −0.02, p = 0.77 | −0.02 | `partial_corr_phi_s.py` |
-| partial r(Φ,S \| Σ\|W\|, n) = +0.09, p = 0.17 | +0.09 | `partial_corr_phi_s.py` |
+> **⚠️ ORDERING AUDIT (2026-08-12) — the numbers below SUPERSEDE the ones in the
+> published v2 manuscript (Zenodo 10.5281/zenodo.21380318) and in the frozen
+> `*_SUPERSEDED_big_endian.*` files.** `threshold_tpm` enumerates TPM rows
+> big-endian while PyPhi 1.2.0 reads them little-endian, so PyPhi previously
+> analyzed convention-scrambled systems. The fix converts at the PyPhi boundary
+> (`phi_s_systems.to_little_endian`, called by `validated_phi.phi_of_tpm`) and
+> is guarded by an ordering self-test in `validated_phi.validate()` plus
+> `tests/test_tpm_ordering.py`. The audit script is `ordering_audit.py` (PyPhi
+> env). **Every qualitative §8 conclusion survives — and strengthens**: more
+> systems are genuinely integrated (51 vs 23), the Φ-vs-S gap widens (4.01 vs
+> 0.83 bits), the hold rate still equals the permutation null, and the Φ–S
+> correlation remains a connectivity confound.
+
+| §8 statement (corrected) | value | superseded (big-endian) | produced by |
+|---|---|---|---|
+| 216 systems, seed 42 | 216 | 216 | `predictions/phi_s_systems.py::make_family` |
+| apparent Φ≤S hold rate ≈ permutation null | 0.7685 ≈ 0.7789 | 0.8935 ≈ 0.8939 | `phi_s_verdict.py` |
+| nonzero-Φ systems violating the bound | **50 of 51** (hold-rate among Φ>0 = 0.0196) | 23 of 23 | `phi_s_verdict.py` |
+| Φ reaches ≈4.0 bits; S ≤ ≈0.8 bits | max Φ = 4.012, max S = 0.833 | 2.384 / 0.833 | `phi_s_verdict.py` |
+| Pearson r(Φ,S) ≈ +0.64 | +0.643 (perm p ≈ 1e-4) | +0.65 | `phi_s_verdict.py` |
+| partial r(Φ,S \| Σ\|W\|) ≈ −0.07, p = 0.29 | −0.074 | −0.02 (p 0.77) | `partial_corr_phi_s.py` |
+| partial r(Φ,S \| Σ\|W\|, n) ≈ +0.06, p = 0.38 | +0.062 | +0.09 (p 0.17) | `partial_corr_phi_s.py` |
 
 `data/phi_s_partial_correlation.json` is the reference output for the second row
 pair, for a byte-level cross-check.
@@ -41,8 +54,15 @@ pair, for a byte-level cross-check.
     ground state (h = 1) built from the **same** coupling matrix W.
 - **`data/phi_s_partial_correlation.json`** — the partial-correlation result.
 - **`data/validated_phi_check.csv`** — the PyPhi **validation anchor**: `basic_network`
-  Φ = 2.3125 (computed) = 2.3125 (reference), plus `xor_network` — confirming the
-  Φ pipeline computes canonical IIT Φ before the 216-system family is processed.
+  Φ = 2.3125 (computed) = 2.3125 (reference), plus `xor_network`, plus the
+  **ordering self-test** (little-endian encoding matches PyPhi's reading) —
+  confirming the Φ pipeline computes canonical IIT Φ, in the correct
+  convention, before the 216-system family is processed.
+- **`data/*_SUPERSEDED_big_endian.*`** — the pre-audit results (the ones the
+  published v2 manuscript cites), frozen for provenance. Do not use.
+- **`ordering_audit.py`** — the audit that found the convention bug (runs in the
+  PyPhi env; empirically determines PyPhi's convention, then recomputes Φ both
+  ways on the load-bearing systems).
 
 ## Regenerating Φ and S from scratch (upstream — requires the PyPhi env)
 

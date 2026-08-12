@@ -1,5 +1,16 @@
 # A validated-Φ test of Φ ≤ S, and the §2.5 multi-agent symmetry — research report
 
+> **⚠️ NUMBERS SUPERSEDED by the 2026-08-12 TPM-ordering audit** (dated record —
+> body left as written). `threshold_tpm` rows are big-endian; PyPhi reads
+> little-endian, so the Φ values below were computed on convention-scrambled
+> systems. Corrected (see `reproducibility/phi_s/README.md` + `ordering_audit.py`):
+> **51** nonzero-Φ systems (was 23), **50 of 51** violate Φ≤S (was 23/23), max Φ
+> **4.012** bits (was 2.384), hold rate 0.7685 ≈ null 0.7789, raw r ≈ +0.64,
+> partial r(Φ,S|Σ|W|) = −0.07 (p = 0.29). **Every qualitative conclusion of this
+> report survives and mostly strengthens**: the bound is still falsified, the
+> hold rate still equals the permutation null, and the Φ–S correlation is still
+> a connectivity confound.
+
 Follow-on to the paper analysis (`PAPER_ANALYSIS_AND_UPDATES.md`), which flagged
 two threads worth developing properly: (1) the paper's §8 **Φ ≤ S** conjecture,
 which the repo previously "confirmed" only through a circular construction, now

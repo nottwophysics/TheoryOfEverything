@@ -24,6 +24,17 @@ other. The framework Φ is therefore its own heuristic, NOT an approximation of
 IIT Φ, and results phrased as "consciousness (Φ)" should not be read as IIT
 integrated information.
 
+ORDERING CAVEAT (2026-08-12 audit): ``xor_tpm`` enumerates rows big-endian while
+PyPhi reads little-endian (see ``phi_s_systems.to_little_endian``), so the stored
+reference fixture's canonical-Φ values for the 22 home-built XOR systems were
+computed on convention-scrambled networks; the exact r ≈ -0.01 would shift under
+the corrected encoding, and the XOR family's adjacencies were not committed, so
+the fixture cannot be faithfully regenerated. The QUALITATIVE finding is
+unaffected: on PyPhi's own convention-independent example networks the framework
+Φ scores 0.693 vs canonical 2.3125 (basic) and 0 vs 1.875 (xor) — the framework
+measure is not IIT Φ under either encoding. Any regenerated reference run MUST
+pass TPMs through ``phi_s_systems.to_little_endian`` first.
+
 PyPhi (v1.2.0) requires Python <= 3.9 (it imports ``collections.Iterable``), so
 it cannot run in the same interpreter as the rest of this repository (Python
 >= 3.10). This module is therefore structured as a two-stage benchmark:

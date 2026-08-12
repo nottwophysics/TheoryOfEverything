@@ -133,7 +133,7 @@ These claims map directly to structures in modern physics. See [docs/PHILOSOPHY.
 | 20 | **2+1D Einstein Equations** | Jacobson derivation on 80-point Delaunay manifold; R-T correlation 0.90–0.94 |
 | 21 | **QEC as Spacetime** | Holographic error-correcting code; Brahman recoverable with 80% boundary erasure |
 | 22 | **Fine Structure Constant v2** | 6 systematic approaches; best: 163-26+π/100 = 0.003% error (1000x improvement) |
-| 23 | **IIT-Entanglement Bridge** | Original Φ ≤ S "holds 100%" is circular; a validated retest (canonical PyPhi Φ, N=216) **falsifies** the bound — every nonzero-Φ system violates it — and the raw Φ–S correlation (r≈+0.65) is a connectivity confound (partial r≈−0.02, p=0.77), so nothing residual survives |
+| 23 | **IIT-Entanglement Bridge** | Original Φ ≤ S "holds 100%" is circular; a validated retest (canonical PyPhi Φ, N=216; TPM-ordering audit 2026-08-12) **falsifies** the bound — 50 of 51 nonzero-Φ systems violate it (Φ up to ≈4.0 bits vs S ≤0.83) — and the raw Φ–S correlation (r≈+0.64) is a connectivity confound (partial r≈−0.07, p=0.29), so nothing residual survives |
 
 ### Tier 4 — Paper Companion Experiments (24–26)
 
@@ -178,7 +178,7 @@ See [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md) for detailed documentation of all
 |--------|-------------|--------|
 | **Axiom reduction: 7 → 4** | Gleason's theorem makes Born rule a theorem, not axiom. Advaita has fewer axioms than Copenhagen. | **Proven** (Experiment 18) |
 | **Fine structure: 0.003% error** | 163-26+π/100 = 137.031 vs 137.036 — Heegner number connection | **Explored** (Experiment 22) |
-| **IIT-Entanglement: Φ ≤ S** | Validated test (canonical PyPhi Φ) **falsifies** the bound — every nonzero-Φ system violates it, and the raw Φ–S correlation (r≈+0.65) is a connectivity confound (partial r≈−0.02, p=0.77) — nothing residual survives | **Falsified** (validated retest) |
+| **IIT-Entanglement: Φ ≤ S** | Validated test (canonical PyPhi Φ; ordering-audit-corrected) **falsifies** the bound — 50 of 51 nonzero-Φ systems violate it, and the raw Φ–S correlation (r≈+0.64) is a connectivity confound (partial r≈−0.07, p=0.29) — nothing residual survives | **Falsified** (validated retest) |
 | **2+1D Einstein: R-T = 0.94** | Entropy-derived curvature correlates with energy on 2D discrete manifold | **Demonstrated** (Experiment 20) |
 | **Spacetime from entanglement** | MERA tensor network: cut entanglement = disconnect space; AdS-like geometry | **Demonstrated** (Experiment 19) |
 | **Spacetime as QEC code** | Brahman recoverable with 80% of boundary erased | **Demonstrated** (Experiment 21) |

@@ -91,9 +91,13 @@ def main():
         "n_perm": a.nperm,
         "seed": a.seed,
         "verdict": ("Phi<=S is FALSIFIED: the hold rate equals the permutation null "
-                    "(it is produced entirely by the Phi=0 systems), every system with "
-                    "nonzero integrated information violates the bound, and canonical Phi "
-                    "is not capped by the bipartition entanglement entropy that limits S."),
+                    "(it is produced almost entirely by the Phi=0 systems), "
+                    + (f"every one of the {int(nz.sum())}"
+                       if holds[nz].sum() == 0 else
+                       f"all but {int(holds[nz].sum())} of the {int(nz.sum())}")
+                    + " systems with nonzero integrated information violate the bound, "
+                    "and canonical Phi is not capped by the bipartition entanglement "
+                    "entropy that limits S."),
     }
     print(json.dumps(out, indent=1))
     if a.out:

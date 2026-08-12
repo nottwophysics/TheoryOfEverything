@@ -484,14 +484,17 @@ Previous best: 4.41% error. New best: **0.003% error — a 1000x improvement.**
 > validated retest (`predictions/phi_s_systems.py` + `validated_phi.py` +
 > `entanglement_entropy.py`: canonical PyPhi Φ vs. the entanglement entropy of a
 > transverse-field Ising ground state built from the *same* couplings; N = 216,
-> seed 42) **refutes Φ ≤ S**. The 89% apparent hold rate is produced entirely by
-> the trivial Φ = 0 systems and is statistically identical to a permutation null;
-> **every one of the 23 systems with nonzero integrated information violates the
-> bound**, because canonical Φ (up to ≈ 2.4 bits) is not capped by the bipartition
-> entanglement entropy that limits S (≈ 0.8 bits). The raw Φ–S correlation
-> (Pearson r ≈ +0.65) is a **connectivity confound**: controlling for connectivity
-> collapses it to r ≈ −0.02 (permutation p = 0.77; with system size, +0.09,
-> p = 0.17), so **no residual Φ–S association survives** — §8 retains no claim.
+> seed 42; numbers per the 2026-08-12 **TPM-ordering audit**, which corrected a
+> big-endian/little-endian encoding bug at the PyPhi boundary — see
+> `reproducibility/phi_s/README.md`) **refutes Φ ≤ S**. The 77% apparent hold
+> rate is produced almost entirely by the trivial Φ = 0 systems and is
+> statistically identical to a permutation null (0.7685 vs 0.7789);
+> **50 of the 51 systems with nonzero integrated information violate the
+> bound**, because canonical Φ (up to ≈ 4.0 bits) is not capped by the bipartition
+> entanglement entropy that limits S (≈ 0.83 bits). The raw Φ–S correlation
+> (Pearson r ≈ +0.64) is a **connectivity confound**: controlling for connectivity
+> collapses it to r ≈ −0.07 (permutation p = 0.29; with system size, +0.06,
+> p = 0.38), so **no residual Φ–S association survives** — §8 retains no claim.
 
 **Part 1: Conjecture test across 50 random systems (original circular construction)**
 
@@ -765,7 +768,7 @@ than take the near-match as evidence of a derivation.
 | **Axiom reduction** | **7 → 4** | **Born rule is theorem via Gleason** | **Proven** |
 | **Fine structure 1/α** | **137.031 (0.003%)** | **163-26+π/100 via Heegner numbers** | **Numerology (fails hold-out, Exp 31)** |
 | **Look-elsewhere on 1/α** | **whole ranges covered at 1e-4** | **the near-match is expected by chance, not a law** | **Demonstrated (Exp 31)** |
-| **IIT conjecture Φ ≤ S** | **falsified (validated PyPhi Φ, N=216)** | **Every nonzero-Φ system violates it; Φ not capped by bipartition S. Raw Φ–S correlation (r≈+0.65) is a connectivity confound (partial r≈−0.02, p=0.77) — nothing survives** | **Falsified** |
+| **IIT conjecture Φ ≤ S** | **falsified (validated PyPhi Φ, N=216, ordering-audit-corrected)** | **50 of 51 nonzero-Φ systems violate it; Φ (≤4.0 bits) not capped by bipartition S (≤0.83). Raw Φ–S correlation (r≈+0.64) is a connectivity confound (partial r≈−0.07, p=0.29) — nothing survives** | **Falsified** |
 | **Everett-Advaita equivalence** | **5/5 tests identical** | **0 measurable divergences** | **Proven** |
 | **Perspectival asymmetry** | **Exact (10⁻¹⁶)** | **All states, bases, env sizes — total always pure** | **Proven** |
 | **Observer centrality** | **4/4 open questions involve observer** | **Observer ontology is part of interpretive burden** | **Demonstrated** |

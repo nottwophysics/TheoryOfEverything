@@ -99,6 +99,28 @@ def threshold_tpm(W: np.ndarray) -> np.ndarray:
     return tpm
 
 
+def to_little_endian(tpm: np.ndarray) -> np.ndarray:
+    """Re-index a state-by-node TPM from this module's row order to PyPhi's.
+
+    ``threshold_tpm`` enumerates rows via ``itertools.product`` — node 0 is the
+    MOST-significant bit of the row index (big-endian). PyPhi (1.2.0) reads 2-D
+    state-by-node TPMs with node 0 as the LEAST-significant bit (little-endian);
+    feeding it big-endian rows makes it analyze a convention-scrambled system
+    (input states bit-reversed, output columns not) — the 2026-08-12 ordering
+    audit measured up-to-1.6-bit Φ shifts from exactly this. Always pass a TPM
+    through this function before ``pyphi.Network``. Verified empirically against
+    ``pyphi.convert.to_multidimensional`` (see ``validated_phi.validate``).
+    """
+    tpm = np.asarray(tpm, float)
+    n = tpm.shape[1]
+    out = np.zeros_like(tpm)
+    for state in itertools.product((0, 1), repeat=n):
+        be = int("".join(str(b) for b in state), 2)
+        le = sum(b << k for k, b in enumerate(state))
+        out[le] = tpm[be]
+    return out
+
+
 if __name__ == "__main__":
     fam = make_family()
     from collections import Counter

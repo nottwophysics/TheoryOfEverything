@@ -65,13 +65,24 @@ def _reachable_state(tpm: np.ndarray, n: int, rng) -> tuple:
 
 
 def phi_of_tpm(tpm: np.ndarray, n: int, state=None, seconds=60):
-    """Canonical IIT Φ for a state-by-node TPM. Returns float, or None on
-    timeout/degenerate."""
+    """Canonical IIT Φ for a state-by-node TPM in this repo's (big-endian) row
+    order. Returns float, or None on timeout/degenerate.
+
+    ORDERING (2026-08-12 audit): the TPM is converted to PyPhi's little-endian
+    row order at this boundary — `threshold_tpm` rows are big-endian and PyPhi
+    reads little-endian; before this fix PyPhi analyzed convention-scrambled
+    systems (Φ shifts up to ~1.6 bits on the N=216 family). State selection
+    stays on the big-endian TPM (it steps the intended dynamics; the state
+    tuple itself is node-ordered and convention-free)."""
+    try:
+        from phi_s_systems import to_little_endian
+    except ImportError:
+        from predictions.phi_s_systems import to_little_endian
     rng = np.random.default_rng(0)
     if state is None:
         state = _reachable_state(np.asarray(tpm), n, rng)
     try:
-        net = pyphi.Network(np.asarray(tpm, float))
+        net = pyphi.Network(to_little_endian(np.asarray(tpm, float)))
         sub = pyphi.Subsystem(net, state, range(n))
         return float(_with_timeout(lambda: pyphi.compute.sia(sub).phi, seconds))
     except (_Timeout, Exception):
@@ -94,13 +105,33 @@ def validate() -> list:
     checks.append({"network": "xor_network", "state": "(0,0,0)",
                    "computed_phi": phi_xor, "reference_phi": None,
                    "agrees": phi_xor >= 0.0})
+
+    # Ordering self-test (2026-08-12 audit): PyPhi's own example networks never
+    # exercise home-built TPM row order, so anchor the convention explicitly.
+    # f: node0 copies node1; node1 always off — asymmetric, so the two
+    # encodings differ. PyPhi must index the little-endian encoding as f.
+    import itertools as _it
+    try:
+        from phi_s_systems import to_little_endian
+    except ImportError:
+        from predictions.phi_s_systems import to_little_endian
+    f = {s: (float(s[1]), 0.0) for s in _it.product((0, 1), repeat=2)}
+    tpm_be = np.zeros((4, 2))
+    for s, out in f.items():
+        tpm_be[int("".join(str(b) for b in s), 2)] = out
+    md = pyphi.convert.to_multidimensional(to_little_endian(tpm_be))
+    convention_ok = all(np.array_equal(md[s], np.array(f[s])) for s in f)
+    checks.append({"network": "ordering_self_test", "state": "n/a",
+                   "computed_phi": None, "reference_phi": None,
+                   "agrees": bool(convention_ok)})
     return checks
 
 
 def run(out_phi_json: str, out_check_csv: str) -> dict:
     from phi_s_systems import make_family, threshold_tpm
     checks = validate()
-    assert checks[0]["agrees"], f"PyPhi validation FAILED: {checks[0]}"
+    for c in checks:
+        assert c["agrees"], f"PyPhi validation FAILED: {c}"
 
     with open(out_check_csv, "w") as f:
         f.write("network,state,computed_phi,reference_phi,agrees\n")

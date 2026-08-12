@@ -256,7 +256,7 @@ In addition to the 5 predictions and 5 falsifiers, the framework has produced on
 | Born rule is UNIQUE | Alternative rules (amplitude, quartic) fail additivity: 1800/1800 violations | **Proven** |
 | Hidden variables impossible in dim ≥ 3 | Kochen-Specker (consequence of Gleason): dispersion-free fails 25.6% | **Proven** |
 | Fine structure 1/α = 137.031 | 163-26+π/100 via Heegner numbers (0.003% error) | **Numerology — fails hold-out** (`numerology/cross_validation.py`, `look_elsewhere.py`) |
-| IIT-entanglement: Φ ≤ S | Validated test (canonical PyPhi Φ, N=216) **refutes** the bound — every nonzero-Φ system violates it (Φ not capped by bipartition S); the raw Φ–S correlation (r≈+0.65) is a connectivity confound that does not survive control (partial r≈−0.02, p=0.77) | **Falsified** |
+| IIT-entanglement: Φ ≤ S | Validated test (canonical PyPhi Φ, N=216, ordering-audit-corrected) **refutes** the bound — 50 of 51 nonzero-Φ systems violate it (Φ ≤4.0 bits not capped by bipartition S ≤0.83); the raw Φ–S correlation (r≈+0.64) is a connectivity confound that does not survive control (partial r≈−0.07, p=0.29) | **Falsified** |
 | MERA Φ increases toward IR | Integrated information grows toward Brahman | **Tested** |
 | 2+1D Einstein: R ∝ T (r=0.94) | Jacobson derivation on 80-point Delaunay manifold | **Demonstrated** |
 | Entanglement determines geometry | MERA: cut entanglement = disconnect space | **Demonstrated** |
