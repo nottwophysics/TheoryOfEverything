@@ -53,9 +53,10 @@ python main.py --visualize
 # Run EVERYTHING (31 experiments + visualizations)
 python main.py --everything
 
-# Run the test suite (397 tests) — install the test extra, then run from anywhere
+# Run the test suite (397 tests): install the test extra, then run from the
+# repository root (pytest resolves testpaths=tests relative to the project root).
 pip install -e ".[test]"
-pytest                        # testpaths=tests is configured in pyproject.toml
+pytest
 ```
 
 > **Note on imports.** After `pip install -e .` every sub-package
@@ -222,7 +223,11 @@ The version of record for the withdrawn §8 conjecture (Φ ≤ S) and its falsif
 
 ## License
 
-This project is currently released **without a formal open-source license**: default copyright applies, and the availability of the code for reading does not by itself grant reuse, modification, or redistribution rights. It is shared for research, education, and philosophical exploration; contact the author for other uses. (A formal license may be added later.) The code models ideas — it does not claim to be a finished physical theory.
+Released under the **MIT License** — see [LICENSE](LICENSE). You may use, modify and redistribute this code, including commercially, provided the copyright notice and permission notice are retained.
+
+The licence covers the **code**. It says nothing about the correctness of the ideas: the code models a metaphysical framework and explores its connections to physics — it does not claim to be a finished physical theory, and several of its explorations have been withdrawn or falsified by the project's own tests (see [docs/PREDICTIONS.md](docs/PREDICTIONS.md)). The accompanying paper is separately available under its own terms via the Zenodo record.
+
+Note on provenance: substantial portions of this repository were written with AI assistance, disclosed in the commit history.
 
 ---
 

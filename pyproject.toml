@@ -6,7 +6,20 @@ build-backend = "setuptools.build_meta"
 name = "theory-of-everything"
 version = "0.1.0"
 description = "Computational framework bridging Advaita Vedanta and quantum mechanics"
+readme = "README.md"
 requires-python = ">=3.10"
+license = {text = "MIT"}
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Development Status :: 3 - Alpha",
+]
 dependencies = [
     "numpy>=1.24.0",
     "matplotlib>=3.7.0",
