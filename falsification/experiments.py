@@ -91,10 +91,15 @@ class CriticalExperiments:
                 "smooth_spacetime": "No correlated noise",
                 "holographic_spacetime": "Correlated noise ∝ √(l_Planck × L)",
             },
-            "feasibility": "Fermilab Holometer already searching. "
-                           "No detection yet but improvements ongoing.",
-            "timeline": "5-10 years for next-generation sensitivity",
-            "impact": "Direct evidence for/against emergent spacetime",
+            "feasibility": "ALREADY RUN: the Fermilab Holometer (2015-2016) "
+                           "reached the required sensitivity for Hogan-scale "
+                           "holographic noise and EXCLUDED it. As stated, this "
+                           "experiment has been performed and returned a null.",
+            "timeline": "Done (null result). A revised noise model would need "
+                        "its own sensitivity analysis.",
+            "impact": "The null result counts AGAINST the specific "
+                      "holographic-noise signature this framework's P5 encoded "
+                      "(see docs/PREDICTIONS.md and criteria.outcomes_to_date).",
         }
 
     def experiment_4_consciousness_causation(self) -> dict:

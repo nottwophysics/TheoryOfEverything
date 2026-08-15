@@ -9,27 +9,27 @@ Quantum entanglement entropy S measures the non-separability of a
 quantum system — the information shared between subsystems that
 cannot be attributed to either alone.
 
-This module formally connects Φ and S:
+This module tested the conjecture Φ ≤ S_entanglement.
 
-    CONJECTURE: Φ ≤ S_entanglement
+⚠️ STATUS: FALSIFIED — DO NOT CITE AS A LIVE CONJECTURE (2026-07-15;
+numbers corrected by the TPM-ordering audit of 2026-08-12).
 
-    For any system, the integrated information (consciousness)
-    is bounded above by the quantum entanglement entropy.
+    The validated retest with canonical PyPhi Φ (N=216 systems,
+    ordering-audit-corrected) refutes the bound: 50 of the 51 systems
+    with nonzero integrated information VIOLATE Φ ≤ S. The raw Φ–S
+    correlation is a connectivity confound (partial r ≈ −0.07, p = 0.29).
+    See predictions/validated_phi.py and reproducibility/phi_s/.
 
-    Equality: Φ = S when the system is maximally integrated
-    AND maximally entangled.
+    The Φ measure implemented BELOW is the framework's internal
+    heuristic, NOT canonical IIT Φ (a PyPhi benchmark found r ≈ −0.01
+    against canonical values; see PYPHI_BENCHMARK_MEMO.md), and its
+    original "holds in 100% of trials" result was circular — an
+    artifact of this construction. The module is retained so the
+    historical construction stays reproducible, not as evidence.
 
-This bridges:
-    - Neuroscience (IIT / Tononi) — measuring consciousness
-    - Quantum physics (entanglement entropy) — measuring non-separability
-    - Advaita Vedanta — consciousness IS non-duality (entanglement)
-
-If this conjecture holds, it means:
-    1. Consciousness REQUIRES entanglement (no entanglement → no consciousness)
-    2. Maximum consciousness = maximum entanglement = Brahman
-    3. The "hard problem" becomes: why does entanglement feel like something?
-       (Answer in Advaita: because consciousness IS fundamental, and
-       entanglement is its quantum signature)
+The metaphysical implications once drawn from the conjecture
+(consciousness requires entanglement; maximum consciousness = Brahman)
+do not survive the falsification and are recorded only as history.
 """
 
 import numpy as np
@@ -302,11 +302,16 @@ class IITEntanglementBridge:
             "avg_ratio_phi_over_S": float(avg_ratio),
             "phi_S_correlation": correlation,
             "conjecture": "Φ ≤ S_entanglement",
+            "status": ("FALSIFIED — this internal-heuristic construction is "
+                       "circular; the validated PyPhi retest refutes the bound "
+                       "(50/51 nonzero-Φ systems violate). See module docstring."),
             "result": (
-                f"Conjecture holds in {num_trials - violations}/{num_trials} trials "
+                f"Internal heuristic (retired, circular): holds in "
+                f"{num_trials - violations}/{num_trials} trials "
                 f"({(num_trials - violations) / num_trials:.0%}). "
                 f"Φ-S correlation: {correlation:.4f}. "
-                f"Average Φ/S ratio: {avg_ratio:.4f}."
+                f"Average Φ/S ratio: {avg_ratio:.4f}. "
+                f"The validated PyPhi retest falsifies the conjecture."
             ),
         }
 
@@ -433,7 +438,8 @@ class IITEntanglementBridge:
             "extreme_cases": self.demonstrate_extremes(),
             "mera_profile": self.mera_consciousness_profile(),
             "testable_prediction": (
-                "If Φ ≤ S_entanglement holds, then: "
+                "HISTORICAL (the conjecture is falsified; these implications "
+                "were drawn while it was live and no longer follow): "
                 "1) Measuring Φ in a neural system sets a LOWER BOUND on its "
                 "quantum entanglement. "
                 "2) Systems with zero entanglement have zero consciousness. "

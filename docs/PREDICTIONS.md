@@ -41,19 +41,28 @@ If the falsifiers are confirmed, the metaphysics must be revised.
 
 ### P2: Gravitational Decoherence Mass Threshold
 
-**Prediction**: Objects above ~10⁻¹⁴ kg spontaneously decohere due to gravitational self-energy (Diosi-Penrose mechanism). The decoherence time is τ ≈ ℏ/(Gm²/R).
+**Prediction**: Objects above roughly 10⁻¹⁵–10⁻¹⁴ kg (geometry- and window-dependent) spontaneously decohere due to gravitational self-energy (Diosi-Penrose mechanism). The decoherence time is τ ≈ ℏ/(Gm²/R).
 
 **Basis**: If gravity emerges from consciousness dynamics, and consciousness is what "selects" outcomes, then gravity should cause measurement-like decoherence — the transition from quantum (Brahman) to classical (Maya).
 
-**Decoherence times**:
+**Decoherence times** (computed from τ = ℏ/(Gm²/R) with the radii used in
+`predictions/testable.py`; corrected 2026-08-15 — an earlier version of this
+table was inconsistent with the formula by up to 10 orders of magnitude):
 
-| System | Mass (kg) | Decoherence Time | Can Show Interference? |
-|--------|-----------|-----------------|----------------------|
-| Electron | 9.1×10⁻³¹ | 10²⁸ s | Yes |
-| C60 molecule | 1.2×10⁻²⁴ | 10¹⁶ s | Yes |
-| Virus | 10⁻¹⁸ | 10⁴ s | Yes (marginally) |
-| Bacterium | 10⁻¹⁵ | 10⁻² s | No |
-| Grain of sand | 10⁻⁹ | 10⁻²⁰ s | No |
+| System | Mass (kg) | Radius (m) | Decoherence Time | Interference in a 1 s window? |
+|--------|-----------|------------|-----------------|-------------------------------|
+| Electron | 9.1×10⁻³¹ | 2.8×10⁻¹⁵ | ~5×10²¹ s | Yes |
+| C60 molecule | 1.2×10⁻²⁴ | 3.5×10⁻¹⁰ | ~4×10¹⁴ s | Yes |
+| Virus | 10⁻¹⁸ | 10⁻⁷ | ~2×10⁵ s | Yes |
+| Bacterium | 10⁻¹⁵ | 10⁻⁶ | ~1.6 s | Marginal |
+| Grain of sand | 10⁻⁹ | 10⁻⁴ | ~2×10⁻¹⁰ s | No |
+
+The naive Diósi–Penrose channel alone puts the marginal mass near
+10⁻¹⁵ kg for these geometries; the multi-channel treatment (gravitational
+vs. collisional vs. thermal-photon decoherence, and where each dominates)
+is in `predictions/decoherence_calculator.py` and
+`DECOHERENCE_CALCULATOR_MEMO.md`, which is the authoritative version of
+this analysis.
 
 **Experimental approach**:
 1. Perform matter-wave interferometry with increasing masses
@@ -111,7 +120,7 @@ If the falsifiers are confirmed, the metaphysics must be revised.
 - Requires very high statistical power
 - Must be pre-registered and blinded to prevent experimenter bias
 
-**Current status**: No definitive experiment. Some controversial results from PEAR lab, Global Consciousness Project.
+**Current status**: No definitive experiment. (Earlier drafts cited PEAR-lab and Global Consciousness Project results; those bodies of work failed replication and are **not evidence** — the citation is retained only to acknowledge, honestly, why this class of claim carries a heavy credibility burden.)
 
 **Distinguishes from**: ALL standard interpretations of QM (Copenhagen, many-worlds, pilot wave) predict no difference.
 
@@ -123,7 +132,7 @@ If the falsifiers are confirmed, the metaphysics must be revised.
 
 ### P5: Holographic Noise
 
-**Prediction**: Correlated holographic noise in interferometer outputs at amplitude ~4×10⁻¹⁸ m/√Hz, arising from the discrete nature of the holographic boundary theory.
+**Prediction**: Correlated holographic noise in interferometer outputs, arising from the discrete nature of the holographic boundary theory. The band-limited amplitude estimate implemented in `predictions/testable.py` is ASD ~ L·√(l_P/c) ≈ 9×10⁻²¹ m/√Hz for a 40 m arm. (An earlier version of this page quoted ~4×10⁻¹⁸ m/√Hz, which is √l_Planck — units of √m, dimensionally invalid as a m/√Hz figure; the code retired that value and this page now matches the code.)
 
 **Basis**: If spacetime is a holographic projection (Maya projecting 3D from 2D), there should be fundamental "graininess" — a noise floor from the projection process.
 
@@ -132,11 +141,11 @@ If the falsifiers are confirmed, the metaphysics must be revised.
 2. Holometer experiment at Fermilab (already running)
 3. Look for correlations that cannot be explained by standard noise sources
 
-**Current status**: Holometer has set limits; no detection yet. Next-generation experiments may reach required sensitivity.
+**Current status**: **Excluded at the Hogan-scale amplitude.** The Fermilab Holometer (2015–2016) reached the sensitivity required for this class of holographic noise and found none. P5 as originally stated is therefore not a live prediction; any surviving version requires a quantitatively different noise model, which this repository does not currently provide.
 
-**Distinguishes from**: Standard physics (smooth spacetime at all scales) predicts no holographic noise.
+**Distinguishes from**: Standard physics (smooth spacetime at all scales) predicts no holographic noise — and the null result to date favors it.
 
-**Timeline**: 5–10 years for next-generation sensitivity.
+**Timeline**: n/a at the original amplitude; a revised model would need its own sensitivity analysis.
 
 ---
 
@@ -245,24 +254,24 @@ This is science: we follow the evidence.
 
 ---
 
-## Proven Results (Not Predictions — Established Facts)
+## Result Status Table (Mixed Outcomes — Read the Status Column)
 
-In addition to the 5 predictions and 5 falsifiers, the framework has produced one **proven mathematical result** via Experiment 18:
+This table records what the framework's computational program has actually produced. The outcomes are mixed — one mathematical result, one falsified conjecture, one numerology verdict, and several toy demonstrations whose original status labels overstated them (statuses corrected 2026-08-15 after an adversarial code review):
 
 | Result | Method | Status |
 |--------|--------|--------|
-| Born rule is a theorem, not an axiom | Gleason's theorem (1957) verified for Brahman Hilbert space | **Proven** |
-| Axiom reduction: 7 → 4 | Copenhagen needs Born rule as axiom; Advaita derives it | **Proven** |
-| Born rule is UNIQUE | Alternative rules (amplitude, quartic) fail additivity: 1800/1800 violations | **Proven** |
-| Hidden variables impossible in dim ≥ 3 | Kochen-Specker (consequence of Gleason): dispersion-free fails 25.6% | **Proven** |
+| Born rule is a theorem, not an axiom | Gleason's theorem (1957); numerically illustrated for the framework's Hilbert space | **Established (Gleason 1957); illustrated here** — see `docs/GLEASON_PROBABILITY_GAP.md` for what this does *not* establish |
+| Axiom reduction: 7 → 4 | Axiom bookkeeping: Copenhagen lists the Born rule as an axiom; Gleason derives it from the others | **Argued (bookkeeping, not a computation)** — scope caveats in `docs/GLEASON_PROBABILITY_GAP.md` |
+| Born rule is UNIQUE | Alternative rules (amplitude, quartic) fail additivity: 1800/1800 violations | **Numerically checked** (consequence of Gleason) |
+| Hidden variables impossible in dim ≥ 3 | Kochen-Specker (consequence of Gleason): dispersion-free fails 25.6% | **Numerically checked** (established theorem) |
 | Fine structure 1/α = 137.031 | 163-26+π/100 via Heegner numbers (0.003% error) | **Numerology — fails hold-out** (`numerology/cross_validation.py`, `look_elsewhere.py`) |
 | IIT-entanglement: Φ ≤ S | Validated test (canonical PyPhi Φ, N=216, ordering-audit-corrected) **refutes** the bound — 50 of 51 nonzero-Φ systems violate it (Φ ≤4.0 bits not capped by bipartition S ≤0.83); the raw Φ–S correlation (r≈+0.64) is a connectivity confound that does not survive control (partial r≈−0.07, p=0.29) | **Falsified** |
-| MERA Φ increases toward IR | Integrated information grows toward Brahman | **Tested** |
-| 2+1D Einstein: R ∝ T (r=0.94) | Jacobson derivation on 80-point Delaunay manifold | **Demonstrated** |
-| Entanglement determines geometry | MERA: cut entanglement = disconnect space | **Demonstrated** |
-| Spacetime is QEC code | [5,1] holographic code: 80% erasure recoverable | **Demonstrated** |
+| MERA Φ increases toward IR | Used the retired internal Φ heuristic on a "MERA" whose transformations were later found to be no-ops | **Retracted** (heuristic Φ discredited by the PyPhi benchmark; construction defective) |
+| 2+1D Einstein: R ∝ T (r=0.94) | Discrete manifold with entropy *defined* proportional to T₀₀; the correlated "curvature" is a smoothed copy of that entropy | **Withdrawn as evidence — circular by construction** (genuine deficit-angle curvature anti-correlates; see Experiment 20 caveats) |
+| Entanglement determines geometry | MERA: cut entanglement = disconnect space | **Retracted** (same defective MERA construction as above) |
+| Spacetime is QEC code | [5,1] holographic code: "80% erasure recoverable" | **Overstated — withdrawn as evidence** (the 80% figure is the scan's loop bound; recovery fidelity is near chance) |
 
-These are not predictions awaiting experimental confirmation. They are mathematical facts verified computationally.
+Only the Gleason-derived rows are mathematics; their theorems are established in the literature and this repository's contribution is numerical illustration. The remaining rows are the honest record of computational explorations, including the ones that failed.
 
 ---
 
@@ -270,19 +279,20 @@ These are not predictions awaiting experimental confirmation. They are mathemati
 
 | ID | Prediction/Falsifier | Status | Verdict |
 |----|---------------------|--------|---------|
-| **R1** | **Axiom reduction 7→4 (Gleason)** | **Proven** | **Framework strengthened** |
+| **R1** | **Axiom reduction 7→4 (Gleason)** | **Established theorem, illustrated numerically** | Framework-compatible (see scope caveats) |
+| **Φ≤S** | **IIT–entanglement bound (Experiment 23 / paper §8)** | **Falsified** (validated PyPhi retest, N=216, ordering audit 2026-08-12: 50/51 nonzero-Φ systems violate) | **Conjecture withdrawn** |
 | P1 | Entanglement → gravity | Not yet testable | Open |
 | P2 | Decoherence mass threshold | Approaching testability; multi-channel calculator built | Open |
 | P3 | Vacuum entanglement structure | Partially tested (Casimir) | Consistent |
 | P4 | Consciousness decoherence | Not yet testable | Open |
-| P5 | Holographic noise | Tested (Holometer) | No detection yet |
-| F1 | Consciousness from computation | No example yet | Framework survives |
+| P5 | Holographic noise | Tested (Holometer, 2015–2016) | **Excluded at the predicted amplitude** — not live as stated |
+| F1 | Consciousness from computation | No example yet (criterion not practically triggerable today) | Framework survives |
 | F2 | Local hidden variables | Ruled out (Bell tests) | **Framework confirmed** |
-| F3 | Spacetime fundamental | Not tested | Open |
-| F4 | No gravitational decoherence | Not tested | Open |
+| F3 | Spacetime fundamental | Holographic-noise route excluded (Holometer); other routes untested | Open |
+| F4 | No gravitational decoherence | Not tested (~8 orders of magnitude away) | Open |
 | F5 | Constants arbitrary | Koide holds (verified, not derived); α "derivation" fails hold-out | Mixed |
 
-**Current tally**: 1 proven result (Gleason axiom reduction), 1 confirmed (F2 ruled out), F5 mixed (Koide verified but the α recipe is numerology by its own hold-out tests), 0 falsified, 8 open.
+**Current tally**: 1 established theorem illustrated (Gleason axiom reduction), 1 confirmed falsifier-direction (F2 ruled out), **1 falsified conjecture (Φ≤S — withdrawn)**, **1 prediction excluded at its stated amplitude (P5)**, F5 mixed (Koide verified but the α recipe is numerology by its own hold-out tests), remainder open.
 
 ---
 
@@ -292,4 +302,4 @@ These are not predictions awaiting experimental confirmation. They are mathemati
 *"Brahman is real. The world is appearance. The self is Brahman."*
 *— Shankaracharya*
 
-*Both standards apply here. The physics is falsifiable. The metaphysics is internally coherent. The Gleason result is mathematically proven. Together, they constitute a genuine Theory of Everything.*
+*Both standards apply here. The physics is falsifiable — and parts of it have already been falsified or excluded, which is recorded above. The metaphysics is internally coherent. The Gleason result is established mathematics. Together they constitute a falsifiable research program, not a completed Theory of Everything.*

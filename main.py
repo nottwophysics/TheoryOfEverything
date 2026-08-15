@@ -833,8 +833,17 @@ def iit_bridge_experiment():
     """Experiment 23: IIT-Entanglement Bridge — Consciousness Meets Quantum."""
     print("\n" + "=" * 70)
     print("  EXPERIMENT 23: IIT-ENTANGLEMENT BRIDGE")
-    print("  Conjecture: Φ (Consciousness) ≤ S (Entanglement)")
+    print("  Conjecture tested: Φ (Consciousness) ≤ S (Entanglement)")
     print("=" * 70)
+    print("\n  " + "!" * 66)
+    print("  !! STATUS: FALSIFIED (2026-07-15; ordering audit 2026-08-12).")
+    print("  !! The validated PyPhi retest (N=216) refutes the bound: 50 of the")
+    print("  !! 51 nonzero-Phi systems VIOLATE Phi <= S; the raw correlation is")
+    print("  !! a connectivity confound (partial r ~ -0.07, p = 0.29).")
+    print("  !! What runs below is the ORIGINAL, CIRCULAR internal-heuristic")
+    print("  !! construction, retained for historical reproducibility only.")
+    print("  !! See predictions/validated_phi.py and reproducibility/phi_s/.")
+    print("  " + "!" * 66)
 
     from predictions.iit_bridge import IITEntanglementBridge
 
@@ -878,17 +887,22 @@ def iit_bridge_experiment():
     print(f"\n  Φ increases toward IR (Brahman): {mera['phi_increases_toward_ir']}")
     print(f"\n  {mera['prediction'][:200]}...")
 
-    # Testable predictions
+    # Implications once drawn from the (now falsified) conjecture
     print("\n" + "-" * 60)
-    print("  PART 4: TESTABLE PREDICTIONS")
+    print("  PART 4: IMPLICATIONS ONCE DRAWN (HISTORICAL — CONJECTURE FALSIFIED)")
     print("-" * 60)
     demo = bridge.full_demonstration()
     preds = demo["testable_prediction"].split(". ")
     for i, pred in enumerate(preds):
         if pred.strip():
             print(f"  {i+1}. {pred.strip()}")
+    print("\n  The validated retest falsified the bound, so these implications")
+    print("  no longer follow. They are shown to keep the historical record")
+    print("  reproducible.")
 
-    return {"status": "completed", "experiment": "iit_bridge"}
+    return {"status": "completed", "experiment": "iit_bridge",
+            "conjecture_status": "falsified (validated PyPhi retest; "
+                                 "ordering audit 2026-08-12)"}
 
 
 def operational_equivalence_experiment():

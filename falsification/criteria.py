@@ -6,6 +6,16 @@ This module explicitly states what observations or experiments
 would DISPROVE the consciousness-first framework.
 
 Intellectual honesty requires this.
+
+Updated 2026-08-15 (review): the registry now also records OUTCOMES —
+including the one conjecture this repository itself falsified (Φ ≤ S;
+see ``outcomes_to_date``) — and status fields have been refreshed
+against published experimental results. A caveat the review surfaced:
+F1, F3 and F5 are stated at a strength that may not be practically
+triggerable (a phenomenal-consciousness test does not exist; sub-Planck
+structure cannot currently be probed; "truly random" constants cannot be
+established across unobservable regions). They are kept as in-principle
+falsifiers, with that limitation stated here rather than hidden.
 """
 
 import numpy as np
@@ -50,7 +60,12 @@ class FalsificationCriteria:
                 "if_falsified": "Spacetime is not a projection of consciousness. "
                                 "The holographic/emergent spacetime program fails.",
                 "current_status": "No experiment probes sub-Planck structure yet. "
-                                  "Theoretical arguments favor emergence.",
+                                  "Note: the Fermilab Holometer (2015-2016) searched for "
+                                  "Hogan-scale holographic noise at interferometer scales "
+                                  "and EXCLUDED it — see the P5 status in "
+                                  "docs/PREDICTIONS.md. Theoretical arguments for "
+                                  "emergence remain, but the specific holographic-noise "
+                                  "signature this repo's P5 encoded is ruled out.",
             },
             "F4_no_gravitational_decoherence": {
                 "falsifier": "Observing quantum superposition of arbitrarily "
@@ -69,8 +84,14 @@ class FalsificationCriteria:
                                "no Koide formula, no patterns, pure randomness",
                 "if_falsified": "Constants are not determined by consciousness structure. "
                                 "They are arbitrary parameters of a random vacuum.",
-                "current_status": "Koide formula and other patterns exist. "
-                                  "Not definitive but suggestive of structure.",
+                "current_status": "Koide formula verified as arithmetic (0-parameter "
+                                  "m_tau check, 0.006%). But this repo's own "
+                                  "look-elsewhere analysis (Experiment 31) shows its "
+                                  "fine-structure formula family hits essentially any "
+                                  "target at the claimed precision — the alpha 'pattern' "
+                                  "is numerology by the repo's own hold-out test. "
+                                  "Suggestive structure remains an open question, "
+                                  "not evidence.",
             },
         }
 
@@ -83,7 +104,11 @@ class FalsificationCriteria:
                 "observation": "Dark energy equation of state w ≠ -1",
                 "impact": "Would complicate the 'residual Maya' interpretation "
                           "but not necessarily refute it (Maya could evolve)",
-                "current_status": "w = -1.03 ± 0.03 — consistent with constant",
+                "current_status": "DESI BAO results (2024-2025) in combination with "
+                                  "CMB and supernovae prefer an EVOLVING w at up to "
+                                  "~4 sigma — not yet definitive, but this partial "
+                                  "falsifier is under active pressure, no longer "
+                                  "'consistent with constant'.",
             },
             "PF2_information_destroyed": {
                 "observation": "Information is destroyed in black holes "
@@ -137,17 +162,54 @@ class FalsificationCriteria:
             ),
         }
 
+    def outcomes_to_date(self) -> dict:
+        """
+        Falsification OUTCOMES recorded against this framework's own claims.
+        A registry that only lists criteria, never verdicts, is decoration;
+        this method is where verdicts live.
+        """
+        return {
+            "PHI_LE_S_FALSIFIED": {
+                "claim": "Φ ≤ S_entanglement (integrated information bounded "
+                         "by entanglement entropy) — Experiment 23 / paper §8",
+                "verdict": "FALSIFIED (2026-07-15; numbers corrected by the "
+                           "TPM-ordering audit, 2026-08-12)",
+                "evidence": "Validated retest with canonical PyPhi Φ against the "
+                            "entanglement entropy of transverse-field Ising ground "
+                            "states (N=216 systems): 50 of the 51 nonzero-Φ systems "
+                            "VIOLATE the bound (max Φ ≈ 4.0 bits vs S ≤ 0.83). The "
+                            "raw Φ–S correlation (r ≈ +0.64) is a connectivity "
+                            "confound (partial r ≈ −0.07, p = 0.29). Reproduction: "
+                            "reproducibility/phi_s/.",
+                "disposition": "Conjecture withdrawn from the paper (preprint v2, "
+                               "doi:10.5281/zenodo.21007975). The original "
+                               "'holds in 100% of trials' result was circular "
+                               "(internal heuristic; see PYPHI_BENCHMARK_MEMO.md).",
+            },
+            "P5_HOLOGRAPHIC_NOISE_EXCLUDED": {
+                "claim": "P5: correlated holographic noise in interferometers",
+                "verdict": "Ruled out at the encoded (Hogan-scale) amplitude by "
+                           "the Fermilab Holometer (2015-2016), which reached the "
+                           "required sensitivity and found no signal.",
+                "disposition": "P5 cannot count as a live novel prediction at "
+                               "that amplitude; see docs/PREDICTIONS.md.",
+            },
+        }
+
     def full_report(self) -> dict:
         """Generate the complete falsification report."""
         return {
             "core_falsifiers": self.core_falsifiers(),
             "partial_falsifiers": self.partial_falsifiers(),
+            "outcomes_to_date": self.outcomes_to_date(),
             "non_falsifiable": self.what_cannot_be_falsified(),
             "scientific_integrity": (
                 "This framework makes testable predictions (P1-P5) and "
-                "states explicit falsification criteria (F1-F5). "
-                "If the predictions fail, the physics component is wrong. "
-                "If the falsifiers are confirmed, the metaphysics must be revised. "
+                "states explicit falsification criteria (F1-F5), and it records "
+                "outcomes against itself: one conjecture (Φ ≤ S) has been "
+                "FALSIFIED by the repo's own validated retest, and one predicted "
+                "signature (P5 holographic noise) was excluded by experiment. "
+                "If further predictions fail, the physics component is wrong. "
                 "This is the standard we hold ourselves to."
             ),
         }
