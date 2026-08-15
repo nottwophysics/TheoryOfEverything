@@ -457,7 +457,7 @@ This project is honest about its status. Here is the complete picture:
 - Gleason's theorem axiom reduction: 7 → 4 axioms
 - Born rule uniqueness: only consistent probability measure in dim ≥ 3
 - Kochen-Specker consequence: hidden variables impossible in dim ≥ 3
-- Bell inequality violation: S = 2√2 (confirms non-locality)
+- Bell CHSH bound: S = 2√2 (Tsirelson's bound — established mathematics; the repo's demo evaluates it analytically rather than verifying it)
 
 ### Demonstrated (quantitative, reproducible)
 - Measurement problem resolution: purity 1.0 (total) vs 0.25 (reduced)

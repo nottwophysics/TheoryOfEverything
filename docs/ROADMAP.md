@@ -167,8 +167,8 @@ No physics ToE addresses why there is **experience** at all. This framework star
 | Path | Impact | Feasibility | Current Progress | Priority |
 |------|--------|-------------|-----------------|----------|
 | Path 3: Observer Problem | Very High | Medium | Milestone 1 COMPLETE | **Done** (publish) |
-| Path 4: Emergent Gravity | Very High | Medium | 6 modules, 3+1D (r=0.88) | **Largely done** (graviton propagator remaining) |
-| Path 2: Information Bridge | High | Medium | MERA + QEC + Bell + holography + ER=EPR | **COMPLETE** |
+| Path 4: Emergent Gravity | Very High | Medium | 6 modules, 3+1D (implemented; correlations withdrawn as evidence — circular, see Honest Status table) | **Implemented, not demonstrated** |
+| Path 2: Information Bridge | High | Medium | MERA + QEC + Bell + holography + ER=EPR | **Implemented** (several withdrawn as evidence — see Honest Status table) |
 | Path 1: Consciousness-First Physics | Highest | Hard | **α at 0.003% error** | **Active** (rigorous derivation needed) |
 | Path 5: Hard Problem | Revolutionary | Very Hard | **IIT bridge built; Φ≤S falsified (validated); Φ–S correlation is a confound — nothing survives** | **Active** (experimental protocol) |
 

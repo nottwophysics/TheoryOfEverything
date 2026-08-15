@@ -212,7 +212,7 @@ while the higher-order measure fires unmistakably.
 The second figure shows the per-instance separation (Panel a) and the detection
 AUC bars against the chance line (Panel b):
 
-*Figure — Detector versus baselines on synergistic-emergence detection. Panel a: per-instance metric values, independent (grey) versus synergistic (colored) — only O-information separates the two clouds; the pairwise-correlation and per-agent-variance clouds overlap completely. Panel b: detection AUC per metric — O-information and total correlation at 1.00, all baselines at or below the 0.5 chance line. (figure file in the artifact package `classical_multiagent_package.tar.gz`).*
+*Figure — Detector versus baselines on synergistic-emergence detection. Panel a: per-instance metric values, independent (grey) versus synergistic (colored) — only O-information separates the two clouds; the pairwise-correlation and per-agent-variance clouds overlap completely. Panel b: detection AUC per metric — O-information and total correlation at 1.00, baselines at 0.29–0.47 (below the 0.5 line — anti-signal artifact, see banner). (figure file was never committed to the public repository — see §10.)*
 
 ---
 
@@ -326,7 +326,8 @@ local data.
 The classical operationalization **works and beats the naive baselines**: it
 turns the §2.5 symmetry into a concrete, correct synergy detector that catches
 parity-type collective emergence (AUC 1.00) which correlation and variance tools
-miss entirely (AUC ≈ 0.5). But it **recovers the existing O-information / PID
+miss entirely (AUC ≈ 0.29–0.47 — an anti-signal artifact of the construction,
+not chance). But it **recovers the existing O-information / PID
 machinery rather than producing a new quantity** — so it is a principled
 operational test a designer could adopt, not a fundamentally new measurement.
 That is the honest, defensible scope: a usable tool with a clean derivation from

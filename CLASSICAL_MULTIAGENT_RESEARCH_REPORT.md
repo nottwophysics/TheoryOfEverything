@@ -190,7 +190,8 @@ and consistent with §8's separation of what a perspective can and cannot access
 The classical operationalization **works and beats the naive baselines**: it
 turns the §2.5 symmetry into a concrete, correct synergy detector that catches
 parity-type collective emergence (AUC 1.0) which correlation and variance tools
-miss (AUC ≈ 0.5). But it **recovers the existing O-information / PID machinery
+miss (AUC ≈ 0.29–0.47 — an anti-signal artifact of the construction, not
+chance). But it **recovers the existing O-information / PID machinery
 rather than producing a new quantity** — so it is a principled *operational test*
 a designer could adopt, not a fundamentally new measurement. That is the honest,
 defensible scope: a usable tool with a clean derivation, not a novel observable.
