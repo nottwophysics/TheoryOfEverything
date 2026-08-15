@@ -1,7 +1,7 @@
 """
 Perspectival Asymmetry — Generalized Measurement Resolution
 
-The submitted paper claims:
+The accompanying paper (preprint: doi 10.5281/zenodo.21007975) claims:
     "The total state remains pure. The observer's reduced state appears mixed.
      This is perspectival, not physical."
 

@@ -108,8 +108,9 @@ construction-dependent.
 
 **The synergy detector separates parity-type emergence categorically (AUC 1.0 —
 by construction); the designer baselines are uninformative** (the
-pairwise-correlation baselines actually score AUC 0.39–0.43, systematically
-below chance — an anti-signal artifact of the construction). This is expected and exactly the
+pairwise-correlation baselines score below 0.5 — 0.390/0.429 in the table above,
+≈0.29–0.39 under independent re-measurement — an anti-signal artifact of the
+construction). This is expected and exactly the
 point: parity has zero pairwise correlation and fair-coin marginals by
 construction, so correlation- and variance-based tools are provably blind to it,
 while the higher-order measure fires unmistakably.
@@ -180,8 +181,9 @@ and consistent with §8's separation of what a perspective can and cannot access
   Jensen O-information **10.1103/PhysRevE.100.032305**; Timme et al. synergy
   10.1007/s10827-013-0458-4; Mediano et al. emergence review
   10.1098/rsta.2021.0246.
-- Numbers copied from executed output (`detector_results.csv`,
-  `baseline_comparison.csv`, `baseline_verdict.json`).
+- Numbers: provenance RETRACTED (2026-08-15) — `detector_results.csv`,
+  `baseline_comparison.csv` and `baseline_verdict.json` were never committed to
+  the public repository (see the correction banner and the detailed report's §9).
 
 ## Bottom line
 

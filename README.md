@@ -133,7 +133,7 @@ These claims map directly to structures in modern physics. See [docs/PHILOSOPHY.
 | 19 | **MERA Tensor Network** | ⚠️ Retracted as evidence: review found the coarse-graining transformations are no-ops (global phase only) — retained as a defective-construction case study |
 | 20 | **2+1D Einstein Equations** | ⚠️ Circular by construction (entropy is defined ∝ T₀₀; the correlated "curvature" is a smoothed copy of it; genuine deficit-angle curvature anti-correlates) — illustrates the Jacobson logic only |
 | 21 | **QEC as Spacetime** | ⚠️ Overstated in earlier docs: the "80%" is the scan's loop bound and recovery fidelity is near chance — toy illustration only |
-| 22 | **Fine Structure Constant v2** | 6 systematic approaches; best: 163-26+π/100 = 0.003% error (1000x improvement) |
+| 22 | **Fine Structure Constant v2** | 6 systematic approaches; best: 163-26+π/100 = 0.003% error (1000x improvement over v1 — but see Experiment 31: numerology) |
 | 23 | **IIT-Entanglement Bridge** | Original Φ ≤ S "holds 100%" is circular; a validated retest (canonical PyPhi Φ, N=216; TPM-ordering audit 2026-08-12) **falsifies** the bound — 50 of 51 nonzero-Φ systems violate it (Φ up to ≈4.0 bits vs S ≤0.83) — and the raw Φ–S correlation (r≈+0.64) is a connectivity confound (partial r≈−0.07, p=0.29), so nothing residual survives |
 
 ### Tier 4 — Paper Companion Experiments (24–26)
@@ -150,7 +150,7 @@ These claims map directly to structures in modern physics. See [docs/PHILOSOPHY.
 |---|------|---------------------|
 | 27 | **3+1D Einstein Equations** | ⚠️ Same circular construction as Experiment 20, in 3D — illustrates the logic; the correlation is not evidence |
 | 28 | **ER=EPR Correspondence** | Illustrative identities (the throat–entropy relation is imposed by definition in the demo, not derived) |
-| 29 | **Fine Structure v3** | Rigorous derivation attempts: self-referential, modular bootstrap, holographic constraint; continued fraction analysis |
+| 29 | **Fine Structure v3** | Derivation attempts (numerology-class): self-referential, modular bootstrap, holographic constraint; continued fraction analysis |
 | 30 | **Unity of Experience** | Experiential underdetermination — decoherence fixes ρ_SA but not experiential ontology |
 | 31 | **Look-Elsewhere Effect** | Self-critical numerology demo: 125 equally-simple formulas match 1/α at the claimed precision, so the α "derivation" is a coincidence, not a result |
 

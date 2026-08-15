@@ -17,7 +17,9 @@ entropic-force module's 1/r-vs-1/r^2 shape correlation, not to this model.
 The construction is also circular: T_00 and the "entropy" whose second
 derivative plays G_00 are both functionals of the same hardcoded Gaussian
 field, so the correlation is a property of the smooth unimodal input
-(negative controls: sine -0.54, ramp -0.31, noise -0.26). This module
+(negative controls with sine/ramp/noise inputs give weaker, input- and
+seed-dependent correlations; no control harness is committed — run your own).
+This module
 illustrates the Jacobson LOGIC; it demonstrates nothing about the
 Einstein equations.
 """

@@ -207,7 +207,7 @@ Each experiment is self-contained and demonstrates one specific Advaitic princip
 
 ### 5. Automated Testing
 
-Every module has a corresponding test file in `tests/`. Tests validate mathematical properties (normalization, Hermiticity, unitarity), physical results (Bell violation, Gleason conditions, Newton recovery), and framework invariants (singleton, non-duality, substrate preservation). The Brahman singleton is reset before each test via `conftest.py` to ensure isolation.
+Every module has a corresponding test file in `tests/`. Tests validate mathematical properties (normalization, Hermiticity, unitarity), physical results (Bell CHSH value, Gleason conditions, honest Newton NON-recovery), and framework invariants (singleton, non-duality, substrate preservation). The Brahman singleton is reset before each test via `conftest.py` to ensure isolation.
 
 ```bash
 pytest tests/ -v              # Run all 306 tests

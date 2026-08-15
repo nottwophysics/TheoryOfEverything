@@ -144,21 +144,21 @@ No physics ToE addresses why there is **experience** at all. This framework star
 |------|-------|---------------|------|
 | Gleason axiom reduction | Born rule is theorem → 7→4 axioms | **PROVEN** | Mathematical fact |
 | Born rule uniqueness | Only consistent measure in dim≥3 | **PROVEN** | Gleason's theorem |
-| 2+1D Einstein equations | R_entropy ∝ T_00 on discrete manifold | **DEMONSTRATED** (r=0.94) | Jacobson derivation on Delaunay mesh |
-| MERA tensor network | Entanglement → geometry; cut = disconnect | **DEMONSTRATED** | Space IS entanglement structure |
-| QEC as spacetime | Brahman recoverable with 80% erasure | **DEMONSTRATED** | Holographic error-correcting code |
-| Bell violation | S = 2√2 | **VERIFIED** | Standard QM result |
+| 2+1D Einstein equations | R_entropy ∝ T_00 on discrete manifold | **WITHDRAWN — circular** (entropy defined ∝ T₀₀) | Illustrates Jacobson's logic only |
+| MERA tensor network | Entanglement → geometry; cut = disconnect | **RETRACTED** (transformations are no-ops) | See quantum/tensor_network.py review note |
+| QEC as spacetime | "80% erasure" | **WITHDRAWN** (loop-bound artifact; near-chance fidelity) | See quantum/error_correction.py review note |
+| Bell violation | S = 2√2 | **ILLUSTRATIVE** (analytic value; no state consumed) | Standard QM result restated |
 | Measurement resolution | Collapse is perspectival | **DEMONSTRATED** | Decoherence + partial trace |
-| Newton from entropy | F_entropic ∝ F_Newton | **DEMONSTRATED** (r=0.93) | Entropic gravity |
+| Newton from entropy | F_entropic ∝ M/r | **NOT RECOVERED** (`newton_recovered` False; 0.93 is shape similarity) | Entropic-force toy |
 | Fine structure 1/α | 137.031 (0.003% error) | **NUMEROLOGY** (fails hold-out) | 163-26+π/100; cross-validation + look-elsewhere show it is curve-fitting, not a law |
 | IIT-entanglement Φ ≤ S | falsified (validated PyPhi Φ, N=216, ordering-audit-corrected) | **REFUTED** | 50 of 51 nonzero-Φ systems violate it; canonical Φ (~4.0 bits) not capped by bipartition S (~0.83 bits); raw Φ–S r≈+0.64 is a connectivity confound (partial r≈−0.07, p=0.29) |
-| MERA Φ profile | Increases toward IR | **TESTED** | Max consciousness = Brahman |
+| MERA Φ profile | Increases toward IR | **RETRACTED** (heuristic Φ + defective MERA construction) | See Experiment 19/23 caveats |
 | Koide formula | Holds to 0.006% | **VERIFIED** (not derived) | Empirical check, not derivation |
 | Cosmological constant | Λ ≈ 10⁻¹²² | **Consistency check** | S_universe is empirical input |
 | Everett-Advaita equivalence | 5/5 empirical tests identical | **PROVEN** | 0 measurable divergences |
 | Perspectival asymmetry | Exact to 10⁻¹⁶ | **PROVEN** | All states, bases, env sizes |
 | Observer centrality | 4/4 open questions involve observer | **DEMONSTRATED** | Hidden premise of the paper |
-| ER=EPR | Wormholes = entanglement | **DEMONSTRATED** | Experiment 28: thermofield double, Van Raamsdonk, monogamy |
+| ER=EPR | Wormholes = entanglement | **ILLUSTRATIVE** (throat–entropy relation imposed by definition) | Experiment 28 |
 
 ---
 
@@ -179,7 +179,7 @@ No physics ToE addresses why there is **experience** at all. This framework star
 ### Milestone 0: Automated Test Suite ✅ COMPLETE
 - 306 tests across 21 test files covering all modules
 - Validates mathematical properties (normalization, Hermiticity, unitarity)
-- Validates physical results (Bell violation, Gleason conditions, Newton recovery)
+- Validates physical results (Bell CHSH value, Gleason conditions, honest Newton NON-recovery)
 - Validates framework invariants (singleton, non-duality, substrate preservation)
 - Test isolation via Brahman singleton reset per test
 - Configuration in `pyproject.toml`; run with `pytest tests/ -v`

@@ -1,7 +1,7 @@
 """
 Everett-Advaita Operational Equivalence — Proving the Paper's Central Claim
 
-The submitted paper states:
+The accompanying paper states:
     "this interpretation is currently empirically equivalent to Everett"
 
 This module PROVES that claim computationally by running identical
@@ -320,7 +320,7 @@ class OperationalEquivalence:
                 f"All {len(empirical_tests)} empirical tests confirm: Everett and Advaita "
                 "produce IDENTICAL measurable predictions. The interpretations diverge "
                 "in 5 ontological claims, none of which has measurable consequences. "
-                "This is precisely what the submitted paper claims."
+                "This is precisely what the accompanying paper claims."
             ),
         }
 

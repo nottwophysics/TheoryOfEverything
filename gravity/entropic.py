@@ -60,7 +60,8 @@ class EntropicGravity:
         T = self.unruh_temperature(acceleration)
 
         # Entropic force: F = T × dS/dr
-        # This should recover Newton's law: F = GM m/r²
+        # Newton's law would require F = GMm/r²; with this screen entropy the
+        # result is F = M/r instead (see recover_newton's review note)
         force = T * dS_dr
         return float(force)
 

@@ -194,8 +194,9 @@ class TestablePredictions:
                 "Must control for: EMF, thermal radiation, gravitational coupling",
                 "Use pre-registered protocol to avoid selection bias",
             ],
-            "current_status": "No definitive experiment yet; "
-                              "some controversial results from PEAR lab / Global Consciousness Project",
+            "current_status": "No definitive experiment. (PEAR / Global "
+                              "Consciousness Project results failed replication "
+                              "and are not evidence.)",
             "risk": "Very difficult to eliminate all physical confounds",
             "distinguishes_from": "ALL standard interpretations of QM "
                                   "(Copenhagen, many-worlds, pilot wave) predict no difference",

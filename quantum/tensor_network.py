@@ -22,7 +22,8 @@ In Advaita:
 
 REVIEW NOTE (2026-08-15): the coarse_grain implementation applies its
 disentanglers/isometries only through a global phase — a physical no-op
-(replacing every tensor with zeros leaves the output bit-identical). The
+(replacing every tensor with zeros leaves the output physically identical —
+differences at machine epsilon only). The
 MERA framing is therefore aspirational: results previously derived from
 this module (Experiment 19; "cut entanglement = disconnect space") are
 RETRACTED as evidence and the module is retained as a labeled

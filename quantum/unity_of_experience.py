@@ -1,7 +1,7 @@
 """
 Unity of Experience — Experiential Underdetermination by Decoherence
 
-The submitted paper claims (section 4.3.2b):
+The accompanying paper claims (section 4.3.2b):
 
     "Everett faces the 'preferred basis problem' at the level of experience:
      why does each branch-copy of you experience a *unified* world rather

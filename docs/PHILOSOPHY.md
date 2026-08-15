@@ -197,7 +197,7 @@ Gravity is not added as a separate force. It **emerges** from the consciousness 
 
 ### 3.4 Observer Centrality and Perspectival Asymmetry
 
-Two philosophical concepts central to the submitted paper are demonstrated computationally in the framework:
+Two philosophical concepts central to the accompanying paper are demonstrated computationally in the framework:
 
 **Perspectival Asymmetry** (Experiment 25): The total quantum state is always pure (purity = 1.0, exact to machine precision 10⁻¹⁶). The observer's reduced state is always mixed (for non-trivial superpositions). This holds for ALL initial states, ALL environment sizes, and ALL measurement bases. "Collapse" is not a physical event — it is the mathematical consequence of describing a subsystem's perspective on a larger whole. In Advaita terms: from the absolute level (*Paramarthika*), reality is undivided. From the empirical level (*Vyavaharika*), definite outcomes appear. The levels do not contradict — they are descriptions at different scopes of the same unified state.
 

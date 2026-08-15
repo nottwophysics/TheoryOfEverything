@@ -221,7 +221,7 @@ If you want to read the source code, here is the recommended order:
 4. **`quantum/measurement.py`** — The measurement problem dissolved.
 5. **`quantum/gleason.py`** — The rigorous result (Born rule as theorem).
 6. **`quantum/interpretations.py`** — The formal comparison of 4 interpretations.
-7. **`gravity/entropic.py`** — Newton's law from entropy.
+7. **`gravity/entropic.py`** — entropic-force toy (does NOT recover Newton; see its review note).
 8. **`gravity/holographic.py`** — The holographic principle.
 
 ---
@@ -304,16 +304,16 @@ python main.py --experiment 11
 python main.py --experiment 12
 ```
 
-**What it does**: Builds entanglement structure at varying Maya depths, converts to distances, recovers Newton's law from entropic gravity.
+**What it does**: Builds entanglement structure at varying Maya depths, converts to distances, and attempts a Newton's-law recovery from entropic gravity (the attempt fails honestly: F ∝ M/r).
 
 **Key numbers**:
 - Maya = 0: no space exists (everything maximally entangled)
 - Maya = 1: expanded spacetime (maximum separation)
 - Newton correlation: 0.93
 
-**What it teaches**: Space IS entanglement structure. Gravity is the entropic tendency of Maya to deepen. Newton's law emerges from consciousness thermodynamics.
+**What it teaches**: Space IS entanglement structure in this model, and gravity is read as the entropic tendency of Maya to deepen — but the specific Newton's-law claim does NOT survive: the toy yields F ∝ M/r.
 
-**Honest caveat**: The Newton recovery correlation is 0.93, and this is a 1D model. Full 4D Einstein equations are future work.
+**Honest caveat**: `newton_recovered` is False — the 0.93 correlation is 1/r-vs-1/r² shape similarity, not recovery — and this is a 1D model. Full 4D Einstein equations are future work.
 
 ### Experiment 15: Physical Constants
 
@@ -433,7 +433,7 @@ pytest tests/test_predictions.py -v # Predictions and falsification
 | `test_emergence.py` | emergence | 23 | Spacetime metric symmetry, substrate preservation |
 | `test_liberation.py` | philosophy/liberation | 11 | Neti-neti remainder, mahavakya structure |
 | `test_quantum.py` | quantum | 63 | Hermiticity, unitarity, Bell S=2√2, Gleason C1–C4, ER=EPR |
-| `test_gravity.py` | gravity | 23 | R-T correlation (2D+3D), Newton recovery, deficit-angle curvature |
+| `test_gravity.py` | gravity | 23 | R-T correlation (2D+3D), honest Newton NON-recovery, deficit-angle curvature |
 | `test_constants.py` | constants | 18 | Cosmological constant resolution, Koide ~2/3 verification |
 | `test_particles.py` | particles | 13 | Symmetry breaking, guna association, maya depth |
 | `test_predictions.py` | predictions/falsification | 16 | Prediction structure, falsification criteria |
@@ -460,20 +460,22 @@ This project is honest about its status. Here is the complete picture:
 - Bell inequality violation: S = 2√2 (confirms non-locality)
 
 ### Demonstrated (quantitative, reproducible)
-- 2+1D Einstein equations: R-T correlation 0.90–0.94 on Delaunay triangulation
-- MERA tensor network: entanglement determines geometry; cut entanglement = disconnect space
-- QEC holographic code: Brahman recoverable with 80% boundary erasure
 - Measurement problem resolution: purity 1.0 (total) vs 0.25 (reduced)
 - Neti-Neti remainder: 0.0000 after all layers negated
 - Gold-ornament substance preservation: > 94%
-- Newton's law recovery: entropic gravity in classical limit (r = 0.93)
-- Holographic reconstruction: boundary → bulk (fidelity ~0.50)
+
+### Withdrawn as evidence (2026 adversarial review — see the module review notes)
+- 2+1D Einstein equations (r 0.90–0.94): circular — the entropy is defined ∝ T₀₀
+- MERA tensor network: the coarse-graining transformations are no-ops (retracted)
+- QEC holographic code "80% erasure": loop-bound artifact; near-chance fidelity
+- Newton's law "recovery": F ∝ M/r — Newton NOT recovered (`newton_recovered` is False)
+- Holographic reconstruction: fidelity ~0.50 is chance level for this toy
 
 ### Verified (not derived)
 - Koide formula: verified to 0.006% against empirical data
 - Cosmological constant: order-of-magnitude consistency (with caveats)
 
-### Paper companion (computationally proving the submitted paper's claims)
+### Paper companion (supporting the accompanying paper's claims)
 - Everett-Advaita operational equivalence: 5/5 tests identical, 0 measurable divergences (Experiment 24)
 - Perspectival asymmetry: exact to 10⁻¹⁶ across all states, bases, and environment sizes (Experiment 25)
 - Observer centrality: 4 open questions all involve observer; hidden premise demonstrated (Experiment 26)
@@ -576,7 +578,7 @@ Read [docs/PHILOSOPHY.md](PHILOSOPHY.md) Section 3.3 (GR from Consciousness). Th
 python main.py --experiment 19   # Tensor network — space FROM entanglement
 python main.py --experiment 20   # 2+1D Einstein equations on discrete manifold
 python main.py --experiment 21   # QEC — spacetime as error-correcting code
-python main.py --experiment 12   # Entropic gravity — Newton's law from entropy
+python main.py --experiment 12   # Entropic gravity toy (Newton NOT recovered)
 python main.py --experiment 13   # Holographic principle
 ```
 

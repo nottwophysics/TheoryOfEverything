@@ -1,7 +1,7 @@
 """
 Observer Centrality — The Paper's Hidden Premise, Demonstrated
 
-The submitted paper's most important philosophical move is the
+The accompanying paper's most important philosophical move is the
 hidden premise:
 
     "An interpretation of quantum mechanics should be evaluated partly

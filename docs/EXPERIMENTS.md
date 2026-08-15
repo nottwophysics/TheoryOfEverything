@@ -12,7 +12,7 @@ The framework includes 31 computational experiments divided into five tiers:
 - **Experiments 9–16** (Tier 2): Bridge Advaita to modern physics
 - **Experiments 17–23** (Tier 3): Mathematically rigorous results and frontier explorations
 - **Experiments 24–26, 30** (Tier 4): Paper companion — supporting the accompanying paper's claims
-- **Experiments 27–29** (Tier 5): Physics extensions — 3+1D gravity, ER=EPR, α derivation attempts (numerology-class)
+- **Experiments 27–29, 31** (Tier 5): Physics extensions — 3+1D gravity, ER=EPR, α derivation attempts (numerology-class), look-elsewhere self-audit
 
 Run with:
 ```bash
@@ -200,6 +200,10 @@ pytest tests/test_quantum.py -v    # Test quantum module only
 
 ### Experiment 11: Entanglement Is Non-Duality
 
+> **Caveat (2026-08-15 review):** the CHSH value below is evaluated from the
+> analytic correlation formula — the demo does not consume a quantum state, so
+> a separable state would "score" identically. Illustrative, not a verification.
+
 **Concept**: Bell inequality violation proves non-locality = Advaita.
 
 **Results**:
@@ -216,7 +220,7 @@ pytest tests/test_quantum.py -v    # Test quantum module only
 
 ### Experiment 12: Gravity from Consciousness
 
-**Concept**: Space, metric, and Newton's law emerge from entanglement/entropy.
+**Concept**: Space and metric from entanglement, plus an entropic-force toy — which does NOT recover Newton's law (see below).
 
 **Space from Entanglement**:
 
@@ -228,7 +232,7 @@ pytest tests/test_quantum.py -v    # Test quantum module only
 | 0.75 | 1.31 | 0.365 | Yes |
 | 1.00 | 1.75 | 0.287 | Yes |
 
-**Newton Recovery**: F_entropic correlates with F_Newton at r = 0.930.
+**Newton (non-)recovery**: F_entropic ∝ M/r correlates with F_Newton at r = 0.930 — shape similarity between two decreasing curves; the 1/r² law is NOT recovered (`newton_recovered` is False).
 
 **Black Hole**: Mass 10 → Schwarzschild radius 20, entropy 1256.64, Hawking temperature 0.00398. Even maximum Maya slowly dissolves.
 
@@ -384,7 +388,7 @@ Entanglement decreases toward IR: **Yes**
 - Layer depth = Maya depth = radial AdS coordinate
 - Boundary (z=1) = Vyavaharika; Center (z=N) = Paramarthika
 
-**Significance**: The MERA network naturally produces holographic geometry. Space IS entanglement structure. Remove entanglement → remove space.
+**Significance (revised 2026-08-15)**: NOT demonstrated by this experiment — review found the coarse-graining transformations are physical no-ops (see the review note in `quantum/tensor_network.py`), so the holographic-geometry and disconnection results are retracted as evidence. The section is retained as a labeled defective-construction case study.
 
 ---
 
@@ -411,6 +415,10 @@ Entanglement decreases toward IR: **Yes**
 ---
 
 ### Experiment 21: Quantum Error Correction as Spacetime
+
+> **Caveat (2026-08-15 review):** the "80% erasure" figure below is the scan's
+> loop bound, and recovery fidelity is near chance (≈0.55 vs ≈0.45 for the
+> orthogonal logical state). Withdrawn as evidence; toy illustration only.
 
 **Concept**: Almheiri-Dong-Harlow (2015) showed that holographic duality has the structure of a quantum error-correcting code. The bulk (Brahman) is protected from boundary (Maya) disturbances.
 
@@ -634,6 +642,10 @@ These experiments were built to computationally support the claims of the accomp
 
 ### Experiment 27: 3+1D Einstein Equations
 
+> **Caveat (2026-08-15 review):** same circular construction as Experiment 20
+> (entropy defined from T₀₀), in 3D — illustrates the Jacobson logic; the
+> correlation is not evidence.
+
 ```bash
 python main.py --experiment 27
 ```
@@ -655,6 +667,10 @@ python main.py --experiment 27
 ---
 
 ### Experiment 28: ER=EPR Correspondence
+
+> **Caveat (2026-08-15 review):** the throat–entropy identity in this demo is
+> imposed by definition (`S_thermal = S_entanglement` by assignment) —
+> illustrative, not a demonstration.
 
 ```bash
 python main.py --experiment 28
@@ -774,18 +790,18 @@ than take the near-match as evidence of a derivation.
 | **Observer centrality** | **4/4 open questions involve observer** | **Observer ontology is part of interpretive burden** | **Demonstrated** |
 | **Experiential underdetermination** | **30/30 trials, 3 distinct cardinalities** | **Decoherence does not fix experiential ontology (paper §4.3.2b)** | **Demonstrated** |
 | Born rule uniqueness | 0/1800 violations | Only consistent probability rule in dim ≥ 3 | **Proven** |
-| **2+1D Einstein R-T correlation** | **0.94** | **Entropy curvature tracks energy on 2D manifold** | **Demonstrated** |
-| **3+1D Einstein R-T correlation** | **0.88** | **Full spacetime: entropy curvature tracks energy in 3D** | **Demonstrated** |
-| **ER=EPR correspondence** | **Throat = 4G×S** | **Wormholes = entanglement; space disconnects at S=0** | **Demonstrated** |
-| **Entanglement disconnects space** | S=2.99→connected, S=0→disconnected | **Van Raamsdonk confirmed in MERA** | **Demonstrated** |
-| **QEC error threshold** | **80% boundary erasable** | **Brahman recoverable despite Maya** | **Demonstrated** |
+| **2+1D Einstein R-T correlation** | **0.94** | Circular by construction — entropy defined ∝ T₀₀ (Exp 20 caveat) | **Withdrawn as evidence** |
+| **3+1D Einstein R-T correlation** | **0.88** | Same circular construction in 3D (Exp 27 caveat) | **Withdrawn as evidence** |
+| **ER=EPR correspondence** | **Throat = 4G×S** | Relation imposed by definition in the demo (Exp 28 caveat) | **Illustrative (definitional)** |
+| **Entanglement disconnects space** | S=2.99→connected, S=0→disconnected | "MERA" transformations are no-ops (Exp 19 caveat) | **Retracted** |
+| **QEC error threshold** | "80% boundary erasable" | Loop-bound artifact; near-chance recovery fidelity (Exp 21 caveat) | **Withdrawn as evidence** |
 | Brahman field coherence | 1.0000 | Perfect unity before Maya | Verified |
-| Bell CHSH value | -2.828 (= -2√2) | Maximum quantum violation — non-locality confirmed | Verified |
+| Bell CHSH value | -2.828 (= -2√2) | Analytic Tsirelson-bound value; no quantum state consumed | Illustrative |
 | Total state purity (Paramarthika) | 1.000000 | No collapse at the absolute level | Demonstrated |
 | Reduced state purity (Vyavaharika) | 0.250000 | Classical appearance from partial view | Demonstrated |
 | Neti-Neti remainder | 0.0000 | All layers negated — only witness remains | Demonstrated |
 | Gold preservation in ornaments | >94% | Substance unchanged through form changes | Demonstrated |
-| Newton correlation (entropic) | 0.930 | Gravity recovered from entropy | Demonstrated |
+| Newton correlation (entropic) | 0.930 | 1/r-vs-1/r² shape similarity only — Newton NOT recovered (F ∝ M/r) | Withdrawn as evidence |
 | Koide formula | 0.666627 | Matches 2/3 to 0.006% — masses have structure | Verified (not derived) |
 | Cosmological constant | 10⁻¹²² | Consistent with consciousness entropy | Consistency check |
 | Individual-Brahman overlap | 0.999944 | Atman ≈ Brahman (identity, not similarity) | Demonstrated |

@@ -473,17 +473,16 @@ class AdvaitaInterpretation(Interpretation):
             "Why the universal subject has Hilbert space structure (the transformed hard problem)",
             "Whether the ontological additions over Everett justify the metaphysical commitments",
             "Whether consciousness as primitive is explanatory or merely relocates the mystery",
-        ]
-
-        self._novel_predictions = [
-            "NOTE (review 2026-08-15): consistent with the 'currently "
-            "empirically equivalent to Everett' entry above, P1/P2/P3/P5 are "
-            "consequences of broader quantum-gravity/QM programs rather than "
+            "Scope note on the prediction list (review 2026-08-15): P1/P2/P3/P5 "
+            "are consequences of broader quantum-gravity/QM programs rather than "
             "discriminators of THIS interpretation; P4 is the only candidate "
             "discriminator and is the furthest from testability. P2, if "
             "observed, would favor objective-collapse models over this "
             "framework's own no-collapse axiom A3 — it functions as a "
             "falsifier (cf. F4), not a confirmation.",
+        ]
+
+        self._novel_predictions = [
             "P1: Entanglement between massive objects produces gravitational signatures (testable 15-25 yr)",
             "P2: Gravitational decoherence mass threshold at ~10⁹-10¹² amu (testable 5-15 yr)",
             "P3: Vacuum has measurable entanglement structure scaling as area law (testable 5-15 yr)",

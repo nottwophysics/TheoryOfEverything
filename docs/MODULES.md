@@ -380,7 +380,7 @@ Jacobson's thermodynamic derivation on a proper 2D discrete manifold (Delaunay t
 | Method | Description |
 |--------|-------------|
 | `.entropic_force(mass, radius)` | F = T × dS/dr. Gravity as entropy gradient. |
-| `.recover_newton(mass)` | Shows F_entropic recovers F = GMm/r². Newton correlation > 0.93. |
+| `.recover_newton(mass)` | Attempts Newton recovery — yields F ∝ M/r, NOT GMm/r²; `newton_recovered` is False (the 0.93 correlation is 1/r-vs-1/r² shape similarity). |
 | `.black_hole_as_maximum_maya(mass)` | Schwarzschild radius, Bekenstein-Hawking entropy, Hawking temperature. Even maximum Maya eventually dissolves. |
 
 ---
@@ -885,7 +885,7 @@ Every module above has a corresponding test file. Tests validate mathematical pr
 | `test_emergence.py` | emergence/ | 23 | Metric symmetry, diagonal=0, curvature bounds, substrate preservation, witness immutability |
 | `test_liberation.py` | philosophy/liberation/ | 11 | 8-layer negation, remainder→0, step-by-step generator, mahavakya structure and overlap |
 | `test_quantum.py` | quantum/ | 63 | Normalization, orthogonality, Hermiticity, [a,a†]=I, Gleason C1–C4, Born uniqueness, Bell S=2√2, decoherence, ER=EPR, **experiential underdetermination (Exp 30)** |
-| `test_gravity.py` | gravity/ | 23 | Correlation matrix symmetry, distance properties, R-T correlation, Newton recovery (r>0.9), 2+1D & 3+1D deficit-angle curvature |
+| `test_gravity.py` | gravity/ | 23 | Correlation matrix symmetry, distance properties, R-T correlation, honest Newton NON-recovery (flag asserted False), 2+1D & 3+1D deficit-angle curvature |
 | `test_constants.py` | constants/ | 18 | Cosmological constant resolution, Koide ~2/3 verification with error bars |
 | `test_particles.py` | particles/ | 13 | Unified symmetry normalization, guna-generation mapping, maya depth bounds |
 | `test_predictions.py` | predictions/, falsification/ | 16 | Prediction structure, falsifier completeness, experiment designs |

@@ -27,15 +27,17 @@ falsification-first — whether that detector catches genuine collective emergen
 that the tools a system designer normally uses would miss.
 
 **One-line result.** It does — the symmetry-derived synergy detector separates a
-synergistic (parity) collective from an independent one at AUC 1.00 while
-pairwise-correlation and per-agent-variance baselines sit at chance — but the
-measure it recovers is the existing O-information, so the contribution is a clean
-operational *test*, not a new observable.
+synergistic (parity) collective from an independent one at AUC 1.00 (categorical
+by construction; see the correction banner) while pairwise-correlation and
+per-agent-variance baselines are uninformative (AUC ≈ 0.29–0.47 across
+re-measurements) — but the measure it recovers is the existing O-information, so
+the contribution is a clean operational *test*, not a new observable.
 
 **Reproducibility.** Global seed 42; environment `tofe` (Python 3.13, numpy
-2.5.1, scipy 1.18.0); no Hilbert space, no PyPhi. Every number below is copied
-from executed output. All five external citations were verified against
-CrossRef / arXiv this session.
+2.5.1, scipy 1.18.0); no Hilbert space, no PyPhi. Numbers were transcribed from
+working-session output; the §9 provenance retraction and the correction banner
+above govern which of them can still be traced. All five external citations were
+verified against CrossRef / arXiv at the time of writing.
 
 ---
 
@@ -200,8 +202,9 @@ correlation matrix and per-agent variance.
 **The synergy detector separates parity-type emergence categorically (AUC 1.00 —
 by construction; the d column is structural, see the correction banner); the
 designer baselines are uninformative** (note: the pairwise-correlation baselines
-actually score AUC 0.39–0.43 — systematically *below* chance, an anti-signal
-artifact of the construction — not literally 0.5). This is exactly what the
+score below 0.5 — 0.390/0.429 in this report's table; independent
+re-measurement gives ≈0.29–0.39 depending on seeds — an anti-signal artifact of
+the construction, not "chance"). This is exactly what the
 construction predicts: parity has zero pairwise correlation and fair-coin marginals *by
 construction*, so correlation- and variance-based tools are provably blind to it,
 while the higher-order measure fires unmistakably.

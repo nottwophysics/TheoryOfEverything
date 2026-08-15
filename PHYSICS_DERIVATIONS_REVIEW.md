@@ -1,5 +1,12 @@
 # TheoryOfEverything — environment setup, test suite, and physics-derivation review
 
+> **Dated internal record (pinned to HEAD `edf08e9`, pre-reorganization).**
+> Test counts here ("237/237") and file paths reflect that snapshot — the
+> current public suite is 306 — and the Φ≤S discussion below predates the
+> validated retest that FALSIFIED the conjecture (50/51 nonzero-Φ systems
+> violate it; see `reproducibility/phi_s/` and the 2026-08-12 ordering
+> audit). Read this file as history, not current status.
+
 Repository: `codeberg.org/advait/TheoryOfEverything`, cloned to
 `TOFE/TheoryOfEverything/` (89 files, full git history, HEAD `edf08e9`).
 Self-described as a "Computational framework bridging Advaita Vedanta and

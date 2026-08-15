@@ -178,7 +178,7 @@ def emergent_gravity_experiment():
                   f"entanglement={val['avg_entanglement']:.4f}, "
                   f"space_exists={val['space_exists']}")
 
-    print("\n--- Recovering Newton's Law ---")
+    print("\n--- Attempting Newton recovery (fails honestly: F ∝ M/r) ---")
     eg = EntropicGravity()
     newton = eg.recover_newton(mass=1.0)
     print(f"  Newton correlation: {newton['newton_correlation']:.6f}")
