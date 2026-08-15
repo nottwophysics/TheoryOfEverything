@@ -476,11 +476,19 @@ class AdvaitaInterpretation(Interpretation):
         ]
 
         self._novel_predictions = [
+            "NOTE (review 2026-08-15): consistent with the 'currently "
+            "empirically equivalent to Everett' entry above, P1/P2/P3/P5 are "
+            "consequences of broader quantum-gravity/QM programs rather than "
+            "discriminators of THIS interpretation; P4 is the only candidate "
+            "discriminator and is the furthest from testability. P2, if "
+            "observed, would favor objective-collapse models over this "
+            "framework's own no-collapse axiom A3 — it functions as a "
+            "falsifier (cf. F4), not a confirmation.",
             "P1: Entanglement between massive objects produces gravitational signatures (testable 15-25 yr)",
             "P2: Gravitational decoherence mass threshold at ~10⁹-10¹² amu (testable 5-15 yr)",
             "P3: Vacuum has measurable entanglement structure scaling as area law (testable 5-15 yr)",
             "P4: Conscious observation has a specific decoherence signature distinct from automated detection (testable 20+ yr)",
-            "P5: Holographic noise at Planck scale in interferometers (testable 5-10 yr)",
+            "P5: Holographic noise in interferometers — EXCLUDED at the stated amplitude by the Fermilab Holometer (2015-2016)",
         ]
 
     def demonstrate_measurement_resolution(self) -> dict:

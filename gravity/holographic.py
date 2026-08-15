@@ -125,14 +125,20 @@ class HolographicBoundary:
             "region_sizes": list(sizes),
             "entropies": entropies,
             "log_scaling_correlation": log_corr,
-            "follows_area_law": abs(log_corr) > 0.5,
+            "follows_area_law": log_corr > 0.5,
             "formula": "S(A) = Area(γ_A) / (4G_N)",
             "insight": (
-                "Entanglement entropy follows an area law — "
-                "information is on the boundary, not the bulk. "
-                "The 3D world is a holographic projection of "
-                "a 2D consciousness surface. "
-                "Advaita's Maya (projection) = holography."
+                ("Entanglement entropy grows with region size in this run. "
+                 if log_corr > 0.5 else
+                 "CAVEAT: no area law is exhibited in this toy — the "
+                 "'reduced density matrix' used here is a renormalized "
+                 "corner block of a rank-1 projector (a single vector has "
+                 "no tensor-product structure to trace over), so S(A) = 0 "
+                 "for every region. A real check requires a many-body state "
+                 "with subsystem structure. ")
+                + "The holographic reading (information on the boundary; "
+                "Maya as projection) is an interpretation layered on top, "
+                "not a computed result."
             ),
         }
 
@@ -172,14 +178,19 @@ class HolographicBoundary:
             "bulk_entropy": float(bulk_entropy),
             "ryu_takayanagi": rt_result,
             "reconstruction_fidelity": fidelity,
-            "bulk_from_boundary": True,
-            "boundary_is_fundamental": True,
+            "bulk_from_boundary": fidelity > 0.9,
+            "boundary_is_fundamental": (
+                "interpretive claim (Advaita reading), not a computed result"
+            ),
             "summary": (
-                "The bulk (spacetime with gravity) is a projection of the "
-                f"boundary (consciousness). Reconstruction fidelity: {fidelity:.4f}. "
-                "The boundary (Brahman) is fundamental. "
-                "The bulk (empirical world) is derived. "
-                "This is Advaita expressed in the language of physics."
+                f"Reconstruction fidelity: {fidelity:.4f}"
+                + (" — near chance for this random projection; the bulk is "
+                   "NOT reconstructed in this toy run. "
+                   if fidelity < 0.9 else " — bulk reconstructed. ")
+                + "The claim that the boundary (Brahman) is fundamental and "
+                "the bulk (empirical world) derived is Advaita's reading "
+                "expressed in physics language — an interpretation, not an "
+                "output of this computation."
             ),
         }
 

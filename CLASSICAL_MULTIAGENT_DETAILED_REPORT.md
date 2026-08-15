@@ -2,6 +2,22 @@
 
 ### A detailed technical report — does an information-theoretic, non-Hilbert analogue compute something a designer couldn't otherwise get?
 
+> **⚠️ CORRECTION (2026-08-15, adversarial review).** The headline effect
+> sizes below (AUC 1.000, Cohen's d ≈ +68.5) are **structural, not
+> empirical**, and must not be cited as effect sizes. The synthetic parity
+> regime is noiseless by design, so the AUC-1.000 separation is categorical
+> **by construction**, and Cohen's d **grows without bound with per-instance
+> sample count m** (independent re-measurement with the committed
+> `agents/` code: d ≈ 262 at m = 500, ≈ 2 505 at the stated m = 4 000,
+> ≈ 9 644 at m = 16 000). The published **+68.5 does not replicate** under
+> the stated protocol, and the AUC/Cohen's-d computation plus most of the
+> result artifacts cited in this report were never committed to the public
+> repository, so their provenance cannot be established. What survives is
+> the qualitative, provably-true point: pairwise-correlation and variance
+> baselines cannot see zero-pairwise-correlation parity structure, while
+> O-information can — and O-information is the *existing* measure of Rosas
+> et al., so the contribution is an operational test, not a new observable.
+
 **Scope.** This report documents the full research programme that grew out of the
 paper analysis and the swarm-emergence use-case discussion. It formalizes the
 paper's §2.5 decombination↔combination symmetry as a *classical* (non-Hilbert)
@@ -181,10 +197,12 @@ correlation matrix and per-agent variance.
 | mean \|pairwise correlation\| (baseline) | 0.429 | −0.12 |
 | max per-agent variance (baseline) | 0.472 | +0.09 |
 
-**The synergy detector separates parity-type emergence perfectly (AUC 1.00,
-d ≈ 68); both designer baselines are at chance (AUC ≈ 0.5, d ≈ 0).** This is not
-a marginal win — it is a categorical one, and it is exactly what the construction
-predicts: parity has zero pairwise correlation and fair-coin marginals *by
+**The synergy detector separates parity-type emergence categorically (AUC 1.00 —
+by construction; the d column is structural, see the correction banner); the
+designer baselines are uninformative** (note: the pairwise-correlation baselines
+actually score AUC 0.39–0.43 — systematically *below* chance, an anti-signal
+artifact of the construction — not literally 0.5). This is exactly what the
+construction predicts: parity has zero pairwise correlation and fair-coin marginals *by
 construction*, so correlation- and variance-based tools are provably blind to it,
 while the higher-order measure fires unmistakably.
 
@@ -267,10 +285,15 @@ local data.
   (Mann–Whitney) statistic; scikit-learn not required.
 - **Tests:** 9 in `tests/test_classical_agents.py` (symmetry recovery, testbed
   ground-truth signatures, detector sign-correctness, null behaviour). Full repo
-  suite **302 passed**.
-- **Numbers** copied verbatim from executed output (`classical_symmetry_check.csv`,
-  `testbed_summary.csv`, `detector_results.csv`, `baseline_comparison.csv`,
-  `baseline_verdict.json`).
+  suite **302 passed** (historical count at the time of writing; the current
+  public suite is 306).
+- **Numbers**: RETRACTED as a provenance claim (2026-08-15) — of the artifacts
+  named here, only `testbed_summary.csv` was ever committed to the public
+  repository; `classical_symmetry_check.csv`, `detector_results.csv`,
+  `baseline_comparison.csv` and `baseline_verdict.json` are absent, so the
+  numbers attributed to them cannot be traced. Numbers reproducible from the
+  committed `agents/` code and `testbed_summary.csv` stand; the §8 effect-size
+  column does not (see correction banner).
 
 ### Citations (all verified via CrossRef / arXiv this session)
 
@@ -288,11 +311,12 @@ local data.
 
 **Modules** (`agents/` package): `classical_symmetry.py`, `multiagent_testbed.py`,
 `emergence_detector.py`. **Tests:** `test_classical_agents.py` (9 tests).
-**Results:** `classical_symmetry_check.csv`, `testbed_summary.csv`,
-`detector_results.csv`, `baseline_comparison.csv`, `baseline_verdict.json`.
-**Figures:** `classical_emergence_measures.png`, `detector_vs_baselines.png`.
-**Design memo:** `CLASSICAL_SYMMETRY_DESIGN_MEMO.md`. **Packaged:**
+**Results:** `testbed_summary.csv` (committed). NOT in the public repository
+(2026-08-15 audit): `classical_symmetry_check.csv`, `detector_results.csv`,
+`baseline_comparison.csv`, `baseline_verdict.json`, both figures
+(`classical_emergence_measures.png`, `detector_vs_baselines.png`) and
 `classical_multiagent_package.tar.gz`.
+**Design memo:** `CLASSICAL_SYMMETRY_DESIGN_MEMO.md` (committed).
 
 ## Bottom line
 

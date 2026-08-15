@@ -97,8 +97,11 @@ class EREqualsEPR:
         eigenvalues = eigenvalues[eigenvalues > 1e-15]
         S_entanglement = float(-np.sum(eigenvalues * np.log(eigenvalues)))
 
-        # Thermal entropy of one side
-        S_thermal = S_entanglement  # They are the same! This IS ER=EPR.
+        # "Thermal entropy of one side": assigned equal to S_entanglement BY
+        # CONSTRUCTION in this toy, so the er_epr_identity flag below is
+        # definitional — it illustrates the ER=EPR identification, it does
+        # not demonstrate it.
+        S_thermal = S_entanglement
 
         return {
             "beta": beta,
@@ -111,9 +114,11 @@ class EREqualsEPR:
             "entanglement_fraction": S_entanglement / np.log(d) if np.log(d) > 0 else 0,
             "er_epr_identity": abs(S_entanglement - S_thermal) < 1e-10,
             "wormhole_interpretation": (
-                f"Entanglement entropy S = {S_entanglement:.4f} = wormhole throat area / 4G. "
-                "The thermal state of one black hole IS the reduced density matrix "
-                "of an entangled pair. The wormhole IS the entanglement."
+                f"Entanglement entropy S = {S_entanglement:.4f}; the throat-area "
+                "relation (throat = 4G·S) is IMPOSED by definition in this demo, "
+                "not derived. The thermal state of one black hole IS the reduced "
+                "density matrix of an entangled pair (that part is standard). "
+                "As an ER=EPR demonstration this is illustrative only."
             ),
             "advaita_interpretation": (
                 "Two apparently separate systems (Left/Right) are actually ONE pure state. "

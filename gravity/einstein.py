@@ -9,8 +9,17 @@ consciousness-field entropy and energy density produce Einstein-like
 correlations. This is a toy model following Jacobson's logic, not
 a full derivation of 4D Einstein equations.
 
-STATUS: Proof-of-concept (1D). Full 4D derivation is future work.
-The correlation G~T is demonstrated (~93%), not the exact tensorial equation.
+STATUS: Toy illustration (1D). Full 4D derivation is future work.
+REVIEW NOTE (2026-08-15): re-execution gives correlation_G_T = -0.98 at the
+default grid (negative at every grid size tested; sign OPPOSITE to
+G_00 = +8*pi*G*T_00). The "~93%" formerly quoted here belonged to the
+entropic-force module's 1/r-vs-1/r^2 shape correlation, not to this model.
+The construction is also circular: T_00 and the "entropy" whose second
+derivative plays G_00 are both functionals of the same hardcoded Gaussian
+field, so the correlation is a property of the smooth unimodal input
+(negative controls: sine -0.54, ramp -0.31, noise -0.26). This module
+illustrates the Jacobson LOGIC; it demonstrates nothing about the
+Einstein equations.
 """
 
 import numpy as np
@@ -120,12 +129,14 @@ class EmergentEinstein:
             ],
             "status": "1D proof-of-concept — NOT a full 4D derivation",
             "insight": (
-                "This 1D toy model shows that entropy curvature correlates "
-                f"with energy density (correlation: {correlation:.4f}). "
-                "Following Jacobson's thermodynamic derivation path, "
-                "the full 4D Einstein equations should emerge — but that "
-                "requires proper tensor calculus on a discrete manifold, "
-                "which is future work."
+                "This 1D toy model produces an entropy-curvature/energy "
+                f"correlation of {correlation:.4f}. CAVEAT: the value is "
+                "NEGATIVE (sign opposite to G_00 = +8piG T_00) and the "
+                "construction is circular — both sides derive from the same "
+                "input field — so this number is not evidence for the "
+                "Einstein equations. It illustrates Jacobson's derivation "
+                "path only; a real test needs proper tensor calculus on a "
+                "discrete manifold, which is future work."
             ),
         }
 

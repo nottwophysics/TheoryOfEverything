@@ -66,11 +66,17 @@ class EntropicGravity:
 
     def recover_newton(self, mass: float = 1.0) -> dict:
         """
-        Demonstrate that entropic gravity recovers Newton's law.
+        Attempt to recover Newton's law via entropic gravity.
 
-        F_entropic = T × dS/dr = (a/2π)(2πr/G) = a×r/G = GM/r²
+        With the holographic-screen entropy used here (dS/dr = 2πr/G):
+        F = T × dS/dr = (a/2π)(2πr/G) = a·r/G = M/r
 
-        Newton's F = GMm/r² emerges from consciousness thermodynamics!
+        REVIEW NOTE (2026-08-15): M/r is NOT Newton's GMm/r². Verlinde's
+        derivation requires the entropy gradient associated with the
+        displaced TEST MASS (dS/dx = 2π k_B m c / ħ), which this toy does
+        not implement. The returned newton_recovered flag is False and the
+        0.93 correlation only reflects that 1/r and 1/r² are both
+        monotonically decreasing.
         """
         G = 1.0
         radii = self.x
@@ -97,14 +103,19 @@ class EntropicGravity:
                 "T = a/(2π) = GM/(2πr²)",
                 "dS/dr = 2πr/G",
                 "F = [GM/(2πr²)] × [2πr/G] = M/r",
-                "With test mass m: F = GMm/r²  ← Newton!",
+                "NOTE: M/r is NOT Newton's GMm/r² — the screen-entropy "
+                "gradient used here is not the displaced-test-mass entropy "
+                "Verlinde's derivation requires; the 1/r² law is NOT "
+                "recovered (newton_recovered is False).",
             ],
             "insight": (
-                "Newton's law of gravitation EMERGES from consciousness "
-                "thermodynamics. Gravity is not a fundamental force — "
-                "it's the entropic tendency of Maya to deepen. "
-                "Objects 'fall' because falling increases the entropy "
-                "of the consciousness field."
+                "An entropic force emerges from the consciousness-field "
+                "thermodynamics, but with the screen entropy used here it "
+                "scales as F ∝ M/r — Newton's 1/r² law is NOT recovered "
+                "(newton_recovered stays False; the 0.93 correlation only "
+                "reflects that both curves decrease). The Advaitic reading "
+                "of gravity as Maya's entropic tendency remains an "
+                "interpretation, not a derived result."
             ),
         }
 

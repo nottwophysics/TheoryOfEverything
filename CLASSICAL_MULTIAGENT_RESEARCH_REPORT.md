@@ -1,5 +1,21 @@
 # Classical operationalization of the §2.5 symmetry: does it give a designer a usable emergence detector?
 
+> **⚠️ CORRECTION (2026-08-15, adversarial review).** The headline effect
+> sizes below (AUC 1.000, Cohen's d ≈ +68.5) are **structural, not
+> empirical**, and must not be cited as effect sizes. The synthetic parity
+> regime is noiseless by design, so the AUC-1.000 separation is categorical
+> **by construction**, and Cohen's d **grows without bound with per-instance
+> sample count m** (independent re-measurement with the committed
+> `agents/` code: d ≈ 262 at m = 500, ≈ 2 505 at the stated m = 4 000,
+> ≈ 9 644 at m = 16 000). The published **+68.5 does not replicate** under
+> the stated protocol, and the AUC/Cohen's-d computation plus most of the
+> result artifacts cited in this report were never committed to the public
+> repository, so their provenance cannot be established. What survives is
+> the qualitative, provably-true point: pairwise-correlation and variance
+> baselines cannot see zero-pairwise-correlation parity structure, while
+> O-information can — and O-information is the *existing* measure of Rosas
+> et al., so the contribution is an operational test, not a new observable.
+
 Follow-on to the quantum multi-agent result (Thread 2 of the Φ≤S study). The
 driving question, from the use-case discussion: take the paper's §2.5
 decombination↔combination symmetry, build a **classical** (non-Hilbert)
@@ -84,11 +100,16 @@ pairwise correlation and per-agent variance.
 | mean \|pairwise correlation\| (baseline) | 0.429 |
 | max per-agent variance (baseline) | 0.472 |
 
-Effect size (Cohen's d, synergistic vs independent): **Ω d = +68.5**; max
-pairwise d = −0.33; per-agent variance d = +0.09.
+Effect size (Cohen's d, synergistic vs independent): the previously reported
+**Ω d = +68.5 is retracted** — d is structural here and grows without bound in
+the per-instance sample count (see the correction banner); baseline d values
+(max pairwise −0.33, per-agent variance +0.09) are likewise
+construction-dependent.
 
-**The synergy detector separates parity-type emergence perfectly (AUC 1.0); both
-designer baselines are at chance (AUC ≈ 0.5).** This is expected and exactly the
+**The synergy detector separates parity-type emergence categorically (AUC 1.0 —
+by construction); the designer baselines are uninformative** (the
+pairwise-correlation baselines actually score AUC 0.39–0.43, systematically
+below chance — an anti-signal artifact of the construction). This is expected and exactly the
 point: parity has zero pairwise correlation and fair-coin marginals by
 construction, so correlation- and variance-based tools are provably blind to it,
 while the higher-order measure fires unmistakably.

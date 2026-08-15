@@ -276,8 +276,11 @@ class EmergentEinstein2D:
             "improvement_over_1d": (
                 f"2D manifold with {self.num_points} points and {len(self.simplices)} triangles. "
                 f"R-T correlation: {correlation:.4f} (entropy) / {geo_correlation:.4f} (geometric). "
-                "Previous 1D model: 0.93. This is a genuine 2D discrete geometry, "
-                "not a 1D proxy."
+                "(The 1D model formerly cited as 0.93 actually yields -0.98 "
+                "on re-execution — see gravity/einstein.py review note. Both "
+                "the 1D and this 2D construction share the same circularity: "
+                "the entropy is defined from T_00.) This is a 2D discrete "
+                "geometry, but the entropy channel is not independent evidence."
             ),
         }
 

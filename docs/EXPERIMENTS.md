@@ -22,7 +22,7 @@ python main.py --physics           # Experiments 9–31
 python main.py --everything        # All 31 + visualizations
 ```
 
-Validate with the automated test suite (265 tests):
+Validate with the automated test suite (306 tests):
 ```bash
 pytest tests/ -v                   # Run all tests
 pytest tests/test_quantum.py -v    # Test quantum module only
@@ -404,9 +404,9 @@ Entanglement decreases toward IR: **Yes**
 | One mass | 2.68 | 84.37 | **0.91** |
 | Two masses | 3.74 | 93.67 | **0.94** |
 
-**Key result**: The entropy-derived curvature correlates with energy-momentum at **0.90–0.94** on a genuine 2D discrete manifold with 80 points and 149 triangles. This is a substantial upgrade from the 1D proof-of-concept (which achieved 0.93 but on a trivial geometry).
+**Key result**: The entropy-derived proxy correlates with energy-momentum at **0.90–0.94** on a 2D discrete manifold with 80 points and 149 triangles. **CAVEAT (review 2026-08-15): this correlation is circular by construction** — the site entropy is *defined* proportional to T₀₀ and the correlated "curvature" is a smoothed copy of that entropy, while the genuine geometric (Regge deficit-angle) curvature *anti-correlates* with T₀₀. (The 1D proof-of-concept formerly cited as 0.93 actually yields −0.98 on re-execution.)
 
-**Significance**: Demonstrates that Jacobson's argument — Einstein's equations as thermodynamic equations — works on a non-trivial discrete geometry when the entropy comes from the consciousness field.
+**Significance**: Illustrates the *shape* of Jacobson's argument — Einstein's equations as thermodynamic equations — on a discrete geometry. It does **not** demonstrate the argument: for that, the entropy would have to come from an independent structure (e.g., actual entanglement data) rather than being defined from the energy density it is then correlated with.
 
 ---
 

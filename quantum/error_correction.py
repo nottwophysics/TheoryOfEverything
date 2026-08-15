@@ -15,7 +15,13 @@ In Advaita:
     Erasure of boundary region = Partial ignorance (Avidya)
     Code still works = Brahman recoverable despite ignorance
 
-Key insight: spacetime is robust because it is an error-correcting code.
+REVIEW NOTE (2026-08-15): the "80% erasure threshold" formerly advertised
+from this module equals the scan's loop bound, and recovery fidelity in the
+demo is ~0.55 vs ~0.45 for the ORTHOGONAL logical state — near chance. The
+demonstration does not establish bulk protection; it is retained as a
+labeled toy.
+
+Key insight (aspirational): spacetime is robust because it is an error-correcting code.
 Small perturbations (local Maya distortions) cannot destroy the bulk
 geometry (Brahman's structure). This is WHY the empirical world is
 stable and law-governed despite being "not ultimately real."
