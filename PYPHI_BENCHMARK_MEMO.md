@@ -1,5 +1,14 @@
 # Benchmark: framework Φ vs canonical IIT Φ (PyPhi)
 
+> **Note (2026-08-12 ordering audit):** the reference Φ values for the
+> home-built XOR systems in this memo were computed before the TPM
+> state-ordering fix at the PyPhi boundary and carry that convention. The
+> memo's qualitative verdict — the framework heuristic is NOT an
+> approximation of IIT Φ — is unaffected (the PyPhi-native anchor networks,
+> including basic_network Φ = 2.3125, are ordering-clean), but individual
+> XOR-system values here should not be quoted without rechecking against
+> the audited pipeline (`reproducibility/phi_s/`).
+
 **Roadmap item:** P3 — validate the integrated-information measure against a
 reference implementation.
 

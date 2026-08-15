@@ -34,7 +34,8 @@ class TestConsciousnessMetric:
     def test_space_from_entanglement_sweep(self):
         cm = ConsciousnessMetric(num_points=10, dimension=2)
         result = cm.demonstrate_space_from_entanglement()
-        assert "results" in result or isinstance(result, dict)
+        assert any(k.startswith("maya_") for k in result), (
+            "expected per-maya-depth entries in the sweep result")
 
 
 class TestEmergentEinstein:
@@ -52,7 +53,12 @@ class TestEmergentEinstein:
     def test_gravity_from_consciousness(self):
         ee = EmergentEinstein(grid_size=20)
         result = ee.demonstrate_gravity_from_consciousness()
-        assert "correlation" in result or isinstance(result, dict)
+        assert "einstein_equations" in result
+        corr = result["einstein_equations"]["correlation_G_T"]
+        assert -1.0 <= corr <= 1.0
+        # Documented honest state (review 2026-08-15): the toy construction
+        # anti-correlates — a positive Einstein-like correlation is NOT achieved.
+        assert corr < 0
 
 
 class TestEmergentEinstein2D:
@@ -81,7 +87,7 @@ class TestEmergentEinstein2D:
     def test_mass_curves_space(self):
         ee2d = EmergentEinstein2D(num_points=30, seed=42)
         result = ee2d.demonstrate_mass_curves_space()
-        assert "empty" in result or "one_mass" in result or isinstance(result, dict)
+        assert {"no_mass", "one_mass", "two_masses"} <= set(result)
 
 
 class TestEmergentEinstein3D:
@@ -149,13 +155,16 @@ class TestEntropicGravity:
         F = eg.entropic_force(1.0, 1.0)
         assert F > 0
 
-    def test_recover_newton(self):
+    def test_recover_newton_honestly_reports_failure(self):
         eg = EntropicGravity()
         result = eg.recover_newton(mass=1.0)
-        assert "newton_correlation" in result
-        assert result["newton_correlation"] > 0.9
+        # The 0.93 correlation is 1/r-vs-1/r^2 shape similarity, NOT Newton
+        # recovery; the module itself must keep reporting that honestly.
+        assert 0.9 < result["newton_correlation"] < 0.99
+        assert result["newton_recovered"] is False
 
     def test_black_hole_properties(self):
         eg = EntropicGravity()
         result = eg.black_hole_as_maximum_maya(mass=10.0)
-        assert "schwarzschild_radius" in result or isinstance(result, dict)
+        assert "schwarzschild_radius" in result
+        assert result["schwarzschild_radius"] > 0

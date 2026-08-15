@@ -11,10 +11,10 @@ Usage:
     python main.py                    # Quick demo
     python main.py --demo             # Quick demo of core concepts
     python main.py --all              # Run all 8 original Advaita experiments
-    python main.py --physics          # Run physics extension experiments (9-30)
-    python main.py --experiment N     # Run experiment N (1-30)
+    python main.py --physics          # Run physics extension experiments (9-31)
+    python main.py --experiment N     # Run experiment N (1-31)
     python main.py --visualize        # Generate all visualizations
-    python main.py --everything       # Run ALL experiments (1-30) + visualizations
+    python main.py --everything       # Run ALL experiments (1-31) + visualizations
 """
 
 import sys
@@ -1484,11 +1484,11 @@ def main():
     )
     parser.add_argument(
         "--physics", action="store_true",
-        help="Run physics extension experiments (9-30)",
+        help="Run physics extension experiments (9-31)",
     )
     parser.add_argument(
         "--everything", action="store_true",
-        help="Run ALL experiments (1-30) + visualizations",
+        help="Run ALL experiments (1-31) + visualizations",
     )
 
     args = parser.parse_args()

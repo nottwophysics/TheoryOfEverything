@@ -1,22 +1,22 @@
 # Experiments
 
-## All 30 Experiments — Methodology, Results, and Significance
+## All 31 Experiments — Methodology, Results, and Significance
 
 ---
 
 ## Overview
 
-The framework includes 30 computational experiments divided into five tiers:
+The framework includes 31 computational experiments divided into five tiers:
 
 - **Experiments 1–8** (Tier 1): Demonstrate core Advaita Vedanta concepts
 - **Experiments 9–16** (Tier 2): Bridge Advaita to modern physics
 - **Experiments 17–23** (Tier 3): Mathematically rigorous results and frontier explorations
 - **Experiments 24–26, 30** (Tier 4): Paper companion — supporting the accompanying paper's claims
-- **Experiments 27–29** (Tier 5): Physics extensions — 3+1D gravity, ER=EPR, rigorous α derivation
+- **Experiments 27–29** (Tier 5): Physics extensions — 3+1D gravity, ER=EPR, α derivation attempts (numerology-class)
 
 Run with:
 ```bash
-python main.py --experiment N      # Single experiment (1–30)
+python main.py --experiment N      # Single experiment (1–31)
 python main.py --all               # Experiments 1–8
 python main.py --physics           # Experiments 9–31
 python main.py --everything        # All 31 + visualizations
@@ -463,9 +463,9 @@ Entanglement decreases toward IR: **Yes**
 
 Previous best: 4.41% error. New best: **0.003% error — a 1000x improvement.**
 
-**The 163 connection**: 163 is the largest Heegner number (unique factorization in Q(√-163)). 26 is the critical dimension of bosonic string theory. 163 - 26 = 137 exactly. The j-invariant connects to the Monster group via Monstrous Moonshine. The π/100 correction relates to the U(1) gauge geometry.
+**The 163 connection**: 163 is the largest Heegner number (unique factorization in Q(√-163)). 26 is the critical dimension of bosonic string theory. 163 - 26 = 137 exactly. The j-invariant connects to the Monster group via Monstrous Moonshine. The suggestion that the π/100 correction relates to U(1) gauge geometry is speculation — nothing in the code derives it.
 
-**Continued fraction**: 1/α = [137; 27, 1, 3, 1, 1, 16, ...]. The convergent 3700/27 = 137.037 achieves 0.0008% error.
+**Continued fraction**: 1/α = [137; 27, 1, 3, 1, 1, 16, ...]. The convergent 3700/27 = 137.037 matches to 0.0008% — structurally guaranteed for a convergent computed from the measured value; not a result.
 
 **Honest assessment**: This is numerological exploration, not rigorous derivation. The accuracy is striking and the mathematical connections are motivated, but a true derivation would show WHY the consciousness field requires Monster symmetry. This remains the key open problem.
 
@@ -678,13 +678,13 @@ python main.py --experiment 28
 
 ---
 
-### Experiment 29: Fine Structure Constant v3 — Rigorous Derivation
+### Experiment 29: Fine Structure Constant v3 — Derivation Attempts (numerology-class)
 
 ```bash
 python main.py --experiment 29
 ```
 
-**Extends** Experiment 22 (v2, 0.003% error) with rigorous derivation approaches.
+**Extends** Experiment 22 (v2, 0.003% error) with further derivation attempts — all numerology-class by the look-elsewhere audit of Experiment 31.
 
 **Method**: Four systematic approaches:
 1. **Self-referential**: Feigenbaum universality from consciousness self-reference (logistic map fixed points, bifurcation structure)
@@ -694,10 +694,10 @@ python main.py --experiment 29
 
 **Key results**:
 - Best: Heegner 163-26+π/100 = 137.031 (0.003% error, same as v2)
-- Improved: 163-26+π/(4×26) = 137.030 (0.004% error, with holographic motivation for π correction)
+- Variant: 163-26+π/(4×26) = 137.030 (0.004% error — slightly WORSE than v2's 0.0033%; the "holographic motivation" for the correction is post hoc)
 - j-invariant: ∛640320/(4πn) = 136.976 (0.04%)
 - Feigenbaum and holographic: order-of-magnitude estimates
-- Continued fraction: 3700/27 = 137.037 (0.0008% — best rational approximation!)
+- Continued fraction: 3700/27 = 137.037 (0.0008% — but a convergent is computed FROM the measured value, so this restates the input; it predicts nothing)
 
 **Honest assessment**: The Heegner/modular approach remains strongest. v3 explores WHY rather than just matching — but a true derivation requires showing the consciousness field's symmetry group necessitates Q(√-163) structure.
 

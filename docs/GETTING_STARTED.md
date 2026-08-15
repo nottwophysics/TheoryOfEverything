@@ -633,7 +633,7 @@ python main.py --experiment 18    # Gleason's theorem (mathematical proof)
 python main.py --experiment 22    # Fine structure constant (striking result)
 ```
 
-Experiment 18 is the most rigorous (mathematical proof). Experiment 22 has the most striking numerical result (0.003% accuracy on the fine structure constant). Together they are the framework's strongest contributions. — the mathematically rigorous Gleason's theorem demonstration that reduces axiom count from 7 to 4.
+Experiment 18 is the most rigorous (established theorem, numerically illustrated). Experiment 22's striking-looking 0.003% match is *numerology* — run Experiment 31 immediately after it to see the framework's own look-elsewhere audit demote it. The strongest contributions are the Gleason illustration and the falsification work (Experiments 23 and 31), which show the framework testing — and correcting — itself.
 
 ---
 

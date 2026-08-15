@@ -66,10 +66,10 @@ This connects directly to cutting-edge physics (ER=EPR, holographic principle, q
 
 **Current status:**
 - ✅ `quantum/measurement.py`: Maya as decoherence — total state pure, reduced state mixed
-- ✅ `gravity/holographic.py`: Holographic principle implemented
-- ✅ `quantum/entanglement.py`: Bell violation S = 2√2
-- ✅ `quantum/tensor_network.py`: **MERA tensor network** — entanglement determines geometry, cut entanglement = disconnect space, AdS-like metric (Experiment 19)
-- ✅ `quantum/error_correction.py`: **QEC as spacetime** — [5,1] holographic code, 80% erasure threshold, subsystem reconstruction (Experiment 21)
+- ⚠️ `gravity/holographic.py`: toy — RT entropy is identically 0 (no subsystem structure to trace over); see module review note
+- ⚠️ `quantum/entanglement.py`: Bell CHSH value S = 2√2 — analytic textbook value; the demo consumes no quantum state (illustrative)
+- ⚠️ `quantum/tensor_network.py`: retracted as evidence — the MERA transformations are no-ops (global phase); see module review note (Experiment 19)
+- ⚠️ `quantum/error_correction.py`: toy only — the "80% erasure threshold" is the scan's loop bound and recovery fidelity is near chance; see module review note (Experiment 21)
 
 **Remaining:**
 - Model the ER=EPR correspondence (Einstein-Rosen bridges = EPR entanglement)
@@ -107,10 +107,10 @@ This aligns with Verlinde's entropic gravity and Jacobson's thermodynamic deriva
 
 **Current status:**
 - ✅ `gravity/metric.py`: Space emerges from entanglement — Maya depth 0 → no space
-- ✅ `gravity/entropic.py`: Newton's law from entropic gravity (correlation 0.93)
-- ✅ `gravity/einstein.py`: 1D proof-of-concept (Clausius → Einstein-like equations)
-- ✅ `gravity/einstein_2d.py`: **2+1D Jacobson derivation on Delaunay manifold** — R-T correlation **0.94** (Experiment 20)
-- ✅ `gravity/holographic.py`: Holographic principle — boundary reconstructs bulk
+- ⚠️ `gravity/entropic.py`: does NOT recover Newton — yields F ∝ M/r; the 0.93 is 1/r-vs-1/r² shape similarity and the module's own newton_recovered flag is False
+- ⚠️ `gravity/einstein.py`: 1D toy — circular construction; re-execution gives correlation −0.98 (see module review note)
+- ⚠️ `gravity/einstein_2d.py`: 2+1D construction — circular by design (entropy defined ∝ T₀₀); illustrates, does not demonstrate (Experiment 20 caveats)
+- ⚠️ `gravity/holographic.py`: "boundary reconstructs bulk" not shown — reconstruction fidelity is near chance in the toy run
 
 **Remaining:**
 - Compute the graviton propagator from the consciousness field's fluctuations
@@ -195,7 +195,7 @@ No physics ToE addresses why there is **experience** at all. This framework star
   - Paper public as a preprint: https://doi.org/10.5281/zenodo.21007975
 
 ### Milestone 2: Derive One Physical Constant — IN PROGRESS
-- Complete the fine-structure constant derivation
+- Derive a constant from first principles (all fine-structure attempts to date are numerology-class — see `numerology/` and Experiment 31)
 - OR rigorously derive the cosmological constant from consciousness entropy
   (requires deriving S_total independently, not using empirical value)
 - Either would be a landmark result

@@ -1,5 +1,11 @@
 # Design memo — a validated-Φ test of Φ ≤ S, and the multi-agent symmetry
 
+> **OUTCOME (recorded 2026-08-15):** the test this memo designs was run.
+> **Φ ≤ S was FALSIFIED** (50 of 51 nonzero-Φ systems violate it;
+> ordering-audit-corrected 2026-08-12) and the raw Φ–S correlation proved a
+> connectivity confound. See `PHI_S_MULTIAGENT_RESEARCH_REPORT.md` and
+> `reproducibility/phi_s/`. This memo is the dated pre-registration record.
+
 Scope: operationalize the paper's §8 conjecture **Φ ≤ S** with a Φ that is
 *canonical IIT* (computed by PyPhi), not the bespoke heuristic the earlier
 benchmark showed is uncorrelated with IIT Φ (r = −0.012). And formalize the §2.5

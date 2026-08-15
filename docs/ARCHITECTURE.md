@@ -21,8 +21,7 @@ TheoryOfEverything/
 │   ├── EXPERIMENTS.md               # All 31 experiments documented
 │   ├── GLEASON_PROBABILITY_GAP.md   # Technical note: Kent (2010) and Baker (2007) critiques
 │   ├── PREDICTIONS.md               # Predictions and falsification
-│   ├── ROADMAP.md                   # Path to real ToE with honest status
-│   └── PAPER.md                     # Paper-ready summary for academic audiences
+│   └── ROADMAP.md                   # Path to real ToE with honest status
 │
 ├── philosophy/                      # INTERPRETIVE LAYER (not empirical — see philosophy/README.md)
 │   ├── __init__.py
@@ -99,7 +98,7 @@ TheoryOfEverything/
 │   ├── derivation.py                # Constants from self-referential structure
 │   ├── fine_structure.py            # Fine structure constant derivation attempts (v1)
 │   ├── fine_structure_v2.py         # Systematic α derivation: 6 approaches, 0.003% best
-│   ├── fine_structure_v3.py         # Rigorous α derivation: modular bootstrap, holographic, self-referential
+│   ├── fine_structure_v3.py         # α derivation attempts (numerology-class): modular bootstrap, holographic, self-referential
 │   ├── cross_validation.py          # Hold-out test: fit on one constant, PREDICT another (fails → curve-fit)
 │   └── look_elsewhere.py            # Look-elsewhere analysis: how many near-hits by chance
 │
@@ -217,7 +216,7 @@ pytest tests/test_quantum.py  # Run tests for one module
 
 ### 6. Physics Emerges, Not Assumed
 
-The physics modules (`quantum/`, `gravity/`, `particles/`, `constants/`) derive physics from the framework — they do not import physics and translate it into Advaitic language. The derivation paths follow established work (Jacobson, Verlinde, Maldacena, Ryu-Takayanagi) but reinterpret the foundational axioms.
+The physics modules (`quantum/`, `gravity/`, `particles/`, `constants/`) aim to derive physics from the framework rather than import it — but a 2026 adversarial review found several of the flagship "derivations" circular or inert (see the review notes in `gravity/einstein*.py`, `gravity/entropic.py`, `gravity/holographic.py`, `quantum/tensor_network.py`, `quantum/error_correction.py`). The derivation paths follow established work (Jacobson, Verlinde, Maldacena, Ryu-Takayanagi) in shape; faithfully implementing them remains open work.
 
 ---
 

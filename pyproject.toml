@@ -29,8 +29,8 @@ py-modules = ["main"]
 
 [tool.setuptools.packages.find]
 include = [
-    "philosophy*", "constants*", "emergence*", "falsification*", "gravity*",
-    "numerology*", "particles*",
+    "agents*", "philosophy*", "constants*", "emergence*", "falsification*",
+    "gravity*", "numerology*", "particles*",
     "predictions*", "quantum*", "simulations*", "visualizations*",
 ]
 exclude = ["tests*"]

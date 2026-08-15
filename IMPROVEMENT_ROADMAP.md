@@ -1,5 +1,12 @@
 # TheoryOfEverything — fix / improve / enhance roadmap
 
+> **Dated internal record.** Suite counts and "[DONE]" statuses reflect the
+> repository at the time of writing (e.g. "250 passed", "237 passed" — the
+> current public suite is 306) and some assessments were superseded by the
+> 2026-08-15 adversarial review (notably: `quantum/tensor_network.py`, praised
+> below, was found to apply its tensors as no-ops — see the module's review
+> note). Read this file as history, not as current status.
+
 Grounded in the executed review (`PHYSICS_DERIVATIONS_REVIEW.md`). The project's
 biggest asset is that it is **clean, well-tested, and candid in its own
 comments**; its biggest liability is that it **conflates three different kinds of

@@ -4,6 +4,8 @@ Reproduces every number in the paper's **§8 (Empirical Purchase)** — the
 falsification of the Φ ≤ S conjecture, and the connectivity-confound analysis of
 the Φ–S correlation. The paper (*The Cardinality of Experience Is Underdetermined
 by the Quantum State*) withdraws the Φ ≤ S bound on the strength of these results.
+Canonical citation: concept DOI https://doi.org/10.5281/zenodo.21007975 (always
+resolves to the latest version); the v2 version DOI is 10.5281/zenodo.21380318.
 
 ## TL;DR — verify in one command (no PyPhi needed)
 
