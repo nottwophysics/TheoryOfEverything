@@ -164,7 +164,9 @@ is recorded as a failure, not renegotiated.**
   ‖Δψ‖ = 1.31, 1.28, 1.46, 1.42 by layer; phase-invariant distances 1.05–1.41,
   so a global-phase no-op cannot pass. **The retired implementation scored 0 here.**
 - B3 exact S(interval) ≤ ln(χ)·|min cut| for lengths 2/4/8 (saturation
-  0.874 / 0.691 / 0.581), cut computed by max-flow on the real contraction graph.
+  0.874 / 0.691 / 0.613), cut computed by max-flow on the real contraction graph.
+  (Corrected 2026-08-15: the length-8 figure was first recorded as 0.581; the
+  committed code returns 0.6133. Re-derived at correction time.)
 - B4 I(L:R) = 5.10 → 4.80 → 3.06 → 1.73 → 0.66 → 0.0 over six λ values, → 0 exactly at λ=0.
   **Scope limit found by the verifier: monotonicity is a property of this grid;
   I(λ) is not globally monotone near λ=1. The docs must say "on this grid".**
@@ -197,7 +199,7 @@ is recorded as a failure, not renegotiated.**
   manufacture a pass** — the test is committed as an `xfail` carrying this
   explanation, so the failure stays visible in every future test run.
 
-## Integration performed
+## Integration performed (PARTIAL — see the gap recorded below)
 `main.py` Experiments 19 and 21 rewritten against the real APIs (both previously
 crashed on retired signatures); Experiment 12's "fails honestly" banner removed
 since the derivation now succeeds; two obsolete shared tests in
@@ -205,4 +207,15 @@ since the derivation now succeeds; two obsolete shared tests in
 formula and linearity in acceleration, and the old
 `test_recover_newton_honestly_reports_failure` is superseded by
 `test_recover_newton` plus a retained negative control asserting the legacy route
-still fails. Suite: **404 passed, 1 xfailed**.
+still fails. Suite: **396 passed, 1 xfailed** on the PUBLIC tree (397 collected).
+(Corrected 2026-08-15: 404 counted the private, gitignored
+`tests/test_integration_pkg.py`, which is not part of the public suite.)
+
+**⚠️ INTEGRATION GAP — found by the post-reimplementation deep scan, same day.**
+The plan above states "Exp 20 → D1 + D2", but **Track D was never wired into
+`main.py`**: `gauss_bonnet_check()`, `entanglement_first_law.py` and
+`entanglement_geometry.py` are referenced by no experiment (grep count 0), so the
+three genuinely-computed Track-D results are unreachable from the documented
+interface, while Experiments 20 and 27 still print the withdrawn constructions
+with "Passes: True". Tracks A, B and C were integrated (Experiments 21, 19, 12).
+**This gap is OPEN.**
