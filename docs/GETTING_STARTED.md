@@ -221,7 +221,7 @@ If you want to read the source code, here is the recommended order:
 4. **`quantum/measurement.py`** — The measurement problem dissolved.
 5. **`quantum/gleason.py`** — The rigorous result (Born rule as theorem).
 6. **`quantum/interpretations.py`** — The formal comparison of 4 interpretations.
-7. **`gravity/entropic.py`** — entropic-force toy (does NOT recover Newton; see its review note).
+7. **`gravity/entropic.py`** — Verlinde's entropic-gravity derivation (recovers Newton; reimplemented 2026-08-15).
 8. **`gravity/holographic.py`** — The holographic principle.
 
 ---
@@ -311,9 +311,9 @@ python main.py --experiment 12
 - Maya = 1: expanded spacetime (maximum separation)
 - Newton correlation: 0.93
 
-**What it teaches**: Space IS entanglement structure in this model, and gravity is read as the entropic tendency of Maya to deepen — but the specific Newton's-law claim does NOT survive: the toy yields F ∝ M/r.
+**What it teaches**: Space IS entanglement structure in this model, and gravity is read as the entropic tendency of Maya to deepen. Since the 2026-08-15 reimplementation the Newton's-law step is faithful to Verlinde and recovers GMm/r² exactly.
 
-**Honest caveat**: `newton_recovered` is False — the 0.93 correlation is 1/r-vs-1/r² shape similarity, not recovery — and this is a 1D model. Full 4D Einstein equations are future work.
+**Honest caveat**: the recovery is an *algebraic* identity — implementing Verlinde's derivation faithfully makes GMm/r² come out exactly, which validates the implementation, not entropic gravity as physics. Whether gravity really is entropic remains contested in the literature.
 
 ### Experiment 15: Physical Constants
 
@@ -399,7 +399,7 @@ Generates 7 PNG files in the `output/` directory:
 
 ## 10. Running the Tests
 
-The project includes a comprehensive test suite with **306 automated tests** covering every module. Tests validate mathematical properties (normalization, Hermiticity, unitarity), physical results (Bell violation, Gleason conditions, entropy bounds), and framework invariants (singleton behavior, non-duality, sublation).
+The project includes a comprehensive test suite with **397 automated tests** covering every module. Tests validate mathematical properties (normalization, Hermiticity, unitarity), physical results (Bell violation, Gleason conditions, entropy bounds), and framework invariants (singleton behavior, non-duality, sublation).
 
 ### Run All Tests
 
@@ -464,12 +464,15 @@ This project is honest about its status. Here is the complete picture:
 - Neti-Neti remainder: 0.0000 after all layers negated
 - Gold-ornament substance preservation: > 94%
 
-### Withdrawn as evidence (2026 adversarial review — see the module review notes)
-- 2+1D Einstein equations (r 0.90–0.94): circular — the entropy is defined ∝ T₀₀
-- MERA tensor network: the coarse-graining transformations are no-ops (retracted)
-- QEC holographic code "80% erasure": loop-bound artifact; near-chance fidelity
-- Newton's law "recovery": F ∝ M/r — Newton NOT recovered (`newton_recovered` is False)
-- Holographic reconstruction: fidelity ~0.50 is chance level for this toy
+### Reimplemented 2026-08-15 (now computed — see REAL_PHYSICS_REIMPLEMENTATION_MEMO.md)
+- QEC: real [[5,1,3]] code — all 15 single-qubit Paulis corrected; erasure threshold 2/5 (40%); any 3/5 subregion reconstructs; 3-erasure provably unrecoverable
+- MERA: real binary MERA — tensors verified and shown to move the state; S(interval) ≤ ln(χ)·|min cut| on the actual state; I(L:R) → 0 in the product limit
+- Entropic gravity: Verlinde's derivation in SI units — GMm/r² to 3e-16 (legacy broken route kept as a negative control)
+- NEW: Gauss–Bonnet on the Delaunay mesh (residual 5e-15) and the entanglement first law δS = δ⟨K⟩ (log-log slope 2.02)
+
+### Still withdrawn as evidence (2026 adversarial review)
+- 2+1D/3+1D Einstein "equations" (r 0.90–0.94 / 0.88): circular — the entropy is defined ∝ T₀₀. In 2D the Einstein tensor vanishes identically, so Gauss–Bonnet (above) is the correct statement
+- Holographic reconstruction: fidelity ~0.50 is chance level for that toy
 
 ### Verified (not derived)
 - Koide formula: verified to 0.006% against empirical data
@@ -578,7 +581,7 @@ Read [docs/PHILOSOPHY.md](PHILOSOPHY.md) Section 3.3 (GR from Consciousness). Th
 python main.py --experiment 19   # Tensor network — space FROM entanglement
 python main.py --experiment 20   # 2+1D Einstein equations on discrete manifold
 python main.py --experiment 21   # QEC — spacetime as error-correcting code
-python main.py --experiment 12   # Entropic gravity toy (Newton NOT recovered)
+python main.py --experiment 12   # Entropic gravity — Verlinde derivation (recovers Newton)
 python main.py --experiment 13   # Holographic principle
 ```
 

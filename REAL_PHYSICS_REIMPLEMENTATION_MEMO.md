@@ -133,3 +133,76 @@ space-from-entanglement + Track C; Exp 19 → Track B; Exp 20 → D1 + D2; Exp 2
 → Track A. Docs statuses move from "withdrawn as evidence" to "reimplemented
 (2026-08-15)" ONLY where the acceptance tests pass, with the retraction
 history preserved. Test counts in docs updated after the suite stabilizes.
+
+---
+
+# RESULTS (2026-08-15, recorded after implementation against the frozen criteria above)
+
+Four independent implementer tracks, each adversarially verified by a separate
+reviewer that re-derived the numbers rather than trusting the implementer.
+**All four verifiers returned PASS. 22 of 23 frozen criteria pass; 1 fails and
+is recorded as a failure, not renegotiated.**
+
+## Track A — [[5,1,3]] stabilizer code: 5/5 PASS
+- A1 max |⟨S_i⟩−1| = 2.2e-16 (4 logical states × 4 stabilizers).
+- A2 all 15 single-qubit Paulis corrected, worst fidelity 1.0 over 60 cases; 16 distinct syndromes.
+- A3 all 10 two-erasure patterns recovered, worst fidelity 1.0 over 760 cases.
+- A4 (negative control) 3-erasure: trace distance between logical states on the
+  survivors = 0.0 for **all 10** patterns (memo asked for one) — information
+  genuinely absent, as no-cloning requires.
+- A5 every 3-of-5 subregion reconstructs the logical qubit (trace distance 1.0).
+- **Headline change: "80% boundary erasure" → erasure threshold 2/5 (40%),
+  reconstruction from any 3/5 (60%).** The old figure was not merely
+  unsupported; >50% erasure recovery is impossible.
+- Independent verifier rebuilt the code from its own stabilizer projector with a
+  random fiducial state and confirmed the same code space (residual < 4e-16),
+  distance exactly 3, and every acceptance number.
+
+## Track B — real binary MERA: 5/5 PASS
+- B1 max |U†U−I| = 2.2e-15, |W†W−I| = 2.0e-15 over 15 disentanglers/15 isometries.
+- B2 (the old defect inverted) replacing any single layer moves the state:
+  ‖Δψ‖ = 1.31, 1.28, 1.46, 1.42 by layer; phase-invariant distances 1.05–1.41,
+  so a global-phase no-op cannot pass. **The retired implementation scored 0 here.**
+- B3 exact S(interval) ≤ ln(χ)·|min cut| for lengths 2/4/8 (saturation
+  0.874 / 0.691 / 0.581), cut computed by max-flow on the real contraction graph.
+- B4 I(L:R) = 5.10 → 4.80 → 3.06 → 1.73 → 0.66 → 0.0 over six λ values, → 0 exactly at λ=0.
+  **Scope limit found by the verifier: monotonicity is a property of this grid;
+  I(λ) is not globally monotone near λ=1. The docs must say "on this grid".**
+- B5 the log-shaped minimal cut is labeled by-construction, not as a result.
+
+## Track C — faithful Verlinde derivation: 4/4 PASS
+- C1 |F/(GMm/r²) − 1| ≤ 3.3e-16 for both routes across M ∈ [1, 2e30] kg,
+  m ∈ [1e-3, 1e3] kg, r ∈ [0.1, 1.5e11] m.
+- C2 legacy screen-area route retained and still fails Newton (ratio spread 1e14).
+- C3 computed dimension tuples: both routes give (1,1,−2,0) = kg·m·s⁻².
+- C4 `newton_recovered` now computed True because the derivation is faithful.
+- **Honesty notes added post-verification:** Route 1 takes a = GM/r² as input, so
+  it is F = ma by construction and is NOT an independent derivation; only Route 2
+  (holographic screen + equipartition) derives the r-dependence. And the
+  machine-precision agreement is ALGEBRAIC — it confirms the implementation, not
+  nature. Whether entropic gravity is correct physics remains open.
+
+## Track D — discrete geometry + entanglement thermodynamics: 8/9 (one honest FAIL)
+- D1 Gauss–Bonnet residual 5.3e-15 (χ computed from the mesh as V−E+F, not
+  hardcoded); topology negative control shifts the sum by exactly 2π when χ: 1→0.
+  Module states plainly that the 2D Einstein tensor vanishes identically.
+- D2 entanglement first law δS = δ⟨K_A⟩ on a free-fermion chain: log-log slope
+  **2.0178** (criterion 2 ± 0.2), mismatch 1.6e-10 at ε=1e-4 (criterion 1e-6);
+  wrong-modular-Hamiltonian control gives slope 1.01 and ~5000× the mismatch.
+- D3 criticality: Spearman ρ(|i−j|, I) = **−0.9891** (criterion < −0.9).
+- **D3 paramagnet criterion FAILS: max I = 1.41e-2 at g = 8.0, against the frozen
+  threshold of 1e-2.** Confirmed by two independent reduced-density-matrix
+  implementations and consistent with perturbation theory (amplitude J/4g = 1/32).
+  The threshold is met only for g ≳ 10. **The criterion was NOT weakened to
+  manufacture a pass** — the test is committed as an `xfail` carrying this
+  explanation, so the failure stays visible in every future test run.
+
+## Integration performed
+`main.py` Experiments 19 and 21 rewritten against the real APIs (both previously
+crashed on retired signatures); Experiment 12's "fails honestly" banner removed
+since the derivation now succeeds; two obsolete shared tests in
+`tests/test_gravity.py` replaced — `test_unruh_temperature` now checks the SI
+formula and linearity in acceleration, and the old
+`test_recover_newton_honestly_reports_failure` is superseded by
+`test_recover_newton` plus a retained negative control asserting the legacy route
+still fails. Suite: **404 passed, 1 xfailed**.

@@ -144,24 +144,37 @@ class TestEntropicGravity:
         assert s2 > s1
 
     def test_unruh_temperature(self):
+        # SI units since the 2026-08-15 Verlinde reimplementation:
+        # T = hbar*a/(2*pi*c*k_B). For a = 1 m/s^2 this is ~4.06e-21 K.
         eg = EntropicGravity()
         T = eg.unruh_temperature(1.0)
         assert T > 0
-        expected = 1.0 / (2 * np.pi)
-        assert abs(T - expected) < 1e-10
+        expected = eg.hbar * 1.0 / (2 * np.pi * eg.c * eg.k_B)
+        assert abs(T / expected - 1.0) < 1e-12
+        # Unruh temperature is linear in acceleration.
+        assert abs(eg.unruh_temperature(2.0) / T - 2.0) < 1e-12
 
     def test_entropic_force_positive(self):
         eg = EntropicGravity()
         F = eg.entropic_force(1.0, 1.0)
         assert F > 0
 
-    def test_recover_newton_honestly_reports_failure(self):
+    def test_recover_newton(self):
+        # Superseded the old honest-failure test on 2026-08-15: the module now
+        # implements Verlinde's actual derivation (displaced-test-mass entropy
+        # gradient, not the screen-area gradient), so Newton IS recovered.
         eg = EntropicGravity()
         result = eg.recover_newton(mass=1.0)
-        # The 0.93 correlation is 1/r-vs-1/r^2 shape similarity, NOT Newton
-        # recovery; the module itself must keep reporting that honestly.
-        assert 0.9 < result["newton_correlation"] < 0.99
-        assert result["newton_recovered"] is False
+        assert result["newton_recovered"] is True
+        assert abs(result["newton_correlation"] - 1.0) < 1e-9
+        assert abs(result["avg_ratio_entropic_newton"] - 1.0) < 1e-9
+
+    def test_legacy_screen_area_route_still_fails_newton(self):
+        # Negative control: the retired route must keep failing, so a
+        # regression to it cannot pass unnoticed.
+        eg = EntropicGravity()
+        wrong = eg.screen_area_route_wrong()
+        assert wrong["reproduces_newton"] is False
 
     def test_black_hole_properties(self):
         eg = EntropicGravity()

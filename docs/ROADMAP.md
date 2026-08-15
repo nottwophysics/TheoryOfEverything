@@ -68,8 +68,8 @@ This connects directly to cutting-edge physics (ER=EPR, holographic principle, q
 - ✅ `quantum/measurement.py`: Maya as decoherence — total state pure, reduced state mixed
 - ⚠️ `gravity/holographic.py`: toy — RT entropy is identically 0 (no subsystem structure to trace over); see module review note
 - ⚠️ `quantum/entanglement.py`: Bell CHSH value S = 2√2 — analytic textbook value; the demo consumes no quantum state (illustrative)
-- ⚠️ `quantum/tensor_network.py`: retracted as evidence — the MERA transformations are no-ops (global phase); see module review note (Experiment 19)
-- ⚠️ `quantum/error_correction.py`: toy only — the "80% erasure threshold" is the scan's loop bound and recovery fidelity is near chance; see module review note (Experiment 21)
+- ✅ `quantum/tensor_network.py`: REIMPLEMENTED 2026-08-15 — real binary MERA (χ=2, 16 sites); tensors verified unitary/isometric and shown to affect the state; RT-type bound computed on the actual state (Experiment 19)
+- ✅ `quantum/error_correction.py`: REIMPLEMENTED 2026-08-15 — genuine [[5,1,3]] code; erasure threshold 2/5 (40%), any 3/5 reconstructs, 3-erasure provably unrecoverable (Experiment 21)
 
 **Remaining:**
 - Model the ER=EPR correspondence (Einstein-Rosen bridges = EPR entanglement)
@@ -107,7 +107,7 @@ This aligns with Verlinde's entropic gravity and Jacobson's thermodynamic deriva
 
 **Current status:**
 - ✅ `gravity/metric.py`: Space emerges from entanglement — Maya depth 0 → no space
-- ⚠️ `gravity/entropic.py`: does NOT recover Newton — yields F ∝ M/r; the 0.93 is 1/r-vs-1/r² shape similarity and the module's own newton_recovered flag is False
+- ✅ `gravity/entropic.py`: REIMPLEMENTED 2026-08-15 — Verlinde's derivation in SI units; recovers GMm/r² to 3e-16 (the legacy screen-area route is retained as a negative control and still fails)
 - ⚠️ `gravity/einstein.py`: 1D toy — circular construction; re-execution gives correlation −0.98 (see module review note)
 - ⚠️ `gravity/einstein_2d.py`: 2+1D construction — circular by design (entropy defined ∝ T₀₀); illustrates, does not demonstrate (Experiment 20 caveats)
 - ⚠️ `gravity/holographic.py`: "boundary reconstructs bulk" not shown — reconstruction fidelity is near chance in the toy run
@@ -145,11 +145,11 @@ No physics ToE addresses why there is **experience** at all. This framework star
 | Gleason axiom reduction | Born rule is theorem → 7→4 axioms | **PROVEN** | Mathematical fact |
 | Born rule uniqueness | Only consistent measure in dim≥3 | **PROVEN** | Gleason's theorem |
 | 2+1D Einstein equations | R_entropy ∝ T_00 on discrete manifold | **WITHDRAWN — circular** (entropy defined ∝ T₀₀) | Illustrates Jacobson's logic only |
-| MERA tensor network | Entanglement → geometry; cut = disconnect | **RETRACTED** (transformations are no-ops) | See quantum/tensor_network.py review note |
-| QEC as spacetime | "80% erasure" | **WITHDRAWN** (loop-bound artifact; near-chance fidelity) | See quantum/error_correction.py review note |
+| MERA tensor network | S(interval) ≤ ln(χ)·|min cut|; I(L:R) → 0 in the product limit | **REIMPLEMENTED** (computed on a real state) | Reimplemented 2026-08-15 |
+| QEC as spacetime | [[5,1,3]]: threshold 2/5, any 3/5 reconstructs | **REIMPLEMENTED** (real stabilizer code) | Reimplemented 2026-08-15; "80%" retired as impossible |
 | Bell violation | S = 2√2 | **ILLUSTRATIVE** (analytic value; no state consumed) | Standard QM result restated |
 | Measurement resolution | Collapse is perspectival | **DEMONSTRATED** | Decoherence + partial trace |
-| Newton from entropy | F_entropic ∝ M/r | **NOT RECOVERED** (`newton_recovered` False; 0.93 is shape similarity) | Entropic-force toy |
+| Newton from entropy | F = GMm/r² to 3e-16 | **RECOVERED** (Verlinde derivation, faithful) | Algebraic identity — confirms the implementation, not nature |
 | Fine structure 1/α | 137.031 (0.003% error) | **NUMEROLOGY** (fails hold-out) | 163-26+π/100; cross-validation + look-elsewhere show it is curve-fitting, not a law |
 | IIT-entanglement Φ ≤ S | falsified (validated PyPhi Φ, N=216, ordering-audit-corrected) | **REFUTED** | 50 of 51 nonzero-Φ systems violate it; canonical Φ (~4.0 bits) not capped by bipartition S (~0.83 bits); raw Φ–S r≈+0.64 is a connectivity confound (partial r≈−0.07, p=0.29) |
 | MERA Φ profile | Increases toward IR | **RETRACTED** (heuristic Φ + defective MERA construction) | See Experiment 19/23 caveats |
@@ -177,7 +177,7 @@ No physics ToE addresses why there is **experience** at all. This framework star
 ## Milestone Targets
 
 ### Milestone 0: Automated Test Suite ✅ COMPLETE
-- 306 tests across 21 test files covering all modules
+- 397 tests across 25 test files covering all modules
 - Validates mathematical properties (normalization, Hermiticity, unitarity)
 - Validates physical results (Bell CHSH value, Gleason conditions, honest Newton NON-recovery)
 - Validates framework invariants (singleton, non-duality, substrate preservation)

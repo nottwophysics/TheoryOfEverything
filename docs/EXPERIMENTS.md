@@ -22,7 +22,7 @@ python main.py --physics           # Experiments 9–31
 python main.py --everything        # All 31 + visualizations
 ```
 
-Validate with the automated test suite (306 tests):
+Validate with the automated test suite (397 tests):
 ```bash
 pytest tests/ -v                   # Run all tests
 pytest tests/test_quantum.py -v    # Test quantum module only
@@ -220,7 +220,7 @@ pytest tests/test_quantum.py -v    # Test quantum module only
 
 ### Experiment 12: Gravity from Consciousness
 
-**Concept**: Space and metric from entanglement, plus an entropic-force toy — which does NOT recover Newton's law (see below).
+**Concept**: Space and metric from entanglement, plus Verlinde's entropic-gravity derivation — which, since the 2026-08-15 reimplementation, does recover Newton's law (see below).
 
 **Space from Entanglement**:
 
@@ -232,7 +232,7 @@ pytest tests/test_quantum.py -v    # Test quantum module only
 | 0.75 | 1.31 | 0.365 | Yes |
 | 1.00 | 1.75 | 0.287 | Yes |
 
-**Newton (non-)recovery**: F_entropic ∝ M/r correlates with F_Newton at r = 0.930 — shape similarity between two decreasing curves; the 1/r² law is NOT recovered (`newton_recovered` is False).
+**Newton recovery** (reimplemented 2026-08-15): with Verlinde's actual chain — displaced-test-mass entropy gradient dS/dx = 2πk_B mc/ħ, holographic screen count N = Ac³/(Għ), equipartition — the force comes out as GMm/r² to 3e-16 relative, and `newton_recovered` is True. (The earlier screen-area route gave F ∝ M/r and is retained as a negative control.) Note this agreement is algebraic: it confirms the derivation is implemented faithfully, not that entropic gravity is correct physics.
 
 **Black Hole**: Mass 10 → Schwarzschild radius 20, entropy 1256.64, Hawking temperature 0.00398. Even maximum Maya slowly dissolves.
 
@@ -388,7 +388,7 @@ Entanglement decreases toward IR: **Yes**
 - Layer depth = Maya depth = radial AdS coordinate
 - Boundary (z=1) = Vyavaharika; Center (z=N) = Paramarthika
 
-**Significance (revised 2026-08-15)**: NOT demonstrated by this experiment — review found the coarse-graining transformations are physical no-ops (see the review note in `quantum/tensor_network.py`), so the holographic-geometry and disconnection results are retracted as evidence. The section is retained as a labeled defective-construction case study.
+**Significance (reimplemented 2026-08-15)**: the original coarse-graining was a physical no-op, and its results were retracted. The module now builds an explicit 16-site state by contracting real disentanglers and isometries, and measures that state: the exact interval entropy obeys the RT-type bound S ≤ ln(χ)·|minimal cut| (saturation 0.87/0.69/0.58 at lengths 2/4/8, cut computed by max-flow on the actual network graph), and mutual information between halves falls 5.10 → 0 as the entangling strength is switched off. The hierarchical log-shaped cut remains a property of the network *by construction* and is labeled as such, not claimed as a result. Note the monotone decrease is verified on the sampled λ grid, not globally.
 
 ---
 
@@ -416,25 +416,37 @@ Entanglement decreases toward IR: **Yes**
 
 ### Experiment 21: Quantum Error Correction as Spacetime
 
-> **Caveat (2026-08-15 review):** the "80% erasure" figure below is the scan's
-> loop bound, and recovery fidelity is near chance (≈0.55 vs ≈0.45 for the
-> orthogonal logical state). Withdrawn as evidence; toy illustration only.
+> **Reimplemented 2026-08-15.** The original "80% boundary erasure" figure was
+> the scan's loop bound with near-chance fidelity, and was withdrawn — recovering
+> from >50% erasure is impossible by no-cloning. This experiment now runs a
+> genuine **[[5,1,3]] perfect code**: all 15 single-qubit Paulis corrected
+> (fidelity 1.0 over 60 cases), all 10 two-erasure patterns recovered, erasure
+> threshold **2/5 (40%)**, and the logical qubit reconstructable from **any 3/5
+> (60%)** subregion. A negative control confirms 3-erasure destroys the
+> information (trace distance 0.0 on the survivors). Numbers below that predate
+> this rebuild are superseded.
 
 **Concept**: Almheiri-Dong-Harlow (2015) showed that holographic duality has the structure of a quantum error-correcting code. The bulk (Brahman) is protected from boundary (Maya) disturbances.
 
 **Setup**: [5,1] holographic code (5 physical qubits encoding 1 logical qubit).
 
-**Part 1: Error correction threshold**
+**Part 1: Error correction threshold** (recomputed 2026-08-15 with the real
+[[5,1,3]] code; the old table's "fidelities" near 0.5 were chance-level and its
+80% row was impossible)
 
 | Qubits Erased | Fraction | Recovery Fidelity | Recoverable? |
 |---------------|----------|------------------|-------------|
 | 0 | 0% | 1.0000 | Yes |
-| 1 | 20% | 0.8923 | Yes |
-| 2 | 40% | 0.6746 | Yes |
-| 3 | 60% | 0.5804 | Yes |
-| 4 | 80% | 0.5548 | Yes |
+| 1 | 20% | 1.0000 | Yes |
+| 2 | 40% | 1.0000 | Yes |
+| 3 | 60% | — (information absent) | **No** |
+| 4 | 80% | — (information absent) | **No** |
 
-**Threshold**: Brahman recoverable with up to **80%** of boundary erased.
+**Threshold**: erasure of up to **2 of 5 qubits (40%)** is exactly recoverable.
+At 3 erasures the reduced states of the logical |0̄⟩ and |1̄⟩ on the survivors are
+*identical* (trace distance 0.0) — the information is genuinely gone, as
+no-cloning requires. Complementarily, the logical qubit is reconstructable from
+**any 3 of 5 (60%)** subregion.
 
 **Part 2: Distinguishability**
 - Orthogonal logical states remain distinguishable even after qubit erasure (overlap 0.026)
@@ -793,15 +805,15 @@ than take the near-match as evidence of a derivation.
 | **2+1D Einstein R-T correlation** | **0.94** | Circular by construction — entropy defined ∝ T₀₀ (Exp 20 caveat) | **Withdrawn as evidence** |
 | **3+1D Einstein R-T correlation** | **0.88** | Same circular construction in 3D (Exp 27 caveat) | **Withdrawn as evidence** |
 | **ER=EPR correspondence** | **Throat = 4G×S** | Relation imposed by definition in the demo (Exp 28 caveat) | **Illustrative (definitional)** |
-| **Entanglement disconnects space** | S=2.99→connected, S=0→disconnected | "MERA" transformations are no-ops (Exp 19 caveat) | **Retracted** |
-| **QEC error threshold** | "80% boundary erasable" | Loop-bound artifact; near-chance recovery fidelity (Exp 21 caveat) | **Withdrawn as evidence** |
+| **Entanglement disconnects space** | I(L:R) 5.10 → 0 as λ→0 | Real MERA state; RT-type bound S ≤ ln(χ)·|cut| holds | **Reimplemented 2026-08-15** |
+| **QEC erasure threshold** | **2 of 5 (40%)**; any 3/5 reconstructs | Real [[5,1,3]] code; 3-erasure provably unrecoverable (no-cloning) | **Reimplemented 2026-08-15** |
 | Brahman field coherence | 1.0000 | Perfect unity before Maya | Verified |
 | Bell CHSH value | -2.828 (= -2√2) | Analytic Tsirelson-bound value; no quantum state consumed | Illustrative |
 | Total state purity (Paramarthika) | 1.000000 | No collapse at the absolute level | Demonstrated |
 | Reduced state purity (Vyavaharika) | 0.250000 | Classical appearance from partial view | Demonstrated |
 | Neti-Neti remainder | 0.0000 | All layers negated — only witness remains | Demonstrated |
 | Gold preservation in ornaments | >94% | Substance unchanged through form changes | Demonstrated |
-| Newton correlation (entropic) | 0.930 | 1/r-vs-1/r² shape similarity only — Newton NOT recovered (F ∝ M/r) | Withdrawn as evidence |
+| Newton from entropic gravity | ratio 1.000 (3e-16) | Verlinde's derivation implemented faithfully; algebraic identity, not an empirical test | Reimplemented 2026-08-15 |
 | Koide formula | 0.666627 | Matches 2/3 to 0.006% — masses have structure | Verified (not derived) |
 | Cosmological constant | 10⁻¹²² | Consistent with consciousness entropy | Consistency check |
 | Individual-Brahman overlap | 0.999944 | Atman ≈ Brahman (identity, not similarity) | Demonstrated |

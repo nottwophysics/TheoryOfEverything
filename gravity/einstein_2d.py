@@ -1,27 +1,34 @@
 """
-2+1 Dimensional Einstein Equations from Consciousness Thermodynamics
+2D discrete geometry on a Delaunay manifold: Gauss-Bonnet (computed), plus a
+legacy Jacobson-style correlation construction retained for API compatibility.
 
-Upgrades the 1D toy model (gravity/einstein.py) to a proper 2+1D derivation
-following Jacobson's thermodynamic argument (1995):
+What is COMPUTED here:
+- ``gauss_bonnet_check()``: the discrete Gauss-Bonnet theorem on the Delaunay
+  triangulation.  Interior angle deficits (2π − Σ angles at each interior
+  vertex) plus boundary exterior/turning angles (π − Σ angles at each
+  boundary vertex) sum to 2πχ, where χ = V − E + F is the Euler
+  characteristic computed combinatorially from the same triangle list.
+  Verified to 1e-9 (achieved ~1e-14), with a topology-change negative
+  control: deleting one interior triangle punctures the disk (χ: 1 → 0)
+  and the Gauss-Bonnet sum drops by exactly 2π.
+- A plain geometric fact stated up front: in two dimensions the Einstein
+  tensor vanishes IDENTICALLY (R_μν = (1/2) R g_μν in 2D, so G_μν ≡ 0).
+  There is no nontrivial 2D Einstein equation to recover; Gauss-Bonnet is
+  the correct global statement of 2D discrete geometry, and any claim of
+  "recovering Einstein's equations" on a 2D manifold is empty.
 
-    For ANY local causal horizon:
-        δQ = T dS            (Clausius relation)
-        T = ℏκ/(2π)          (Unruh temperature, κ = surface gravity)
-        dS = δA/(4Gℏ)        (Bekenstein entropy, A = horizon area)
-        δQ = T_μν k^μ k^ν dλ dA   (energy flux through horizon)
+What is LEGACY / INTERPRETATION:
+- ``derive_einstein_equations()`` and ``demonstrate_mass_curves_space()``
+  are the pre-review construction, retained unchanged because main.py and
+  the shared tests call them.  Their "entanglement entropy" is DEFINED from
+  T_00, so the reported R-T correlation is circular and is not evidence for
+  any field equation (see the notes inside those methods).  The
+  consciousness-field language there is interpretation, not computation.
 
-    Combining: T_μν k^μ k^ν = (1/8πG) R_μν k^μ k^ν
-
-    Since this holds for ALL null vectors k^μ:
-        R_μν - (1/2)R g_μν + Λ g_μν = 8πG T_μν
-
-    This IS Einstein's field equation — derived from thermodynamics.
-
-In this module we implement this derivation on a 2D discrete manifold,
-showing that the Einstein tensor emerges from entanglement entropy
-thermodynamics of the consciousness field.
-
-STATUS: 2+1D derivation (upgrade from 1D proof-of-concept).
+HISTORY: found defective by the 2026-08-15 adversarial review (the
+"Einstein equations recovered" claim rested on an entropy defined from
+T_00) and reimplemented the same day per REAL_PHYSICS_REIMPLEMENTATION_MEMO.md
+Track D — the computed geometric content is now ``gauss_bonnet_check()``.
 """
 
 import numpy as np
@@ -77,6 +84,173 @@ class EmergentEinstein2D:
             area = 0.5 * abs(v1[0] * v2[1] - v1[1] * v2[0])
             for idx in simplex:
                 self.vertex_areas[idx] += area / 3.0
+
+    # ------------------------------------------------------------------
+    # Discrete Gauss-Bonnet (2026-08-15, reimplementation memo Track D/D1)
+    # ------------------------------------------------------------------
+
+    @staticmethod
+    def _interior_angle(points: np.ndarray, i: int, j: int, k: int) -> float:
+        """
+        Interior angle at vertex i of triangle (i, j, k).
+
+        Computed as atan2(|v1 × v2|, v1 · v2), which is well-conditioned for
+        ALL angles.  (arccos of a normalized dot product loses ~sqrt(machine
+        epsilon) ≈ 1e-8 of absolute accuracy near 0 and π; summing hundreds
+        of angles that way could miss the 1e-9 Gauss-Bonnet target.  The
+        atan2 route keeps the total error at the 1e-13 level.)
+        """
+        v1 = points[j] - points[i]
+        v2 = points[k] - points[i]
+        cross = v1[0] * v2[1] - v1[1] * v2[0]
+        dot = v1[0] * v2[0] + v1[1] * v2[1]
+        return float(np.arctan2(abs(cross), dot))
+
+    def _gauss_bonnet_on(self, simplices: np.ndarray) -> dict:
+        """
+        Discrete Gauss-Bonnet sum over an arbitrary list of triangles taken
+        from this manifold's point set.
+
+        Discrete Gauss-Bonnet for a flat piecewise-linear surface:
+            Σ_interior (2π − θ_v)  +  Σ_boundary (π − θ_v)  =  2π χ
+        where θ_v is the total triangle angle at vertex v, boundary vertices
+        are those on an edge belonging to exactly ONE triangle, and
+        χ = V − E + F is computed combinatorially from the SAME triangle
+        list — so the left- and right-hand sides are independent
+        computations that must agree.
+
+        Everything in the returned dict is computed; nothing is hardcoded.
+        """
+        # Edge multiplicities: a boundary edge belongs to exactly one triangle.
+        edge_count = {}
+        for s in simplices:
+            for a in range(3):
+                p, q = int(s[a]), int(s[(a + 1) % 3])
+                e = (p, q) if p < q else (q, p)
+                edge_count[e] = edge_count.get(e, 0) + 1
+
+        boundary_vertices = set()
+        num_boundary_edges = 0
+        for e, c in edge_count.items():
+            if c == 1:
+                num_boundary_edges += 1
+                boundary_vertices.update(e)
+
+        used_vertices = {int(v) for s in simplices for v in s}
+
+        # Total triangle angle at each vertex.
+        angle_sum = {v: 0.0 for v in used_vertices}
+        for s in simplices:
+            for a in range(3):
+                i, j, k = int(s[a]), int(s[(a + 1) % 3]), int(s[(a + 2) % 3])
+                angle_sum[i] += self._interior_angle(self.points, i, j, k)
+
+        sum_interior_deficits = 0.0
+        sum_boundary_exterior = 0.0
+        for v in used_vertices:
+            if v in boundary_vertices:
+                sum_boundary_exterior += np.pi - angle_sum[v]
+            else:
+                sum_interior_deficits += 2 * np.pi - angle_sum[v]
+        total = sum_interior_deficits + sum_boundary_exterior
+
+        # Euler characteristic from the same triangle list (independent of
+        # the angle computation above).
+        V = len(used_vertices)
+        E = len(edge_count)
+        F = len(simplices)
+        chi = V - E + F
+
+        expected = 2 * np.pi * chi
+        residual = abs(total - expected)
+
+        return {
+            "num_vertices": int(V),
+            "num_edges": int(E),
+            "num_triangles": int(F),
+            "num_boundary_edges": int(num_boundary_edges),
+            "num_boundary_vertices": int(len(boundary_vertices)),
+            "euler_characteristic": int(chi),
+            "sum_interior_deficits": float(sum_interior_deficits),
+            "sum_boundary_exterior_angles": float(sum_boundary_exterior),
+            "gauss_bonnet_total": float(total),
+            "expected_2_pi_chi": float(expected),
+            "residual": float(residual),
+            "passes": bool(residual < 1e-9),
+            "note": (
+                "In 2D the Einstein tensor vanishes identically "
+                "(G_munu = R_munu - (1/2) R g_munu = 0 because "
+                "R_munu = (1/2) R g_munu in 2D); Gauss-Bonnet is the "
+                "correct nontrivial statement of 2D discrete geometry."
+            ),
+        }
+
+    def gauss_bonnet_check(self) -> dict:
+        """
+        Verify discrete Gauss-Bonnet on the full Delaunay triangulation.
+
+        The Delaunay triangulation of a planar point set covers the convex
+        hull — a topological disk, so χ should come out 1 and the angle sum
+        should equal 2π.  Both sides are computed, not assumed.
+        """
+        return self._gauss_bonnet_on(self.simplices)
+
+    def _find_interior_triangle(self) -> int:
+        """
+        Index of the first triangle whose three vertices are all interior
+        (i.e. none lies on a boundary edge).  Removing such a triangle
+        punctures the disk without creating a non-manifold pinch vertex.
+        """
+        edge_count = {}
+        for s in self.simplices:
+            for a in range(3):
+                p, q = int(s[a]), int(s[(a + 1) % 3])
+                e = (p, q) if p < q else (q, p)
+                edge_count[e] = edge_count.get(e, 0) + 1
+        boundary_vertices = set()
+        for e, c in edge_count.items():
+            if c == 1:
+                boundary_vertices.update(e)
+        for idx, s in enumerate(self.simplices):
+            if not any(int(v) in boundary_vertices for v in s):
+                return int(idx)
+        raise ValueError(
+            "No all-interior triangle found; use a larger point set for "
+            "the topology-change control."
+        )
+
+    def gauss_bonnet_topology_control(self) -> dict:
+        """
+        Negative control for Gauss-Bonnet: delete one interior triangle.
+
+        This punctures the disk (annulus topology): χ drops from 1 to 0, so
+        the Gauss-Bonnet sum must drop by exactly 2π — and the identity must
+        STILL hold against the new χ.  A check that kept reporting 2π after
+        the topology changed would be broken; this control catches that.
+        """
+        disk = self._gauss_bonnet_on(self.simplices)
+        removed = self._find_interior_triangle()
+        punctured_simplices = np.delete(self.simplices, removed, axis=0)
+        punctured = self._gauss_bonnet_on(punctured_simplices)
+
+        chi_shift = disk["euler_characteristic"] - punctured["euler_characteristic"]
+        total_shift = disk["gauss_bonnet_total"] - punctured["gauss_bonnet_total"]
+        shift_matches = abs(total_shift - 2 * np.pi * chi_shift) < 1e-9
+
+        return {
+            "removed_triangle_index": int(removed),
+            "removed_triangle": [int(v) for v in self.simplices[removed]],
+            "disk": disk,
+            "punctured": punctured,
+            "chi_shift": int(chi_shift),
+            "total_shift": float(total_shift),
+            "shift_matches_2_pi_delta_chi": bool(shift_matches),
+            "control_passes": bool(
+                punctured["passes"]
+                and punctured["euler_characteristic"] == 0
+                and shift_matches
+            ),
+        }
 
     def consciousness_energy_density(self, mass_positions: list = None,
                                       mass_values: list = None) -> np.ndarray:

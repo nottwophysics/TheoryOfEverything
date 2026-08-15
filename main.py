@@ -178,7 +178,7 @@ def emergent_gravity_experiment():
                   f"entanglement={val['avg_entanglement']:.4f}, "
                   f"space_exists={val['space_exists']}")
 
-    print("\n--- Attempting Newton recovery (fails honestly: F ∝ M/r) ---")
+    print("\n--- Newton recovery (Verlinde derivation, SI units) ---")
     eg = EntropicGravity()
     newton = eg.recover_newton(mass=1.0)
     print(f"  Newton correlation: {newton['newton_correlation']:.6f}")
@@ -581,70 +581,66 @@ def gleason_experiment():
 
 
 def tensor_network_experiment():
-    """Experiment 19: MERA Tensor Network — Spacetime from Entanglement."""
+    """Experiment 19: MERA Tensor Network — entanglement structure, computed."""
     print("\n" + "=" * 70)
     print("  EXPERIMENT 19: MERA TENSOR NETWORK")
-    print("  Spacetime Geometry from Entanglement Structure")
+    print("  Entanglement Structure of a Real MERA State")
     print("=" * 70)
+    print("\n  Reimplemented 2026-08-15: the previous version applied its")
+    print("  tensors as a global phase (a physical no-op) and its results were")
+    print("  retracted. This version contracts real disentanglers/isometries")
+    print("  into an explicit 16-site state and measures that state.")
 
     from quantum.tensor_network import MERATensorNetwork
 
     mera = MERATensorNetwork(num_sites=16, bond_dim=2)
+    demo = mera.full_demonstration()
 
-    # Part 1: Coarse-graining (UV → IR = Maya → Brahman)
+    # Part 1: the tensors are genuine
     print("\n" + "-" * 60)
-    print("  PART 1: COARSE-GRAINING (Maya → Brahman)")
+    print("  PART 1: TENSOR ALGEBRA (are the tensors real?)")
     print("-" * 60)
-    cg = mera.coarse_grain()
-    for layer in cg["layers"]:
-        ent = layer["entanglement"]
-        sites = layer["num_sites"]
-        bar = "#" * int(ent * 20) if ent > 0 else ""
-        print(f"  Layer {layer['layer']:2d}: sites={sites:4d}  "
-              f"S={ent:.4f} [{bar:20s}]  {layer['label']}")
-    print(f"\n  Entanglement decreases toward IR: {cg['entanglement_decreases']}")
+    ta = demo["tensor_algebra"]
+    print(f"  Disentanglers: {ta['num_disentanglers']}  max |U'U - I| = {ta['max_unitarity_deviation']:.2e}")
+    print(f"  Isometries:    {ta['num_isometries']}  max |W'W - I| = {ta['max_isometry_deviation']:.2e}")
+    print(f"  All within 1e-10: {ta['all_within_1e-10']}")
 
-    # Part 2: Geometry from entanglement
+    # Part 2: the old defect, inverted into a control
     print("\n" + "-" * 60)
-    print("  PART 2: GEOMETRY FROM ENTANGLEMENT")
+    print("  PART 2: NEGATIVE CONTROL (tensors must affect the state)")
     print("-" * 60)
-    geo = mera.entanglement_determines_distance()
-    for d in geo["geometry_from_entanglement"]:
-        ent = d["entanglement"]
-        dist = d["emergent_distance"]
-        dist_str = f"{dist:.4f}" if dist < 1000 else "∞"
-        print(f"  Layer {d['layer']}: entanglement={ent:.4f}  →  "
-              f"distance={dist_str}  (sites={d['num_sites']})")
-    print(f"\n  {geo['teaching'][:120]}...")
+    pe = demo["perturbation_example"]
+    print(f"  Perturbing layer {pe['layer']} ({pe['mode']}):")
+    print(f"    ||delta psi||              = {pe['delta_norm']:.4f}")
+    print(f"    phase-invariant distance = {pe['phase_invariant_distance']:.4f}")
+    print(f"    state actually changed   = {pe['state_changed']}")
+    print("  (The retired implementation scored 0 here — that was the defect.)")
 
-    # Part 3: Cut entanglement → disconnect space
+    # Part 3: RT-type entropy bound, measured on the state
     print("\n" + "-" * 60)
-    print("  PART 3: CUT ENTANGLEMENT = DISCONNECT SPACE")
+    print("  PART 3: ENTROPY vs MINIMAL CUT (computed on the real state)")
     print("-" * 60)
-    cut = mera.cut_entanglement_disconnects_space()
-    ent_state = cut["entangled_state"]
-    prod_state = cut["product_state"]
-    print(f"  Entangled state: S={ent_state['entanglement']:.4f}, "
-          f"space connected={ent_state['space_connected']}")
-    print(f"  Product state:  S={prod_state['entanglement']:.4f}, "
-          f"space connected={prod_state['space_connected']}")
-    print(f"\n  {cut['insight'][:150]}...")
+    for iv in demo["rt_bound"]["intervals"]:
+        label = f"[{iv['start']}, {iv['start'] + iv['length']})"
+        print(f"    interval {label:10s} S = {iv['entropy']:.4f}  <=  "
+              f"ln(chi)*cut = {iv['bound']:.4f}  "
+              f"(cut={iv['min_cut_bonds']} bonds, "
+              f"saturation {iv['saturation_ratio']:.3f})")
+    print(f"  All bounds hold: {demo['rt_bound']['all_bounds_hold']}")
+    print(f"  Claim scope: {demo['rt_bound']['computed_claim'][:150]}")
 
-    # Part 4: Holographic (AdS) geometry
+    # Part 4: disconnection as entanglement is switched off
     print("\n" + "-" * 60)
-    print("  PART 4: AdS-LIKE HOLOGRAPHIC GEOMETRY")
+    print("  PART 4: REMOVE ENTANGLEMENT -> LOSE CONNECTIVITY")
     print("-" * 60)
-    holo = mera.holographic_geometry()
-    for s in holo["ads_slices"]:
-        z = s["radial_coordinate_z"]
-        g = s["effective_metric_factor"]
-        print(f"  z={z:2d}: metric_factor={g:.4f}  "
-              f"sites={s['num_sites']:4d}  S={s['entanglement']:.4f}  "
-              f"| {s['advaita_label']}")
+    dc = demo["disconnection"]
+    for lam, I, dist in zip(dc["lambdas"], dc["mutual_information"], dc["derived_distance"]):
+        d_str = "inf" if dist == float("inf") else f"{dist:.4f}"
+        print(f"    lambda={lam:.2f}:  I(L:R) = {I:.6f}   derived distance = {d_str}")
+    print(f"  Monotone decreasing on this grid: {dc['monotone_decreasing']}")
+    print(f"  I -> 0 at lambda=0: {dc['final_below_1e-8']}")
 
-    print(f"\n  Metric: {holo['ads_metric']}")
-    for key, val in holo["mapping"].items():
-        print(f"    {key}: {val}")
+    print(f"\n  {demo['interpretation'][:200]}")
 
     return {"status": "completed", "experiment": "tensor_network"}
 
@@ -702,74 +698,65 @@ def einstein_2d_experiment():
 
 
 def error_correction_experiment():
-    """Experiment 21: Quantum Error Correction as Spacetime."""
+    """Experiment 21: the [[5,1,3]] code — real stabilizer error correction."""
     print("\n" + "=" * 70)
     print("  EXPERIMENT 21: QUANTUM ERROR CORRECTION AS SPACETIME")
-    print("  Almheiri-Dong-Harlow: Brahman Protected by Maya's Structure")
+    print("  The [[5,1,3]] Perfect Code, Actually Implemented")
     print("=" * 70)
+    print("\n  Reimplemented 2026-08-15. The previous 'Brahman recoverable with")
+    print("  80% boundary erasure' claim was withdrawn: 80% erasure recovery is")
+    print("  impossible (no-cloning). Honest figures: erasure threshold 2/5")
+    print("  (40%), reconstruction from any 3/5 (60%) of the boundary.")
 
-    from quantum.error_correction import HolographicCode, SubsystemCode
+    from quantum.error_correction import HolographicCode
 
-    # Part 1: Error correction test
+    code = HolographicCode()
+    a = code.run_full_analysis()
+
     print("\n" + "-" * 60)
-    print("  PART 1: ERROR CORRECTION THRESHOLD")
+    print("  PART 1: IS IT REALLY A CODE? (A1)")
     print("-" * 60)
-    hc = HolographicCode(n_physical=5, k_logical=1)
-    ec = hc.test_error_correction()
+    st = a["A1_stabilizer_eigenstates"]
+    print(f"  Encoded states are +1 eigenstates of all 4 stabilizers:")
+    print(f"    max |<S_i> - 1| = {st['max_eigenvalue_deviation']:.2e}   "
+          f"passes: {st['all_plus_one_eigenstates']}")
 
-    params = ec["code_parameters"]
-    print(f"\n  Code: [{params['n_physical']},{params['k_logical']}] "
-          f"(distance={params['code_distance']})")
-    print(f"  Max correctable erasure: {params['max_correctable_erasure']}")
-
-    print(f"\n  Erasure tests:")
-    for test in ec["erasure_tests"]:
-        status = "RECOVERABLE" if test["is_recoverable"] else "LOST"
-        bar = "#" * int(test["recovery_fidelity"] * 20)
-        print(f"    Erased {test['qubits_erased']}/{params['n_physical']}: "
-              f"fidelity={test['recovery_fidelity']:.4f} [{bar:20s}] {status}")
-        print(f"      Maya: {test['maya_interpretation']}")
-
-    print(f"\n  Threshold: {ec['error_correction_threshold']}/{params['n_physical']} "
-          f"({ec['threshold_fraction']:.0%} of boundary erasable)")
-    print(f"\n  {ec['insight'][:150]}...")
-
-    # Part 2: Full spacetime-as-code demonstration
     print("\n" + "-" * 60)
-    print("  PART 2: SPACETIME AS ERROR-CORRECTING CODE")
+    print("  PART 2: SINGLE-QUBIT ERROR CORRECTION — all 15 Paulis (A2)")
     print("-" * 60)
-    demo = hc.demonstrate_spacetime_as_code()
+    se = a["A2_single_qubit_errors"]
+    print(f"  Cases: {se['n_cases']}   worst post-correction fidelity: "
+          f"{se['min_fidelity']:.12f}")
+    print(f"  All corrected: {se['all_corrected']}   "
+          f"16 distinct syndromes: {se['syndromes_all_distinct']}")
 
-    dist = demo["distinguishability"]
-    print(f"\n  Logical overlap (before erasure): {dist['logical_overlap']:.6f}")
-    print(f"  Overlap after 1-qubit erasure:    {dist['physical_overlap_after_erasure']:.6f}")
-    print(f"  States still distinguishable:     {dist['states_still_distinguishable']}")
-
-    ent = demo["entanglement_structure"]
-    print(f"\n  Codeword entanglement: {ent['codeword_entanglement']:.4f}")
-    print(f"  Highly entangled: {ent['highly_entangled']}")
-    print(f"  {ent['note'][:100]}...")
-
-    print(f"\n  Advaita mapping:")
-    for key, val in demo["advaita_mapping"].items():
-        print(f"    {key}: {val[:80]}")
-
-    # Part 3: Multiple reconstruction paths
     print("\n" + "-" * 60)
-    print("  PART 3: MULTIPLE PATHS TO BRAHMAN")
+    print("  PART 3: ERASURE — WHAT IS, AND IS NOT, RECOVERABLE (A3, A4)")
     print("-" * 60)
-    sc = SubsystemCode(n_boundary=6, n_bulk=2)
-    recon = sc.demonstrate_multiple_reconstructions()
+    er = a["A3_two_erasure"]
+    print(f"  2-erasure: {er['n_patterns']} patterns, {er['n_cases']} cases, "
+          f"worst fidelity {er['min_fidelity']:.12f}  -> recovered: {er['all_recovered']}")
+    nc = a["A4_three_erasure_negative_control"]
+    print(f"  NEGATIVE CONTROL, 3 erasures ({nc['n_patterns']} patterns):")
+    print(f"    max trace distance between logical states on the survivors = "
+          f"{nc['max_trace_distance_on_survivors']:.2e}")
+    print(f"    information genuinely absent: {nc['information_absent']}")
+    print(f"    (This is no-cloning enforcing itself — the old '80%' claim was")
+    print(f"     not merely unsupported, it was impossible.)")
+    th = a["erasure_threshold"]
+    print(f"  Computed threshold: {th['threshold_qubits']} of 5 "
+          f"({th['threshold_fraction']:.0%})")
 
-    for key, val in recon.items():
-        if key == "insight":
-            print(f"\n  {val[:150]}...")
-            continue
-        if isinstance(val, dict) and "recovery_fidelity" in val:
-            status = "YES" if val["is_recoverable"] else "NO"
-            print(f"  {key:15s}: fidelity={val['recovery_fidelity']:.4f}  "
-                  f"recoverable={status}  "
-                  f"(using {val['subregion_fraction']:.0%} of boundary)")
+    print("\n" + "-" * 60)
+    print("  PART 4: SUBREGION RECONSTRUCTION — any 3 of 5 (A5)")
+    print("-" * 60)
+    sr = a["A5_subregion_reconstruction"]
+    print(f"  {sr['n_subsets']} three-qubit subsets, min trace distance "
+          f"{sr['min_trace_distance']:.12f}")
+    print(f"  Every 3-of-5 subregion reconstructs the logical qubit: "
+          f"{sr['all_reconstructable']}")
+
+    print(f"\n  HEADLINE: {a['headline']}")
 
     return {"status": "completed", "experiment": "error_correction"}
 

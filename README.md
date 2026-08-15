@@ -6,6 +6,8 @@ This project models the metaphysical framework of **Advaita Vedanta** — the no
 
 Its most defensible products, honestly stated: the Gleason-based axiom bookkeeping (Born rule as a theorem rather than an axiom — established mathematics, numerically illustrated here); a **validated falsification of its own Φ ≤ S conjecture** (canonical PyPhi retest); and a self-critical look-elsewhere analysis demoting its own 0.003% fine-structure formula to **numerology**. The Einstein-equation recovery demos (1D/2D/3D) were found by a 2026 adversarial code review to be **circular by construction** (the "entropy" they correlate is defined from the energy density) — they illustrate the Jacobson logic; they do not demonstrate it.
 
+**Reimplementation (2026-08-15).** Four demos the review withdrew were rebuilt to compute what they claim, against acceptance criteria [pre-registered before implementation](REAL_PHYSICS_REIMPLEMENTATION_MEMO.md): a genuine **[[5,1,3]] stabilizer code** (all 15 single-qubit Paulis corrected; erasure threshold **2/5 = 40%**, reconstruction from any **3/5 = 60%** — the retired "80%" was not merely unsupported but impossible under no-cloning); a **real MERA** whose tensors are contracted into an explicit 16-site state (perturbing any layer moves the state — the retired version scored exactly 0 on that control); **Verlinde's actual derivation**, reproducing GMm/r² to 3e-16; and, for gravity, the statements that are actually true in 2D — **Gauss–Bonnet** on the Delaunay mesh and the **entanglement first law** δS = δ⟨K⟩ (log-log slope 2.02). 22 of 23 frozen criteria passed; **the one that failed is committed as a visible `xfail`, not renegotiated.**
+
 ---
 
 ## The Central Thesis
@@ -51,7 +53,7 @@ python main.py --visualize
 # Run EVERYTHING (31 experiments + visualizations)
 python main.py --everything
 
-# Run the test suite (306 tests) — install the test extra, then run from anywhere
+# Run the test suite (397 tests) — install the test extra, then run from anywhere
 pip install -e ".[test]"
 pytest                        # testpaths=tests is configured in pyproject.toml
 ```
@@ -79,7 +81,7 @@ For a guided walkthrough of the project, see [docs/GETTING_STARTED.md](docs/GETT
 | **Falsification** | `falsification/` | 5 explicit falsification criteria + experimental designs |
 | **Visualizations** | `visualizations/` | 7 visual plots of Advaita concepts |
 | **Experiments** | `simulations/`, `main.py` | 31 runnable experiments demonstrating the framework |
-| **Test Suite** | `tests/` | 306 automated tests validating all modules |
+| **Test Suite** | `tests/` | 397 automated tests validating all modules |
 
 ---
 
@@ -118,7 +120,7 @@ These claims map directly to structures in modern physics. See [docs/PHILOSOPHY.
 | 9 | **Quantum Hilbert Space** | Brahman IS the Hilbert space; entropy = Maya's depth |
 | 10 | **Measurement Problem** | Dissolved — total state pure, observer's reduced state mixed |
 | 11 | **Entanglement = Non-Duality** | CHSH at the Tsirelson bound 2√2 — evaluated analytically (the demo does not consume a quantum state); illustrative, not a verification |
-| 12 | **Emergent Gravity** | Space from entanglement; entropic-force toy (yields F ∝ M/r — does NOT recover Newton's 1/r²) |
+| 12 | **Emergent Gravity** | Space from entanglement; Verlinde's derivation implemented faithfully in SI units — recovers GMm/r² to 3e-16 (reimplemented 2026-08-15; the legacy broken route is kept as a negative control) |
 | 13 | **Holographic Principle** | Bulk (world) is projection of boundary (consciousness) |
 | 14 | **Particles from Maya** | Symmetry breaking; 3 generations = 3 gunas |
 | 15 | **Physical Constants** | Koide formula verified; Λ consistent with consciousness entropy |
@@ -130,9 +132,9 @@ These claims map directly to structures in modern physics. See [docs/PHILOSOPHY.
 |---|------|---------------------|
 | 17 | **Four Interpretations Compared** | Copenhagen vs Many-Worlds vs Pilot Wave vs Advaita — formal comparison across 8 phenomena |
 | 18 | **Gleason's Theorem** | Born rule derived as theorem; axiom reduction 7 → 4 (established theorem, numerically illustrated — scope caveats in docs/GLEASON_PROBABILITY_GAP.md) |
-| 19 | **MERA Tensor Network** | ⚠️ Retracted as evidence: review found the coarse-graining transformations are no-ops (global phase only) — retained as a defective-construction case study |
+| 19 | **MERA Tensor Network** | Real binary MERA (χ=2, 16 sites): tensor algebra verified, RT-type entropy bound computed on the actual state, entanglement→connectivity sweep. Reimplemented 2026-08-15 after the original was found inert |
 | 20 | **2+1D Einstein Equations** | ⚠️ Circular by construction (entropy is defined ∝ T₀₀; the correlated "curvature" is a smoothed copy of it; genuine deficit-angle curvature anti-correlates) — illustrates the Jacobson logic only |
-| 21 | **QEC as Spacetime** | ⚠️ Overstated in earlier docs: the "80%" is the scan's loop bound and recovery fidelity is near chance — toy illustration only |
+| 21 | **QEC as Spacetime** | Real [[5,1,3]] perfect code: all 15 single-qubit Paulis corrected, 2/5 erasure threshold, any 3/5 subregion reconstructs. Reimplemented 2026-08-15; the old "80%" is retired as impossible |
 | 22 | **Fine Structure Constant v2** | 6 systematic approaches; best: 163-26+π/100 = 0.003% error (1000x improvement over v1 — but see Experiment 31: numerology) |
 | 23 | **IIT-Entanglement Bridge** | Original Φ ≤ S "holds 100%" is circular; a validated retest (canonical PyPhi Φ, N=216; TPM-ordering audit 2026-08-12) **falsifies** the bound — 50 of 51 nonzero-Φ systems violate it (Φ up to ≈4.0 bits vs S ≤0.83) — and the raw Φ–S correlation (r≈+0.64) is a connectivity confound (partial r≈−0.07, p=0.29), so nothing residual survives |
 
@@ -181,8 +183,8 @@ See [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md) for detailed documentation of all
 | **Fine structure: 0.003% error** | 163-26+π/100 = 137.031 vs 137.036 — Heegner number connection | **Numerology — fails hold-out** (Experiments 22, 31) |
 | **IIT-Entanglement: Φ ≤ S** | Validated test (canonical PyPhi Φ; ordering-audit-corrected) **falsifies** the bound — 50 of 51 nonzero-Φ systems violate it, and the raw Φ–S correlation (r≈+0.64) is a connectivity confound (partial r≈−0.07, p=0.29) — nothing residual survives | **Falsified** (validated retest) |
 | **2+1D Einstein: R-T = 0.94** | The correlated "curvature" is a smoothed copy of an entropy DEFINED from the energy density | **Withdrawn as evidence — circular by construction** (Experiment 20) |
-| **Spacetime from entanglement** | MERA-style construction | **Retracted — the network transformations are no-ops** (Experiment 19) |
-| **Spacetime as QEC code** | "80%" was the scan's loop bound; recovery fidelity is near chance | **Overstated — withdrawn as evidence** (Experiment 21) |
+| **Spacetime from entanglement** | Real MERA: exact S(interval) ≤ ln(χ)·|min cut| on the constructed state; mutual information → 0 in the product limit | **Reimplemented 2026-08-15** (Experiment 19) |
+| **Spacetime as QEC code** | Real [[5,1,3]] code: threshold 2/5 (40%), reconstruction from any 3/5 (60%); 3-erasure provably unrecoverable | **Reimplemented 2026-08-15** (Experiment 21) |
 | Bell inequality violated (S = 2√2) | Tsirelson-bound value evaluated analytically; the demo consumes no quantum state | **Illustrative (textbook value, not a verification)** (Experiment 11) |
 | Measurement problem dissolved | Total state (Brahman) stays pure; collapse is perspectival (Maya) | **Demonstrated** (Experiment 10) |
 | Koide formula (0.6666 vs 0.6667) | Lepton masses have structure — not arbitrary | **Verified** (not derived) |
@@ -193,10 +195,11 @@ See [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md) for detailed documentation of all
 
 This project is scientifically honest about what it has and hasn't achieved:
 
-- **Tested**: Full test suite (306 tests) covering every module — run with `pytest`
+- **Tested**: Full test suite (397 tests) covering every module — run with `pytest`
 - **Established mathematics, illustrated**: Gleason-based axiom reduction (the theorem is Gleason's; this repo's contribution is numerical illustration — scope caveats in docs/GLEASON_PROBABILITY_GAP.md)
 - **Demonstrated**: Measurement-problem dissolution via decoherence + partial trace (perspectival collapse)
-- **Withdrawn as evidence (2026 review)**: the 1D/2D/3D Einstein-equation demos (circular — entropy defined from the energy density it is then correlated with), the MERA network (transformations are no-ops), the QEC "80% erasure" figure (loop-bound artifact, near-chance fidelity), and the Bell "verification" (analytic value; no state consumed). These remain in the repo as labeled illustrations and case studies.
+- **Withdrawn as evidence (2026 review)**: the 1D/2D/3D Einstein-equation demos (circular — entropy defined from the energy density it is then correlated with) and the Bell "verification" (analytic value; no state consumed). These remain as labeled illustrations.
+- **Reimplemented and now computed (2026-08-15)**: the QEC code (real [[5,1,3]]), the MERA (tensors actually contracted), entropic gravity (Verlinde's real derivation), plus two new modules — Gauss–Bonnet on the discrete manifold and the entanglement first law δS = δ⟨K⟩. Criteria were frozen in `REAL_PHYSICS_REIMPLEMENTATION_MEMO.md` before implementation; 22/23 passed and the failure is a visible `xfail`.
 - **Falsified (own retest)**: IIT-entanglement bound Φ ≤ S — refuted by a validated (PyPhi) retest; the apparent Φ–S correlation is a connectivity confound (does not survive control)
 - **Numerology (own hold-out)**: Fine structure constant at 0.003% via Heegner numbers — fails cross-validation; 125 equally simple formulas do as well (Experiment 31)
 - **Verified (not derived)**: Koide formula (0-parameter arithmetic check); cosmological-constant order-of-magnitude comparison
