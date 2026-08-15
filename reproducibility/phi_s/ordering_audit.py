@@ -17,10 +17,13 @@ Run inside tofe-pyphi39.
 """
 import csv
 import itertools
+import os
 import sys
 
-REPO = "/Users/rohitchauhan/Downloads/TheoryOfEverything"
-sys.path.insert(0, REPO + "/predictions")
+# Repo root, derived from this file's location (reproducibility/phi_s/ -> root)
+REPO = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                    "..", ".."))
+sys.path.insert(0, os.path.join(REPO, "predictions"))
 
 import numpy as np
 import validated_phi as vp          # sets pyphi config: parallelism OFF

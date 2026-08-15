@@ -192,7 +192,7 @@ No physics ToE addresses why there is **experience** at all. This framework star
   - Experiment 24 proves operational equivalence with Everett (5/5 tests identical)
   - Experiment 25 proves perspectival asymmetry is exact (10⁻¹⁶) across all cases
   - Experiment 26 demonstrates observer centrality (the paper's hidden premise)
-  - Paper submitted to *Foundations of Physics* (April 2026)
+  - Paper public as a preprint: https://doi.org/10.5281/zenodo.21007975
 
 ### Milestone 2: Derive One Physical Constant — IN PROGRESS
 - Complete the fine-structure constant derivation
@@ -211,7 +211,7 @@ No physics ToE addresses why there is **experience** at all. This framework star
 - Replace numpy-based models with rigorous operator algebra
 - Publish the full derivation: Sat-Chit-Ananda → Hilbert space axioms
 - Establish the framework as a legitimate contender in theoretical physics
-- **Status**: Gleason's theorem module (Experiment 18) is rigorous. Perspectival asymmetry (Experiment 25) is proven to machine precision. Observer centrality (Experiment 26) is a formal demonstration. The paper submitted to *Foundations of Physics* represents the first step toward establishing the framework in the literature. Full operator algebra formalization remains future work.
+- **Status**: Gleason's theorem module (Experiment 18) is rigorous. Perspectival asymmetry (Experiment 25) is proven to machine precision. Observer centrality (Experiment 26) is a formal demonstration. The accompanying paper (public as a preprint, https://doi.org/10.5281/zenodo.21007975) represents the first step toward establishing the framework in the literature. Full operator algebra formalization remains future work.
 
 ---
 

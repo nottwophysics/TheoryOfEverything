@@ -143,7 +143,7 @@ The repository modules `quantum/interpretations.py`, `quantum/operational_equiva
 
 Baker, D. (2007). Measurement outcomes and probability in Everettian quantum mechanics. *Studies in History and Philosophy of Modern Physics*, 38, 153–169.
 
-Chauhan, R. (2026). A non-dual interpretation of quantum mechanics: Consciousness as ontological primitive. Submitted to *Foundations of Physics*.
+Chauhan, R. (2026). The cardinality of experience is underdetermined by the quantum state: A constructive case for a consciousness-primitive interpretation. Preprint, Zenodo. https://doi.org/10.5281/zenodo.21007975 (earlier drafts circulated as "A non-dual interpretation of quantum mechanics: Consciousness as ontological primitive").
 
 Deutsch, D. (1999). Quantum theory of probability and decisions. *Proceedings of the Royal Society A*, 455, 3129–3137.
 

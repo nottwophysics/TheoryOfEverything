@@ -4,44 +4,25 @@ __pycache__/
 output/*.png
 .DS_Store
 .git-credentials
-docs/PAPER.md
-docs/PAPER_v2.md
-docs/PAPER_v3.md
-docs/PAPER_v6.md
-docs/PAPER_SUBMISSION.md
-docs/COVER_LETTER.md
+
+# Working drafts and internal documents (not for publication)
+docs/PAPER*.md
+docs/COVER_LETTER*.md
 docs/RESPONSE_DOSSIER.md
 docs/SIMULATED_RESPONSE_LETTER.md
-docs/PAPER_REVISIONS_v3_DRAFT.md
-docs/PAPER_REVISIONS_v4_DRAFT.md
-docs/PAPER_REVISIONS_v5_DRAFT.md
-docs/PAPER_CONSTRUCTIVE_DRAFT.md
-docs/PAPER_FOS.md
-docs/PAPER_JCS.md
-docs/COVER_LETTER_JCS.md
-docs/JCS_HOSTILE_PANEL.md
-docs/IDEATION_perspectival_systems_theory.md
-docs/CLAUDE_BRIEF_pst_product_applications.md
-docs/ANALYSIS_pst_product_fit.md
+docs/IDEATION_*.md
+docs/CLAUDE_BRIEF_*.md
+docs/ANALYSIS_*.md
+PAPER_ANALYSIS_AND_UPDATES.md
+FEEDBACK_USECASE_ASSESSMENT.md
 submission/
 outreach/
-
-# Private CV (career data — not for publication)
 cv/
-
-# Not-Two brand images in repo root (keep the pseudonymous brand off the public repo)
-1500x500.jpeg
-substack-post1.jpeg
-not-two-*.png
+integration/
+tests/test_integration_pkg.py
 
 # Build artifacts (auto-generated; regenerable)
 *.egg-info/
 *.log
 __pyphi_cache__/
 .pytest_cache/
-
-# Internal review/strategy docs (kept private, per ideation/briefing convention)
-PAPER_ANALYSIS_AND_UPDATES.md
-FEEDBACK_USECASE_ASSESSMENT.md
-integration/
-tests/test_integration_pkg.py

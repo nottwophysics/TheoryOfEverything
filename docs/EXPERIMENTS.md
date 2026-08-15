@@ -11,7 +11,7 @@ The framework includes 30 computational experiments divided into five tiers:
 - **Experiments 1–8** (Tier 1): Demonstrate core Advaita Vedanta concepts
 - **Experiments 9–16** (Tier 2): Bridge Advaita to modern physics
 - **Experiments 17–23** (Tier 3): Mathematically rigorous results and frontier explorations
-- **Experiments 24–26, 30** (Tier 4): Paper companion — supporting the submitted paper's claims
+- **Experiments 24–26, 30** (Tier 4): Paper companion — supporting the accompanying paper's claims
 - **Experiments 27–29** (Tier 5): Physics extensions — 3+1D gravity, ER=EPR, rigorous α derivation
 
 Run with:
@@ -539,7 +539,7 @@ Previous best: 4.41% error. New best: **0.003% error — a 1000x improvement.**
 
 ## Tier 4: Paper Companion Experiments
 
-These experiments were built to computationally support the claims made in the submitted paper *"A Non-Dual Interpretation of Quantum Mechanics: Consciousness as Ontological Primitive"* (submitted to *Foundations of Physics*).
+These experiments were built to computationally support the claims of the accompanying paper, public as a preprint: *"The Cardinality of Experience Is Underdetermined by the Quantum State: A Constructive Case for a Consciousness-Primitive Interpretation"* (Zenodo, https://doi.org/10.5281/zenodo.21007975). Earlier drafts circulated under the working title *"A Non-Dual Interpretation of Quantum Mechanics: Consciousness as Ontological Primitive"*.
 
 ---
 
@@ -709,7 +709,7 @@ python main.py --experiment 29
 python main.py --experiment 30
 ```
 
-**Purpose**: Quantitatively supports the submitted paper's §4.3.2(b) claim that decoherence leaves the unity of experience unexplained. Shows that multiple, pairwise-incompatible experiential ontologies — Everett-unified, Everett-superposed, Copenhagen-classical, and consciousness-primitive — are all consistent with the *same* reduced density matrix rho_SA.
+**Purpose**: Quantitatively supports the accompanying paper's §4.3.2(b) claim that decoherence leaves the unity of experience unexplained. Shows that multiple, pairwise-incompatible experiential ontologies — Everett-unified, Everett-superposed, Copenhagen-classical, and consciousness-primitive — are all consistent with the *same* reduced density matrix rho_SA.
 
 **Method**:
 1. Construct the standard post-measurement state |Ψ⟩ = Σ c_n |n⟩_S |n⟩_A |E_n⟩ with orthogonal environment pointers.
