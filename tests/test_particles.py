@@ -1,4 +1,14 @@
-"""Tests for the particles module — symmetry breaking and particle zoo."""
+"""Tests for the particles module — symmetry breaking and particle zoo.
+
+HONESTY NOTE (2026-08-15 test-suite audit)
+------------------------------------------
+Two assertions were disjunctions whose second branch is always true
+(``result["symmetry"] == "unbroken" or "temperature" in result`` and
+``"vev" in result or "symmetry" in result``). Both keys are always present, so
+the tests passed no matter what the physics did — and the first branch was in
+fact WRONG (the module reports ``"intact"``, never ``"unbroken"``), which the
+always-true second branch hid. They now check the mexican-hat closed forms.
+"""
 
 import numpy as np
 import pytest
@@ -22,18 +32,45 @@ class TestMayaSymmetryBreaking:
     def test_break_symmetry_high_temperature(self):
         msb = MayaSymmetryBreaking(field_dimension=32)
         result = msb.break_symmetry(temperature=100.0)
-        assert result["symmetry"] == "unbroken" or "temperature" in result
+        # Closed form for the module's mu^2 = -1, lambda = 0.5 potential:
+        # T_c = sqrt(-mu^2/lambda) = sqrt(2).
+        assert abs(result["critical_temperature"] - np.sqrt(2.0)) < 1e-12
+        assert result["temperature"] > result["critical_temperature"]
+        # Above T_c the symmetry is restored: no VEV, no Higgs mass, no
+        # Goldstone modes.
+        assert result["symmetry"] == "intact"
+        assert result["vev"] == 0.0
+        assert result["higgs_mass"] == 0.0
+        assert result["num_goldstone_bosons"] == 0
 
     def test_break_symmetry_low_temperature(self):
         msb = MayaSymmetryBreaking(field_dimension=32)
         result = msb.break_symmetry(temperature=0.0)
-        assert "vev" in result or "symmetry" in result
+        assert result["temperature"] < result["critical_temperature"]
+        assert result["symmetry"] == "broken"
+        # v = sqrt(-mu^2 / 2 lambda) = 1, m_higgs = sqrt(-2 mu^2) = sqrt(2).
+        assert abs(result["vev"] - 1.0) < 1e-12
+        assert abs(result["higgs_mass"] - np.sqrt(2.0)) < 1e-12
+        # Goldstone's theorem for a broken continuous symmetry on this toy:
+        # one massive radial mode, dim-1 massless tangential modes.
+        assert result["num_goldstone_bosons"] == 32 - 1
 
-    def test_particle_spectrum(self):
+    def test_particle_spectrum_carries_standard_model_masses(self):
         msb = MayaSymmetryBreaking(field_dimension=32)
         result = msb.particle_spectrum_from_breaking()
-        assert isinstance(result, dict)
-        assert len(result) > 0
+        # The spectrum must be built on a genuinely broken vacuum...
+        assert result["symmetry_breaking"]["symmetry"] == "broken"
+        spec = result["particle_spectrum"]
+        # ...and quote PDG masses (MeV/GeV as labelled in the module) to ~1%.
+        assert spec["gauge_bosons"]["photon"]["mass"] == 0
+        assert spec["gauge_bosons"]["gluon"]["mass"] == 0
+        assert abs(spec["gauge_bosons"]["W_boson"]["mass"] - 80.4) < 1.0
+        assert abs(spec["gauge_bosons"]["Z_boson"]["mass"] - 91.19) < 1.0
+        assert abs(spec["higgs"]["mass"] - 125.25) < 1.5
+        # The mass hierarchy across the three generations must be strict.
+        f = spec["fermions"]
+        assert f["electron"]["mass"] < f["muon"]["mass"] < f["tau"]["mass"]
+        assert [f[k]["generation"] for k in ("electron", "muon", "tau")] == [1, 2, 3]
 
 
 class TestParticleFromMaya:
@@ -69,7 +106,30 @@ class TestParticleFromMaya:
 
 
 class TestAnalyzeParticleZoo:
-    def test_analysis_runs(self):
+    def test_zoo_orders_particles_by_mass_and_maya_depth(self):
+        """Was `assert isinstance(result, dict)` — a literal stub dict passed it.
+
+        The analysis has real orderings in it, so check those: the mass
+        hierarchy must be ascending, the "closest to Brahman" list must be the
+        shallowest maya depths, and the generation averages must increase.
+        """
         result = analyze_particle_zoo()
-        assert isinstance(result, dict)
-        assert len(result) > 0
+        assert result["total_particles"] > 10
+
+        masses = [m for _, m in result["mass_hierarchy"]]
+        assert masses == sorted(masses)
+        # Neutrinos and the photon are the light end; the photon is massless.
+        assert result["closest_to_brahman"][0][0] == "photon"
+        assert result["closest_to_brahman"][0][1] == 0.0
+
+        shallow = [d for _, d in result["closest_to_brahman"]]
+        deep = [d for _, d in result["deepest_in_maya"]]
+        assert shallow == sorted(shallow)
+        assert deep == sorted(deep)
+        assert max(shallow) < min(deep)
+        assert all(0.0 <= d <= 1.0 for d in shallow + deep)
+
+        # Generation averages must climb monotonically (the mass hierarchy the
+        # module maps onto the three gunas).
+        gen = result["generation_avg_mass"]
+        assert gen[1] < gen[2] < gen[3]

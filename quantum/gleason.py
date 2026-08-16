@@ -1,5 +1,5 @@
 """
-Gleason's Theorem — The Born Rule as a Theorem, Not an Axiom
+Gleason's Theorem — consistency checks of the trivial direction
 
 Andrew Gleason (1957) proved:
 
@@ -15,21 +15,55 @@ For pure states ρ = |ψ⟩⟨ψ|, this gives:
 
     P(outcome n) = Tr(|ψ⟩⟨ψ| · |n⟩⟨n|) = |⟨n|ψ⟩|²
 
-This IS the Born rule. It is not assumed — it is the ONLY consistent
-way to assign probabilities to measurement outcomes in a Hilbert space
-of dimension ≥ 3.
+REVIEW LABEL (2026-08-15) — read this before quoting anything from here.
 
-Significance for this framework:
+Gleason's theorem has an easy direction and a hard direction:
+
+    EASY  (every density operator ρ yields a frame function):
+          Tr(ρP) ≥ 0, additivity on orthogonal projectors, and Tr(ρI) = 1
+          hold for EVERY density matrix in EVERY dimension — non-negativity
+          because ρ ⪰ 0 and P ⪰ 0, additivity because the trace is linear,
+          normalisation by construction.  Nothing about "dim ≥ 3" or about
+          this particular Hilbert space is involved.
+
+    HARD  (every frame function comes from some density operator):
+          this is Gleason's actual theorem.  It quantifies over ALL frame
+          functions, so no finite computation can establish it, and this
+          module does not attempt to.  It is CITED, not proved.
+
+Everything computed in this file lives on the easy side.  ``verify_conditions``
+is a consistency check that the implementation computes Tr(ρP) correctly —
+it cannot fail for a valid density matrix, and it is NOT a verification that
+Gleason's hypotheses "hold for the Brahman Hilbert space" in any nontrivial
+sense.  ``demonstrate_uniqueness`` refutes two specific alternative rules on
+one state; that is not a uniqueness proof.  ``axiom_count_bookkeeping``
+tabulates hand-entered axiom counts; that is bookkeeping, not mathematics.
+
+The framework's substantive claim — that treating the Born rule as a theorem
+via Gleason lets A5 be dropped as an independent axiom — is an argument that
+rests on the CITED theorem plus the framework's own axiomatisation.  Its open
+question (why a frame function should be interpreted as a probability of
+experienced outcomes at all) is discussed in docs/GLEASON_PROBABILITY_GAP.md,
+which this module does not supersede.
+
+HISTORY: before the 2026-08-15 review this module described itself as
+"verifying Gleason's conditions", "demonstrating that no other probability
+rule is consistent" and "proving the axiom count reduction is legitimate".
+All three were overclaims and have been relabelled; the computations
+themselves are unchanged and still run.
+
+Significance for this framework (framework's own position, not a result here):
     - Copenhagen ASSUMES the Born rule as axiom A5
     - Pilot Wave ASSUMES quantum equilibrium as axiom A4
     - Many-Worlds attempts to DERIVE Born rule (controversial)
-    - Advaita: Born rule is a THEOREM via Gleason, reducing axiom count
+    - Advaita: Born rule is taken as a THEOREM via Gleason, reducing the
+      framework's stated axiom count
 
 This module:
-    1. Verifies Gleason's conditions for the Brahman Hilbert space
-    2. Demonstrates that no other probability rule is consistent
-    3. Shows Born rule violation leads to contradictions
-    4. Proves the axiom count reduction is legitimate
+    1. Consistency-checks μ(P) = Tr(ρP) against C1–C4 (the easy direction)
+    2. Refutes two sampled non-Born ray rules on one state
+    3. Exhibits one dispersion-free assignment failing in dim 3
+    4. Tabulates the framework's axiom bookkeeping
 """
 
 import numpy as np
@@ -38,8 +72,8 @@ from itertools import combinations
 
 class GleasonVerification:
     """
-    Verifies that Gleason's theorem applies to the Brahman Hilbert space,
-    and demonstrates its consequences.
+    Consistency checks on the measure μ(P) = Tr(ρP) in dimension ``dimension``,
+    plus the framework's axiom bookkeeping.
 
     Gleason's conditions:
         C1: H has dimension ≥ 3
@@ -48,7 +82,13 @@ class GleasonVerification:
             if P₁ ⊥ P₂ then μ(P₁ + P₂) = μ(P₁) + μ(P₂)
         C4: μ(I) = 1 (total probability = 1)
 
-    If C1–C4 hold, then μ MUST be of the form μ(P) = Tr(ρP).
+    If C1–C4 hold for an ARBITRARY frame function μ, then Gleason's theorem
+    says μ must be of the form Tr(ρP).  This class does the converse and
+    trivial thing: it starts from a density matrix ρ, builds μ(P) = Tr(ρP),
+    and checks C2–C4 numerically — which they satisfy automatically, in any
+    dimension.  See the module docstring: the class name is historical and
+    "Verification" here means "implementation consistency check", not
+    "verification of Gleason's theorem".
     """
 
     def __init__(self, dimension: int = 4):
@@ -62,7 +102,23 @@ class GleasonVerification:
 
     def verify_conditions(self, state: np.ndarray = None) -> dict:
         """
-        Verify all four Gleason conditions for the Brahman Hilbert space.
+        Consistency-check C1–C4 for the measure μ(P) = Tr(ρP) built from a
+        single state.
+
+        NOT a proof of Gleason's theorem, and not a nontrivial fact about
+        this Hilbert space:
+
+          * C2 (non-negativity) holds for every density matrix in every
+            dimension, because ρ ⪰ 0 and P ⪰ 0 ⟹ Tr(ρP) ≥ 0.
+          * C3 (additivity) is linearity of the trace; it holds identically,
+            for orthogonal projectors and for any other matrices.
+          * C4 is Tr(ρ) = 1, true by construction from a normalised state.
+          * Only C1 (dim ≥ 3) says anything about the space, and it is a
+            comparison of a constructor argument against 3.
+
+        So a "PASS" here means the code computes Tr(ρP) correctly. A failure
+        would indicate a bug, not a physics result. The method name is kept
+        because main.py and tests/test_quantum.py call it.
         """
         if state is None:
             # Brahman state: equal superposition
@@ -121,43 +177,78 @@ class GleasonVerification:
             "C1_dimension_ge_3": {
                 "satisfied": c1,
                 "dimension": self.dim,
-                "note": "Gleason requires dim ≥ 3. Qubits (dim=2) are the exception.",
+                "note": "Gleason requires dim ≥ 3. Qubits (dim=2) are the exception. "
+                        "(Checked by comparing the constructor argument to 3.)",
             },
             "C2_non_negativity": {
                 "satisfied": c2,
                 "tests_run": num_tests,
                 "violations": c2_violations,
-                "note": "Tr(ρP) ≥ 0 for all projectors P tested.",
+                "note": "Tr(ρP) ≥ 0 for all projectors P tested. TRIVIAL DIRECTION: "
+                        "true for every density matrix in every dimension "
+                        "(ρ ⪰ 0, P ⪰ 0). This checks the implementation.",
             },
             "C3_additivity": {
                 "satisfied": c3,
                 "tests_run": num_tests_c3,
                 "violations": c3_violations,
-                "note": "μ(P₁+P₂) = μ(P₁) + μ(P₂) for orthogonal P₁ ⊥ P₂.",
+                "note": "μ(P₁+P₂) = μ(P₁) + μ(P₂) for orthogonal P₁ ⊥ P₂. TRIVIAL "
+                        "DIRECTION: this is linearity of the trace, which holds "
+                        "identically. This checks the implementation.",
             },
             "C4_normalization": {
                 "satisfied": c4,
                 "trace_rho": c4_value,
-                "note": "Total probability = Tr(ρ) = 1.",
+                "note": "Total probability = Tr(ρ) = 1, true by construction from "
+                        "a normalised state.",
             },
             "all_conditions_satisfied": all_satisfied,
+            "what_is_checked": (
+                "That the measure μ(P) = Tr(ρP) implemented here satisfies C1–C4. "
+                "C2–C4 are automatic for any density matrix in any dimension, so "
+                "this is a consistency check of the code, i.e. of the EASY "
+                "direction of Gleason's theorem (every density operator gives a "
+                "frame function)."
+            ),
+            "what_is_not_checked": (
+                "The HARD direction — that every frame function on a Hilbert "
+                "space of dim ≥ 3 is of the form Tr(ρP). That is Gleason's actual "
+                "theorem; it quantifies over all frame functions, so no finite "
+                "computation can establish it, and none is attempted here."
+            ),
+            "gleason_theorem_status": "cited (Gleason 1957), not proved by this module",
             "conclusion": (
-                "All four Gleason conditions are satisfied. "
-                "Therefore, by Gleason's theorem, the ONLY consistent "
-                "probability measure on this Hilbert space is μ(P) = Tr(ρP). "
-                "For pure states, this gives P(n) = |⟨n|ψ⟩|² — the Born rule. "
-                "The Born rule is a THEOREM in this space, not an axiom."
+                "μ(P) = Tr(ρP) satisfies C1–C4 here — as it must: C2–C4 hold for "
+                "every density matrix in every dimension, so this is a consistency "
+                "check of the trivial direction, not a nontrivial fact about this "
+                "Hilbert space. Gleason's theorem itself (the converse: every frame "
+                "function is Tr(ρP) when dim ≥ 3) is a cited 1957 result and is not "
+                "proved here. The framework's use of it — treating the Born rule as "
+                "a theorem rather than an axiom — is an argument built on that "
+                "citation, not on this computation. See "
+                "docs/GLEASON_PROBABILITY_GAP.md for the remaining gap."
                 if all_satisfied else
-                "Gleason's conditions are NOT fully satisfied."
+                "The C1–C4 consistency check FAILED, which indicates a bug in the "
+                "construction of ρ or of μ, not a physics result."
             ),
         }
 
     def demonstrate_uniqueness(self, state: np.ndarray = None) -> dict:
         """
-        Demonstrate that the Born rule is the UNIQUE probability measure.
+        Refute TWO sampled non-Born ray rules on ONE state. Not a uniqueness proof.
 
-        Test alternative probability rules and show they violate
-        Gleason's conditions (specifically additivity C3).
+        Scope, stated plainly (2026-08-15 relabel):
+          * Two specific alternatives are tested — the amplitude rule
+            |⟨n|ψ⟩| and the quartic rule |⟨n|ψ⟩|⁴, each renormalised — on a
+            single state, over randomly sampled orthonormal pairs. Finding
+            violations refutes those two rules here; it says nothing about
+            the infinitely many rules not sampled.
+          * The reference value used for the 2-D subspace is ‖P_ij ψ‖², i.e.
+            the BORN weight of the subspace. So the comparison presupposes
+            Born on subspaces and shows the ray rules are inconsistent with
+            the projection weight — it is not a self-contained refutation.
+          * Genuine uniqueness is Gleason's theorem, cited, not established
+            by sampling.
         """
         if state is None:
             state = np.ones(self.dim, dtype=np.complex128) / np.sqrt(self.dim)
@@ -267,25 +358,38 @@ class GleasonVerification:
                 "sums_to_one": abs(np.sum(quartic_probs) - 1.0) < 1e-10,
                 "additivity": quartic_test,
             },
+            "scope": (
+                "Two sampled alternatives on one state. Refutes those two; it is "
+                "NOT a uniqueness proof, and the 2-D subspace reference value is "
+                "itself the Born weight ‖P_ij ψ‖²."
+            ),
             "conclusion": (
                 f"Born rule: additivity satisfied = {born_test['satisfies_additivity']}. "
                 f"Amplitude rule: additivity satisfied = {amp_test['satisfies_additivity']} "
                 f"(max violation: {amp_test['max_violation']:.6f}). "
                 f"Quartic rule: additivity satisfied = {quartic_test['satisfies_additivity']} "
                 f"(max violation: {quartic_test['max_violation']:.6f}). "
-                "ONLY the Born rule satisfies all Gleason conditions. "
-                "Any other rule is mathematically inconsistent in dim ≥ 3."
+                "Read this as: the two sampled non-Born ray rules disagree with the "
+                "projection weight on this state. Uniqueness in dim ≥ 3 is Gleason's "
+                "theorem (cited), not a conclusion of this sampling."
             ),
         }
 
     def demonstrate_dim2_exception(self) -> dict:
         """
-        Show that dim=2 (qubits) are the EXCEPTION — non-Born measures exist.
+        Exhibit ONE dispersion-free assignment: consistent on one dim-2 basis,
+        failing on random dim-3 bases.
 
-        This is why Gleason requires dim ≥ 3. In dim=2, you CAN construct
-        consistent probability measures that are not of the form Tr(ρP).
-
-        But the full Brahman Hilbert space has dim >> 3, so Gleason applies.
+        Scope (2026-08-15 relabel):
+          * The dim-2 half checks a single dispersion-free assignment on the
+            single standard basis. That it sums to 1 there is a one-basis
+            check, not a construction of a full non-Born frame function on
+            the qubit (which does exist — that is Gleason's dim ≥ 3 caveat,
+            cited).
+          * The dim-3 half IS a computation: 1000 Haar-ish random orthonormal
+            bases, counting how often the same dispersion-free assignment
+            fails to sum to 1. It exhibits ONE assignment failing; that ALL
+            dispersion-free assignments fail is Kochen–Specker (cited).
         """
         # In dim=2, a non-Born "dispersion-free" measure exists:
         # Assign probability 1 to one basis state and 0 to all others,
@@ -337,90 +441,130 @@ class GleasonVerification:
         return {
             "dim_2": {
                 "dispersion_free_works": results_dim2["sums_to_one"],
-                "note": "In dim=2, non-Born (dispersion-free) measures ARE consistent. "
-                        "This is why Gleason requires dim ≥ 3.",
-                "implication": "Qubits can have hidden variables. The full field cannot.",
+                "note": "Checked on the standard basis ONLY: this one dispersion-free "
+                        "assignment sums to 1 there. That non-Born frame functions "
+                        "genuinely exist on a qubit is the cited dim ≥ 3 caveat of "
+                        "Gleason's theorem, not something shown by this one check.",
+                "implication": "Qubits admit non-Born measures (cited). Higher "
+                               "dimensions do not (Gleason/Kochen-Specker, cited).",
+                "scope": "one assignment, one basis — illustration, not a proof",
             },
             "dim_3": {
                 "dispersion_free_fails": failures > 0,
                 "failure_rate": failures / total,
                 "total_tests": total,
-                "note": f"In dim=3, dispersion-free measures fail {failures}/{total} times. "
-                        "There is NO consistent way to assign definite 0/1 values to all "
-                        "projectors in dim ≥ 3. The Born rule is the ONLY option.",
-                "implication": "Kochen-Specker theorem (a consequence of Gleason): "
-                               "hidden variables are impossible in dim ≥ 3.",
+                "note": f"In dim=3, THIS dispersion-free assignment fails to sum to 1 "
+                        f"on {failures}/{total} random orthonormal bases. That is a "
+                        "computed refutation of this one assignment.",
+                "implication": "That EVERY dispersion-free assignment fails in dim ≥ 3 "
+                               "is the Kochen-Specker theorem (cited), not a result of "
+                               "this sampling.",
+                "scope": "one assignment, 1000 random bases — computed",
             },
-            "brahman_hilbert_space": {
-                "dimension": "≫ 3 (truncated for computation but conceptually infinite)",
-                "gleason_applies": True,
-                "born_rule_status": "THEOREM (not axiom)",
+            "framework_hilbert_space": {
+                "dimension_used_here": self.dim,
+                "framework_claim": "the full consciousness field has dim ≫ 3 "
+                                   "(a postulate of the framework, not computed here)",
+                "gleason_applicability": "follows from dim ≥ 3 IF the framework's "
+                                         "Hilbert-space postulate (A2) is granted",
+                "born_rule_status": "treated as a theorem via the CITED Gleason "
+                                    "theorem; nothing in this module proves it",
             },
         }
 
-    def axiom_reduction_proof(self) -> dict:
+    def axiom_count_bookkeeping(self) -> dict:
         """
-        Formally prove the axiom reduction:
+        BOOKKEEPING, not a proof. Tabulate the framework's own axiom counts.
 
-        Copenhagen: 7 axioms (Born rule is axiom A5)
-        Advaita:    5 axioms → effectively 4 (Born rule is a theorem from A2)
+        The three integers below (7, 5, 4) are hand-entered editorial counts
+        of how the framework chooses to enumerate Copenhagen's axioms versus
+        its own. They are not computed from anything, no computation could
+        produce them, and arithmetic on them is not a mathematical result.
 
-        The argument:
-            1. A2 says reality is a Hilbert space (derived from Sat-Chit-Ananda)
-            2. The Brahman Hilbert space has dim ≥ 3 (verified)
-            3. Gleason's conditions C1-C4 are satisfied (verified)
-            4. Therefore μ(P) = Tr(ρP) is the UNIQUE measure (Gleason's theorem)
-            5. For pure states: P(n) = |⟨n|ψ⟩|² (Born rule)
-            6. Born rule follows from A2 alone — it is NOT an independent axiom
+        The substantive step — "A5 is not independent because the Born rule
+        follows from A2 via Gleason" — rests on the CITED Gleason theorem plus
+        the framework's own axiomatisation. The C1–C4 checks re-run below do
+        not support it; they are consistency checks of the trivial direction
+        (see verify_conditions).
+
+        HISTORY: named ``axiom_reduction_proof`` and described as a formal
+        proof before the 2026-08-15 review. Retained under the old name as a
+        deprecated alias because main.py and tests/test_quantum.py call it.
         """
-        # Step 1: Verify the Hilbert space structure
+        # Re-run the three consistency checks so the report is self-contained.
         conditions = self.verify_conditions()
-
-        # Step 2: Verify uniqueness
         uniqueness = self.demonstrate_uniqueness()
-
-        # Step 3: Verify dim-2 exception doesn't apply
         dim_check = self.demonstrate_dim2_exception()
 
-        # Axiom counts
+        # Editorial axiom counts — hand-entered, not derived.
         copenhagen_axioms = 7  # A1-A7 including Born rule as A5
         advaita_stated = 5     # A1-A5 where A5 references Gleason
-        advaita_independent = 4  # A5 is a theorem from A2, so only 4 independent axioms
+        advaita_independent = 4  # framework's claim: A5 reduces to A2 via Gleason
+
+        bookkeeping_chain = [
+            "1. A2 (Hilbert-space structure, motivated by Sat-Chit-Ananda) is a "
+            "POSTULATE of the framework — asserted, not derived here.",
+            f"2. Working dimension = {self.dim} ≥ 3, so Gleason's theorem is "
+            "applicable to this space (a dimension comparison, nothing more).",
+            "3. Non-negativity (C2): consistency-checked over 500 random projectors "
+            "— automatic for any density matrix, so this cannot fail.",
+            "4. Additivity (C3): consistency-checked over 200 orthogonal pairs "
+            "— this is linearity of the trace, so this cannot fail.",
+            "5. Normalization (C4): Tr(ρ) = 1.000000 by construction.",
+            "6. Gleason's theorem (CITED, Gleason 1957 — NOT proved here): every "
+            "frame function on dim ≥ 3 has the form μ(P) = Tr(ρP).",
+            "7. Born rule P(n) = |⟨n|ψ⟩|² is the pure-state special case of (6).",
+            "8. The axiom counts below are the framework's own editorial "
+            "bookkeeping of A1–A7 vs A1–A5. They are hand-entered integers; "
+            "their difference is arithmetic, not a theorem.",
+        ]
 
         return {
-            "step_1_hilbert_space": conditions["all_conditions_satisfied"],
-            "step_2_uniqueness": uniqueness["born_rule"]["additivity"]["satisfies_additivity"],
-            "step_3_dim_ge_3": dim_check["dim_3"]["dispersion_free_fails"],
+            "check_1_conditions_consistent": conditions["all_conditions_satisfied"],
+            "check_2_born_additivity_holds":
+                uniqueness["born_rule"]["additivity"]["satisfies_additivity"],
+            "check_3_dispersion_free_fails_in_dim3":
+                dim_check["dim_3"]["dispersion_free_fails"],
             "axiom_counts": {
                 "copenhagen": copenhagen_axioms,
                 "advaita_stated": advaita_stated,
                 "advaita_independent": advaita_independent,
                 "reduction": f"{copenhagen_axioms} → {advaita_independent} "
                              f"({copenhagen_axioms - advaita_independent} fewer axioms)",
+                "provenance": "hand-entered editorial counts; not computed, and not "
+                              "checkable by this module",
             },
-            "proof_chain": [
-                "1. Brahman's nature (Sat-Chit-Ananda) → Hilbert space structure (A2)",
-                f"2. Hilbert space dimension = {self.dim} ≥ 3 → Gleason applies",
-                "3. Non-negativity (C2): verified over 500 random projectors",
-                "4. Additivity (C3): verified over 200 orthogonal pairs",
-                "5. Normalization (C4): Tr(ρ) = 1.000000",
-                "6. Gleason's theorem → μ(P) = Tr(ρP) is the UNIQUE measure",
-                "7. Born rule P(n) = |⟨n|ψ⟩|² follows as special case",
-                "8. Therefore Born rule is a THEOREM, not axiom → axiom count reduced",
-            ],
+            "status": (
+                "BOOKKEEPING. Arithmetic on hand-entered axiom counts, plus the "
+                "cited Gleason theorem. Nothing here is proved."
+            ),
+            "bookkeeping_chain": bookkeeping_chain,
+            # DEPRECATED alias: main.py still prints proof["proof_chain"].
+            "proof_chain": bookkeeping_chain,
             "conclusion": (
-                f"The Advaita interpretation has {advaita_independent} independent axioms "
-                f"vs Copenhagen's {copenhagen_axioms}. The Born rule, which Copenhagen "
-                "assumes, is here DERIVED from the Hilbert space structure via Gleason's theorem. "
-                "This is a concrete, mathematically rigorous advantage — not a philosophical claim."
+                f"On the framework's own enumeration, it lists {advaita_independent} "
+                f"independent axioms against Copenhagen's {copenhagen_axioms}, on the "
+                "grounds that the Born rule follows from the Hilbert-space postulate "
+                "via Gleason's theorem rather than being assumed. That argument stands "
+                "or falls on the cited theorem and on accepting this way of counting "
+                "axioms — it is a philosophical/organisational claim, not a "
+                "mathematical result established by this module. The open question of "
+                "why a frame function should be read as a probability of experienced "
+                "outcomes is treated in docs/GLEASON_PROBABILITY_GAP.md."
             ),
         }
 
+    # DEPRECATED name, retained because main.py and tests/test_quantum.py call it.
+    # "proof" is the wrong word: see axiom_count_bookkeeping.
+    def axiom_reduction_proof(self) -> dict:
+        """Deprecated alias for :meth:`axiom_count_bookkeeping` (renamed 2026-08-15)."""
+        return self.axiom_count_bookkeeping()
+
     def full_demonstration(self) -> dict:
-        """Run the complete Gleason's theorem demonstration."""
+        """Run the complete set of Gleason-related checks (see module docstring)."""
         return {
             "conditions": self.verify_conditions(),
             "uniqueness": self.demonstrate_uniqueness(),
             "dim2_exception": self.demonstrate_dim2_exception(),
-            "axiom_reduction": self.axiom_reduction_proof(),
+            "axiom_reduction": self.axiom_count_bookkeeping(),
         }

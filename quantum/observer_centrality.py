@@ -1,5 +1,5 @@
 """
-Observer Centrality — The Paper's Hidden Premise, Demonstrated
+Observer Centrality — one computation, then a philosophical argument
 
 The accompanying paper's most important philosophical move is the
 hidden premise:
@@ -8,16 +8,40 @@ hidden premise:
      by how it situates observers and experience, since measurement
      theory inevitably intersects the first-person standpoint."
 
-This module demonstrates that premise computationally:
+REVIEW LABEL (2026-08-15) — which step is computation and which is argument.
 
-1. Shows that decoherence selects pointer states (standard physics)
-2. Shows that decoherence does NOT determine which outcome is experienced
-3. Shows that "which outcome" requires a concept of observer/perspective
-4. Shows that leaving "observer" unanalyzed leaves a gap in the description
+    Step 1 — COMPUTED.  Builds the entangled system+environment state, takes
+             the partial trace over the environment, and measures the
+             residual off-diagonal coherence of rho_S.  The numbers reported
+             are outputs of that computation and would change if the state or
+             the interaction changed.
 
-This is not a new physical prediction — it is a formal demonstration
-that the concept of "observer" does non-trivial work in the formalism,
-and therefore its ontological status matters.
+    Step 2 — COMPUTED numbers, INTERPRETIVE claim.  The probabilities P(up),
+             P(down) are read off the same rho_S computed in Step 1 (before
+             the 2026-08-15 review they were hardcoded as diag([0.5, 0.5]),
+             disconnected from Step 1 — fixed).  The claim attached to them —
+             "which outcome is experienced is undefined by the formalism" —
+             is a philosophical reading of a mixed state, not a computed
+             result.
+
+    Step 3 — NOT COMPUTED.  A hand-written table of four interpretations.
+             The `observer_analyzed` flags are the author's editorial
+             judgements about each position, entered by hand.
+
+    Step 4 — NOT COMPUTED.  Two hand-curated lists; `num_determined` and
+             `num_open` are just their lengths, so the "5 determined vs 4
+             open" tally reflects how the lists were written, not an
+             inventory of the formalism.
+
+So the honest description of this module is: ONE decoherence computation,
+followed by a philosophical argument that uses it.  The argument may well be
+right, but Steps 2–4 are argument, and calling the whole thing a
+"computational demonstration" (as this module previously did) overstates it.
+
+HISTORY: module header formerly read "This module demonstrates that premise
+computationally" and listed four things it "shows".  Relabelled 2026-08-15;
+Step 2's hardcoded density matrix was replaced by the partial trace of the
+Step 1 state at the same time.
 """
 
 import numpy as np
@@ -25,8 +49,10 @@ import numpy as np
 
 class ObserverCentrality:
     """
-    Demonstrates that the concept of 'observer' is essential to the
-    measurement formalism, and that leaving it unanalyzed creates a gap.
+    Computes the decoherence step (Step 1, and Step 2's numbers), then sets
+    out the argument that the concept of 'observer' is essential to the
+    measurement formalism and that leaving it unanalyzed creates a gap
+    (Steps 2b–4, which are argument rather than computation).
     """
 
     def __init__(self, sys_dim: int = 2, env_dim: int = 8, seed: int = 42):

@@ -646,55 +646,152 @@ def tensor_network_experiment():
 
 
 def einstein_2d_experiment():
-    """Experiment 20: 2+1D Einstein Equations from Consciousness."""
+    """Experiment 20: discrete geometry + entanglement thermodynamics (Track D).
+
+    Restructured 2026-08-15: the genuine computations (Gauss-Bonnet, the first
+    law of entanglement, mutual-information geometry) lead; the legacy
+    "2+1D Einstein equations from consciousness" correlation is kept at the
+    end, labelled as withdrawn.
+    """
     print("\n" + "=" * 70)
-    print("  EXPERIMENT 20: 2+1D EINSTEIN EQUATIONS")
-    print("  Jacobson's Thermodynamic Derivation on Discrete Manifold")
+    print("  EXPERIMENT 20: DISCRETE GEOMETRY AND ENTANGLEMENT THERMODYNAMICS")
+    print("  What is actually computable — plus one withdrawn legacy claim")
     print("=" * 70)
+    print("\n  Restructured 2026-08-15. The former headline — 'Einstein's")
+    print("  equations recovered on a 2D discrete manifold from consciousness")
+    print("  thermodynamics' — is WITHDRAWN twice over: the entropy field was")
+    print("  DEFINED from T_00, so the R-T correlation measured its own")
+    print("  definition; and in 2D the Einstein tensor vanishes identically,")
+    print("  so there is no 2D Einstein equation to recover. The computations")
+    print("  that DO hold come first.")
 
     from gravity.einstein_2d import EmergentEinstein2D
+    from gravity.entanglement_first_law import EntanglementFirstLaw
+    from gravity.entanglement_geometry import EntanglementGeometry
 
     ee = EmergentEinstein2D(num_points=80, seed=42)
 
-    # Part 1: Full Einstein derivation
+    # ---------------------------------------------------------------
+    # Part 1 (D1): discrete Gauss-Bonnet — real geometry, with control
+    # ---------------------------------------------------------------
     print("\n" + "-" * 60)
-    print("  PART 1: JACOBSON DERIVATION (2D discrete manifold)")
+    print("  PART 1: DISCRETE GAUSS-BONNET (computed geometry)")
+    print("-" * 60)
+    gb = ee.gauss_bonnet_check()
+    print(f"  Delaunay mesh: V = {gb['num_vertices']}, E = {gb['num_edges']}, "
+          f"F = {gb['num_triangles']} ({gb['num_boundary_edges']} boundary edges)")
+    print(f"    sum of interior angle deficits:  {gb['sum_interior_deficits']:.3e}")
+    print(f"    sum of boundary exterior angles: {gb['sum_boundary_exterior_angles']:.10f}")
+    print(f"    Gauss-Bonnet total:              {gb['gauss_bonnet_total']:.10f}")
+    chi_label = f"2*pi*chi (chi = V-E+F = {gb['euler_characteristic']}):"
+    print(f"    {chi_label:<33}{gb['expected_2_pi_chi']:.10f}")
+    print(f"    residual:                        {gb['residual']:.2e}   "
+          f"(holds to 1e-9: {gb['passes']})")
+
+    tc = ee.gauss_bonnet_topology_control()
+    print(f"\n  NEGATIVE CONTROL — delete interior triangle "
+          f"{tc['removed_triangle']} to puncture the disk:")
+    print(f"    chi: {tc['disk']['euler_characteristic']} -> "
+          f"{tc['punctured']['euler_characteristic']}   "
+          f"Gauss-Bonnet sum shifts by {tc['total_shift']:.6f}")
+    print(f"    shift equals 2*pi*delta_chi: {tc['shift_matches_2_pi_delta_chi']}   "
+          f"identity still holds on the punctured mesh: {tc['punctured']['passes']}")
+    print(f"    control passes: {tc['control_passes']}")
+    print(f"\n  {gb['note']}")
+
+    # ---------------------------------------------------------------
+    # Part 2 (D2): first law of entanglement on a free-fermion chain
+    # ---------------------------------------------------------------
+    print("\n" + "-" * 60)
+    print("  PART 2: FIRST LAW OF ENTANGLEMENT, delta S = delta <K_A>")
+    print("-" * 60)
+    fl = EntanglementFirstLaw().demonstrate_first_law()
+    print(f"  Free-fermion chain: {fl['num_sites']} sites at half filling "
+          f"({fl['num_filled']} fermions), region A = "
+          f"[{fl['region'][0]}, {fl['region'][1]}), S(A) = {fl['S_region']:.4f}")
+    print(f"  Perturbation: bond modulation t_i = 1 + eps*cos(2*pi*i/N)")
+    print(f"    {'eps':>10}  {'|dS - d<K_A>|':>15}  {'wrong-K control':>16}")
+    for eps, m, mw in zip(fl["epsilons"], fl["mismatch"], fl["mismatch_wrong_K"]):
+        print(f"    {eps:10.3e}  {m:15.3e}  {mw:16.3e}")
+    print(f"  log-log slope: {fl['loglog_slope']:.4f} "
+          f"(first law predicts 2) — within 2 +/- 0.2: "
+          f"{fl['slope_within_2_pm_0.2']}")
+    print(f"  at eps = {fl['eps_small']:.0e}: mismatch = "
+          f"{fl['mismatch_at_eps_small']:.3e}  (below 1e-6: "
+          f"{fl['small_eps_below_1e-6']})")
+    print(f"  relative-entropy positivity (deficit >= 0 at every eps): "
+          f"{fl['relative_entropy_nonnegative']}")
+    ratio = (fl["wrong_mismatch_at_eps_small"]
+             / max(fl["mismatch_at_eps_small"], 1e-300))
+    print(f"  NEGATIVE CONTROL — wrong modular Hamiltonian (h_A instead of k):")
+    print(f"    slope {fl['loglog_slope_wrong_K']:.4f} (i.e. O(eps): first-order "
+          f"equality broken), mismatch {ratio:.0f}x larger at eps = "
+          f"{fl['eps_small']:.0e}")
+    print(f"    first-order agreement genuinely lost: "
+          f"{fl['wrong_K_breaks_first_order']}")
+    print(f"  first law holds: {fl['first_law_holds']}")
+    print(f"\n  {fl['interpretation']}")
+
+    # ---------------------------------------------------------------
+    # Part 3 (D3): mutual-information geometry of an exact TFIM state
+    # ---------------------------------------------------------------
+    print("\n" + "-" * 60)
+    print("  PART 3: MUTUAL-INFORMATION GEOMETRY (exact TFIM ground state)")
+    print("-" * 60)
+    eg = EntanglementGeometry()
+    geo = eg.demonstrate_entanglement_geometry()
+    crit = geo["critical"]
+    para = geo["paramagnet"]
+    deep = geo["paramagnet_deeper_supplementary"]
+    shuf = geo["shuffle_control"]
+    print(f"  TFIM chain, N = {geo['num_spins']} spins, dense ED "
+          f"(dim {2 ** geo['num_spins']})")
+    print(f"  At criticality (g = J = {crit['g']:.1f}):")
+    print(f"    Spearman rho(|i-j|, I) = {crit['spearman_rho_sep_vs_I']:.4f}   "
+          f"(monotone decay, criterion < -0.9: {crit['monotone_decay']})")
+    print(f"    max I = {crit['max_I']:.4f}; mean I by separation: "
+          + ", ".join(f"{v:.4f}" for v in crit["mean_I_by_separation"][:5]) + ", ...")
+    print(f"  Deep in the paramagnet (g = {para['g']:.1f}, the frozen point):")
+    print(f"    max I = {para['max_I']:.3e} against the frozen threshold "
+          f"{para['near_product_threshold']:.0e} -> near-product: "
+          f"{para['near_product']}")
+    print(f"    that criterion FAILED and is recorded, not moved; the "
+          f"supplementary point g = {deep['g']:.0f} gives max I = "
+          f"{deep['max_I']:.3e} -> {deep['near_product']}")
+    print(f"  NEGATIVE CONTROL — shuffle I across pairs: rho = "
+          f"{shuf['spearman_rho_shuffled']:.4f}, monotonicity destroyed: "
+          f"{shuf['monotonicity_destroyed']}")
+    print(f"\n  {geo['interpretation']}")
+
+    # ---------------------------------------------------------------
+    # Part 4: the legacy construction, retained and labelled
+    # ---------------------------------------------------------------
+    print("\n" + "-" * 60)
+    print("  PART 4: LEGACY R-T CORRELATION — WITHDRAWN, NOT EVIDENCE")
     print("-" * 60)
     result = ee.derive_einstein_equations()
-
-    print(f"\n  Manifold: {result['num_points']} points, {result['num_triangles']} triangles")
-    print(f"  Total energy: {result['energy_momentum']['total_energy']:.4f}")
-    print(f"  Total entropy: {result['entropy_field']['total_entropy']:.4f}")
-
     et = result["einstein_equation_test"]
-    print(f"\n  EINSTEIN EQUATION TEST:")
-    print(f"    R_entropy vs T_00 correlation:   {et['R_entropy_T_correlation']:.4f}")
-    print(f"    R_geometric vs T_00 correlation:  {et['R_geometric_T_correlation']:.4f}")
-    print(f"    Effective G:                      {et['effective_G']:.6f}")
-    print(f"    Passes (|r| > 0.7):               {et['passes']}")
-
-    print(f"\n  Derivation steps:")
-    for step in result["jacobson_derivation"]:
-        print(f"    {step}")
-
+    print(f"  Manifold: {result['num_points']} points, "
+          f"{result['num_triangles']} triangles")
+    print(f"    R_entropy vs T_00 correlation:   "
+          f"{et['R_entropy_T_correlation']:.4f}")
+    print(f"    R_geometric vs T_00 correlation: "
+          f"{et['R_geometric_T_correlation']:.4f}")
+    print(f"    Effective G:                     {et['effective_G']:.6f}")
+    print(f"    STATUS: WITHDRAWN as evidence (2026-08-15). The entropy field")
+    print(f"            S is DEFINED from T_00, so correlating a smoothed copy")
+    print(f"            of S against T_00 tests the definition, not a field")
+    print(f"            equation. The pass/fail flag this used to print is")
+    print(f"            deliberately suppressed: it was never a verdict on")
+    print(f"            physics. Threshold used to be |r| > "
+          f"{et['correlation_threshold']}.")
+    print(f"  (The legacy mass-curves comparison is no longer printed here —")
+    print(f"   its summary text claimed Einstein's insight had been derived.")
+    print(f"   The method remains in gravity/einstein_2d.py, under test.)")
     print(f"\n  {result['improvement_over_1d']}")
 
-    # Part 2: Mass curves space
-    print("\n" + "-" * 60)
-    print("  PART 2: MASS CURVES CONSCIOUSNESS-GEOMETRY")
-    print("-" * 60)
-    curves = ee.demonstrate_mass_curves_space()
-
-    for case in ["no_mass", "one_mass", "two_masses"]:
-        c = curves[case]
-        print(f"\n  {case.replace('_', ' ').title()}:")
-        print(f"    Total energy:    {c['total_energy']:.4f}")
-        print(f"    Total entropy:   {c['total_entropy']:.4f}")
-        print(f"    R-T correlation: {c['R_T_correlation']:.4f}")
-
-    print(f"\n  {curves['insight']}")
-
-    return {"status": "completed", "experiment": "einstein_2d"}
+    return {"status": "completed",
+            "experiment": "discrete_geometry_and_entanglement_thermodynamics"}
 
 
 def error_correction_experiment():
@@ -1061,14 +1158,20 @@ def einstein_3d_experiment():
     print(f"  Total entropy: {result['entropy_field']['total_entropy']:.4f}")
 
     et = result["einstein_equation_test"]
-    print(f"\n  EINSTEIN EQUATION TEST:")
+    print(f"\n  LEGACY R-T CORRELATION — WITHDRAWN, NOT EVIDENCE:")
     print(f"    R_entropy vs T_00 correlation:   {et['R_entropy_T_correlation']:.4f}")
     print(f"    R_geometric vs T_00 correlation:  {et['R_geometric_T_correlation']:.4f}")
     print(f"    Effective G:                      {et['effective_G']:.6f}")
-    print(f"    Passes (|r| > 0.7):               {et['passes']}")
+    print(f"    STATUS: {et['status']}")
+    print(f"    (The pass/fail flag this used to print is deliberately")
+    print(f"     suppressed — the entropy field is DEFINED from T_00, so")
+    print(f"     the correlation tests its own definition, not a field")
+    print(f"     equation. Threshold was |r| > {et['correlation_threshold']}.)")
 
-    print(f"\n  Derivation steps:")
-    for step in result["jacobson_derivation"]:
+    print(f"\n  {result['status_note']}")
+
+    print(f"\n  Legacy derivation steps (annotated):")
+    for step in result["legacy_steps_annotated"]:
         print(f"    {step}")
 
     # Part 2: Mass curves 3D space
@@ -1095,7 +1198,6 @@ def einstein_3d_experiment():
     print(f"  Propagates: {gw['propagates']}")
     print(f"  Falls off with distance: {gw['falls_off_with_distance']}")
 
-    print(f"\n  {result['upgrade_from_2d']}")
     return {"status": "completed", "experiment": 27}
 
 
