@@ -13,6 +13,26 @@ a non-gravitational theory on the boundary.
 
 Advaita: the empirical world (with gravity, space, time) is equivalent
 to pure consciousness (without space, time, or gravity) on the 'boundary'.
+
+⚠️ REVIEW NOTE (2026-08-15) — TOY MODULE; THE HOLOGRAPHY IS NOT TESTED.
+The returned strings in this file were made honest by the 2026-08-15
+review, but this docstring was not, so it is corrected here:
+
+  * The "Ryu-Takayanagi entanglement entropy" is identically ZERO for
+    every region size. `rho_A` is taken as a corner block of
+    `np.outer(boundary, boundary.conj())` — a rank-1 projector — and a
+    single state vector has no tensor-product structure to trace over,
+    so every "reduced" state is pure and S(A) = 0. No area law is
+    exhibited or could be; a genuine check needs a many-body state with
+    real subsystem structure.
+  * The bulk "reconstruction" uses a random projection and a
+    pseudo-inverse; its fidelity comes out near 0.5, which is chance for
+    this construction. The bulk is not reconstructed from the boundary.
+  * `boundary_is_fundamental` is returned as an explicit interpretive
+    string, not a computed verdict, and must not be read as a result.
+
+The Advaitic reading (the world of forms as a projection of Brahman) is
+an interpretation laid over the code; it is not an output of it.
 """
 
 import numpy as np

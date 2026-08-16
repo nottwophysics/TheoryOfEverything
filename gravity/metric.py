@@ -13,6 +13,29 @@ Key idea (following Maldacena, Van Raamsdonk, Ryu-Takayanagi):
 Advaita parallel:
     Full non-duality (max entanglement) → no distance → Brahman
     Complete Maya (no entanglement) → maximum distance → separate objects
+
+⚠️ REVIEW NOTE (2026-08-15) — THIS MODULE IS CIRCULAR; NOT EVIDENCE.
+No quantum state is involved anywhere in this file. `build_entanglement_
+structure` does not measure entanglement: it ASSIGNS a correlation
+    C(i,j) = exp(-maya_depth * |i-j|/n * 5)
+by fiat, where |i-j| is the index separation of two array slots. The
+"emergent distance" is then d = -log C = (5*maya_depth/n) * |i-j| — the
+same index separation, rescaled. Verified numerically: for n=10,
+maya_depth=0.5 the distances are exactly 0.25*|i-j| and
+corr(d, |i-j|) = 1.0 to machine precision. So the geometry that comes
+out is the geometry that was put in; nothing about Ryu-Takayanagi or
+Van Raamsdonk is tested here.
+
+WHAT THIS MODULE IS: an illustration of the SHAPE of the
+entanglement-to-distance ansatz, useful for exposition only.
+
+WHERE THE REAL VERSION LIVES: `gravity/entanglement_geometry.py`
+(added 2026-08-15) does this computation properly — an exact
+transverse-field-Ising ground state, mutual information I(i,j)
+computed from actual reduced density matrices, and the derived
+distance -ln(I/I_max) checked against separation (Spearman -0.989 at
+criticality) with a shuffle negative control. Prefer that module for
+any claim.
 """
 
 import numpy as np
@@ -140,6 +163,17 @@ class ConsciousnessMetric:
             det_g = np.linalg.det(g)
             curvatures.append(float(det_g))
 
+        # Self-diagnostic (computed, not asserted): does the "emergent"
+        # distance carry any information beyond the index separation that was
+        # fed into build_entanglement_structure? Correlate d(0,j) with j.
+        # A value of 1.0 means the geometry out IS the geometry in.
+        js = np.arange(1, n)
+        d0j = np.array([D[0, j] for j in js], dtype=float)
+        if np.std(d0j) > 0 and np.std(js) > 0:
+            circularity = float(abs(np.corrcoef(d0j, js)[0, 1]))
+        else:
+            circularity = 0.0
+
         return {
             "num_points": n,
             "embedding_dimension": int(d),
@@ -148,11 +182,18 @@ class ConsciousnessMetric:
             "avg_distance": float(np.mean(D[D > 0])),
             "max_distance": float(np.max(D)),
             "curvature_proxy": curvatures,
+            "distance_vs_input_separation_corr": circularity,
+            "geometry_is_input_geometry": bool(circularity > 0.999),
             "insight": (
                 f"At Maya depth {maya_depth}: avg distance = {np.mean(D[D > 0]):.4f}. "
                 "As Maya deepens, distances increase — space 'expands'. "
-                "At Maya = 0, all distances → 0: no space, only Brahman. "
-                "Geometry IS the pattern of how consciousness relates to itself."
+                "CAVEAT (computed above): the correlation between the derived "
+                f"distance and the raw index separation is {circularity:.6f}. "
+                "At 1.0 the 'emergent' geometry is exactly the separation that "
+                "was assigned in build_entanglement_structure — this module "
+                "illustrates the ansatz, it does not derive geometry from "
+                "entanglement. See gravity/entanglement_geometry.py for the "
+                "version computed from a real quantum state."
             ),
         }
 

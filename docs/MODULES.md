@@ -294,10 +294,14 @@ Models spacetime as a Multiscale Entanglement Renormalization Ansatz where coars
 | Method | Description |
 |--------|-------------|
 | `MERATensorNetwork(num_sites, bond_dim)` | Build MERA with disentanglers and isometries. Sites must be power of 2. |
-| `.coarse_grain(state)` | Full UV→IR coarse-graining. Returns entanglement at each layer. |
-| `.entanglement_determines_distance()` | Distance ∝ 1/entanglement. Shows geometry from entanglement. |
-| `.cut_entanglement_disconnects_space()` | Entangled state → space connected. Product state → space disconnected. |
-| `.holographic_geometry()` | Maps layers to AdS radial slices. Metric factor = L²/z². |
+| `.tensor_algebra_check()` | Verifies every disentangler is unitary and every isometry satisfies W†W = I. |
+| `.boundary_state()` | Builds the explicit 16-site state by contracting the network (this is what the old version failed to do). |
+| `.perturbation_response(layer)` | Negative control: replacing a layer's tensors must move the state. |
+| `.interval_entropy(start, length)` | Exact von Neumann entropy of an interval of the constructed state. |
+| `.minimal_cut(start, length)` | Minimal cut on the real contraction graph (max-flow). |
+| `.rt_bound_check()` | Checks S(interval) ≤ ln(χ)·\|min cut\| on the actual state. |
+| `.mutual_information_halves()` | I(L:R) as the entangling strength λ is varied to the product limit. |
+| `.full_demonstration()` | All of the above. |
 | `.full_demonstration()` | Run all four demonstrations. |
 
 ---
@@ -314,15 +318,18 @@ Models spacetime as a quantum error-correcting code (Almheiri-Dong-Harlow).
 | `.encode(logical_state)` | Encode logical (Brahman) state into physical (Maya) space. |
 | `.erase_qubits(physical_state, qubits)` | Erase specific qubits — model partial ignorance (Avidya). |
 | `.recover_logical(rho_physical)` | Attempt to recover bulk from (corrupted) boundary. |
-| `.test_error_correction(logical_state)` | Test recovery at increasing erasure levels. |
+| `.run_full_analysis()` | Acceptance run A1–A5: stabilizer eigenstates, all 15 single-qubit Paulis, 2-erasure recovery, the 3-erasure negative control, and 3-of-5 reconstruction. |
+| `.encode(a, b)` / `.correct(state)` | Encode a logical qubit into the [[5,1,3]] code; correct by syndrome lookup. |
+| `.decode_erasure(state, locations)` | Known-location erasure decoding restricted to the erased support. |
+| `.erasure_threshold()` | Computes the threshold (2 of 5) rather than asserting it. |
 | `.demonstrate_spacetime_as_code()` | Full demo: error correction + distinguishability + entanglement. |
 
 **Class: `SubsystemCode`**
 
 | Method | Description |
 |--------|-------------|
-| `.reconstruct_from_subregion(qubits)` | Try recovering bulk from a boundary subregion. |
-| `.demonstrate_multiple_reconstructions()` | Same bulk from left/right/even/odd boundary — multiple paths to Brahman. |
+| `.reconstruct_from_subregion(qubits)` | Recover the logical qubit from a 3-of-5 boundary subregion. |
+| `.demonstrate_multiple_reconstructions()` | The same logical qubit from different 3-qubit subregions — multiple paths to Brahman. |
 
 ---
 
@@ -873,7 +880,7 @@ See [docs/PREDICTIONS.md](PREDICTIONS.md) for full details on F1–F5.
 
 ---
 
-### `tests/` — 397 Automated Tests
+### `tests/` — 414 Automated Tests
 
 Every module above has a corresponding test file. Tests validate mathematical properties, physical results, and framework invariants. Run with `pytest tests/ -v`.
 
@@ -885,7 +892,7 @@ Every module above has a corresponding test file. Tests validate mathematical pr
 | `test_emergence.py` | emergence/ | 23 | Metric symmetry, diagonal=0, curvature bounds, substrate preservation, witness immutability |
 | `test_liberation.py` | philosophy/liberation/ | 11 | 8-layer negation, remainder→0, step-by-step generator, mahavakya structure and overlap |
 | `test_quantum.py` | quantum/ | 63 | Normalization, orthogonality, Hermiticity, [a,a†]=I, Gleason C1–C4, Born uniqueness, Bell S=2√2, decoherence, ER=EPR, **experiential underdetermination (Exp 30)** |
-| `test_gravity.py` | gravity/ | 23 | Correlation matrix symmetry, distance properties, R-T correlation, honest Newton NON-recovery (flag asserted False), 2+1D & 3+1D deficit-angle curvature |
+| `test_gravity.py` | gravity/ | 23 | Correlation matrix symmetry, distance properties, R-T correlation, Verlinde Newton recovery (flag asserted True), Gauss-Bonnet identity + topology control, 2+1D & 3+1D deficit-angle curvature |
 | `test_constants.py` | constants/ | 18 | Cosmological constant resolution, Koide ~2/3 verification with error bars |
 | `test_particles.py` | particles/ | 13 | Unified symmetry normalization, guna-generation mapping, maya depth bounds |
 | `test_predictions.py` | predictions/, falsification/ | 16 | Prediction structure, falsifier completeness, experiment designs |

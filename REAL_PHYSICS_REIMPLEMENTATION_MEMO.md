@@ -211,11 +211,25 @@ still fails. Suite: **396 passed, 1 xfailed** on the PUBLIC tree (397 collected)
 (Corrected 2026-08-15: 404 counted the private, gitignored
 `tests/test_integration_pkg.py`, which is not part of the public suite.)
 
-**⚠️ INTEGRATION GAP — found by the post-reimplementation deep scan, same day.**
-The plan above states "Exp 20 → D1 + D2", but **Track D was never wired into
-`main.py`**: `gauss_bonnet_check()`, `entanglement_first_law.py` and
-`entanglement_geometry.py` are referenced by no experiment (grep count 0), so the
-three genuinely-computed Track-D results are unreachable from the documented
-interface, while Experiments 20 and 27 still print the withdrawn constructions
-with "Passes: True". Tracks A, B and C were integrated (Experiments 21, 19, 12).
-**This gap is OPEN.**
+**✅ INTEGRATION GAP — found by the post-reimplementation deep scan, now CLOSED
+(2026-08-16).** The gap was real: the plan above states "Exp 20 → D1 + D2", but
+Track D had not been wired into `main.py` — `gauss_bonnet_check()`,
+`entanglement_first_law.py` and `entanglement_geometry.py` were referenced by no
+experiment, so the three genuinely-computed Track-D results were unreachable from
+the documented interface while Experiments 20 and 27 still printed the withdrawn
+constructions with "Passes: True".
+
+**Resolution.** Experiment 20 was restructured so the computed results lead:
+Part 1 discrete Gauss-Bonnet (residual 1.07e-14, χ = V−E+F = 1 computed from the
+mesh, plus the topology-puncture negative control shifting the sum by exactly
+2π when χ: 1→0), Part 2 the entanglement first law with its
+wrong-modular-Hamiltonian control, Part 3 the mutual-information geometry with
+its shuffle control (including the honest note that the frozen g = 8.0 threshold
+is not met), and Part 4 the legacy R-T correlation explicitly labelled WITHDRAWN
+with its pass/fail flag suppressed. Experiment 27 likewise no longer prints a
+verdict for the 3D legacy channel. Tracks A, B and C were already integrated
+(Experiments 21, 19, 12).
+
+Note the suite figures in this section are as of the reimplementation commit;
+the suite has since grown to 413 passed / 1 xfailed (414 collected) as the
+vacuous legacy tests were converted.

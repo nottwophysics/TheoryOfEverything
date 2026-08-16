@@ -106,7 +106,10 @@ The `emergence/spacetime.py` module is the most physics-adjacent. It can be exte
 This aligns with Verlinde's entropic gravity and Jacobson's thermodynamic derivation of Einstein's equations.
 
 **Current status:**
-- ✅ `gravity/metric.py`: Space emerges from entanglement — Maya depth 0 → no space
+- ⚠️ `gravity/metric.py`: NOT evidence — the correlation matrix is assigned as exp(-maya·|i-j|/n·5), so the "emergent" distance is the index separation rescaled (the module computes this circularity itself and reports `geometry_is_input_geometry`). Superseded by `gravity/entanglement_geometry.py`, which derives distances from a real Ising ground state
+- ✅ `gravity/entanglement_geometry.py`: mutual-information geometry from an exact TFIM ground state — Spearman ρ(|i−j|, I) = −0.989 at criticality, with a shuffle negative control
+- ✅ `gravity/entanglement_first_law.py`: first law of entanglement δS = δ⟨K_A⟩ on a free-fermion chain — log-log slope 2.02, with a wrong-modular-Hamiltonian control
+- ⚠️ `gravity/einstein_3d.py`: 3D simplicial complex is real, but its R-T correlation is the same circular construction as 2D — withdrawn as evidence (labelled in the module)
 - ✅ `gravity/entropic.py`: REIMPLEMENTED 2026-08-15 — Verlinde's derivation in SI units; recovers GMm/r² to 3e-16 (the legacy screen-area route is retained as a negative control and still fails)
 - ⚠️ `gravity/einstein.py`: 1D toy — circular construction; re-execution gives correlation −0.98 (see module review note)
 - ⚠️ `gravity/einstein_2d.py`: 2+1D construction — circular by design (entropy defined ∝ T₀₀); illustrates, does not demonstrate (Experiment 20 caveats)
@@ -177,7 +180,7 @@ No physics ToE addresses why there is **experience** at all. This framework star
 ## Milestone Targets
 
 ### Milestone 0: Automated Test Suite ✅ COMPLETE
-- 397 tests across 25 test files covering all modules
+- 414 tests across 25 test files covering all modules
 - Validates mathematical properties (normalization, Hermiticity, unitarity)
 - Validates physical results (Bell CHSH value, Gleason conditions, honest Newton NON-recovery)
 - Validates framework invariants (singleton, non-duality, substrate preservation)

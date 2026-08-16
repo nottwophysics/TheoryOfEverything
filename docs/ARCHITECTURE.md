@@ -121,7 +121,7 @@ TheoryOfEverything/
 │   ├── __init__.py
 │   └── maya_visualizer.py           # 7 publication-quality visualizations
 │
-├── tests/                           # TEST SUITE: 397 automated tests
+├── tests/                           # TEST SUITE: 414 automated tests
 │   ├── conftest.py                  # Shared fixtures (Brahman singleton reset, RNG)
 │   ├── test_brahman.py              # 20 tests — consciousness field, Sat-Chit-Ananda
 │   ├── test_maya.py                 # 30 tests — superimposition, gunas, nama-rupa
@@ -210,13 +210,13 @@ Each experiment is self-contained and demonstrates one specific Advaitic princip
 Every module has a corresponding test file in `tests/`. Tests validate mathematical properties (normalization, Hermiticity, unitarity), physical results (Bell CHSH value, Gleason conditions, honest Newton NON-recovery), and framework invariants (singleton, non-duality, substrate preservation). The Brahman singleton is reset before each test via `conftest.py` to ensure isolation.
 
 ```bash
-pytest tests/ -v              # Run all 397 tests
+pytest tests/ -v              # Run all 414 tests
 pytest tests/test_quantum.py  # Run tests for one module
 ```
 
 ### 6. Physics Emerges, Not Assumed
 
-The physics modules (`quantum/`, `gravity/`, `particles/`, `constants/`) aim to derive physics from the framework rather than import it — but a 2026 adversarial review found several of the flagship "derivations" circular or inert (see the review notes in `gravity/einstein*.py`, `gravity/entropic.py`, `gravity/holographic.py`, `quantum/tensor_network.py`, `quantum/error_correction.py`). The derivation paths follow established work (Jacobson, Verlinde, Maldacena, Ryu-Takayanagi) in shape; faithfully implementing them remains open work.
+The physics modules (`quantum/`, `gravity/`, `particles/`, `constants/`) aim to derive physics from the framework rather than import it. A 2026-08-15 adversarial review found several flagship "derivations" circular or inert; four were then **reimplemented to compute what they claim** — `quantum/error_correction.py` (a real [[5,1,3]] stabilizer code), `quantum/tensor_network.py` (a MERA whose tensors are actually contracted), `gravity/entropic.py` (Verlinde's derivation in SI units), and Track D (`gravity/einstein_2d.py::gauss_bonnet_check`, plus the new `gravity/entanglement_first_law.py` and `gravity/entanglement_geometry.py`). Others remain **withdrawn as evidence and labelled as such in their own docstrings**: the 1D/2D/3D Einstein R-T correlations (the entropy is defined from T₀₀), `gravity/holographic.py` (its RT entropy is identically zero), `gravity/metric.py` (its "emergent" distance is the input index separation rescaled — the module now computes and reports that circularity itself), and the Bell demo in `quantum/entanglement.py` (analytic; consumes no state). See `REAL_PHYSICS_REIMPLEMENTATION_MEMO.md` for the pre-registered criteria and results.
 
 ---
 
@@ -244,5 +244,5 @@ Python 3.10+ required. Configuration in `pyproject.toml`.
 | `python main.py --experiment N` | Run experiment N (1–31) |
 | `python main.py --visualize` | Generate all 7 visualizations to `output/` |
 | `python main.py --everything` | Run all 31 experiments + all visualizations |
-| `pytest tests/ -v` | Run the full test suite (397 tests) |
+| `pytest tests/ -v` | Run the full test suite (414 tests) |
 | `pytest tests/test_quantum.py` | Run tests for a specific module |

@@ -22,7 +22,7 @@ python main.py --physics           # Experiments 9–31
 python main.py --everything        # All 31 + visualizations
 ```
 
-Validate with the automated test suite (397 tests):
+Validate with the automated test suite (414 tests):
 ```bash
 pytest tests/ -v                   # Run all tests
 pytest tests/test_quantum.py -v    # Test quantum module only
@@ -234,7 +234,7 @@ pytest tests/test_quantum.py -v    # Test quantum module only
 
 **Newton recovery** (reimplemented 2026-08-15): with Verlinde's actual chain — displaced-test-mass entropy gradient dS/dx = 2πk_B mc/ħ, holographic screen count N = Ac³/(Għ), equipartition — the force comes out as GMm/r² to 3e-16 relative, and `newton_recovered` is True. (The earlier screen-area route gave F ∝ M/r and is retained as a negative control.) Note this agreement is algebraic: it confirms the derivation is implemented faithfully, not that entropic gravity is correct physics.
 
-**Black Hole**: Mass 10 → Schwarzschild radius 20, entropy 1256.64, Hawking temperature 0.00398. Even maximum Maya slowly dissolves.
+**Black Hole** (SI units since the 2026-08-15 Verlinde reimplementation; the previous line quoted the old natural-units output): for M = 10 kg, r_s = 1.485e-26 m, Bekenstein-Hawking entropy 3.663e-05 J/K, Hawking temperature 1.227e+22 K. Even maximum Maya slowly dissolves.
 
 ---
 
@@ -245,7 +245,7 @@ pytest tests/test_quantum.py -v    # Test quantum module only
 **Results**:
 - Boundary dimension: 50 (consciousness)
 - Bulk dimension: 20 (spacetime)
-- Reconstruction fidelity: 0.498 (boundary can reconstruct the bulk)
+- Reconstruction fidelity: 0.4976 — **chance level for this construction**, so the boundary does **not** reconstruct the bulk here (`bulk_from_boundary` is computed and returns False). See the review note in `gravity/holographic.py`.
 - Boundary is fundamental: True
 
 **Significance**: The bulk (empirical world with gravity) is derived from the boundary (consciousness). This is Advaita expressed in the language of AdS/CFT.
@@ -367,28 +367,35 @@ pytest tests/test_quantum.py -v    # Test quantum module only
 
 **Setup**: 16-site tensor network with bond dimension 2, producing 5 layers (UV to IR).
 
-**Part 1: Coarse-graining (Maya → Brahman)**
+> The tables below were regenerated on 2026-08-15 from the reimplemented
+> module. The previous Parts 1–3 reported output of the retracted no-op
+> construction and have been removed rather than annotated.
 
-| Layer | Sites | Entanglement | Label |
-|-------|-------|-------------|-------|
-| 0 (UV) | 16 | 2.99 | Maya depth 4 |
-| 1 | 8 | 0.69 | Maya depth 3 |
-| 2 | 4 | 2.21 | Maya depth 2 |
-| 3 | 2 | 0.68 | Maya depth 1 |
-| 4 (IR) | 1 | 1.63 | Brahman (non-dual) |
+**Part 1: Tensor algebra (are the tensors real?)**
+- 15 disentanglers, max \|U†U − I\| = 2.22e-15
+- 15 isometries, max \|W†W − I\| = 2.00e-15
 
-Entanglement decreases toward IR: **Yes**
+**Part 2: Negative control — the tensors must affect the state**
 
-**Part 2: Cut entanglement = disconnect space (Van Raamsdonk)**
-- Entangled state: S=2.99, space connected: **Yes**
-- Product state: S=0.00, space connected: **No**
+Replacing layer 2's tensors with fresh random ones moves the boundary state:
+‖Δψ‖ = 1.4619, phase-invariant distance = 1.3587, `state_changed = True`.
+The retired implementation scored **0** here — that was the defect.
 
-**Part 3: AdS-like geometry**
-- Metric factor follows 1/z² (Anti-de Sitter)
-- Layer depth = Maya depth = radial AdS coordinate
-- Boundary (z=1) = Vyavaharika; Center (z=N) = Paramarthika
+**Part 3: Entropy vs minimal cut, measured on the constructed state**
 
-**Significance (reimplemented 2026-08-15)**: the original coarse-graining was a physical no-op, and its results were retracted. The module now builds an explicit 16-site state by contracting real disentanglers and isometries, and measures that state: the exact interval entropy obeys the RT-type bound S ≤ ln(χ)·|minimal cut| (saturation 0.87/0.69/0.58 at lengths 2/4/8, cut computed by max-flow on the actual network graph), and mutual information between halves falls 5.10 → 0 as the entangling strength is switched off. The hierarchical log-shaped cut remains a property of the network *by construction* and is labeled as such, not claimed as a result. Note the monotone decrease is verified on the sampled λ grid, not globally.
+| Interval length | S (exact) | Min cut (bonds) | ln(χ)·cut | Saturation |
+|---|---|---|---|---|
+| 2 | 1.2123 | 2 | 1.3863 | 0.874 |
+| 4 | 1.9166 | 4 | 2.7726 | 0.691 |
+| 8 | 2.5506 | 6 | 4.1589 | 0.613 |
+
+**Part 4: Remove entanglement → lose connectivity**
+
+I(L:R) as the entangling strength λ is switched off:
+5.101 → 4.804 → 3.055 → 1.728 → 0.662 → 0.000 at λ = 1.0, 0.6, 0.35, 0.2, 0.1, 0.0.
+Monotone on this grid (not claimed globally).
+
+**Significance (reimplemented 2026-08-15)**: the original coarse-graining was a physical no-op, and its results were retracted. The module now builds an explicit 16-site state by contracting real disentanglers and isometries, and measures that state: the exact interval entropy obeys the RT-type bound S ≤ ln(χ)·|minimal cut| (saturation 0.874/0.691/0.613 at lengths 2/4/8, cut computed by max-flow on the actual network graph), and mutual information between halves falls 5.10 → 0 as the entangling strength is switched off. The hierarchical log-shaped cut remains a property of the network *by construction* and is labeled as such, not claimed as a result. Note the monotone decrease is verified on the sampled λ grid, not globally.
 
 ---
 
@@ -456,7 +463,7 @@ no-cloning requires. Complementarily, the logical qubit is reconstructable from
 - Same bulk accessible from different boundary subregions (entanglement wedge reconstruction)
 - Maps to: Brahman realizable from different paths of inquiry
 
-**Significance**: Spacetime is robust because it IS an error-correcting code. Local perturbations (Maya's distortions) cannot destroy the bulk geometry (Brahman's structure). This explains why the empirical world is stable and law-governed despite being "not ultimately real."
+**Significance**: What is demonstrated is that the **[[5,1,3]] code** protects one logical qubit against any single-qubit Pauli error and any 2-of-5 erasure, and that 3-of-5 erasure destroys the information outright — a real, checkable property of a real code. The stronger reading — that *spacetime* is an error-correcting code, and that this is why the empirical world is stable — is the Almheiri-Dong-Harlow **analogy** applied to Advaita, an interpretation laid over the computation rather than a result of it.
 
 ---
 

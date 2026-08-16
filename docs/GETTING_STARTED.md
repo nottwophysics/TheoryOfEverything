@@ -304,12 +304,12 @@ python main.py --experiment 11
 python main.py --experiment 12
 ```
 
-**What it does**: Builds entanglement structure at varying Maya depths, converts to distances, and attempts a Newton's-law recovery from entropic gravity (the attempt fails honestly: F ∝ M/r).
+**What it does**: Builds entanglement structure at varying Maya depths, converts to distances, and recovers Newton's law from entropic gravity via Verlinde's derivation (reimplemented 2026-08-15; GMm/r² to ~3e-16 relative).
 
 **Key numbers**:
 - Maya = 0: no space exists (everything maximally entangled)
 - Maya = 1: expanded spacetime (maximum separation)
-- Newton correlation: 0.93
+- Newton correlation: 1.000000 (ratio to GMm/r² = 1.000000; `newton_recovered` True)
 
 **What it teaches**: Space IS entanglement structure in this model, and gravity is read as the entropic tendency of Maya to deepen. Since the 2026-08-15 reimplementation the Newton's-law step is faithful to Verlinde and recovers GMm/r² exactly.
 
@@ -399,7 +399,7 @@ Generates 7 PNG files in the `output/` directory:
 
 ## 10. Running the Tests
 
-The project includes a comprehensive test suite with **397 automated tests** covering every module. Tests validate mathematical properties (normalization, Hermiticity, unitarity), physical results (Bell violation, Gleason conditions, entropy bounds), and framework invariants (singleton behavior, non-duality, sublation).
+The project includes a comprehensive test suite with **414 automated tests** covering every module. Tests validate mathematical properties (normalization, Hermiticity, unitarity), physical results (Bell violation, Gleason conditions, entropy bounds), and framework invariants (singleton behavior, non-duality, sublation).
 
 ### Run All Tests
 
@@ -433,7 +433,7 @@ pytest tests/test_predictions.py -v # Predictions and falsification
 | `test_emergence.py` | emergence | 23 | Spacetime metric symmetry, substrate preservation |
 | `test_liberation.py` | philosophy/liberation | 11 | Neti-neti remainder, mahavakya structure |
 | `test_quantum.py` | quantum | 63 | Hermiticity, unitarity, Bell S=2√2, Gleason C1–C4, ER=EPR |
-| `test_gravity.py` | gravity | 23 | R-T correlation (2D+3D), honest Newton NON-recovery, deficit-angle curvature |
+| `test_gravity.py` | gravity | 23 | Gauss-Bonnet identity + topology control, legacy R-T correlation asserted negative, deficit-angle curvature |
 | `test_constants.py` | constants | 18 | Cosmological constant resolution, Koide ~2/3 verification |
 | `test_particles.py` | particles | 13 | Symmetry breaking, guna association, maya depth |
 | `test_predictions.py` | predictions/falsification | 16 | Prediction structure, falsification criteria |
