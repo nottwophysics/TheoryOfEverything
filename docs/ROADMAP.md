@@ -180,7 +180,7 @@ No physics ToE addresses why there is **experience** at all. This framework star
 ## Milestone Targets
 
 ### Milestone 0: Automated Test Suite ✅ COMPLETE
-- 418 tests across 26 test files covering all modules
+- 424 tests across 26 test files covering all modules
 - Validates mathematical properties (normalization, Hermiticity, unitarity)
 - Validates physical results (Bell CHSH value, Gleason conditions, honest Newton NON-recovery)
 - Validates framework invariants (singleton, non-duality, substrate preservation)

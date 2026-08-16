@@ -121,7 +121,7 @@ TheoryOfEverything/
 │   ├── __init__.py
 │   └── maya_visualizer.py           # 7 publication-quality visualizations
 │
-├── tests/                           # TEST SUITE: 418 automated tests
+├── tests/                           # TEST SUITE: 424 automated tests
 │   ├── conftest.py                  # Shared fixtures (Brahman singleton reset, RNG)
 │   ├── test_brahman.py              # 20 tests — consciousness field, Sat-Chit-Ananda
 │   ├── test_maya.py                 # 30 tests — superimposition, gunas, nama-rupa
@@ -210,7 +210,7 @@ Each experiment is self-contained and demonstrates one specific Advaitic princip
 Every module has a corresponding test file in `tests/`. Tests validate mathematical properties (normalization, Hermiticity, unitarity), physical results (Bell CHSH value, Gleason conditions, honest Newton NON-recovery), and framework invariants (singleton, non-duality, substrate preservation). The Brahman singleton is reset before each test via `conftest.py` to ensure isolation.
 
 ```bash
-pytest tests/ -v              # Run all 418 tests
+pytest tests/ -v              # Run all 424 tests
 pytest tests/test_quantum.py  # Run tests for one module
 ```
 
@@ -244,5 +244,5 @@ Python 3.10+ required. Configuration in `pyproject.toml`.
 | `python main.py --experiment N` | Run experiment N (1–31) |
 | `python main.py --visualize` | Generate all 7 visualizations to `output/` |
 | `python main.py --everything` | Run all 31 experiments + all visualizations |
-| `pytest tests/ -v` | Run the full test suite (418 tests) |
+| `pytest tests/ -v` | Run the full test suite (424 tests) |
 | `pytest tests/test_quantum.py` | Run tests for a specific module |

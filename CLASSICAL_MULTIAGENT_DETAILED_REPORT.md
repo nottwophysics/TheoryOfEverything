@@ -3,16 +3,26 @@
 ### A detailed technical report — does an information-theoretic, non-Hilbert analogue compute something a designer couldn't otherwise get?
 
 > **⚠️ CORRECTION (2026-08-15, adversarial review).** The headline effect
-> sizes below (AUC 1.000, Cohen's d ≈ +68.5) are **structural, not
+> sizes originally published here (AUC 1.000, Cohen's d ≈ +68.5 — the d column
+> has since been removed from the table below) are **structural, not
 > empirical**, and must not be cited as effect sizes. The synthetic parity
 > regime is noiseless by design, so the AUC-1.000 separation is categorical
 > **by construction**, and Cohen's d **grows without bound with per-instance
 > sample count m** (independent re-measurement with the committed
 > `agents/` code: d ≈ 262 at m = 500, ≈ 2 505 at the stated m = 4 000,
 > ≈ 9 644 at m = 16 000). The published **+68.5 does not replicate** under
-> the stated protocol, and the AUC/Cohen's-d computation plus most of the
-> result artifacts cited in this report were never committed to the public
-> repository, so their provenance cannot be established. What survives is
+> the stated protocol, and **+68.5 is retracted and must not be cited**.
+>
+> **UPDATE 2026-08-16 — the AUC computation is now committed and runnable:**
+> `agents/benchmark.py` (`python -m agents.benchmark`), with tests in
+> `tests/test_classical_agents.py`. The AUC table below has been regenerated
+> from it; the previously published baseline figures (0.390/0.429/0.472) came
+> from an uncommitted run and have been replaced by measured values. Cohen's *d*
+> is deliberately **not** implemented, because on this construction it reports a
+> property of the sample count rather than of the detector. Still absent: the
+> **figures** cited in this report (`classical_emergence_measures.png`,
+> `detector_vs_baselines.png`) were never committed and cannot be regenerated
+> from the repository. What survives is
 > the qualitative, provably-true point: pairwise-correlation and variance
 > baselines cannot see zero-pairwise-correlation parity structure, while
 > O-information can — and O-information is the *existing* measure of Rosas
@@ -191,20 +201,47 @@ each, 4 000 samples per instance), scoring each metric by its AUC and effect
 size. The baselines are the two things a designer already has: the pairwise
 correlation matrix and per-agent variance.
 
-| metric | AUC (synergistic vs independent) | Cohen's d |
-|---|---|---|
-| **O-information \|Ω\| (this work)** | **1.000** | **+68.5** |
-| total correlation | 1.000 | +68.6 |
-| max \|pairwise correlation\| (baseline) | 0.390 | −0.33 |
-| mean \|pairwise correlation\| (baseline) | 0.429 | −0.12 |
-| max per-agent variance (baseline) | 0.472 | +0.09 |
+| metric | AUC (synergistic vs independent) |
+|---|---|
+| **O-information \|Ω\| (this work)** | **1.000** |
+| total correlation | 1.000 |
+| max \|pairwise correlation\| (baseline) | 0.373 |
+| mean \|pairwise correlation\| (baseline) | 0.513 |
+| max per-agent variance (baseline) | 0.530 |
+
+*(n = 100 instances per regime, 4 agents, 4 000 samples, seed 42.)*
+
+**Reproduce:** `python -m agents.benchmark` (committed 2026-08-16). Measured
+across seeds {7, 42, 101} x n_samples {1500, 4000}: the detector is **1.000 in
+every configuration**; the baselines range **0.26–0.66**. Cohen's *d* is
+deliberately not computed — on this construction it grows without bound in
+n_samples, so the figure that previously circulated (d ≈ 68) reports a property
+of the protocol, not of the detector.
+
+**What this AUC does and does not show.** The parity regime is noiseless, so the
+separation is **deterministic by construction** and AUC 1.000 is the *expected*
+result — it confirms the estimator behaves as derived, not that the detector
+would separate emergence in the wild. **Total correlation reaches 1.000 too**:
+|Ω| is *not* distinguished from TC on this task. The differentiator is the
+**sign**, and only on a comparison that holds TC fixed — see below.
+
+**Sign separation (the claim worth citing).** At the redundancy noise where the
+two regimes carry the *same* total correlation (0.1195), TC is at chance between
+them (AUC 0.53, distributions overlap) while Ω's sign still separates them
+completely: every synergistic instance negative (mean −2.00), every redundant
+instance positive (mean +0.39). Run `agents.benchmark.sign_separation()`.
+Scope: this holds where redundancy is actually present; as noise → 0.5 both
+regimes collapse toward Ω = 0 and the sign stops being meaningful.
+
 
 **The synergy detector separates parity-type emergence categorically (AUC 1.00 —
 by construction; the d column is structural, see the correction banner); the
 designer baselines are uninformative** (note: the pairwise-correlation baselines
-score below 0.5 — 0.390/0.429 in this report's table; independent
-re-measurement gives ≈0.29–0.39 depending on seeds — an anti-signal artifact of
-the construction, not "chance"). This is exactly what the
+score at or below chance — measured 0.26–0.66 across seeds {7,42,101} and
+n_samples {1500,4000}, with max|pairwise| consistently BELOW 0.5 — an
+anti-signal artifact of the construction, not "chance". Note two of the three
+baselines sit marginally ABOVE 0.5 at some settings, so the honest claim is
+"never approaches separation", not "always below chance"). This is exactly what the
 construction predicts: parity has zero pairwise correlation and fair-coin marginals *by
 construction*, so correlation- and variance-based tools are provably blind to it,
 while the higher-order measure fires unmistakably.
@@ -289,7 +326,7 @@ local data.
 - **Tests:** 9 in `tests/test_classical_agents.py` (symmetry recovery, testbed
   ground-truth signatures, detector sign-correctness, null behaviour). Full repo
   suite **302 passed** (historical count at the time of writing; the current
-  public suite is 418; the repo's pytest run is authoritative).
+  public suite is 424; the repo's pytest run is authoritative).
 - **Numbers**: RETRACTED as a provenance claim (2026-08-15) — of the artifacts
   named here, only `testbed_summary.csv` was ever committed to the public
   repository; `classical_symmetry_check.csv`, `detector_results.csv`,
