@@ -404,7 +404,7 @@ Generates 7 PNG files in the `output/` directory:
 
 ## 10. Running the Tests
 
-The project includes a comprehensive test suite with **424 automated tests** covering every module. Tests validate mathematical properties (normalization, Hermiticity, unitarity), physical results (Bell violation, Gleason conditions, entropy bounds), and framework invariants (singleton behavior, non-duality, sublation).
+The project includes a comprehensive test suite with **434 automated tests** covering every module. Tests validate mathematical properties (normalization, Hermiticity, unitarity), physical results (Bell violation, Gleason conditions, entropy bounds), and framework invariants (singleton behavior, non-duality, sublation).
 
 ### Run All Tests
 

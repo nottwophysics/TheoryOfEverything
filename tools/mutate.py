@@ -18,8 +18,9 @@ survived undetected**, including two that mattered:
     tests passed, because the existing control catches a ZEROED tensor but not
     a WRONG one.
 
-Work happens in a scratch copy; the working tree is never modified, and the
-run asserts that before and after.
+Work happens in a copy of the WORKING TREE (not HEAD -- testing committed code
+would report uncommitted guards as failures to catch). The working tree itself
+is never modified, and the run asserts that before and after.
 
 Two ways this instrument can lie, both of which it caught in itself on the first
 real run and now guards against:
@@ -53,8 +54,11 @@ MUTATIONS = [
      "self._apply_isometry(psi, isometries[0][0], k)"),
     ("gauss-bonnet-flag", "gravity/einstein_2d.py",
      r"\"passes\": bool\(", "\"passes\": True or bool("),
+    # Targets the CONSTRUCTOR guard, which is live. The later
+    # `c1 = self.dim >= 3` is unreachable-False (init raises first), so
+    # mutating it is mutating dead code and can never be caught.
     ("gleason-dimension", "quantum/gleason.py",
-     r"dim >= 3", "dim >= 0"),
+     r"if dimension < 3:", "if dimension < 0:"),
     ("decoherence-no-pressure", "predictions/decoherence_calculator.py",
      r"n = pressure_pa / \(KB \* temperature_k\)",
      "n = 1.0e20 / (KB * temperature_k)"),
@@ -146,15 +150,20 @@ def main():
     muts = [m for m in MUTATIONS if not args.k or args.k in m[0]]
     print(f"mutation battery: {len(muts)} mutation(s)\n")
 
+    # Copy the WORKING TREE, not HEAD. An earlier version used
+    # `git worktree add HEAD`, which silently tested committed code: newly
+    # written guards were absent from the scratch copy, so mutations they do
+    # catch were reported as survivors. A battery that tests something other
+    # than the code in front of you is worse than no battery.
+    def _ignore(d, names):
+        drop = {".git", "toenv", "submission", "outreach", "cv",
+                "__pycache__", ".pytest_cache", ".mypy_cache"}
+        return [n for n in names if n in drop or n.endswith(".pyc")]
+
     with tempfile.TemporaryDirectory(prefix="mutate-") as tmp:
         work = os.path.join(tmp, "repo")
-        subprocess.run(["git", "worktree", "add", "-q", "--detach", work, "HEAD"],
-                       cwd=ROOT, check=True, capture_output=True)
-        try:
-            results = [run_one(*m, work, args.verbose) for m in muts]
-        finally:
-            subprocess.run(["git", "worktree", "remove", "--force", work],
-                           cwd=ROOT, capture_output=True)
+        shutil.copytree(ROOT, work, ignore=_ignore, symlinks=True)
+        results = [run_one(*m, work, args.verbose) for m in muts]
 
     survived = [r for r in results if r["status"] == "SURVIVED"]
     skipped = [r for r in results if r["status"] in ("SKIP", "INVALID")]

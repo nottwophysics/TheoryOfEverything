@@ -128,15 +128,19 @@ def check_counts(fix, verbose, problems):
         if verbose:
             print(f"  measured {name} = {actual}")
         pats = entry.get("patterns", [])
-        markers = [mk.lower() for mk in MANIFEST.EXEMPT_MARKERS]
+        # NO exemption list for counts. Reusing the retirement vocabulary here
+        # was a design error: ARCHITECTURE.md's directory tree lists
+        # `error_correction.py`, whose substring "correction" exempted the whole
+        # block and silently skipped a stale "TEST SUITE: 424". A checker that
+        # skips quietly is worse than one that never ran. The patterns in the
+        # manifest are anchored to phrasings that mean "the current total", so a
+        # dated snapshot ("302, historical count at the time of writing") does
+        # not match them in the first place and needs no exemption.
         for path in tracked_docs():
             text = io.open(path, encoding="utf-8").read()
             new = text
             for off, para in paragraphs(text):
                 fp = flat(para)
-                # A dated record legitimately quotes the count of its own day.
-                if any(mk in fp.lower() for mk in markers):
-                    continue
                 for pat in pats:
                     for m in re.finditer(pat, fp):
                         written = int(m.group("v"))

@@ -177,8 +177,11 @@ class GleasonVerification:
             "C1_dimension_ge_3": {
                 "satisfied": c1,
                 "dimension": self.dim,
-                "note": "Gleason requires dim ≥ 3. Qubits (dim=2) are the exception. "
-                        "(Checked by comparing the constructor argument to 3.)",
+                "note": "Gleason requires dim ≥ 3; qubits (dim=2) are the "
+                        "exception. NOTE: this flag cannot be False for any "
+                        "object that exists — __init__ raises for dim < 3, so "
+                        "the comparison here is unreachable-False. The live "
+                        "guard is the constructor; this entry is bookkeeping.",
             },
             "C2_non_negativity": {
                 "satisfied": c2,
