@@ -215,6 +215,9 @@ def holographic_experiment():
     print(f"  Bulk entropy: {result['bulk_entropy']:.4f}")
     print(f"  Reconstruction fidelity: {result['reconstruction_fidelity']:.4f}")
     print(f"  Boundary is fundamental: {result['boundary_is_fundamental']}")
+    print("    ^ interpretive reading (the Advaita claim), NOT a computed result;")
+    print(f"      reconstruction fidelity {result['reconstruction_fidelity']:.4f} is "
+          f"near chance for this random projection.")
     print(f"\n  Summary: {result['summary'][:150]}...")
 
     rt = result['ryu_takayanagi']
@@ -1202,8 +1205,14 @@ def einstein_3d_experiment():
     print(f"  Points affected: {gw['points_affected']}/{gw['total_points']}")
     print(f"  Near-field: {gw['near_field_amplitude']:.6f}")
     print(f"  Far-field: {gw['far_field_amplitude']:.6f}")
-    print(f"  Propagates: {gw['propagates']}")
-    print(f"  Falls off with distance: {gw['falls_off_with_distance']}")
+    # The module returns `propagates_means` and `status` precisely so these
+    # two legacy booleans are not read as physics. Print those, not the bare
+    # flags -- the Part-1 suppression landed in the 2026-08-16 pass and this
+    # one was missed.
+    print(f"  Nonzero beyond median radius: {gw['propagates']}  "
+          f"(near > far: {gw['falls_off_with_distance']})")
+    print(f"  What that means: {gw['propagates_means']}")
+    print(f"  STATUS: {gw['status']}")
 
     return {"status": "completed", "experiment": 27}
 
@@ -1261,7 +1270,10 @@ def er_epr_experiment():
     print(f"  Entanglement diluted: {mono['entanglement_diluted']}")
     print(f"  Non-traversable: {mono['non_traversable']}")
 
-    print(f"\n  CONCLUSION: ER = EPR confirmed. Wormholes ARE entanglement.")
+    print("\n  CONCLUSION: ER=EPR is EXHIBITED here, not confirmed. The")
+    print("  throat-entropy relation is imposed by assignment in this demo")
+    print("  rather than derived, so nothing above could have come out")
+    print("  otherwise. Illustrative identities only.")
     return {"status": "completed", "experiment": 28}
 
 

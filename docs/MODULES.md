@@ -279,7 +279,7 @@ Derives Hilbert space axioms from Sat-Chit-Ananda.
 |--------|-------------|
 | `.bell_state(which)` | Create Bell states: Φ+, Φ-, Ψ+, Ψ-. |
 | `.entanglement_entropy(state)` | Von Neumann entropy of reduced state. S=0: separable. S=log(d): maximally entangled. |
-| `.bell_inequality_violation()` | CHSH test. S = -2.828 (= -2√2), violating classical bound of 2. |
+| `.bell_inequality_violation()` | CHSH on the supplied state. S = +2.828 (= +2√2) for |Φ+⟩; returns separable/singlet controls and `output_depends_on_state`. |
 | `.monogamy_of_entanglement()` | More entanglement with B → less with C. Liberation requires full identification with Brahman. |
 | `.non_duality_demonstration()` | Separable entropy vs. entangled entropy proves non-duality. |
 
@@ -376,7 +376,13 @@ Jacobson's thermodynamic derivation on a proper 2D discrete manifold (Delaunay t
 | `.derive_einstein_equations(positions, values)` | Full derivation: T_μν → S → R → test R ∝ T. |
 | `.demonstrate_mass_curves_space()` | 0, 1, and 2 mass comparisons. |
 
-**Key result**: R_entropy vs T_00 correlation = **0.94** (two masses) on 80-point manifold with 149 triangles.
+**⚠️ Withdrawn as evidence.** This module used to headline an "R_entropy vs
+T_00 correlation = 0.94". That number is **circular by construction** — the site
+entropy is *defined* proportional to T₀₀ and the correlated "curvature" is a
+smoothed copy of it, while the genuine Regge deficit-angle curvature
+*anti-correlates* with T₀₀. `gravity/einstein_3d.py` records the number as
+deleted. The computable statements live in `gravity/entanglement_first_law.py`
+and `gravity/entanglement_geometry.py` (Experiment 20).
 
 ---
 

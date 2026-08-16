@@ -194,7 +194,7 @@ See [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md) for detailed documentation of all
 | **2+1D Einstein: R-T = 0.94** | The correlated "curvature" is a smoothed copy of an entropy DEFINED from the energy density | **Withdrawn as evidence — circular by construction** (Experiment 20) |
 | **Spacetime from entanglement** | Real MERA: exact S(interval) ≤ ln(χ)·|min cut| on the constructed state; mutual information → 0 in the product limit | **Reimplemented 2026-08-15** (Experiment 19) |
 | **Spacetime as QEC code** | Real [[5,1,3]] code: threshold 2/5 (40%), reconstruction from any 3/5 (60%); 3-erasure provably unrecoverable | **Reimplemented 2026-08-15** (Experiment 21) |
-| Bell inequality violated (S = 2√2) | Tsirelson-bound value evaluated analytically; the demo consumes no quantum state | **Illustrative (textbook value, not a verification)** (Experiment 11) |
+| Bell inequality violated (S = 2√2) | CHSH evaluated **on the supplied state**: |Φ+⟩ → +2√2, separable \|00⟩ → 1.414 (no violation), singlet → −2√2. Standard QM on a state we wrote down — illustrates Tsirelson's bound, not an experimental Bell test | **Illustrative, state-consuming** (Experiment 11) |
 | Measurement problem dissolved | Total state (Brahman) stays pure; collapse is perspectival (Maya) | **Demonstrated** (Experiment 10) |
 | Koide formula (0.6666 vs 0.6667) | Lepton masses have structure — not arbitrary | **Verified** (not derived) |
 

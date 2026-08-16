@@ -212,7 +212,7 @@ true.
 **Concept**: Bell inequality violation proves non-locality = Advaita.
 
 **Results**:
-- CHSH S-value: **-2.828** (= -2√2)
+- CHSH S-value: **+2.828** (= +2√2) on the default |Φ+⟩; controls: separable |00⟩ → +1.414 (no violation), singlet → −2.828
 - Classical bound: 2.0
 - **Violates classical bound: YES**
 
@@ -253,7 +253,11 @@ true.
 - Reconstruction fidelity: 0.4976 — **chance level for this construction**, so the boundary does **not** reconstruct the bulk here (`bulk_from_boundary` is computed and returns False). See the review note in `gravity/holographic.py`.
 - Boundary is fundamental: True
 
-**Significance**: The bulk (empirical world with gravity) is derived from the boundary (consciousness). This is Advaita expressed in the language of AdS/CFT.
+**Significance**: ⚠️ **Not what this run shows.** Reconstruction fidelity is
+0.4976 — chance for this random projection — and `bulk_from_boundary` is False,
+so the bulk is *not* reconstructed here. "Boundary is fundamental" is an
+interpretive reading, which the runtime now says explicitly. The holographic
+correspondence is the motivation for the demo, not its output. This is Advaita expressed in the language of AdS/CFT.
 
 ---
 
@@ -565,11 +569,19 @@ Previous best: 4.41% error. New best: **0.003% error — a 1000x improvement.**
 | 3 | 0.595 | |
 | 4 (IR) | 0.595 | Brahman |
 
-Φ increases toward IR: **Yes**. Maximum consciousness at maximum integration = Brahman.
+> **These lines are retracted (2026-08-16).** The MERA Φ profile above used the
+> retired internal Φ heuristic on a construction later found defective;
+> `docs/PREDICTIONS.md` records it as **Retracted**, and the correction banner
+> at the head of this section applies to the prose here too, not only to the
+> tables. Prediction 1 below is the falsified Φ ≤ S bound restated without the
+> notation — "Φ sets a lower bound on S" *is* Φ ≤ S — and does not survive the
+> validated retest. They are kept only as a record of what was once claimed.
 
-**Testable predictions**:
-1. Measuring Φ in a neural system sets a lower bound on its quantum entanglement
-2. Systems with zero entanglement have zero consciousness
+~~Φ increases toward IR: **Yes**. Maximum consciousness at maximum integration = Brahman.~~
+
+**Testable predictions (retracted — see the banner above)**:
+1. ~~Measuring Φ in a neural system sets a lower bound on its quantum entanglement~~
+2. ~~Systems with zero entanglement have zero consciousness~~
 3. Anesthesia should reduce both Φ and S simultaneously
 4. Deep meditation (Samadhi) should correspond to maximum Φ and maximum S
 
@@ -602,7 +614,7 @@ These experiments were built to computationally support the claims of the accomp
 | Born rule probabilities | **Identical** |
 | Time evolution (5 time steps) | **Identical** |
 | Measurement statistics (10,000 trials) | **Identical** |
-| Entanglement correlations (Bell CHSH) | **Identical** (S = -2.83) |
+| Entanglement correlations (Bell CHSH) | Shared calculation (S = +2.83 on |Φ+⟩) |
 | Decoherence (purity, pointer states) | **Identical** |
 
 **Five ontological divergences (none measurable)**:
@@ -702,7 +714,13 @@ python main.py --experiment 27
 - Mass shell: interior relatively flat (Birkhoff-like)
 - Gravitational wave signature: perturbations propagate, amplitude falls off with distance
 
-**Significance**: Einstein's equations emerge from consciousness thermodynamics in the correct number of spatial dimensions — not just a 2D proof-of-concept.
+**Significance**: ⚠️ **Withdrawn.** This sentence is the headline
+`gravity/einstein_3d.py` records as withdrawn by the 2026-08-15 review. No
+metric, connection, Ricci or Einstein tensor is formed and G_μν = 8πG T_μν is
+never evaluated; the construction is a static 3D point cloud, not 3+1D
+spacetime, and the entropy it correlates is defined from the energy density it
+is correlated against. What the experiment shows is the *shape* of the Jacobson
+argument, not its result.
 
 ---
 
@@ -730,7 +748,9 @@ python main.py --experiment 28
 - Maximum entanglement → widest throat → most connected
 - Entanglement dilution in tripartite state → non-traversability
 
-**Significance**: Completes Path 2 (Information-Theoretic Bridge). Entanglement IS geometry. Non-duality at the quantum level IS non-duality at the geometric level. ER = EPR = Advaita.
+**Significance**: ⚠️ **Illustrative only.** The throat–entropy relation is
+imposed by assignment in this demo, not derived, so ER=EPR is exhibited rather
+than shown. It does not "complete" anything. Non-duality at the quantum level IS non-duality at the geometric level. ER = EPR = Advaita.
 
 ---
 
@@ -836,7 +856,7 @@ than take the near-match as evidence of a derivation.
 | **Entanglement disconnects space** | I(L:R) 5.10 → 0 as λ→0 | Real MERA state; RT-type bound S ≤ ln(χ)·|cut| holds | **Reimplemented 2026-08-15** |
 | **QEC erasure threshold** | **2 of 5 (40%)**; any 3/5 reconstructs | Real [[5,1,3]] code; 3-erasure provably unrecoverable (no-cloning) | **Reimplemented 2026-08-15** |
 | Brahman field coherence | 1.0000 | Perfect unity before Maya | Verified |
-| Bell CHSH value | -2.828 (= -2√2) | Analytic Tsirelson-bound value; no quantum state consumed | Illustrative |
+| Bell CHSH value | +2.828 (= +2√2) | Computed on the supplied state; separable/singlet controls | Illustrative |
 | Total state purity (Paramarthika) | 1.000000 | No collapse at the absolute level | Demonstrated |
 | Reduced state purity (Vyavaharika) | 0.250000 | Classical appearance from partial view | Demonstrated |
 | Neti-Neti remainder | 0.0000 | All layers negated — only witness remains | Demonstrated |

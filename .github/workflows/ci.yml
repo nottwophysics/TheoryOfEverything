@@ -36,6 +36,14 @@ jobs:
           cd /tmp
           python -c "import constants, numerology, predictions, gravity, quantum; from constants.koide import KoideRelation; print('imports OK:', KoideRelation().q_value()['holds_to_1e-3'])"
 
+      - name: Claims check (docs must agree with the code)
+        # Guards the two failure modes this repository keeps hitting: a headline
+        # number drifting across documents, and a retired claim surviving as a
+        # paraphrase. Runs on one Python version -- it is a text check, not a
+        # compatibility check.
+        if: matrix.python-version == '3.13'
+        run: python tools/check_claims.py
+
       - name: Run test suite
         run: |
           cd /tmp

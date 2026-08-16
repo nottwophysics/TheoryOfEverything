@@ -17,9 +17,14 @@ REVIEW LABEL (2026-08-15) — which step is computation and which is argument.
              the interaction changed.
 
     Step 2 — COMPUTED numbers, INTERPRETIVE claim.  The probabilities P(up),
-             P(down) are read off the same rho_S computed in Step 1 (before
-             the 2026-08-15 review they were hardcoded as diag([0.5, 0.5]),
-             disconnected from Step 1 — fixed).  The claim attached to them —
+             P(down) are read off the same rho_S computed in Step 1 by
+             partial trace.  History, stated accurately: the 2026-08-15 review
+             relabelled this module and its header then CLAIMED this fix had
+             been made, but the hardcoded diag([0.5, 0.5]) was still on the
+             line below it.  A 2026-08-16 review caught the false claim and
+             the fix was actually applied then.  No reported number changed —
+             the values coincide for the equal superposition — so the defect
+             was never a wrong number, only an untrue statement about the code.  The claim attached to them —
              "which outcome is experienced is undefined by the formalism" —
              is a philosophical reading of a mixed state, not a computed
              result.
@@ -123,14 +128,29 @@ class ObserverCentrality:
         Nothing in the formalism says which outcome is experienced.
         The formalism gives probabilities, not outcomes.
         """
+        # Build the Step-1 state and TAKE THE PARTIAL TRACE, rather than
+        # asserting the answer. Before 2026-08-16 this method's header claimed
+        # exactly this had been done while the line below still read
+        # `rho_sys = np.diag([0.5, 0.5])` -- the machinery was already present
+        # and used correctly in step1_decoherence_creates_mixture(), so the
+        # remediation the docstring described had simply never been applied.
+        # The values coincide for the equal superposition, which is why no
+        # reported number changed; the defect was the false claim about it.
         sys_state = np.array([1, 1], dtype=np.complex128) / np.sqrt(2)
+        env_ready = np.zeros(self.env_dim, dtype=np.complex128)
+        env_ready[0] = 1.0
 
-        # After decoherence: reduced state is mixed
-        rho_sys = np.diag([0.5, 0.5])  # Equal mixture
+        # Measurement-like interaction: |0>|e0> + |1>|e1>, then trace out E.
+        total = np.zeros(self.sys_dim * self.env_dim, dtype=np.complex128)
+        total[0] = sys_state[0]
+        total[self.env_dim + 1] = sys_state[1]
+        total /= np.linalg.norm(total)
+        rho_total = np.outer(total, total.conj())
+        rho_sys = self._partial_trace_B(rho_total, self.sys_dim, self.env_dim)
 
-        # What the formalism gives us:
-        p_up = float(rho_sys[0, 0])
-        p_down = float(rho_sys[1, 1])
+        # What the formalism gives us — read off the computed reduced state:
+        p_up = float(np.real(rho_sys[0, 0]))
+        p_down = float(np.real(rho_sys[1, 1]))
 
         return {
             "step": 2,

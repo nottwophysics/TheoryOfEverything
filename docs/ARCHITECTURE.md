@@ -207,7 +207,7 @@ Each experiment is self-contained and demonstrates one specific Advaitic princip
 
 ### 5. Automated Testing
 
-Every module has a corresponding test file in `tests/`. Tests validate mathematical properties (normalization, Hermiticity, unitarity), physical results (Bell CHSH value, Gleason conditions, honest Newton NON-recovery), and framework invariants (singleton, non-duality, substrate preservation). The Brahman singleton is reset before each test via `conftest.py` to ensure isolation.
+Every module has a corresponding test file in `tests/`. Tests validate mathematical properties (normalization, Hermiticity, unitarity), physical results (Bell CHSH value on the supplied state, Gleason conditions, Newton recovery to 3e-16 via Verlinde's derivation), and framework invariants (singleton, non-duality, substrate preservation). The Brahman singleton is reset before each test via `conftest.py` to ensure isolation.
 
 ```bash
 pytest tests/ -v              # Run all 424 tests
@@ -246,3 +246,31 @@ Python 3.10+ required. Configuration in `pyproject.toml`.
 | `python main.py --everything` | Run all 31 experiments + all visualizations |
 | `pytest tests/ -v` | Run the full test suite (424 tests) |
 | `pytest tests/test_quantum.py` | Run tests for a specific module |
+
+---
+
+## Guardrails (`tools/`)
+
+Two checks that keep the documents honest about the code. Both run from the repo
+root; `check_claims.py` also runs in CI.
+
+| Command | What it does |
+|---|---|
+| `python tools/check_claims.py` | Verifies every headline count against a live measurement, re-runs the producers behind the derived §8 numbers, and searches for retired claims **including paraphrases**, whitespace-normalised. Exits non-zero on any drift. |
+| `python tools/check_claims.py --fix` | Rewrites drifted counts from the measurement, so counts are never hand-propagated again. |
+| `python tools/mutate.py` | Mutation battery: breaks the implementation 16 ways in a scratch worktree and reports which mutations **no test noticed**. Never touches the working tree. |
+
+`tools/claims.py` is the manifest — one source of truth per headline number, plus
+the register of retired claims. It carries **both** stale overclaims and stale
+*corrections*: "does NOT recover Newton" was true when written and false three
+commits later, and a stale correction is as false as a stale overclaim.
+
+A paragraph that names a retired claim while recording its retirement is exempt
+(the marker list is in the manifest); `<!-- claims-ok -->` is the explicit escape
+hatch.
+
+**Known mutation survivors** — real gaps, not tool faults. `tools/mutate.py`
+prints them; as of 2026-08-16 the suite does not notice when the Φ≤S system
+family ignores its seed, when every MERA isometry is replaced by one fixed
+isometry, when the Gauss–Bonnet pass flag is forced, when Gleason's dimension
+guard is relaxed, or when the CHSH value is pinned to a constant.

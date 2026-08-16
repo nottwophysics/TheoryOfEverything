@@ -296,7 +296,7 @@ python main.py --experiment 11
 
 **What it does**: Creates Bell states, tests CHSH inequality, demonstrates entanglement monogamy.
 
-**Key number**: CHSH S = -2.828 (= -2√2), violating the classical bound of 2.
+**Key number**: CHSH S = +2.828 (= +2√2) on |Φ+⟩, violating the classical bound of 2. The module consumes the state it is given: a separable |00⟩ scores 1.414 and does not violate.
 
 **What it teaches**: Bell's theorem proves reality is non-local. There are no "hidden separations." Entangled particles are not two things that communicate — they are ONE thing appearing as two. This is Advaita at the quantum level.
 

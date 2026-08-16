@@ -425,7 +425,7 @@ class AdvaitaInterpretation(Interpretation):
                 "mechanism": "Axiom A1 (consciousness is one) → entanglement is default",
                 "advantage": "Entanglement is not mysterious — it is the quantum signature of non-duality. "
                              "Non-locality is expected, not problematic.",
-                "demonstration": "Experiment 11: CHSH S = -2.828, Bell violation confirmed",
+                "demonstration": "Experiment 11: CHSH S = +2.828 on the supplied state, Bell violation",
             },
             "P5_delayed_choice": {
                 "answer": "The particle has no trajectory independent of observation (same as Copenhagen). "

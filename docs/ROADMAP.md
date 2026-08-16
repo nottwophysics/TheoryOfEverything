@@ -75,7 +75,7 @@ This connects directly to cutting-edge physics (ER=EPR, holographic principle, q
 **Current status:**
 - ✅ `quantum/measurement.py`: Maya as decoherence — total state pure, reduced state mixed
 - ⚠️ `gravity/holographic.py`: toy — RT entropy is identically 0 (no subsystem structure to trace over); see module review note
-- ⚠️ `quantum/entanglement.py`: Bell CHSH value S = 2√2 — analytic textbook value; the demo consumes no quantum state (illustrative)
+- `quantum/entanglement.py`: Bell CHSH S = +2√2 computed **on the supplied state** (rewritten 2026-08-15; separable and singlet controls included). Standard QM on a chosen state — illustrates Tsirelson's bound, not an experimental test (illustrative)
 - ✅ `quantum/tensor_network.py`: REIMPLEMENTED 2026-08-15 — real binary MERA (χ=2, 16 sites); tensors verified unitary/isometric and shown to affect the state; RT-type bound computed on the actual state (Experiment 19)
 - ✅ `quantum/error_correction.py`: REIMPLEMENTED 2026-08-15 — genuine [[5,1,3]] code; erasure threshold 2/5 (40%), any 3/5 reconstructs, 3-erasure provably unrecoverable (Experiment 21)
 
@@ -190,7 +190,7 @@ No physics ToE addresses why there is **experience** at all. This framework star
 ### Milestone 0: Automated Test Suite ✅ COMPLETE
 - 424 tests across 26 test files covering all modules
 - Validates mathematical properties (normalization, Hermiticity, unitarity)
-- Validates physical results (Bell CHSH value, Gleason conditions, honest Newton NON-recovery)
+- Validates physical results (Bell CHSH value on the supplied state, Gleason conditions, Newton recovery to 3e-16 via Verlinde's derivation)
 - Validates framework invariants (singleton, non-duality, substrate preservation)
 - Test isolation via Brahman singleton reset per test
 - Configuration in `pyproject.toml`; run with `pytest tests/ -v`
