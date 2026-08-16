@@ -374,7 +374,14 @@ correspondence is the motivation for the demo, not its output. This is Advaita e
 - Advaita independent: **4 axioms** (Born rule is theorem from A2)
 - Reduction: **7 → 4 (3 fewer axioms)**
 
-**Significance**: This is the framework's first mathematically rigorous result. Gleason's theorem (1957) is a proven theorem of mathematics. The verification is computational verification of mathematical facts. The axiom reduction is concrete and publishable.
+**Significance**: Two things must be kept apart here, and this section used to
+run them together. **Gleason's theorem (1957) is established mathematics** and is
+illustrated faithfully by this module — that part is solid. **The "7 → 4"
+reduction is not a theorem**: it is arithmetic on the framework's own hand-entered
+enumeration of its axioms against Copenhagen's, and the module says so at runtime
+("hand-entered integers; their difference is arithmetic, not a theorem …a
+philosophical/organisational claim, not a mathematical result established by this
+module"). Gleason's theorem (1957) is a proven theorem of mathematics. The verification is computational verification of mathematical facts. The axiom reduction is concrete and publishable.
 
 ---
 
@@ -841,7 +848,7 @@ than take the near-match as evidence of a derivation.
 
 | Metric | Value | Significance | Status |
 |--------|-------|-------------|--------|
-| **Axiom reduction** | **7 → 4** | **Born rule is theorem via Gleason** | **Proven** |
+| Axiom reduction | 7 → 4 | Born rule is a theorem via Gleason; the count is the framework's own enumeration | **Established theorem (Gleason 1957), numerically illustrated; the 7→4 count is the framework's own axiom bookkeeping, not a derived result** |
 | **Fine structure 1/α** | **137.031 (0.003%)** | **163-26+π/100 via Heegner numbers** | **Numerology (fails hold-out, Exp 31)** |
 | **Look-elsewhere on 1/α** | **whole ranges covered at 1e-4** | **the near-match is expected by chance, not a law** | **Demonstrated (Exp 31)** |
 | **IIT conjecture Φ ≤ S** | **falsified (validated PyPhi Φ, N=216, ordering-audit-corrected)** | **50 of 51 nonzero-Φ systems violate it; Φ (≤4.0 bits) not capped by bipartition S (≤0.83). Raw Φ–S correlation (r≈+0.64) is a connectivity confound (partial r≈−0.07, p=0.29) — nothing survives** | **Falsified** |

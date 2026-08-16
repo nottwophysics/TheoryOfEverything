@@ -38,7 +38,7 @@ The project is:
 - **31 experiments** — each demonstrating a specific concept with quantitative results
 - **7 visualizations** — publication-quality plots
 - **1 mathematically rigorous result** — the Born rule derived via Gleason's theorem
-- **5 testable predictions** and **5 falsification criteria** — real science
+- **5 compatible physical programmes** (P1–P5 — none entailed by the framework's axioms; see docs/PREDICTIONS.md) and **5 falsification criteria**
 - **Honest about its limitations** — explicit about what is proven vs. aspirational
 
 It is NOT:
@@ -378,7 +378,13 @@ python main.py --experiment 18
 - Dim-3+ Kochen-Specker: **confirmed** (hidden variables impossible)
 - **Axiom reduction: Copenhagen 7 → Advaita 4 independent axioms**
 
-**Why this matters**: This is not a philosophical argument. Gleason's theorem is a proven theorem of mathematics (1957). The verification that the Brahman Hilbert space satisfies its conditions is computational verification of mathematical facts. The axiom reduction is a concrete, publishable result.
+**Why this matters — and what it is not.** Gleason's theorem is a proven theorem
+of mathematics (1957), and verifying that this Hilbert space satisfies its
+conditions is a real computation. But the **7 → 4 axiom count is a philosophical
+and organisational claim**, not a mathematical one: the two figures are
+hand-entered enumerations of each framework's own axioms, so their difference is
+arithmetic. The module states this in its own output. Do not read the reduction
+as a theorem. The verification that the Brahman Hilbert space satisfies its conditions is computational verification of mathematical facts. The axiom reduction is a concrete, publishable result.
 
 ---
 

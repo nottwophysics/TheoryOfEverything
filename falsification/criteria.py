@@ -188,11 +188,18 @@ class FalsificationCriteria:
             },
             "P5_HOLOGRAPHIC_NOISE_EXCLUDED": {
                 "claim": "P5: correlated holographic noise in interferometers",
-                "verdict": "Ruled out at the encoded (Hogan-scale) amplitude by "
-                           "the Fermilab Holometer (2015-2016), which reached the "
-                           "required sensitivity and found no signal.",
-                "disposition": "P5 cannot count as a live novel prediction at "
-                               "that amplitude; see docs/PREDICTIONS.md.",
+                "verdict": "Constrained by the Fermilab Holometer (2015-2016), "
+                           "which searched for this class of holographic noise "
+                           "and reported no signal. NOT established as excluded "
+                           "here: that is a quantitative claim requiring a "
+                           "comparison of the predicted ASD against the "
+                           "Holometer's published sensitivity, and neither the "
+                           "comparison nor a citation to the experimental paper "
+                           "is in this repository.",
+                "disposition": "P5 cannot count as a live novel prediction of "
+                               "this framework -- but see docs/PREDICTIONS.md: "
+                               "it was never entailed by A1-A4 in the first "
+                               "place.",
             },
         }
 

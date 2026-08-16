@@ -730,7 +730,7 @@ The framework's most rigorous module. Verifies Gleason's theorem applies to the 
 | `.verify_conditions(state)` | Verify all 4 Gleason conditions: C1 (dim≥3), C2 (non-negativity, 500 tests), C3 (additivity, 200 tests), C4 (normalization). |
 | `.demonstrate_uniqueness(state)` | Test Born rule vs alternatives (amplitude, quartic). Born: 0/1800 violations. Alternatives: 1800/1800 violations. |
 | `.demonstrate_dim2_exception()` | Show dim=2 allows non-Born measures (qubits CAN have hidden variables). Dim≥3: Kochen-Specker fails 25.6%. |
-| `.axiom_reduction_proof()` | Full proof chain: Sat-Chit-Ananda → Hilbert space → Gleason → Born rule → axiom reduction 7→4. |
+| `.axiom_reduction_proof()` | Chain: Sat-Chit-Ananda → Hilbert space → Gleason → Born rule → the framework's 7→4 axiom count. The Gleason step is established mathematics; the final count is hand-entered bookkeeping, and the method's own output says so. Not a proof of the reduction. |
 | `.full_demonstration()` | Run all four demonstrations. |
 
 **Key result**: Copenhagen has 7 axioms. Advaita has 4 independent axioms (Born rule is a theorem, not an axiom).
@@ -842,7 +842,7 @@ Companion technical note: [`docs/GLEASON_PROBABILITY_GAP.md`](GLEASON_PROBABILIT
 
 ---
 
-### `predictions/testable.py` — 5 Testable Predictions
+### `predictions/testable.py` — 5 Compatible Physical Programmes (P1–P5)
 
 **Class: `TestablePredictions`**
 

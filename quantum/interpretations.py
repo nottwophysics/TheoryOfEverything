@@ -487,7 +487,7 @@ class AdvaitaInterpretation(Interpretation):
             "P2: Gravitational decoherence mass threshold at ~10⁹-10¹² amu (testable 5-15 yr)",
             "P3: Vacuum has measurable entanglement structure scaling as area law (testable 5-15 yr)",
             "P4: Conscious observation has a specific decoherence signature distinct from automated detection (testable 20+ yr)",
-            "P5: Holographic noise in interferometers — EXCLUDED at the stated amplitude by the Fermilab Holometer (2015-2016)",
+            "P5: Holographic noise in interferometers — CONSTRAINED by the Fermilab Holometer (2015-2016), which reported no signal. Exclusion at a stated amplitude would require a sensitivity comparison this repo does not contain.",
         ]
 
     def demonstrate_measurement_resolution(self) -> dict:

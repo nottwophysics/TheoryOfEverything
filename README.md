@@ -22,7 +22,7 @@ Its two most defensible products, honestly stated, are both negative results: a 
 
 > **Brahman (pure consciousness) is the sole reality. The physical universe — spacetime, particles, forces, constants — is an appearance (Maya) within that consciousness. The laws of physics are regularities in the appearance. Liberation (Moksha) is the recognition that the appearance was never separate from its source.**
 
-This thesis aims to be testable. The framework states **5 predictions** (P1–P5) and **5 falsification criteria** (F1–F5) — and records outcomes against itself: the Φ ≤ S conjecture has been **falsified** by the project's own validated retest, and P5's holographic noise was **excluded** at the stated amplitude by the Fermilab Holometer (2015–2016). If further predictions fail, the physics component is wrong. See [docs/PREDICTIONS.md](docs/PREDICTIONS.md) for the full scorecard.
+This thesis aims to be testable, and is honest about how far that reaches: **it makes no novel physical predictions of its own, by design** — the accompanying paper says so, and an interpretation of quantum mechanics operationally equivalent to Everett cannot. What the repository lists as P1–P5 are **physical programmes this interpretation is compatible with**, none entailed by its axioms (see [docs/PREDICTIONS.md](docs/PREDICTIONS.md)). It also states **5 falsification criteria** (F1–F5) — and records outcomes against itself: the Φ ≤ S conjecture has been **falsified** by the project's own validated retest, and P5's holographic noise is **constrained** by the Fermilab Holometer (2015–2016), which reported no signal — *constrained* rather than *excluded*, because the amplitude comparison that would establish exclusion is not in this repository and the experimental paper is uncited. If these programmes fail, that refutes the programmes; on the framework itself it would change nothing, which is the point of the reclassification. See [docs/PREDICTIONS.md](docs/PREDICTIONS.md) for the full scorecard.
 
 ---
 
@@ -86,7 +86,7 @@ For a guided walkthrough of the project, see [docs/GETTING_STARTED.md](docs/GETT
 | **Standard Model** | `particles/` | Particles and forces from Maya's symmetry breaking |
 | **Physical Constants** | `constants/` | Koide verification; cosmological-constant comparison (published values restated, not derived) |
 | **Numerology (self-audit)** | `numerology/` | Fine-structure formula search (0.003% error) + hold-out cross-validation + look-elsewhere analysis — verdict: numerology |
-| **Predictions** | `predictions/` | 5 testable predictions + IIT-entanglement bridge |
+| **Predictions** | `predictions/` | 5 compatible physical programmes (P1–P5; none entailed by the axioms) + IIT-entanglement bridge |
 | **Falsification** | `falsification/` | 5 explicit falsification criteria + experimental designs |
 | **Visualizations** | `visualizations/` | 7 visual plots of Advaita concepts |
 | **Experiments** | `simulations/`, `main.py` | 31 runnable experiments demonstrating the framework |
@@ -133,7 +133,7 @@ These claims have been *proposed to parallel* structures in modern physics; [doc
 | 13 | **Holographic Principle** | Bulk (world) is projection of boundary (consciousness) |
 | 14 | **Particles from Maya** | Symmetry breaking; 3 generations = 3 gunas |
 | 15 | **Physical Constants** | Koide formula verified; Λ consistent with consciousness entropy |
-| 16 | **Predictions & Falsification** | 5 testable predictions, 5 falsification criteria |
+| 16 | **Predictions & Falsification** | 5 compatible programmes (not entailed predictions), 5 falsification criteria |
 
 ### Tier 3 — Formal Comparisons & Frontier Explorations (17–23)
 

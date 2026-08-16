@@ -11,8 +11,21 @@ import numpy as np
 
 class TestablePredictions:
     """
-    Novel predictions that distinguish the consciousness-first
-    framework from standard physics.
+    Physical programmes this interpretation is compatible with.
+
+    RECLASSIFIED 2026-08-16. These were presented as "novel predictions that
+    distinguish the consciousness-first framework from standard physics". They
+    do not distinguish it: none of P1-P5 is entailed by axioms A1-A4, each
+    belongs to some other research programme, and each is equally consistent
+    with the negation of the consciousness-primitive thesis. P3 is established
+    physics. P5 is already constrained. P4 is forbidden by A1+A3 and by the
+    operational equivalence the paper asserts, so a POSITIVE result would count
+    against the framework rather than for it. P2 implements the Diosi-Penrose
+    COLLAPSE time, which axiom A3 explicitly denies.
+
+    The accompanying paper already takes the honest line: the interpretation
+    makes no novel physical predictions of its own, by design, and its case
+    rests on the section-2 result and on conceptual virtues.
     """
 
     def prediction_1_entanglement_gravity(self) -> dict:

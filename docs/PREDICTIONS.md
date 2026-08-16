@@ -4,16 +4,51 @@
 
 ---
 
-## Preamble: Scientific Integrity
+## Preamble: Scientific Integrity — and what P1–P5 actually are
 
-A theory that cannot be falsified is not science. This framework makes explicit predictions and states explicit conditions under which it would be **wrong**. The metaphysical axioms (Brahman exists, Maya is not ultimately real) are not empirically testable — they are philosophical commitments. But the **physical predictions derived from those axioms** are fully testable.
+> ### ⚠️ Reclassified 2026-08-16: these are not predictions OF this framework
+>
+> **Not one of P1–P5 is entailed by the axioms A1–A4.** Each is a prediction of
+> some other research programme that this interpretation declares compatibility
+> with, and every one of them is equally consistent with the *negation* of the
+> consciousness-primitive thesis:
+>
+> | | What it actually is | If it failed, this framework gives up… |
+> |---|---|---|
+> | **P1** | Ryu–Takayanagi / Van Raamsdonk emergent gravity | nothing — §4.2 declines to undertake spacetime emergence |
+> | **P2** | The Diósi–Penrose **collapse** model | nothing — and see the tension note below |
+> | **P3** | The standard QFT vacuum area law (Bombelli 1986; Srednicki 1993) | nothing — it is established physics, true on any interpretation |
+> | **P4** | A consciousness-dependent decoherence difference | nothing — **A1+A3 and the operational equivalence of §6.1 forbid it**, so a *positive* result would refute the framework |
+> | **P5** | Hogan holographic noise | nothing — and it is already constrained, which changed nothing else |
+>
+> **⚠️ P2 is in direct tension with axiom A3.** P2 implements the Diósi–Penrose
+> *collapse* time, τ = ħ/(Gm²/R). A3 states: *"The state evolves unitarily…
+> there is no collapse. The wavefunction is never reduced by measurement."*
+> A3 is not being softened to accommodate P2 — it is load-bearing, since the
+> paper's §6.1 says the Everett-equivalence "is secured by A3". P2 is therefore
+> recorded as a compatible programme this framework does **not** entail and
+> whose confirmation would count *against* A3, not for the framework.
+>
+> **The honest position, which the accompanying paper already takes:** this
+> interpretation makes **no novel physical predictions of its own, by design**.
+> §6.1: *"its case rests on the result and on conceptual virtues, not on novel
+> predictions."* That is a respectable position for an interpretation of quantum
+> mechanics; advertising five predictions it does not entail was not.
+>
+> The falsification criteria F1–F5 below carry a parallel problem and are
+> annotated in place.
 
-If the predictions fail, the physics is wrong.
-If the falsifiers are confirmed, the metaphysics must be revised.
+A theory that cannot be falsified is not science. This framework states explicit conditions under which it would be **wrong**. The metaphysical axioms (Brahman exists, Maya is not ultimately real) are not empirically testable — they are philosophical commitments. But the **physical predictions derived from those axioms** are fully testable.
+
+If the falsifiers are confirmed, the metaphysics must be revised. The
+programmes below failing would *not* refute this framework — which is exactly
+why they are no longer presented as its predictions.
 
 ---
 
-## 5 Testable Predictions (P1–P5)
+## P1–P5: Physical Programmes This Interpretation Is Compatible With
+
+*(Formerly "5 Testable Predictions". None is entailed by A1–A4 — see the preamble.)*
 
 ---
 
@@ -141,7 +176,20 @@ this analysis.
 2. Holometer experiment at Fermilab (already running)
 3. Look for correlations that cannot be explained by standard noise sources
 
-**Current status**: **Excluded at the Hogan-scale amplitude.** The Fermilab Holometer (2015–2016) reached the sensitivity required for this class of holographic noise and found none. P5 as originally stated is therefore not a live prediction; any surviving version requires a quantitatively different noise model, which this repository does not currently provide.
+**Current status**: **Constrained by the Fermilab Holometer (2015–2016)**, which
+searched for correlated holographic noise of this class and reported no signal.
+
+> **Why "constrained" and not "excluded" (2026-08-16).** Exclusion *at a stated
+> amplitude* is a quantitative claim: it requires comparing this framework's
+> predicted ASD (9.29e-21 m/√Hz for a 40 m arm, computed in
+> `predictions/testable.py`) against the Holometer's published
+> displacement-noise sensitivity. **That comparison is not in this repository,
+> and the experimental paper is cited nowhere** — the only Holometer-adjacent
+> reference here is Hogan (2008), which is the *theory* paper. Until the
+> comparison is done and cited, "constrained" is what the evidence supports.
+> Note this correction runs *against* the framework's interest: "excluded" reads
+> as a failed prediction. It is being softened because it is unsourced, not
+> because it is unwelcome. P5 as originally stated is therefore not a live prediction; any surviving version requires a quantitatively different noise model, which this repository does not currently provide.
 
 **Distinguishes from**: Standard physics (smooth spacetime at all scales) predicts no holographic noise — and the null result to date favors it.
 
@@ -285,10 +333,10 @@ Only the Gleason-derived rows are mathematics; their theorems are established in
 | P2 | Decoherence mass threshold | Approaching testability; multi-channel calculator built | Open |
 | P3 | Vacuum entanglement structure | Partially tested (Casimir) | Consistent |
 | P4 | Consciousness decoherence | Not yet testable | Open |
-| P5 | Holographic noise | Tested (Holometer, 2015–2016) | **Excluded at the predicted amplitude** — not live as stated |
+| P5 | Holographic noise | Searched (Holometer, 2015–2016); no signal reported | **Constrained** — the amplitude comparison is not in this repo and the experimental paper is uncited, so exclusion is not established here |
 | F1 | Consciousness from computation | No example yet (criterion not practically triggerable today) | Framework survives |
 | F2 | Local hidden variables | Ruled out (Bell tests) | **Framework confirmed** |
-| F3 | Spacetime fundamental | Holographic-noise route excluded (Holometer); other routes untested | Open |
+| F3 | Spacetime fundamental | Holographic-noise route constrained (Holometer); other routes untested | Open |
 | F4 | No gravitational decoherence | Not tested (~8 orders of magnitude away) | Open |
 | F5 | Constants arbitrary | Koide holds (verified, not derived); α "derivation" fails hold-out | Mixed |
 

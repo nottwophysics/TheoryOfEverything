@@ -153,7 +153,7 @@ No physics ToE addresses why there is **experience** at all. This framework star
 
 | Item | Claim | Actual Status | Type |
 |------|-------|---------------|------|
-| Gleason axiom reduction | Born rule is theorem → 7→4 axioms | **PROVEN** | Mathematical fact |
+| Gleason axiom reduction | Born rule is a theorem via Gleason; 7→4 is the framework's own axiom enumeration | **Established theorem (Gleason 1957), numerically illustrated; the 7→4 count is the framework's own axiom bookkeeping, not a derived result** | Gleason is established mathematics; the count is bookkeeping |
 | Born rule uniqueness | Only consistent measure in dim≥3 | **PROVEN** | Gleason's theorem |
 | 2+1D Einstein equations | R_entropy ∝ T_00 on discrete manifold | **WITHDRAWN — circular** (entropy defined ∝ T₀₀) | Illustrates Jacobson's logic only |
 | MERA tensor network | S(interval) ≤ ln(χ)·\|min cut\| (informative at 1 of 3 default intervals); I(L:R) → 0 in the product limit; the λ-monotonicity is grid- and seed-specific | **REIMPLEMENTED** (computed on a real state) | Reimplemented 2026-08-15 |
@@ -199,7 +199,7 @@ No physics ToE addresses why there is **experience** at all. This framework star
 - ~~Formalize Experiment 10 as a paper~~
 - ~~Compare quantitatively with Copenhagen, Many-Worlds, and Pilot Wave~~
 - ~~Show that the Advaitic interpretation requires fewer postulates~~
-- **Done**: Experiments 17 (formal comparison) and 18 (Gleason proof) accomplish all three goals. The axiom reduction 7→4 is a concrete result. Additionally:
+- **Done**: Experiments 17 (formal comparison) and 18 (Gleason verification) accomplish all three goals — with the caveat that the 7→4 axiom reduction is the framework's own bookkeeping rather than a derived result; Gleason's theorem itself is established mathematics, faithfully illustrated. Additionally:
   - Experiment 24 sets out the operational equivalence with Everett — an analytic consequence of sharing the formalism, not a test result
   - Experiment 25 proves perspectival asymmetry is exact (10⁻¹⁶) across all cases
   - Experiment 26 demonstrates observer centrality (the paper's hidden premise)

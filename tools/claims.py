@@ -175,6 +175,37 @@ RETIRED = [
         "banned": [],
         "paraphrases": [r"in the correct number of spatial dimensions"],
     },
+    {
+        "name": "axiom_reduction_proven",
+        "why": "Gleason's theorem is established mathematics and is illustrated "
+               "faithfully; the 7->4 COUNT is arithmetic on hand-entered "
+               "enumerations, as the module states at runtime. Not a theorem.",
+        "banned": [r"\*\*PROVEN\*\* \| Mathematical fact",
+                   r"first mathematically rigorous result"],
+        "paraphrases": [r"axiom reduction[^.]{0,40}is a concrete result",
+                        r"This is not a philosophical argument"],
+    },
+    {
+        "name": "p5_excluded",
+        "why": "Exclusion at a stated amplitude needs a comparison against the "
+               "Holometer's published sensitivity. That comparison is not in "
+               "the repo and the experimental paper is uncited. Downgraded to "
+               "'constrained' 2026-08-16.",
+        "banned": [r"EXCLUDED at the stated amplitude",
+                   r"Excluded at the Hogan-scale amplitude",
+                   r"Excluded at the predicted amplitude"],
+        "paraphrases": [r"holographic noise was \*\*excluded\*\*"],
+    },
+    {
+        "name": "five_novel_predictions",
+        "why": "None of P1-P5 is entailed by A1-A4; each belongs to another "
+               "programme and is consistent with the thesis's negation. "
+               "Reclassified 2026-08-16 as compatible programmes.",
+        "banned": [r"5 Testable Predictions",
+                   r"Novel predictions that distinguish the consciousness-first"],
+        "paraphrases": [r"The framework states \*\*5 predictions\*\*",
+                        r"makes 5 (novel|testable) predictions"],
+    },
 ]
 
 # A paragraph containing any of these is exempt: it is a note recording a
@@ -193,4 +224,6 @@ EXEMPT_MARKERS = [
     # to say "replace this" is not asserting it.
     "should be replaced", "current wording", "what the paper says",
     "recommend", "off-message",
+    # "Formerly X" / "reclassified" are retirement notes naming their own claim.
+    "formerly", "reclassified", "no longer presented",
 ]
