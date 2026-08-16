@@ -1,6 +1,13 @@
 # The Philosophical Foundation
 
-## Advaita Vedanta as a Metaphysical Theory of Everything
+## Advaita Vedānta as a Metaphysical Framework, and How It Maps to Physics
+
+> **Scope note.** This document sets out a *proposed* correspondence. It is not
+> a derivation, and the mapping does not constrain physics: on the project's own
+> assessment no entry here generates a prediction or a constraint that standard
+> physics does not already supply, and the accompanying paper treats the Sanskrit
+> vocabulary as **eliminable without loss**. Read the entries as names for
+> structural roles, not as claims that the physics follows from the doctrine.
 
 ---
 
@@ -103,7 +110,7 @@ This is Atman. This is Brahman.
 
 ---
 
-## 2. Why Advaita Vedanta Is a Theory of Everything
+## 2. In What Sense Advaita Vedānta Is a Candidate Total Framework
 
 ### 2.1 The Scope Problem
 
@@ -240,7 +247,16 @@ Mathematically:
 
 The "collapse" is not a physical event. It is a **perspectival artifact** of looking at only part of a non-dual whole. This is Maya operating at the quantum level.
 
-### 3.7 The Cosmological Constant — Resolved
+### 3.7 The Cosmological Constant — A Consistency Check, Not a Derivation
+
+> **⚠️ This is circular as an argument for the framework.** `constants/cosmological.py`
+> hardcodes `S_universe = 10 ** 122` and compares `1/S` against a hardcoded
+> `LAMBDA_PLANCK = 2.888e-122`. The 10¹²² figure *is* the de Sitter horizon
+> entropy computed **from** the observed Λ, so Λ ∝ 1/S is an identity inverted
+> and reported as agreement; it cannot come out otherwise. The module's own
+> caveats say as much: "S_universe ≈ 10¹²² is an empirical input, not derived";
+> "the proportionality is hypothesized, not proven"; "this is an
+> order-of-magnitude consistency check, not a derivation.
 
 QFT predicts Λ ≈ 10¹²⁰ × observed value. This is the worst prediction in all of physics.
 
@@ -326,7 +342,11 @@ Several major physicists have independently arrived at positions consonant with 
 ### What This Framework Does Well
 - Provides a unified ontology (one substance, not many)
 - Naturally addresses the hard problem of consciousness
-- Dissolves the measurement problem without new postulates
+- Reframes the measurement problem without new postulates — note the paper is
+  more careful than this section has been: it says the view "does **not** solve
+  the measurement problem (it gives an account of what the appearance of definite
+  outcomes consists in)". Pure-global/mixed-reduced is a theorem of the formalism
+  shared by every no-collapse interpretation, so it is not evidence for this one
 - Resolves the cosmological constant problem (order of magnitude)
 - Makes testable predictions (P1–P5)
 - States falsification criteria (F1–F5)

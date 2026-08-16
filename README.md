@@ -1,10 +1,18 @@
-# Theory of Everything
+# A Computational Exploration of Consciousness-First Physics
 
-## A Computational Framework for Advaita Vedanta as a Theory of Everything
+**Companion code to** *The Cardinality of Experience Is Underdetermined by the Quantum State: A Constructive Case for a Consciousness-Primitive Interpretation* ([10.5281/zenodo.21007975](https://doi.org/10.5281/zenodo.21007975)) — together with a wider, largely exploratory modelling of **Advaita Vedānta**'s non-dual metaphysics alongside modern physics.
 
-This project models the metaphysical framework of **Advaita Vedanta** — the non-dual philosophy declaring that consciousness (Brahman) is the sole reality — and bridges it to modern physics. It computationally **explores** how quantum mechanics, general relativity, the Standard Model, and the physical constants of nature might be understood as emergent properties of a single consciousness field. Most of the physics modules are labeled toy models or illustrations, and the status labels below say which is which.
+> ### Read this before the results table
+>
+> **This is an exploration, not a finished physical theory**, and the repository name it long carried ("Theory of Everything") overstated it. Most physics modules here are toy models or illustrations; the status labels say which is which, and several are **withdrawn**.
+>
+> **The work most worth your attention is where this project refuted itself.** Its own validated retest **falsified** its Φ ≤ S conjecture; its own look-elsewhere analysis demoted its 0.003% fine-structure formula to **numerology**; a 2026 adversarial review found the Einstein-equation demos **circular by construction**, and four withdrawn demos were then rebuilt against criteria frozen in an earlier commit. Those retractions are load-bearing, not disclaimers.
+>
+> **If you arrived from the paper**, its computational support is four modules — [`quantum/unity_of_experience.py`](quantum/unity_of_experience.py), [`quantum/perspectival_asymmetry.py`](quantum/perspectival_asymmetry.py), [`quantum/gleason.py`](quantum/gleason.py) and [`quantum/operational_equivalence.py`](quantum/operational_equivalence.py) — plus the §8 reproducibility package in [`reproducibility/phi_s/`](reproducibility/phi_s/). Each carries an in-code note on exactly what it does and does not establish; several state plainly that their result is a theorem of the formalism and therefore cannot favour one interpretation over another. The rest of the repository is not cited by the paper.
 
-Its most defensible products, honestly stated: the Gleason-based axiom bookkeeping (Born rule as a theorem rather than an axiom — established mathematics, numerically illustrated here); a **validated falsification of its own Φ ≤ S conjecture** (canonical PyPhi retest); and a self-critical look-elsewhere analysis demoting its own 0.003% fine-structure formula to **numerology**. The Einstein-equation recovery demos (1D/2D/3D) were found by a 2026 adversarial code review to be **circular by construction** (the "entropy" they correlate is defined from the energy density) — they illustrate the Jacobson logic; they do not demonstrate it.
+This project models the metaphysical framework of Advaita Vedānta — the non-dual philosophy declaring that consciousness (Brahman) is the sole reality — and explores how quantum mechanics, general relativity, the Standard Model, and the physical constants of nature *might* be understood as emergent properties of a single consciousness field.
+
+Its two most defensible products, honestly stated, are both negative results: a **validated falsification of its own Φ ≤ S conjecture** (canonical PyPhi retest), and a self-critical look-elsewhere analysis demoting its own 0.003% fine-structure formula to **numerology**. The Gleason work is sometimes listed beside these; it should not be. Gleason's theorem is established mathematics and is illustrated faithfully here, but the "7 → 4 axiom reduction" drawn from it is *arithmetic on hand-entered integers* — the module says so at runtime — and belongs in a different category from a computed result. The Einstein-equation recovery demos (1D/2D/3D) were found by a 2026 adversarial code review to be **circular by construction** (the "entropy" they correlate is defined from the energy density) — they illustrate the Jacobson logic; they do not demonstrate it.
 
 **Reimplementation (2026-08-15).** Four demos the review withdrew were rebuilt to compute what they claim, against acceptance criteria [pre-registered before implementation](REAL_PHYSICS_REIMPLEMENTATION_MEMO.md): a genuine **[[5,1,3]] stabilizer code** (all 15 single-qubit Paulis corrected; erasure threshold **2/5 = 40%**, reconstruction from any **3/5 = 60%** — the retired "80%" was not merely unsupported but impossible under no-cloning); a **real MERA** whose tensors are contracted into an explicit 16-site state (perturbing any layer moves the state — the retired version scored exactly 0 on that control); **Verlinde's actual derivation**, reproducing GMm/r² to 3e-16; and, for gravity, the statements that are actually true in 2D — **Gauss–Bonnet** on the Delaunay mesh and the **entanglement first law** δS = δ⟨K⟩ (log-log slope 2.02). 22 of 23 frozen criteria passed; **the one that failed is committed as a visible `xfail`, not renegotiated.**
 
@@ -95,7 +103,7 @@ Advaita Vedanta (Sanskrit: "non-dual end of the Vedas") is a 3000-year-old metap
 3. **The individual self (Atman) IS Brahman** — not "part of" or "connected to" but literally identical
 4. **Liberation (Moksha)** is recognizing what was always the case — not gaining something new
 
-These claims map directly to structures in modern physics. See [docs/PHILOSOPHY.md](docs/PHILOSOPHY.md) for the complete mapping.
+These claims have been *proposed to parallel* structures in modern physics; [docs/PHILOSOPHY.md](docs/PHILOSOPHY.md) sets out the mapping in full. Read it with the accompanying paper's own verdict in view: the Sanskrit vocabulary names roles the framework defines independently, and is **eliminable everywhere without loss** — it is illuminating, not load-bearing. Nothing in the physics depends on it, and the mapping generates no constraint that standard physics does not already supply.
 
 ---
 
@@ -231,6 +239,4 @@ Note on provenance: substantial portions of this repository were written with AI
 
 ---
 
-*Tat Tvam Asi — That Thou Art.*
-
-*The consciousness reading these words IS the consciousness described by this framework.*
+*Tat tvam asi* — "that thou art." The Chāndogya Upaniṣad's identity statement, and the phrase this project borrows for its structural-identity claim (§4.3 of the paper). It is quoted here as the object of study, not as a conclusion the code establishes.

@@ -2,7 +2,7 @@
 
 ## A Complete Guide for Understanding and Exploring This Project
 
-This guide is for anyone who wants to understand the Theory of Everything project — whether you come from physics, philosophy, computer science, or pure curiosity. It walks you through every layer of the framework, explains what each part does and why, and tells you how to run and explore it yourself.
+This guide is for anyone who wants to understand this project — whether you come from physics, philosophy, computer science, or pure curiosity. It walks you through every layer of the framework, explains what each part does and why, and tells you how to run and explore it yourself.
 
 ---
 
@@ -29,7 +29,9 @@ This guide is for anyone who wants to understand the Theory of Everything projec
 
 This project asks: **what if consciousness is not produced by the brain, but is the fundamental reality from which physics itself emerges?**
 
-This is not a new idea. It is the central claim of **Advaita Vedanta**, a 3000-year-old Indian philosophical system. What IS new is modeling this claim computationally and showing that the structures of modern physics — quantum mechanics, gravity, particles, constants — can be understood as emergent properties of a consciousness field.
+This is not a new idea. It is the central claim of **Advaita Vedānta**, a 3000-year-old Indian philosophical system. What is new here is modelling that claim computationally, and *asking* whether structures of modern physics — quantum mechanics, gravity, particles, constants — can be read as emergent properties of a consciousness field.
+
+The honest answer this repository reached is: **mostly no, and it says so.** The strongest results are the ones that failed — a falsified conjecture, a fine-structure formula demoted to numerology by the project's own look-elsewhere test, and several demos withdrawn as circular. Treat what follows as an exploration with its own negative results attached, not a demonstration.
 
 The project is:
 - **A computational framework** — real Python code you can run

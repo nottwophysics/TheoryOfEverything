@@ -145,7 +145,12 @@ pytest tests/test_quantum.py -v    # Test quantum module only
 3. **Tat Tvam Asi**: Identity after removing upadhi = 0.787
 4. **Ayam Atma Brahma**: Four states (Waking/Dream/Deep Sleep/Turiya) analyzed through AUM
 
-**Teaching**: All four point to one truth: the consciousness reading these words IS Brahman. Not metaphorically. Literally.
+**What the doctrine claims**: the four mahāvākyas assert the identity of individual
+and universal consciousness — on the Advaitic reading, literally rather than
+metaphorically. That is the *claim being modelled*. The numbers above are
+properties of vectors this module constructs to stand for the doctrine's terms;
+they illustrate the claim's structure and establish nothing about whether it is
+true.
 
 ---
 

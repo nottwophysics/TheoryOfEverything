@@ -1,6 +1,14 @@
 # Roadmap
 
-## From Conceptual Framework to a Real Theory of Everything
+## From Conceptual Framework Toward Physics — and How Far That Is
+
+> **Distance check.** The gap named below is not a matter of remaining
+> engineering. On this project's own results, the fine-structure formula is
+> numerology, the Φ ≤ S conjecture is falsified, the Einstein-equation demos are
+> circular, and none of the five "predictions" is entailed by the framework's
+> axioms — each is a prediction of some other research programme this framework
+> declares compatibility with. Read the milestones as directions of travel, not
+> as a schedule.
 
 ---
 
