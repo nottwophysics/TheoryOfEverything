@@ -26,8 +26,26 @@ WHAT IS COMPUTED (all on explicit 32-dimensional statevectors):
   distance 1 — the entanglement-wedge/complementary-recovery structure of
   Almheiri-Dong-Harlow 2015 in its smallest exact instance).
 
+  ARGUMENT SCOPE (2026-08-16): trace distance 1 between the marginals of |0̄⟩
+  and |1̄⟩ certifies that the two LOGICAL BASIS STATES are perfectly
+  distinguishable on that subregion. That is the diagonal half of the
+  Knill-Laflamme condition, and it is NOT by itself reconstruction of an
+  arbitrary logical state. The reconstruction claim is carried by the
+  complement-erasure decoder implemented below, which recovers the full
+  logical qubit; the result is right, the trace-distance argument alone was
+  not sufficient to establish it.
+
 Honest headline: erasure threshold 2/5 (40%); reconstruction from any
 3/5 (60%) subregion. NOT 80% — that figure is retired.
+
+SCOPE (2026-08-16). Two caveats the headline does not carry:
+  * "Any 2-of-5 erasure is corrected exactly" is demonstrated for PAULI
+    errors; the decoder raises rather than decoding for anything else.
+  * 2/5 and 3/5 are not measured thresholds. They are d-1 and n-(d-1) for
+    the [[5,1,3]] stabiliser set hardcoded here, i.e. textbook properties of
+    any [[5,1,3]] code — only changing the code changes them. What the run
+    establishes is that THIS implementation is faithful to that code, which
+    is worth checking and is what the criteria asked for.
 
 WHAT IS INTERPRETATION (not computed): the Advaita reading. Bulk/logical =
 Brahman (protected information); boundary/physical = Maya (corruptible

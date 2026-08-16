@@ -299,7 +299,7 @@ Models spacetime as a Multiscale Entanglement Renormalization Ansatz where coars
 | `.perturbation_response(layer)` | Negative control: replacing a layer's tensors must move the state. |
 | `.interval_entropy(start, length)` | Exact von Neumann entropy of an interval of the constructed state. |
 | `.minimal_cut(start, length)` | Minimal cut on the real contraction graph (max-flow). |
-| `.rt_bound_check()` | Checks S(interval) ≤ ln(χ)·\|min cut\| on the actual state. |
+| `.rt_bound_check()` | Checks S(interval) ≤ ln(χ)·\|min cut\| on the actual state. Reports `bound_is_vacuous` per interval: at (0,2) and (0,4) the cut equals the length, so the bound is exactly the trivial S ≤ \|A\|·ln2 and tests nothing about the state; only (0,8) is informative. |
 | `.mutual_information_halves()` | I(L:R) as the entangling strength λ is varied to the product limit. |
 | `.full_demonstration()` | All of the above. |
 | `.full_demonstration()` | Run all four demonstrations. |
@@ -393,7 +393,7 @@ and `gravity/entanglement_geometry.py` (Experiment 20).
 | Method | Description |
 |--------|-------------|
 | `.entropic_force(mass, radius)` | F = T × dS/dr. Gravity as entropy gradient. |
-| `.recover_newton(mass)` | Verlinde derivation (reimplemented 2026-08-15): recovers F = GMm/r² to ~3e-16 relative; `newton_recovered` is True. Legacy broken route kept as `.screen_area_route_wrong()`. |
+| `.recover_newton(mass)` | Verlinde derivation (reimplemented 2026-08-15): recovers F = GMm/r² to ~3e-16 — an **algebraic** agreement (the constants cancel), and Route 1 presupposes a = GM/r² so it is F = ma by construction; only Route 2 derives the r-dependence. relative; `newton_recovered` is True. Legacy broken route kept as `.screen_area_route_wrong()`. |
 | `.black_hole_as_maximum_maya(mass)` | Schwarzschild radius, Bekenstein-Hawking entropy, Hawking temperature. Even maximum Maya eventually dissolves. |
 
 ---
@@ -886,7 +886,7 @@ See [docs/PREDICTIONS.md](PREDICTIONS.md) for full details on F1–F5.
 
 ---
 
-### `tests/` — 434 Automated Tests
+### `tests/` — 437 Automated Tests
 
 Every module above has a corresponding test file. Tests validate mathematical properties, physical results, and framework invariants. Run with `pytest tests/ -v`.
 

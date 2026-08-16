@@ -309,3 +309,44 @@ class TestFullDemonstration:
         assert demo["disconnection"]["final_below_1e-8"] is True
         # interpretive gloss must be labeled as interpretation, not result
         assert "Interpretation (not computed)" in demo["interpretation"]
+
+
+class TestRTBoundVacuityIsReported:
+    """
+    Phase 5 scope finding: at two of the three default intervals the
+    "RT-type bound" is exactly the trivial maximum-entropy bound.
+
+    Every boundary site hangs off one chi=2 bond, so min_cut <= |A| always.
+    Where cut == length, ln(chi)*|cut| reduces to S <= |A|*ln2, which no state
+    can violate. Only the length-8 row (cut 6 < 8) tests anything about the
+    constructed state, and the module must say so rather than presenting three
+    equally informative rows.
+    """
+
+    def test_two_of_three_default_intervals_are_vacuous(self):
+        from quantum.tensor_network import MERATensorNetwork
+        r = MERATensorNetwork().rt_bound_check()
+        flags = {(row["start"], row["length"]): row["bound_is_vacuous"]
+                 for row in r["intervals"]}
+        assert flags[(0, 2)] is True
+        assert flags[(0, 4)] is True
+        assert flags[(0, 8)] is False
+        assert r["n_vacuous"] == 2
+        assert r["non_vacuous_intervals"] == [(0, 8)]
+
+    def test_a_vacuous_row_is_exactly_the_max_entropy_bound(self):
+        import numpy as np
+        from quantum.tensor_network import MERATensorNetwork
+        r = MERATensorNetwork().rt_bound_check()
+        for row in r["intervals"]:
+            if row["bound_is_vacuous"]:
+                assert abs(row["bound"] - row["length"] * np.log(2)) < 1e-9, (
+                    "a row flagged vacuous is not in fact the trivial "
+                    "|A|*ln2 bound — the flag is mislabelling rows")
+
+    def test_disconnection_monotonicity_is_declared_grid_specific(self):
+        from quantum.tensor_network import disconnection_scan
+        d = disconnection_scan()
+        assert d["monotone_is_grid_and_seed_specific"] is True, (
+            "monotone_decreasing is a property of this grid and seed, not of "
+            "the network, and the returned dict must say so")

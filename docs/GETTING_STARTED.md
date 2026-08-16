@@ -404,7 +404,7 @@ Generates 7 PNG files in the `output/` directory:
 
 ## 10. Running the Tests
 
-The project includes a comprehensive test suite with **434 automated tests** covering every module. Tests validate mathematical properties (normalization, Hermiticity, unitarity), physical results (Bell violation, Gleason conditions, entropy bounds), and framework invariants (singleton behavior, non-duality, sublation).
+The project includes a comprehensive test suite with **437 automated tests** covering every module. Tests validate mathematical properties (normalization, Hermiticity, unitarity), physical results (Bell violation, Gleason conditions, entropy bounds), and framework invariants (singleton behavior, non-duality, sublation).
 
 ### Run All Tests
 
@@ -471,7 +471,7 @@ This project is honest about its status. Here is the complete picture:
 
 ### Reimplemented 2026-08-15 (now computed — see REAL_PHYSICS_REIMPLEMENTATION_MEMO.md)
 - QEC: real [[5,1,3]] code — all 15 single-qubit Paulis corrected; erasure threshold 2/5 (40%); any 3/5 subregion reconstructs; 3-erasure provably unrecoverable
-- MERA: real binary MERA — tensors verified and shown to move the state; S(interval) ≤ ln(χ)·|min cut| on the actual state; I(L:R) → 0 in the product limit
+- MERA: real binary MERA — tensors verified and shown to move the state; S(interval) ≤ ln(χ)·\|min cut| on the actual state; I(L:R) → 0 in the product limit
 - Entropic gravity: Verlinde's derivation in SI units — GMm/r² to 3e-16 (legacy broken route kept as a negative control)
 - NEW: Gauss–Bonnet on the Delaunay mesh (residual 5e-15) and the entanglement first law δS = δ⟨K⟩ (log-log slope 2.02)
 

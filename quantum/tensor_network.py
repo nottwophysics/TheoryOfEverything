@@ -409,7 +409,16 @@ class MERATensorNetwork:
         interval length is a BY-CONSTRUCTION property of the MERA graph
         (reported here as cut_by_length for inspection); it is NOT claimed
         as a computed result about the state. Only the inequality
-        S <= ln(chi)*|cut| checked below is the computed claim."""
+        S <= ln(chi)*|cut| checked below is the computed claim.
+
+        VACUITY (2026-08-16). At the default intervals the bound is not
+        equally informative. Every boundary site hangs off one chi=2 bond, so
+        min_cut <= |A| always; at (0,2) and (0,4) the cut equals the interval
+        length, and ln(chi)*|cut| is then EXACTLY the trivial maximum-entropy
+        bound S <= |A|*ln2, which no state can violate. Only the length-8 row
+        (cut 6 < 8) tests anything about this state. The per-interval
+        `bound_is_vacuous` flag below reports which is which; note start=0 is
+        the worst choice -- at starts 1, 3 and 7 the length-4 cut is 3."""
         ln_chi = float(np.log(self.bond_dim))
         rows = []
         for start, length in intervals:
@@ -424,10 +433,17 @@ class MERATensorNetwork:
                 "bound": bound,
                 "bound_holds": bool(S <= bound + 1e-9),
                 "saturation_ratio": float(S / bound) if bound > 0 else float("nan"),
+                # When the cut equals the interval length, ln(chi)*|cut| IS the
+                # trivial maximum-entropy bound S <= |A|*ln(2), which no state
+                # can violate -- the row then tests nothing about this state.
+                "bound_is_vacuous": bool(cut >= length),
             })
         return {
             "intervals": rows,
             "all_bounds_hold": bool(all(r["bound_holds"] for r in rows)),
+            "non_vacuous_intervals": [
+                (r["start"], r["length"]) for r in rows if not r["bound_is_vacuous"]],
+            "n_vacuous": int(sum(r["bound_is_vacuous"] for r in rows)),
             "computed_claim": (
                 "exact S(interval) of the constructed boundary state obeys "
                 "S <= ln(chi) * |minimal cut| for every checked interval"),
@@ -494,6 +510,15 @@ def disconnection_scan(lambdas=(1.0, 0.6, 0.35, 0.2, 0.1, 0.0),
                        num_sites: int = 16, bond_dim: int = 2,
                        seed: int = 42) -> dict:
     """B4: build the SAME seeded network at decreasing entangling strength
+
+    SCOPE (2026-08-16). `monotone_decreasing` is a property of THIS grid and
+    THIS seed, not of the network. Adding one point (lambda=0.9) to the default
+    grid at num_sites=16, seed=42 flips it to False and yields a negative
+    derived distance; three of seven seeds fail on the default grid. The memo
+    recorded this scope limit and it reached docs/EXPERIMENTS.md and main.py,
+    but not this docstring, the returned dict, or the test -- so anyone reading
+    the code alone would have taken the flag for a general claim. The returned
+    dict now carries `monotone_is_grid_and_seed_specific`.
     lambda and compute the mutual information I(left half : right half) from
     each explicit boundary state. lambda = 0 is exactly the product limit.
 
@@ -519,6 +544,10 @@ def disconnection_scan(lambdas=(1.0, 0.6, 0.35, 0.2, 0.1, 0.0),
         "derived_distance": distances,
         "I0": float(I0),
         "monotone_decreasing": monotone_dec,
+        # True regardless: the flag above describes THIS grid and seed, not the
+        # network. Adding lambda=0.9 to the default grid flips it, and three of
+        # seven seeds fail on the default grid.
+        "monotone_is_grid_and_seed_specific": True,
         "final_below_1e-8": bool(mutual_infos[-1] < 1e-8),
         "distances_grow": distances_grow,
     }

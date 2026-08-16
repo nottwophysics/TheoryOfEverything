@@ -22,7 +22,7 @@ python main.py --physics           # Experiments 9–31
 python main.py --everything        # All 31 + visualizations
 ```
 
-Validate with the automated test suite (434 tests):
+Validate with the automated test suite (437 tests):
 ```bash
 pytest tests/ -v                   # Run all tests
 pytest tests/test_quantum.py -v    # Test quantum module only

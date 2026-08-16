@@ -18,6 +18,11 @@ Setup (all computed; no fits, no proxies):
     hygiene, not physics.)
 
 The first law of entanglement: for ANY perturbation of the global state,
+(SCOPE 2026-08-16: the universal quantifier is a statement of THEORY. The
+computation below samples ONE perturbation direction -- the bond-modulation
+family -- so what is verified here is the first law along that direction, to
+the stated order, with a wrong-K control that fails as it should. Read "for
+any" as the theorem being illustrated, not as the range this code covers.)
 
         δS(A) = δ<K_A>          to first order,
 

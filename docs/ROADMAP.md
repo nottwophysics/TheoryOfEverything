@@ -156,7 +156,7 @@ No physics ToE addresses why there is **experience** at all. This framework star
 | Gleason axiom reduction | Born rule is theorem → 7→4 axioms | **PROVEN** | Mathematical fact |
 | Born rule uniqueness | Only consistent measure in dim≥3 | **PROVEN** | Gleason's theorem |
 | 2+1D Einstein equations | R_entropy ∝ T_00 on discrete manifold | **WITHDRAWN — circular** (entropy defined ∝ T₀₀) | Illustrates Jacobson's logic only |
-| MERA tensor network | S(interval) ≤ ln(χ)·|min cut|; I(L:R) → 0 in the product limit | **REIMPLEMENTED** (computed on a real state) | Reimplemented 2026-08-15 |
+| MERA tensor network | S(interval) ≤ ln(χ)·\|min cut\| (informative at 1 of 3 default intervals); I(L:R) → 0 in the product limit; the λ-monotonicity is grid- and seed-specific | **REIMPLEMENTED** (computed on a real state) | Reimplemented 2026-08-15 |
 | QEC as spacetime | [[5,1,3]]: threshold 2/5, any 3/5 reconstructs | **REIMPLEMENTED** (real stabilizer code) | Reimplemented 2026-08-15; "80%" retired as impossible |
 | Bell violation | S = 2√2 | **ILLUSTRATIVE** (analytic value; no state consumed) | Standard QM result restated |
 | Measurement resolution | Collapse is perspectival | **DEMONSTRATED** | Decoherence + partial trace |
@@ -188,7 +188,7 @@ No physics ToE addresses why there is **experience** at all. This framework star
 ## Milestone Targets
 
 ### Milestone 0: Automated Test Suite ✅ COMPLETE
-- 434 tests across 27 test files covering all modules
+- 437 tests across 27 test files covering all modules
 - Validates mathematical properties (normalization, Hermiticity, unitarity)
 - Validates physical results (Bell CHSH value on the supplied state, Gleason conditions, Newton recovery to 3e-16 via Verlinde's derivation)
 - Validates framework invariants (singleton, non-duality, substrate preservation)

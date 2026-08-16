@@ -245,6 +245,15 @@ class EmergentEinstein2D:
             "chi_shift": int(chi_shift),
             "total_shift": float(total_shift),
             "shift_matches_2_pi_delta_chi": bool(shift_matches),
+            # NOTE (2026-08-16): this is a CONSISTENCY CHECK, not a negative
+            # control in the usual sense -- it is expected to PASS, and does.
+            # A negative control is one you expect to fail; this one confirms
+            # that the identity tracks a deliberate change of topology
+            # (chi 1 -> 0) rather than holding regardless. Note also that
+            # Gauss-Bonnet on a flat piecewise-linear planar complex is an
+            # EXACT COMBINATORIAL THEOREM, so the ~5e-15 residual is a
+            # floating-point statement about this implementation, not an
+            # empirical result about geometry.
             "control_passes": bool(
                 punctured["passes"]
                 and punctured["euler_characteristic"] == 0

@@ -61,7 +61,7 @@ python main.py --visualize
 # Run EVERYTHING (31 experiments + visualizations)
 python main.py --everything
 
-# Run the test suite (434 tests): install the test extra, then run from the
+# Run the test suite (437 tests): install the test extra, then run from the
 # repository root (pytest resolves testpaths=tests relative to the project root).
 pip install -e ".[test]"
 pytest
@@ -90,7 +90,7 @@ For a guided walkthrough of the project, see [docs/GETTING_STARTED.md](docs/GETT
 | **Falsification** | `falsification/` | 5 explicit falsification criteria + experimental designs |
 | **Visualizations** | `visualizations/` | 7 visual plots of Advaita concepts |
 | **Experiments** | `simulations/`, `main.py` | 31 runnable experiments demonstrating the framework |
-| **Test Suite** | `tests/` | 434 automated tests validating all modules |
+| **Test Suite** | `tests/` | 437 automated tests validating all modules |
 
 ---
 
@@ -129,7 +129,7 @@ These claims have been *proposed to parallel* structures in modern physics; [doc
 | 9 | **Quantum Hilbert Space** | Brahman IS the Hilbert space; entropy = Maya's depth |
 | 10 | **Measurement Problem** | Dissolved — total state pure, observer's reduced state mixed |
 | 11 | **Entanglement = Non-Duality** | CHSH at the Tsirelson bound 2√2 — evaluated analytically (the demo does not consume a quantum state); illustrative, not a verification |
-| 12 | **Emergent Gravity** | Space from entanglement; Verlinde's derivation implemented faithfully in SI units — recovers GMm/r² to 3e-16 (reimplemented 2026-08-15; the legacy broken route is kept as a negative control) |
+| 12 | **Emergent Gravity** | Space from entanglement; Verlinde's derivation implemented faithfully in SI units — recovers GMm/r² to 3e-16. **That agreement is algebraic**: the constants cancel exactly, so it validates the implementation, not nature. Route 1 presupposes a = GM/r² and is F = ma by construction; only Route 2 derives the r-dependence (reimplemented 2026-08-15; the legacy broken route kept as a negative control) |
 | 13 | **Holographic Principle** | Bulk (world) is projection of boundary (consciousness) |
 | 14 | **Particles from Maya** | Symmetry breaking; 3 generations = 3 gunas |
 | 15 | **Physical Constants** | Koide formula verified; Λ consistent with consciousness entropy |
@@ -192,7 +192,7 @@ See [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md) for detailed documentation of all
 | **Fine structure: 0.003% error** | 163-26+π/100 = 137.031 vs 137.036 — Heegner number connection | **Numerology — fails hold-out** (Experiments 22, 31) |
 | **IIT-Entanglement: Φ ≤ S** | Validated test (canonical PyPhi Φ; ordering-audit-corrected) **falsifies** the bound — 50 of 51 nonzero-Φ systems violate it, and the raw Φ–S correlation (r≈+0.64) is a connectivity confound (partial r≈−0.07, p=0.29) — nothing residual survives | **Falsified** (validated retest) |
 | **2+1D Einstein: R-T = 0.94** | The correlated "curvature" is a smoothed copy of an entropy DEFINED from the energy density | **Withdrawn as evidence — circular by construction** (Experiment 20) |
-| **Spacetime from entanglement** | Real MERA: exact S(interval) ≤ ln(χ)·|min cut| on the constructed state; mutual information → 0 in the product limit | **Reimplemented 2026-08-15** (Experiment 19) |
+| **Spacetime from entanglement** | Real MERA: exact S(interval) ≤ ln(χ)·\|min cut\| on the constructed state — **informative at only 1 of the 3 default intervals** (at lengths 2 and 4 the cut equals the length, so the bound reduces to the trivial S ≤ \|A\|·ln2); mutual information → 0 in the product limit | **Reimplemented 2026-08-15** (Experiment 19) |
 | **Spacetime as QEC code** | Real [[5,1,3]] code: threshold 2/5 (40%), reconstruction from any 3/5 (60%); 3-erasure provably unrecoverable | **Reimplemented 2026-08-15** (Experiment 21) |
 | Bell inequality violated (S = 2√2) | CHSH evaluated **on the supplied state**: |Φ+⟩ → +2√2, separable \|00⟩ → 1.414 (no violation), singlet → −2√2. Standard QM on a state we wrote down — illustrates Tsirelson's bound, not an experimental Bell test | **Illustrative, state-consuming** (Experiment 11) |
 | Measurement problem dissolved | Total state (Brahman) stays pure; collapse is perspectival (Maya) | **Demonstrated** (Experiment 10) |
@@ -204,7 +204,7 @@ See [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md) for detailed documentation of all
 
 This project is scientifically honest about what it has and hasn't achieved:
 
-- **Tested**: Full test suite (434 tests) covering every module — run with `pytest`
+- **Tested**: Full test suite (437 tests) covering every module — run with `pytest`
 - **Established mathematics, illustrated**: Gleason-based axiom reduction (the theorem is Gleason's; this repo's contribution is numerical illustration — scope caveats in docs/GLEASON_PROBABILITY_GAP.md)
 - **Demonstrated**: Measurement-problem dissolution via decoherence + partial trace (perspectival collapse)
 - **Withdrawn as evidence (2026 review)**: the 1D/2D/3D Einstein-equation demos (circular — entropy defined from the energy density it is then correlated with) and the Bell "verification" (analytic value; no state consumed). These remain as labeled illustrations.

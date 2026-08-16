@@ -90,8 +90,18 @@ def combine_dimensions(*terms) -> tuple:
 
 class EntropicGravity:
     """
-    Verlinde's entropic gravity in SI units: two independent routes to the
-    force on a test mass, both computed and both compared against Newton.
+    Verlinde's entropic gravity in SI units: two routes to the force on a
+    test mass, both computed and both compared against Newton.
+
+    SCOPE (2026-08-16). They are not INDEPENDENT, and the earlier wording
+    overstated it. Route 1 presupposes a = GM/r^2 when it sets the Unruh
+    temperature, so recovering F = GMm/r^2 from it is F = ma by construction;
+    only Route 2 derives the r-dependence from the holographic bit count.
+    Both agree with Newton to ~3e-16, which is machine epsilon: that figure
+    validates the ALGEBRA of this implementation (G, hbar, c and k_B cancel
+    exactly), not any claim about nature. Perturbing hbar, c or k_B leaves the
+    force unchanged; only G moves it, which is the correct cancellation
+    structure for the derivation and also shows what the agreement is worth.
 
     Everything reported in return dicts is computed here; the Advaita
     reading attached to some outputs is labeled interpretation.
@@ -325,6 +335,14 @@ class EntropicGravity:
             "dim_force_unruh_route": dim_force_unruh,
             "dim_force_equipartition_route": dim_force_equip,
             "expected_force": expected_force,
+            # SCOPE (2026-08-16): this is a parallel transcription of the
+            # formulas' exponents, NOT a check on the implementation. It does
+            # not consume the computed force, so it cannot catch an error in
+            # it: inflating equipartition_temperature by 5x leaves
+            # force_dimensions_ok True while F/F_Newton becomes 5.000. It
+            # verifies that the formulas AS WRITTEN HERE are dimensionally
+            # consistent, and nothing more.
+            "checks_exponents_not_the_computed_force": True,
             "force_dimensions_ok": (dim_force_unruh == expected_force
                                     and dim_force_equip == expected_force),
             "basis": "(kg, m, s, K) exponent tuples",
