@@ -102,9 +102,24 @@ TheoryOfEverything/
 │   ├── cross_validation.py          # Hold-out test: fit on one constant, PREDICT another (fails → curve-fit)
 │   └── look_elsewhere.py            # Look-elsewhere analysis: how many near-hits by chance
 │
-├── predictions/                     # SCIENCE: Testable Predictions
+├── agents/                          # Classical multi-agent emergence detector
 │   ├── __init__.py
-│   ├── testable.py                  # 5 novel testable predictions (P1–P5)
+│   ├── classical_symmetry.py        # Symmetry-derived synergy measure
+│   ├── emergence_detector.py        # C / DTC / O-information + permutation null
+│   ├── multiagent_testbed.py        # Four seeded regimes (independent … Ising)
+│   └── benchmark.py                 # Beat-the-baselines AUC + sign separation
+│
+├── reproducibility/                 # Frozen data + one-command reproduction
+│   └── phi_s/                       # §8 Φ≤S package: CSVs, reproduce.sh, audit
+│
+├── tools/                           # Guardrails (see below)
+│   ├── claims.py                    # Manifest: headline numbers + retired claims
+│   ├── check_claims.py              # Verifier; runs in CI
+│   └── mutate.py                    # Mutation battery (do the tests have teeth?)
+│
+├── predictions/                     # Testable-programme layer
+│   ├── __init__.py
+│   ├── testable.py                  # P1–P5: compatible programmes, NOT entailed
 │   ├── consciousness_signatures.py  # Observable markers of fundamental consciousness
 │   ├── cosmological_predictions.py  # Large-scale predictions
 │   ├── iit_bridge.py                # IIT-Entanglement bridge (Φ ≤ S conjecture)

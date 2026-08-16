@@ -85,7 +85,7 @@ synergy-dominated.** Ground truth recovered 3/3:
 
 | regime | C | Ω | permutation p | detected |
 |---|---|---|---|---|
-| independent | 0.000 | −0.000 | 0.48 / 0.77 | none |
+| independent | 0.000 | −0.000 | 0.756 / 0.484 | none |
 | redundant | 1.213 | **+0.524** | 0.000 | redundancy |
 | synergistic | 1.000 | **−2.000** | 0.000 | synergy |
 | Ising β=2 | 2.668 | +1.766 | 0.000 | redundancy |

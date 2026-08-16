@@ -163,14 +163,23 @@ It differs from Western idealism in a crucial way: in Western idealism, the mind
 | Adhyasa (superimposition) | Measurement / Born rule | Projection postulate |
 | Gunas (Sattva/Rajas/Tamas) | Basis choice / guna operators | Unitary transformations between bases |
 | Sakshi (witness) | Identity operator / observer | I² = I, P† = P |
-| Atman = Brahman | Entanglement / non-separability | Bell inequality violation |
+| Atman = Brahman | Entanglement / non-separability | ⚠️ **Bell violation does not support this.** Bell's theorem constrains correlations between spacelike-separated *outcomes*; it says nothing about the identity of individual with universal consciousness. Bohmian mechanics violates Bell and is not non-dualist. Falsification criterion F2 rests on this same non sequitur. |
 | Three levels of reality | Pure / mixed / error states | Density matrix hierarchy |
 | Neti Neti | Orthogonal complement | Subspace decomposition |
-| Moksha (liberation) | Purification / decoherence reversal | ρ_mixed → |ψ⟩⟨ψ| |
+| Moksha (liberation) | Recognition, not a transition | ⚠️ **ρ_mixed → \|ψ⟩⟨ψ\| is not a physical map.** Purity is a unitary invariant; no dynamics available in this framework takes a genuinely mixed state to a pure one. The Advaitic point — recognising one was always the global pure state — is the *perspectival* reading and needs no such arrow. The arrow as written was never checked against the physics it names. |
 
 ### 3.2 Quantum Mechanics from Consciousness
 
 Standard QM assumes the Hilbert space as a given mathematical arena. This framework **derives** it:
+
+> **⚠️ Note the permutation (2026-08-16).** The table in §3.1 assigns **Sat →
+> norm/probability conservation** and **Ananda → completeness**; the prose below
+> assigns **Sat → completeness** and **Ananda → positive-definiteness**. Both
+> cannot be right, and the fact that the terms can be permuted between adjacent
+> sections without anything breaking is the diagnostic: a correspondence that
+> generated constraints could not survive this. The mapping renames structures
+> that standard physics already has. The accompanying paper reaches the same
+> verdict — the Sanskrit vocabulary is **eliminable everywhere without loss**.
 
 **Sat → Completeness**: Brahman's existence is absolute and self-contained. Mathematically, this means the space of states is complete — no state is "missing." This is the completeness axiom of Hilbert space.
 
@@ -218,10 +227,24 @@ Particles are not fundamental substances — they are **excitation modes** of th
 
 **Symmetry Breaking = Maya Activating**: At very high energies, all forces are unified (high symmetry = Brahman). As the universe cools, symmetries break — the Higgs mechanism gives mass to particles. The Higgs field IS Maya in physics language: the field whose non-zero vacuum expectation value creates the appearance of distinct, massive particles.
 
+> **⚠️ Post-hoc, and doctrinally wrong (2026-08-16).** Three generations were
+> known by 1975; nothing in guna theory forbids a fourth, and there is no
+> independent reason gunas should order by *mass* rather than charge or coupling.
+> Worse, the doctrines do not have the same shape: gunas are continuously blended
+> proportions present in everything simultaneously, while generations are discrete
+> and mutually exclusive. Retained as an illustration of the mapping's method, not
+> as a correspondence.
+
 **Three Generations = Three Gunas**:
 - Generation 1 (electron, up/down quarks) → **Sattva** (lightest, most transparent)
 - Generation 2 (muon, charm/strange quarks) → **Rajas** (intermediate, active)
 - Generation 3 (tau, top/bottom quarks) → **Tamas** (heaviest, most opaque)
+
+> **⚠️ The cardinality is fitted to the physics (2026-08-16).** §1.3 states Maya
+> has **two** shaktis (āvaraṇa and vikṣepa) and §3.8 uses exactly two. "Four
+> aspects" appears here because there are four forces — nothing in the doctrine
+> supplies a fourth. This is the mapping accommodating physics rather than
+> constraining it.
 
 **Four Forces = Four Aspects of Maya**:
 - Gravity → Maya's geometry (emergent from entanglement)
@@ -331,9 +354,9 @@ Several major physicists have independently arrived at positions consonant with 
 | **Werner Heisenberg** | "The atoms or elementary particles are not real; they form a world of potentialities." | Maya: the world is potentiality, not substance. |
 | **John Wheeler** | "It from Bit" — information is the foundation of reality. | Chit (consciousness/information) is Brahman's nature. |
 | **David Bohm** | The Implicate Order unfolds into the Explicate Order. | Brahman (implicate) manifests as Maya (explicate). |
-| **Max Planck** | "I regard consciousness as fundamental. I regard matter as derivative from consciousness." | The core assertion of Advaita. |
-| **Eugene Wigner** | "Consciousness is necessary for quantum mechanics to be consistent." | The Sakshi (witness) is fundamental to measurement. |
-| **John von Neumann** | The measurement chain terminates in consciousness. | Maya (projection) requires the Sakshi (witness). |
+| **Max Planck** ⚠️ | "I regard consciousness as fundamental. I regard matter as derivative from consciousness." | ⚠️ Attribution is contested — it traces to a 1931 newspaper interview, not a published paper. Use with care. | The core assertion of Advaita. |
+| **Eugene Wigner** ⚠️ | "Consciousness is necessary for quantum mechanics to be consistent." | ⚠️ **This is the position the framework REJECTS.** Wigner argued for consciousness-*caused collapse*; axiom A3 states there is no collapse, and the paper's §4.1 spends a paragraph closing that route. Wigner also **abandoned the view in the early 1970s** under pressure from Zeh's and Shimony's arguments. Cited here as history, not as support. | The Sakshi (witness) is fundamental to measurement. |
+| **John von Neumann** ⚠️ | The measurement chain terminates in consciousness. | ⚠️ **Also the rejected position.** The von Neumann–Wigner chain terminates in a consciousness that *reduces the state*; A3 denies reduction. Cited as the historical origin of the idea this framework declines, not as an ally. |
 
 ---
 

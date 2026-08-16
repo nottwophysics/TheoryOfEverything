@@ -273,6 +273,13 @@ Derives Hilbert space axioms from Sat-Chit-Ananda.
 
 ### `quantum/entanglement.py` — Non-Dual Entanglement
 
+> **Rewritten 2026-08-15 and now state-consuming.** CHSH is evaluated on the
+> supplied state: |Φ+⟩ → **+2√2**, separable |00⟩ → 1.414 (no violation), singlet
+> → −2√2, and the module returns `output_depends_on_state`. The pre-rewrite caveat
+> "the demo consumes no quantum state" is **false of this module** and must not be
+> reintroduced. It remains standard QM evaluated on a state we wrote down —
+> illustrating Tsirelson's bound, not an experimental Bell test.
+
 **Class: `NonDualEntanglement`**
 
 | Method | Description |
@@ -302,7 +309,6 @@ Models spacetime as a Multiscale Entanglement Renormalization Ansatz where coars
 | `.rt_bound_check()` | Checks S(interval) ≤ ln(χ)·\|min cut\| on the actual state. Reports `bound_is_vacuous` per interval: at (0,2) and (0,4) the cut equals the length, so the bound is exactly the trivial S ≤ \|A\|·ln2 and tests nothing about the state; only (0,8) is informative. |
 | `.mutual_information_halves()` | I(L:R) as the entangling strength λ is varied to the product limit. |
 | `.full_demonstration()` | All of the above. |
-| `.full_demonstration()` | Run all four demonstrations. |
 
 ---
 
@@ -335,6 +341,14 @@ Models spacetime as a quantum error-correcting code (Almheiri-Dong-Harlow).
 
 ### `gravity/metric.py` — Spacetime Metric from Entanglement
 
+> **⚠️ CIRCULAR — superseded by `gravity/entanglement_geometry.py`.** No quantum
+> state appears anywhere in this module: the "correlation" C(i,j) is *assigned* as
+> exp(−maya·|i−j|/n·5), so the "emergent" distance is index separation rescaled and
+> the reported correlation of 1.0 is guaranteed. The module now computes and
+> reports this itself via `geometry_is_input_geometry`, which flips False only on
+> non-separation input. Read it as an illustration of the intended construction,
+> not as a derivation of geometry from entanglement.
+
 **Class: `ConsciousnessMetric`**
 
 | Method | Description |
@@ -361,7 +375,16 @@ Models spacetime as a quantum error-correcting code (Almheiri-Dong-Harlow).
 
 ---
 
-### `gravity/einstein_2d.py` — 2+1D Einstein Equations (Upgraded)
+### `gravity/einstein_2d.py` — 2+1D Einstein Equations
+
+> **⚠️ The Einstein-equation recovery here is WITHDRAWN as evidence (2026 review).**
+> The site entropy is *defined* proportional to T₀₀ and the correlated "curvature"
+> is a smoothed copy of it, so the correlation is circular by construction; the
+> genuine Regge deficit-angle curvature *anti-correlates* with T₀₀. What survives
+> in this module is `gauss_bonnet_check()` — an exact combinatorial identity for a
+> planar PL complex, so its ~5e-15 residual is a floating-point statement about the
+> implementation. The computable entanglement-thermodynamics statements live in
+> `gravity/entanglement_first_law.py` and `gravity/entanglement_geometry.py`.
 
 **Class: `EmergentEinstein2D`**
 
@@ -399,6 +422,12 @@ and `gravity/entanglement_geometry.py` (Experiment 20).
 ---
 
 ### `gravity/holographic.py` — The Holographic Principle
+
+> **⚠️ Illustrative only.** In this toy run the Ryu–Takayanagi entropy is
+> identically 0, bulk reconstruction fidelity is ≈0.4976 — chance for the random
+> projection used — and `bulk_from_boundary` is False. "Boundary is fundamental"
+> is an interpretive reading, which the runtime now states explicitly. The module
+> demonstrates the *shape* of the holographic argument, not the correspondence.
 
 **Class: `HolographicBoundary`**
 

@@ -334,11 +334,21 @@ Only the Gleason-derived rows are mathematics; their theorems are established in
 | P3 | Vacuum entanglement structure | Partially tested (Casimir) | Consistent |
 | P4 | Consciousness decoherence | Not yet testable | Open |
 | P5 | Holographic noise | Searched (Holometer, 2015–2016); no signal reported | **Constrained** — the amplitude comparison is not in this repo and the experimental paper is uncited, so exclusion is not established here |
-| F1 | Consciousness from computation | No example yet (criterion not practically triggerable today) | Framework survives |
-| F2 | Local hidden variables | Ruled out (Bell tests) | **Framework confirmed** |
-| F3 | Spacetime fundamental | Holographic-noise route constrained (Holometer); other routes untested | Open |
-| F4 | No gravitational decoherence | Not tested (~8 orders of magnitude away) | Open |
-| F5 | Constants arbitrary | Koide holds (verified, not derived); α "derivation" fails hold-out | Mixed |
+| F1 | Consciousness from computation | Untriggerable **in principle**: it requires a test for *phenomenal* consciousness, whose non-existence is the hard problem this framework is built on | ⚠️ Not a working falsifier |
+| F2 | Local hidden variables | Settled by Bell tests in the 1980s–2015, **before this framework existed** — and non-locality does not entail non-duality (Bohmian mechanics violates Bell and is not non-dualist) | ⚠️ Cannot fail; the "confirmation" is a non sequitur |
+| F3 | Spacetime fundamental | Requires establishing an unobservable negative below the Planck scale — three of them. Holographic-noise route constrained (Holometer); other routes untested | ⚠️ Untriggerable as stated |
+| F4 | No gravitational decoherence | Unbounded: "arbitrarily large" can never be reached, and persistence at mass M is always answerable with "the threshold is above M". Also tied to P2, which axiom A3 denies | ⚠️ Untriggerable; no threshold is stated |
+| F5 | Constants arbitrary | Requires proving "true randomness" and the absence of *any* mathematical relationship. The project's own look-elsewhere analysis removed the only evidence this criterion tracked | ⚠️ No longer tracking anything |
+
+> **⚠️ Read the column above before the verdicts (added 2026-08-16).** Of the
+> five criteria, **none is currently a working falsifier.** F1, F3 and F4 cannot
+> be triggered by any procedure the framework allows to exist; F2 was settled
+> before the framework was written and rests on a non sequitur from non-locality
+> to non-duality; F5's evidence was withdrawn by this project's own analysis.
+> A criterion no realistic outcome could fail is decoration, not falsifiability.
+> They are kept here because retiring them silently would be worse, and because
+> stating what would *actually* have to be true to refute the view is unfinished
+> work worth doing rather than hiding.
 
 **Current tally**: 1 established theorem illustrated (Gleason axiom reduction), 1 confirmed falsifier-direction (F2 ruled out), **1 falsified conjecture (Φ≤S — withdrawn)**, **1 prediction excluded at its stated amplitude (P5)**, F5 mixed (Koide verified but the α recipe is numerology by its own hold-out tests), remainder open.
 

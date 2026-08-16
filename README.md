@@ -195,7 +195,7 @@ See [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md) for detailed documentation of all
 | **Spacetime from entanglement** | Real MERA: exact S(interval) ≤ ln(χ)·\|min cut\| on the constructed state — **informative at only 1 of the 3 default intervals** (at lengths 2 and 4 the cut equals the length, so the bound reduces to the trivial S ≤ \|A\|·ln2); mutual information → 0 in the product limit | **Reimplemented 2026-08-15** (Experiment 19) |
 | **Spacetime as QEC code** | Real [[5,1,3]] code: threshold 2/5 (40%), reconstruction from any 3/5 (60%); 3-erasure provably unrecoverable | **Reimplemented 2026-08-15** (Experiment 21) |
 | Bell inequality violated (S = 2√2) | CHSH evaluated **on the supplied state**: |Φ+⟩ → +2√2, separable \|00⟩ → 1.414 (no violation), singlet → −2√2. Standard QM on a state we wrote down — illustrates Tsirelson's bound, not an experimental Bell test | **Illustrative, state-consuming** (Experiment 11) |
-| Measurement problem dissolved | Total state (Brahman) stays pure; collapse is perspectival (Maya) | **Demonstrated** (Experiment 10) |
+| Measurement problem **reframed**, not solved | Total state stays pure; collapse is perspectival. The paper is explicit that the view "does **not** solve the measurement problem (it gives an account of what the appearance of definite outcomes consists in)" — and pure-global/mixed-reduced is a theorem of the formalism shared by *every* no-collapse interpretation, so it cannot favour this one | **Theorem of the formalism, not evidence for this reading**** (Experiment 10) |
 | Koide formula (0.6666 vs 0.6667) | Lepton masses have structure — not arbitrary | **Verified** (not derived) |
 
 ---
@@ -234,6 +234,18 @@ The version of record for the withdrawn §8 conjecture (Φ ≤ S) and its falsif
 Released under the **MIT License** — see [LICENSE](LICENSE). You may use, modify and redistribute this code, including commercially, provided the copyright notice and permission notice are retained.
 
 The licence covers the **code**. It says nothing about the correctness of the ideas: the code models a metaphysical framework and explores its connections to physics — it does not claim to be a finished physical theory, and several of its explorations have been withdrawn or falsified by the project's own tests (see [docs/PREDICTIONS.md](docs/PREDICTIONS.md)). The accompanying paper is separately available under its own terms via the Zenodo record.
+
+### Third-party components and data
+
+The MIT grant above covers **this repository's code**. Enumerated so the
+declaration actually covers its inputs:
+
+| Component | Licence | Note |
+|---|---|---|
+| numpy, scipy, matplotlib, pytest | BSD-family | declared in `requirements.txt` / `pyproject.toml` |
+| **PyPhi 1.2.0** | **GPLv3+** | imported by `predictions/validated_phi.py` and `reproducibility/phi_s/ordering_audit.py`, and **required to regenerate** the §8 Φ values. It is an *optional, separately installed* dependency — no GPL code is distributed here, and the committed analysis path (`reproduce.sh`) needs only numpy + scipy. |
+| Tracked data (`reproducibility/phi_s/data/*.csv`, `tests/fixtures/*.json`, `testbed_summary.csv`) and the five tracked PNGs | **CC0 1.0** | released to the public domain, so the frozen §8 inputs can be reused without friction |
+| The accompanying paper | separate terms | available via the Zenodo record, not under this licence |
 
 Note on provenance: substantial portions of this repository were written with AI assistance, disclosed in the commit history.
 

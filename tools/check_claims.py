@@ -102,6 +102,11 @@ def line_of(text, offset):
 
 # ----------------------------------------------------------------- checks
 
+def _demph(text):
+    """Lower-case and drop markdown emphasis/code marks, for marker matching."""
+    return re.sub(r"[*_`~]", "", text).lower()
+
+
 _NEG = re.compile(r"(not|never|no longer|n't|cannot|isn't|aren't|fails to)\s+(\w+\s+){0,3}$",
                   re.I)
 
@@ -200,7 +205,12 @@ def check_retired(verbose, problems):
                     # anywhere in a long paragraph that happened to mention
                     # "withdrawn" -- which is exactly how the Bell caveat
                     # survived in six documents past the first sweep.
-                    window = fp[max(0, m.start() - 300):m.end() + 300].lower()
+                    # Strip markdown emphasis before looking for markers.
+                    # "is **false** of this module" does not contain the
+                    # substring "is false", so bold/italics silently defeated
+                    # the exemption and flagged a retraction note as a
+                    # surviving claim. Emphasis is formatting, not meaning.
+                    window = _demph(fp[max(0, m.start() - 300):m.end() + 300])
                     if any(mk in window for mk in markers):
                         continue
                     if True:

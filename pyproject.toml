@@ -28,6 +28,11 @@ dependencies = [
 
 [project.optional-dependencies]
 test = ["pytest>=7.0.0"]
+# PyPhi is GPLv3+ and is NOT installed by default: it is needed only to
+# REGENERATE the canonical IIT Phi values behind §8. The committed analysis
+# path (reproducibility/phi_s/reproduce.sh) runs on the frozen CSV and needs
+# only numpy + scipy. Requires Python 3.9; see reproducibility/phi_s/README.md.
+phi = ["pyphi==1.2.0"]
 
 [project.scripts]
 # `theory-of-everything` runs the full demonstration (formerly `python main.py`).
