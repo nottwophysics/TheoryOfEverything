@@ -188,4 +188,9 @@ EXEMPT_MARKERS = [
     # Added after the first real run: a paragraph that REFUTES a claim, or
     # quotes it to contrast against, necessarily names it.
     "refut", "opposite of", "is false", "does not hold", "violates",
+    # Added after the first run against the PRIVATE line, whose review docs
+    # quote the old wording in order to recommend replacing it. Quoting a claim
+    # to say "replace this" is not asserting it.
+    "should be replaced", "current wording", "what the paper says",
+    "recommend", "off-message",
 ]
