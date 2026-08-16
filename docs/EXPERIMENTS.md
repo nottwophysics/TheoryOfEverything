@@ -22,7 +22,7 @@ python main.py --physics           # Experiments 9–31
 python main.py --everything        # All 31 + visualizations
 ```
 
-Validate with the automated test suite (414 tests):
+Validate with the automated test suite (418 tests):
 ```bash
 pytest tests/ -v                   # Run all tests
 pytest tests/test_quantum.py -v    # Test quantum module only
@@ -322,7 +322,15 @@ pytest tests/test_quantum.py -v    # Test quantum module only
 | Needs collapse postulate | Yes | No | No | No |
 | Needs hidden variables | No | No | Yes | No |
 
-**Key result**: All four agree on empirical predictions (P(up)=0.7, P(down)=0.3). They differ in ontology. Advaita is uniquely the only interpretation that addresses the hard problem of consciousness, has 0 unresolved phenomena, and makes 5 novel predictions.
+**Key result**: All four agree on empirical predictions (P(up)=0.7, P(down)=0.3) — and that agreement is *by construction*, since every interpretation here inherits one Born-rule computation from the shared base class. They differ in what each must posit: collapse, hidden variables, branching, or an experiential primitive.
+
+> **Scoreboard deleted (2026-08-16).** This section previously ranked the four by
+> axiom count, tallied "phenomena with problems", counted novel predictions and
+> declared this framework "uniquely the only interpretation that addresses the hard
+> problem". Every figure was `len()` of a list written in the module. Two claims were
+> also false against the module's own output: `consciousness_comparison()` scores
+> Many-Worlds `True` as well, and crediting the framework with novel predictions
+> contradicts the operational equivalence of Experiment 24.
 
 ---
 
@@ -572,7 +580,15 @@ These experiments were built to computationally support the claims of the accomp
 
 ### Experiment 24: Everett-Advaita Operational Equivalence
 
-**Concept**: The paper claims "this interpretation is currently empirically equivalent to Everett." This experiment proves that claim.
+**Concept**: The paper claims "this interpretation is currently empirically equivalent to Everett." That claim is **analytic**, and this experiment does not test it — it cannot. Both readings use the same Hilbert space, the same unitary dynamics, the same Born rule and the same decoherence, so identical predictions follow by construction. The experiment computes the shared quantities once and catalogues the ontological divergences that carry no measurable consequence.
+
+> **Deleted 2026-08-16.** The module previously claimed to PROVE the equivalence by
+> running "both interpretations". It built one array and copied it twice
+> (`everett_probs = probs.copy(); advaita_probs = probs.copy()`), reset the same RNG
+> seed before each draw, returned two hardcoded `"numbers_identical": True`, and
+> computed its summary flag as a disjunction of `.get(key, True)` over keys the
+> sub-results did not carry — so `all_empirically_identical` was True for every
+> possible input, including one where every test failed.
 
 **Five empirical tests**:
 
@@ -804,7 +820,7 @@ than take the near-match as evidence of a derivation.
 | **Fine structure 1/α** | **137.031 (0.003%)** | **163-26+π/100 via Heegner numbers** | **Numerology (fails hold-out, Exp 31)** |
 | **Look-elsewhere on 1/α** | **whole ranges covered at 1e-4** | **the near-match is expected by chance, not a law** | **Demonstrated (Exp 31)** |
 | **IIT conjecture Φ ≤ S** | **falsified (validated PyPhi Φ, N=216, ordering-audit-corrected)** | **50 of 51 nonzero-Φ systems violate it; Φ (≤4.0 bits) not capped by bipartition S (≤0.83). Raw Φ–S correlation (r≈+0.64) is a connectivity confound (partial r≈−0.07, p=0.29) — nothing survives** | **Falsified** |
-| **Everett-Advaita equivalence** | **5/5 tests identical** | **0 measurable divergences** | **Proven** |
+| Everett-Advaita equivalence | shared formalism computed once | divergences are ontological only | **Analytic, not tested** (scoreboard deleted 2026-08-16) |
 | **Perspectival asymmetry** | **Exact (10⁻¹⁶)** | **All states, bases, env sizes — total always pure** | **Proven** |
 | **Observer centrality** | **4/4 open questions involve observer** | **Observer ontology is part of interpretive burden** | **Demonstrated** |
 | **Experiential underdetermination** | **30/30 trials, 3 distinct cardinalities** | **Decoherence does not fix experiential ontology (paper §4.3.2b)** | **Demonstrated** |

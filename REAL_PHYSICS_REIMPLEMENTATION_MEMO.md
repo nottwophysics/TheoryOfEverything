@@ -231,5 +231,5 @@ verdict for the 3D legacy channel. Tracks A, B and C were already integrated
 (Experiments 21, 19, 12).
 
 Note the suite figures in this section are as of the reimplementation commit;
-the suite has since grown to 413 passed / 1 xfailed (414 collected) as the
+the suite has since grown to 417 passed / 1 xfailed (418 collected) as the
 vacuous legacy tests were converted.

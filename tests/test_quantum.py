@@ -591,3 +591,102 @@ class TestUnityOfExperience:
         assert "main_result" in result
         assert "robustness" in result
         assert result["main_result"]["decoherence_underdetermines_experience"] is True
+
+
+class TestScoreboardsStayDeleted:
+    """
+    Regression guard for the 2026-08-16 deletion of the Experiment 17 and 24
+    scoreboards.
+
+    Both experiments used to report figures that were ``len()`` of lists
+    written inside the modules themselves -- axiom counts, phenomena tallies,
+    a novel-predictions ranking, a parsimony ordering, and a count of
+    "ontological divergences". Nothing about physics could change any of them.
+    Experiment 24 additionally reported an ``all_empirically_identical`` flag
+    that was True for every possible input, because it compared one array
+    against a copy of itself.
+
+    These tests fail if any of that returns.
+    """
+
+    BANNED_17 = {"axiom_count", "ranking_by_parsimony", "num_predictions",
+                 "phenomena_addressed", "phenomena_with_problems",
+                 "phenomena_clean", "novel_predictions"}
+
+    def test_interpretation_comparison_reports_no_counts_or_rankings(self):
+        from quantum.interpretations import InterpretationComparison
+        comp = InterpretationComparison()
+
+        axioms = comp.axiom_comparison()
+        assert "ranking_by_parsimony" not in axioms
+        for entry in axioms.values():
+            assert "axiom_count" not in entry
+            assert entry["axioms"], "the axioms themselves must be kept"
+
+        scope = comp.explanatory_scope()
+        for entry in scope.values():
+            assert self.BANNED_17.isdisjoint(entry), (
+                f"a deleted count returned in explanatory_scope: {entry}")
+            assert isinstance(entry["phenomena_flagging_a_residual_problem"], list)
+
+        assert not hasattr(comp, "novel_predictions_comparison"), (
+            "novel_predictions_comparison scored interpretations by the length "
+            "of lists written for them here; it must stay deleted")
+
+        for row in comp.summary_table().values():
+            assert self.BANNED_17.isdisjoint(row), f"deleted count in summary_table: {row}"
+
+        assert "novel_predictions" not in comp.full_comparison()
+
+    def test_empirical_agreement_declares_it_is_by_construction(self):
+        from quantum.interpretations import InterpretationComparison
+        agreement = InterpretationComparison().empirical_agreement()
+        # The agreement is real but structural: all four inherit one
+        # compute_predictions(). It must not be presented as a test result.
+        assert agreement["agreement_is_by_construction"] is True
+
+    def test_operational_equivalence_reaches_no_verdict(self):
+        from quantum.operational_equivalence import OperationalEquivalence
+        oe = OperationalEquivalence(dimension=4)
+
+        assert not hasattr(oe, "full_equivalence_test"), (
+            "full_equivalence_test() returned a cannot-fail verdict; "
+            "full_report() replaces it")
+
+        report = oe.full_report()
+        flat = repr(report)
+        for banned in ("all_empirically_identical", "empirical_tests_passed",
+                       "ontological_divergences\": 5", "measurable_divergences",
+                       "numbers_identical"):
+            assert banned not in flat, f"deleted verdict field returned: {banned}"
+
+        assert "ANALYTIC" in report["equivalence_status"]
+        # The shared quantities must still be computed, not stubbed.
+        probs = report["shared_quantities"]["probabilities"]["probabilities"]
+        assert abs(sum(probs) - 1.0) < 1e-12
+
+    def test_no_arm_is_a_copy_of_another_arm(self):
+        """
+        The specific defect: two 'interpretations' that were one array copied
+        twice, so their difference was identically zero.
+
+        Searched against EXECUTABLE code only. The module's HISTORY docstring
+        deliberately quotes the removed lines so the record survives, and a
+        naive source search matches that quotation -- which is exactly the
+        false positive this strips out.
+        """
+        import ast, inspect
+        from quantum import operational_equivalence as oe_mod
+
+        tree = ast.parse(inspect.getsource(oe_mod))
+        for node in ast.walk(tree):
+            if isinstance(node, ast.Expr) and isinstance(node.value, ast.Constant) \
+                    and isinstance(node.value.value, str):
+                node.value.value = ""          # blank every docstring/string literal
+        code = ast.unparse(tree)
+
+        for banned in ("everett_probs", "advaita_probs", "everett_state",
+                       "advaita_state", "everett_outcomes", "advaita_outcomes"):
+            assert banned not in code, (
+                f"{banned} is live code again: the two-arm comparison was a copy "
+                f"of one array, and must not return")

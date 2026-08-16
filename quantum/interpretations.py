@@ -565,16 +565,15 @@ class InterpretationComparison:
             report = interp.full_report()
             result[key] = {
                 "name": report["name"],
-                "axiom_count": report["axiom_count"],
                 "axioms": report["axioms"],
             }
 
-        # Rank by parsimony
-        ranked = sorted(result.items(), key=lambda x: x[1]["axiom_count"])
-        result["ranking_by_parsimony"] = [
-            f"{r[1]['name']}: {r[1]['axiom_count']} axioms" for r in ranked
-        ]
-
+        # NOTE (2026-08-16): the axiom COUNT and the parsimony RANKING were
+        # deleted here.  Both were arithmetic on hand-written lists -- the
+        # "count" was len() of prose the author typed, and the ranking sorted
+        # interpretations by that length.  Nothing about physics could change
+        # either.  The axioms themselves are left in full: reading them
+        # side by side is the part that carries information.
         return result
 
     def explanatory_scope(self) -> dict:
@@ -582,34 +581,34 @@ class InterpretationComparison:
         result = {}
         for key, interp in self.interpretations.items():
             report = interp.full_report()
-            addressed = 0
-            has_problem = 0
-            for pid, answer in report["answers"].items():
-                addressed += 1
-                if "problem" in answer or "residual_question" in answer:
-                    has_problem += 1
-
+            # Which phenomena this interpretation's own answer flags as leaving
+            # a residual problem -- named, not counted.  The previous version
+            # returned tallies, which ranked interpretations by how many of the
+            # author's own answer-dicts happened to contain a key called
+            # "problem"; that is a property of how the answers were written.
+            flagged = [
+                pid for pid, answer in report["answers"].items()
+                if "problem" in answer or "residual_question" in answer
+            ]
             result[key] = {
                 "name": report["name"],
-                "phenomena_addressed": addressed,
-                "phenomena_with_problems": has_problem,
-                "phenomena_clean": addressed - has_problem,
+                "phenomena_flagging_a_residual_problem": flagged,
                 "cannot_explain": report["cannot_explain"],
+                "caveat": "Which phenomena appear here reflects how each answer was "
+                          "written in this module, not a survey of the literature.",
             }
 
         return result
 
-    def novel_predictions_comparison(self) -> dict:
-        """Compare novel predictions."""
-        result = {}
-        for key, interp in self.interpretations.items():
-            report = interp.full_report()
-            result[key] = {
-                "name": report["name"],
-                "novel_predictions": report["novel_predictions"],
-                "num_predictions": len(report["novel_predictions"]),
-            }
-        return result
+    # NOTE (2026-08-16): novel_predictions_comparison() was DELETED.
+    # It scored each interpretation by len() of a list of "novel predictions"
+    # the author wrote on its behalf -- and the entries written for the rivals
+    # were their weakest claims ("quantum immortality (unfalsifiable)"), which
+    # is the in-house-baseline failure.  Crediting this framework with novel
+    # predictions also contradicts the paper's own operational-equivalence
+    # claim, and one of the five had already been excluded by the Holometer.
+    # Per-interpretation predictions remain available via each class's
+    # full_report()["novel_predictions"]; they are no longer counted or ranked.
 
     def consciousness_comparison(self) -> dict:
         """Compare how each addresses the hard problem of consciousness."""
@@ -640,9 +639,12 @@ class InterpretationComparison:
             "all_agree_on_P_down": max(p_downs) - min(p_downs) < 1e-10,
             "P_up": p_ups[0],
             "P_down": p_downs[0],
-            "note": "All four interpretations make IDENTICAL empirical predictions. "
-                    "They differ in ontology (what is real), not in observables (what is measured). "
-                    "Except: each has unique novel predictions that could distinguish them.",
+            "agreement_is_by_construction": True,
+            "note": "All four interpretations make IDENTICAL empirical predictions -- "
+                    "and note this cannot come out otherwise: compute_predictions() is "
+                    "inherited unchanged from the shared base class, so all four call "
+                    "one Born-rule computation. That is the honest content of the "
+                    "claim (they share the formalism), not a test of it.",
         }
 
     def advaita_measurement_demo(self) -> dict:
@@ -655,7 +657,6 @@ class InterpretationComparison:
         return {
             "axioms": self.axiom_comparison(),
             "explanatory_scope": self.explanatory_scope(),
-            "novel_predictions": self.novel_predictions_comparison(),
             "consciousness": self.consciousness_comparison(),
             "empirical_agreement": self.empirical_agreement(),
             "advaita_measurement_demo": self.advaita_measurement_demo(),
@@ -667,17 +668,16 @@ class InterpretationComparison:
         for key, interp in self.interpretations.items():
             report = interp.full_report()
             answers = report["answers"]
-            problems = sum(1 for a in answers.values() if "problem" in a or "residual_question" in a)
             p8 = answers.get("P8_consciousness", {})
 
+            # Counts removed 2026-08-16: axiom_count, phenomena_addressed,
+            # phenomena_with_problems and novel_predictions were all len() of
+            # hand-written lists. The structural booleans below are properties
+            # of the axioms as stated, which is what a reader can check.
             rows[key] = {
                 "name": report["name"],
                 "year": report["year"],
-                "axiom_count": report["axiom_count"],
-                "phenomena_addressed": len(answers),
-                "phenomena_with_problems": problems,
                 "addresses_consciousness": p8.get("mechanism", "None") != "None",
-                "novel_predictions": len(report["novel_predictions"]),
                 "needs_collapse_postulate": any(
                     "collapses" in a.lower() or "collapse postulate" in a.lower()
                     for a in report["axioms"]

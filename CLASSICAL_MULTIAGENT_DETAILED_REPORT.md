@@ -289,7 +289,7 @@ local data.
 - **Tests:** 9 in `tests/test_classical_agents.py` (symmetry recovery, testbed
   ground-truth signatures, detector sign-correctness, null behaviour). Full repo
   suite **302 passed** (historical count at the time of writing; the current
-  public suite is 414).
+  public suite is 418; the repo's pytest run is authoritative).
 - **Numbers**: RETRACTED as a provenance claim (2026-08-15) — of the artifacts
   named here, only `testbed_summary.csv` was ever committed to the public
   repository; `classical_symmetry_check.csv`, `detector_results.csv`,

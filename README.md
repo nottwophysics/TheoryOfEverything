@@ -53,7 +53,7 @@ python main.py --visualize
 # Run EVERYTHING (31 experiments + visualizations)
 python main.py --everything
 
-# Run the test suite (414 tests): install the test extra, then run from the
+# Run the test suite (418 tests): install the test extra, then run from the
 # repository root (pytest resolves testpaths=tests relative to the project root).
 pip install -e ".[test]"
 pytest
@@ -82,7 +82,7 @@ For a guided walkthrough of the project, see [docs/GETTING_STARTED.md](docs/GETT
 | **Falsification** | `falsification/` | 5 explicit falsification criteria + experimental designs |
 | **Visualizations** | `visualizations/` | 7 visual plots of Advaita concepts |
 | **Experiments** | `simulations/`, `main.py` | 31 runnable experiments demonstrating the framework |
-| **Test Suite** | `tests/` | 414 automated tests validating all modules |
+| **Test Suite** | `tests/` | 418 automated tests validating all modules |
 
 ---
 
@@ -143,7 +143,7 @@ These claims map directly to structures in modern physics. See [docs/PHILOSOPHY.
 
 | # | Name | What It Demonstrates |
 |---|------|---------------------|
-| 24 | **Everett-Advaita Operational Equivalence** | 5 empirical tests all identical; 5 ontological divergences, 0 measurable |
+| 24 | **Everett-Advaita Operational Equivalence** | The quantities both readings share, computed once. Equivalence is **analytic, not tested** — one Hilbert space, one Born rule, so identical predictions follow by construction. The old "5/5 tests identical" scoreboard compared an array with a copy of itself and was deleted 2026-08-16 |
 | 25 | **Perspectival Asymmetry (Generalized)** | Total purity = 1.0 exactly — a theorem of unitarity (true by construction), presented as such rather than as an empirical finding |
 | 26 | **Observer Centrality** | Decoherence selects basis but NOT outcome; "observer" does essential work in the formalism |
 
@@ -196,7 +196,7 @@ See [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md) for detailed documentation of all
 
 This project is scientifically honest about what it has and hasn't achieved:
 
-- **Tested**: Full test suite (414 tests) covering every module — run with `pytest`
+- **Tested**: Full test suite (418 tests) covering every module — run with `pytest`
 - **Established mathematics, illustrated**: Gleason-based axiom reduction (the theorem is Gleason's; this repo's contribution is numerical illustration — scope caveats in docs/GLEASON_PROBABILITY_GAP.md)
 - **Demonstrated**: Measurement-problem dissolution via decoherence + partial trace (perspectival collapse)
 - **Withdrawn as evidence (2026 review)**: the 1D/2D/3D Einstein-equation demos (circular — entropy defined from the energy density it is then correlated with) and the Bell "verification" (analytic value; no state consumed). These remain as labeled illustrations.

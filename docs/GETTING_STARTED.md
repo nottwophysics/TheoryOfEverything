@@ -352,9 +352,12 @@ python main.py --experiment 17
 | | Copenhagen | Many-Worlds | Pilot Wave | Advaita |
 |-|-----------|-------------|------------|---------|
 | Axioms | 7 | 5 | 5 | **5 (4 independent)** |
-| Phenomena with problems | 6 | 2 | 4 | **0** |
-| Addresses consciousness | No | Partial | No | **Yes** |
-| Novel predictions | 0 | 0 | 2 | **5** |
+| Addresses consciousness | No | Yes | No | Yes |
+
+> **Counts removed (2026-08-16).** Rows for axiom count, phenomena tallies and
+> novel predictions were deleted: each was `len()` of a list written inside the
+> module, so nothing about physics could change them. The axioms and the answers
+> are still printed in full — that side-by-side is the part worth reading.
 
 ### Experiment 18: Gleason's Theorem
 
@@ -399,7 +402,7 @@ Generates 7 PNG files in the `output/` directory:
 
 ## 10. Running the Tests
 
-The project includes a comprehensive test suite with **414 automated tests** covering every module. Tests validate mathematical properties (normalization, Hermiticity, unitarity), physical results (Bell violation, Gleason conditions, entropy bounds), and framework invariants (singleton behavior, non-duality, sublation).
+The project includes a comprehensive test suite with **418 automated tests** covering every module. Tests validate mathematical properties (normalization, Hermiticity, unitarity), physical results (Bell violation, Gleason conditions, entropy bounds), and framework invariants (singleton behavior, non-duality, sublation).
 
 ### Run All Tests
 
@@ -479,7 +482,7 @@ This project is honest about its status. Here is the complete picture:
 - Cosmological constant: order-of-magnitude consistency (with caveats)
 
 ### Paper companion (supporting the accompanying paper's claims)
-- Everett-Advaita operational equivalence: 5/5 tests identical, 0 measurable divergences (Experiment 24)
+- Everett-Advaita operational equivalence: **analytic, not tested** — both readings share the formalism, so predictions coincide by construction (Experiment 24)
 - Perspectival asymmetry: exact to 10⁻¹⁶ across all states, bases, and environment sizes (Experiment 25)
 - Observer centrality: 4 open questions all involve observer; hidden premise demonstrated (Experiment 26)
 

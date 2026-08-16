@@ -767,17 +767,17 @@ Each interpretation class defines:
 
 **Class: `OperationalEquivalence`**
 
-Proves the paper's central claim: Everett and Advaita make identical empirical predictions.
+Computes the quantities Everett and this interpretation **share**, once. It does not compare two arms, because there is only one calculation — the equivalence is analytic. (Until 2026-08-16 this module claimed to prove the claim by comparing an array with a copy of itself.)
 
 | Method | Description |
 |--------|-------------|
-| `.test_probabilities()` | Born rule probabilities identical under both interpretations. |
-| `.test_time_evolution()` | Unitary evolution at 5 time steps — identical states. |
-| `.test_measurement_statistics(num_trials)` | 10,000 measurement outcomes — identical distributions. |
-| `.test_entanglement_correlations()` | Bell CHSH = -2.83, entanglement entropy — identical. |
-| `.test_decoherence()` | Total purity, reduced purity, pointer states — identical. |
-| `.test_where_they_diverge()` | Documents 5 ontological divergences with 0 measurable consequences. |
-| `.full_equivalence_test()` | Run all 6 tests. Summary: 5/5 empirical identical, 5 ontological divergences. |
+| `.shared_born_probabilities()` | Born-rule probabilities. One computation, two justifications (Deutsch–Wallace vs Gleason). |
+| `.shared_time_evolution()` | Unitary evolution at 5 time steps. One trajectory; no second arm exists. |
+| `.shared_measurement_statistics(num_trials)` | Samples the shared Born distribution; reports sampling deviation. |
+| `.shared_entanglement_correlations()` | Entanglement entropy **computed from the state**; CHSH value **analytic** (flagged as such). |
+| `.shared_decoherence()` | Total purity, reduced purity, pointer states — a theorem of the formalism, agreed by all no-collapse readings. |
+| `.ontological_divergences()` | Hand-written catalogue of positions. Explicitly `is_a_computation: False`; not counted. |
+| `.full_report()` | The shared quantities plus the catalogue. **Returns no verdict, no pass/fail and no tallies** — equivalence is analytic. |
 
 ---
 
@@ -880,7 +880,7 @@ See [docs/PREDICTIONS.md](PREDICTIONS.md) for full details on F1–F5.
 
 ---
 
-### `tests/` — 414 Automated Tests
+### `tests/` — 418 Automated Tests
 
 Every module above has a corresponding test file. Tests validate mathematical properties, physical results, and framework invariants. Run with `pytest tests/ -v`.
 

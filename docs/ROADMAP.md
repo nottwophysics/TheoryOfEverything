@@ -158,7 +158,7 @@ No physics ToE addresses why there is **experience** at all. This framework star
 | MERA Φ profile | Increases toward IR | **RETRACTED** (heuristic Φ + defective MERA construction) | See Experiment 19/23 caveats |
 | Koide formula | Holds to 0.006% | **VERIFIED** (not derived) | Empirical check, not derivation |
 | Cosmological constant | Λ ≈ 10⁻¹²² | **Consistency check** | S_universe is empirical input |
-| Everett-Advaita equivalence | 5/5 empirical tests identical | **PROVEN** | 0 measurable divergences |
+| Everett-Advaita equivalence | shared formalism, computed once | **Analytic, not tested** | Follows from the no-collapse dynamics both adopt |
 | Perspectival asymmetry | Exact to 10⁻¹⁶ | **PROVEN** | All states, bases, env sizes |
 | Observer centrality | 4/4 open questions involve observer | **DEMONSTRATED** | Hidden premise of the paper |
 | ER=EPR | Wormholes = entanglement | **ILLUSTRATIVE** (throat–entropy relation imposed by definition) | Experiment 28 |
@@ -180,7 +180,7 @@ No physics ToE addresses why there is **experience** at all. This framework star
 ## Milestone Targets
 
 ### Milestone 0: Automated Test Suite ✅ COMPLETE
-- 414 tests across 25 test files covering all modules
+- 418 tests across 26 test files covering all modules
 - Validates mathematical properties (normalization, Hermiticity, unitarity)
 - Validates physical results (Bell CHSH value, Gleason conditions, honest Newton NON-recovery)
 - Validates framework invariants (singleton, non-duality, substrate preservation)
@@ -192,7 +192,7 @@ No physics ToE addresses why there is **experience** at all. This framework star
 - ~~Compare quantitatively with Copenhagen, Many-Worlds, and Pilot Wave~~
 - ~~Show that the Advaitic interpretation requires fewer postulates~~
 - **Done**: Experiments 17 (formal comparison) and 18 (Gleason proof) accomplish all three goals. The axiom reduction 7→4 is a concrete result. Additionally:
-  - Experiment 24 proves operational equivalence with Everett (5/5 tests identical)
+  - Experiment 24 sets out the operational equivalence with Everett — an analytic consequence of sharing the formalism, not a test result
   - Experiment 25 proves perspectival asymmetry is exact (10⁻¹⁶) across all cases
   - Experiment 26 demonstrates observer centrality (the paper's hidden premise)
   - Paper public as a preprint: https://doi.org/10.5281/zenodo.21007975

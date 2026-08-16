@@ -370,17 +370,16 @@ def interpretations_experiment():
 
     # 1. Axiom comparison
     print("\n" + "-" * 60)
-    print("  PART 1: AXIOM COUNT (Occam's Razor)")
+    print("  PART 1: AXIOMS, SIDE BY SIDE (not counted)")
     print("-" * 60)
     axioms = comp.axiom_comparison()
     for key in ["copenhagen", "many_worlds", "pilot_wave", "advaita"]:
         a = axioms[key]
-        print(f"\n  {a['name']}: {a['axiom_count']} axioms")
+        print(f"\n  {a['name']}:")
         for ax in a['axioms']:
             print(f"    {ax}")
-    print(f"\n  Ranking (fewest axioms = most parsimonious):")
-    for r in axioms['ranking_by_parsimony']:
-        print(f"    {r}")
+    print("\n  (No axiom count and no parsimony ranking: those were arithmetic")
+    print("   on hand-written lists, deleted 2026-08-16. Read the axioms above.)")
 
     # 2. Empirical agreement
     print("\n" + "-" * 60)
@@ -401,9 +400,8 @@ def interpretations_experiment():
     for key in ["copenhagen", "many_worlds", "pilot_wave", "advaita"]:
         s = scope[key]
         print(f"\n  {s['name']}:")
-        print(f"    Phenomena addressed: {s['phenomena_addressed']}/8")
-        print(f"    With unresolved problems: {s['phenomena_with_problems']}")
-        print(f"    Cleanly resolved: {s['phenomena_clean']}")
+        flagged = s['phenomena_flagging_a_residual_problem']
+        print(f"    Flags a residual problem on: {', '.join(flagged) if flagged else 'none'}")
         print(f"    Cannot explain:")
         for item in s['cannot_explain'][:3]:
             print(f"      - {item[:80]}")
@@ -426,14 +424,13 @@ def interpretations_experiment():
 
     # 5. Novel predictions
     print("\n" + "-" * 60)
-    print("  PART 5: NOVEL PREDICTIONS (what makes each unique)")
+    print("  PART 5: NOVEL PREDICTIONS — SECTION REMOVED (2026-08-16)")
     print("-" * 60)
-    preds = comp.novel_predictions_comparison()
-    for key in ["copenhagen", "many_worlds", "pilot_wave", "advaita"]:
-        p = preds[key]
-        print(f"\n  {p['name']}: {p['num_predictions']} prediction(s)")
-        for pred in p['novel_predictions']:
-            print(f"    - {pred[:90]}")
+    print("  This part scored each interpretation by the number of 'novel")
+    print("  predictions' written for it in this module. The rivals' entries")
+    print("  were their weakest claims, written here rather than quoted, and")
+    print("  crediting this framework with novel predictions contradicts its")
+    print("  own operational-equivalence claim (Experiment 24).")
 
     # 6. Advaita measurement demonstration
     print("\n" + "-" * 60)
@@ -460,11 +457,7 @@ def interpretations_experiment():
 
     rows_to_print = [
         ("Year", "year"),
-        ("Axiom count", "axiom_count"),
-        ("Phenomena addressed", "phenomena_addressed"),
-        ("With problems", "phenomena_with_problems"),
         ("Addresses consciousness", "addresses_consciousness"),
-        ("Novel predictions", "novel_predictions"),
         ("Needs collapse postulate", "needs_collapse_postulate"),
         ("Needs hidden variables", "needs_hidden_variables"),
         ("Needs branching", "needs_branching"),
@@ -474,15 +467,22 @@ def interpretations_experiment():
         print(f"  {label:<35} {vals[0]:>12} {vals[1]:>12} {vals[2]:>12} {vals[3]:>12}")
 
     print(f"\n  VERDICT:")
-    print(f"  - All four agree on empirical predictions (Born rule, Bell violation, etc.)")
-    print(f"  - Copenhagen: 7 axioms, silent on consciousness, no novel predictions")
-    print(f"  - Many-Worlds: 5 axioms, silent on consciousness, no testable predictions")
-    print(f"  - Pilot Wave: 5 axioms, silent on consciousness, 2 novel predictions")
-    print(f"  - Advaita: 5 axioms, ADDRESSES consciousness, 5 novel predictions")
+    print(f"  - All four agree on empirical predictions (Born rule, Bell violation,")
+    print(f"    etc.) — and this agreement is by construction: every interpretation")
+    print(f"    here inherits one Born-rule computation from the shared base class.")
+    print(f"  - The four differ in what they must POSIT: collapse, hidden variables,")
+    print(f"    branching, or an experiential primitive. Those differences are")
+    print(f"    structural properties of the axioms as stated, printed above.")
     print(f"  ")
-    print(f"  Advaita matches the parsimony of Many-Worlds and Pilot Wave (5 axioms),")
-    print(f"  while being the ONLY interpretation that addresses the hard problem")
-    print(f"  of consciousness — and it makes 5 testable predictions.")
+    print(f"  Deleted 2026-08-16: the scoreboard that used to close this experiment")
+    print(f"  (axiom counts, phenomena tallies, a novel-predictions ranking and a")
+    print(f"  parsimony ordering). Every figure in it was len() of a list written")
+    print(f"  in this module, so nothing about physics could have changed it. Two of")
+    print(f"  its claims were also false against this module's own output: it called")
+    print(f"  this framework the ONLY interpretation addressing consciousness, while")
+    print(f"  consciousness_comparison() scores Many-Worlds True as well; and it")
+    print(f"  credited the framework with 5 testable predictions, which contradicts")
+    print(f"  the operational equivalence of Experiment 24.")
 
     return {"status": "completed", "experiment": "interpretations_comparison"}
 
@@ -993,38 +993,45 @@ def operational_equivalence_experiment():
     """Experiment 24: Everett-Advaita Operational Equivalence."""
     print("\n" + "=" * 70)
     print("  EXPERIMENT 24: EVERETT-ADVAITA OPERATIONAL EQUIVALENCE")
-    print("  Proving the Paper's Central Claim: Identical Predictions")
+    print("  The shared calculation — equivalence is ANALYTIC, not tested")
     print("=" * 70)
 
     from quantum.operational_equivalence import OperationalEquivalence
 
     oe = OperationalEquivalence(dimension=4)
-    results = oe.full_equivalence_test()
+    results = oe.full_report()
 
-    # Show each test
-    for key in ["probabilities", "time_evolution", "measurement_statistics",
-                "entanglement", "decoherence"]:
-        r = results[key]
-        status = "IDENTICAL" if r.get("identical", r.get("all_identical", r.get("numbers_identical", False))) else "CHECK"
-        print(f"\n  Test: {r['test']} — [{status}]")
-        print(f"    {r['note'][:120]}")
+    print("\n  " + "-" * 66)
+    print("  WHAT THIS EXPERIMENT DOES NOT DO")
+    print("  " + "-" * 66)
+    print("  It does not compare two interpretations, because there is only one")
+    print("  calculation. Both readings use the same Hilbert space, the same")
+    print("  unitary dynamics, the same Born rule and the same decoherence, so")
+    print("  identical predictions follow by construction and no computation")
+    print("  could show otherwise. Until 2026-08-16 this module claimed to PROVE")
+    print("  the equivalence by copying one array twice and reporting that the")
+    print("  copies matched; that scoreboard has been deleted.")
 
-    # Show divergences
+    print("\n  " + "-" * 66)
+    print("  THE SHARED QUANTITIES (each computed once)")
+    print("  " + "-" * 66)
+    for key, r in results["shared_quantities"].items():
+        print(f"\n  {r['quantity']}")
+        print(f"    {r['note'][:150]}")
+
     div = results["divergences"]
-    print(f"\n  ONTOLOGICAL DIVERGENCES (not measurable):")
+    print("\n  " + "-" * 66)
+    print("  ONTOLOGICAL DIVERGENCES (hand-written catalogue; none measurable)")
+    print("  " + "-" * 66)
     for key, val in div["divergences"].items():
         print(f"    {key}:")
         print(f"      Everett: {val['everett'][:80]}")
         print(f"      Advaita: {val['advaita'][:80]}")
         print(f"      Measurable? {val['measurable_difference']}")
+    print("\n  (Not counted: the number of rows reflects how the table was")
+    print("   written, not a fact about the interpretations.)")
 
-    # Summary
-    s = results["summary"]
-    print(f"\n  SUMMARY:")
-    print(f"    Empirical tests: {s['empirical_tests_passed']} — all identical: {s['all_empirically_identical']}")
-    print(f"    Ontological divergences: {s['ontological_divergences']}")
-    print(f"    Measurable divergences: {s['measurable_divergences']}")
-    print(f"\n  {s['conclusion']}")
+    print(f"\n  STATUS: {results['equivalence_status']}")
 
     return {"status": "completed", "experiment": "operational_equivalence"}
 
