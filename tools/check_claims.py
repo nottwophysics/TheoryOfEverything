@@ -34,6 +34,7 @@ import io
 import json
 import os
 import re
+import glob
 import subprocess
 import sys
 
@@ -78,10 +79,47 @@ def run_producer(name):
 
 # ----------------------------------------------------------------- helpers
 
+# Directories this project treats as OUTBOUND but deliberately keeps out of git:
+# manuscripts, cover letters, deposit notes, the outreach claims ledger. They are
+# gitignored, so `git ls-files` never saw them -- which meant that for as long as this
+# checker has existed it reported "OK -- no retired claim survives" while NO MANUSCRIPT
+# WAS IN ITS FIELD OF VIEW AT ALL. The published paper carried a retired claim through
+# eight green runs. A checker that is silent about what it did not read is worse than
+# one that never ran, so scan these when present and say so either way.
+UNTRACKED_OUTBOUND = ["submission", "outreach"]
+UNTRACKED_GLOBS = ["docs/PAPER*.md"]
+
+
 def tracked_docs():
     out = subprocess.run(["git", "ls-files", "*.md"], cwd=ROOT,
                          capture_output=True, text=True).stdout.split()
     return [os.path.join(ROOT, f) for f in out]
+
+
+def untracked_outbound_docs():
+    """Outbound .md files that git does not track. Absent in CI; present locally."""
+    found = []
+    for d in UNTRACKED_OUTBOUND:
+        base = os.path.join(ROOT, d)
+        if not os.path.isdir(base):
+            continue
+        for root, _dirs, files in os.walk(base):
+            found += [os.path.join(root, f) for f in files if f.endswith(".md")]
+    for pattern in UNTRACKED_GLOBS:
+        found += glob.glob(os.path.join(ROOT, pattern))
+    return found
+
+
+def docs_to_scan():
+    """Every document this project could send outward, tracked or not, deduped."""
+    seen, out = set(), []
+    for p in tracked_docs() + untracked_outbound_docs():
+        rp = os.path.realpath(p)
+        if rp in seen:
+            continue
+        seen.add(rp)
+        out.append(p)
+    return out
 
 
 def paragraphs(text):
@@ -141,11 +179,18 @@ def check_counts(fix, verbose, problems):
         # manifest are anchored to phrasings that mean "the current total", so a
         # dated snapshot ("302, historical count at the time of writing") does
         # not match them in the first place and needs no exemption.
-        for path in tracked_docs():
+        for path in docs_to_scan():
             text = io.open(path, encoding="utf-8").read()
             new = text
             for off, para in paragraphs(text):
                 fp = flat(para)
+                # Counts still get NO vocabulary-based exemption -- reusing the
+                # retirement words here once let "error_correction.py" in a directory
+                # listing exempt a whole block via the substring "correction". Only the
+                # explicit hatch counts, and only for dated records that are SUPPOSED to
+                # quote the number of the day.
+                if "claims-ok" in fp.lower():
+                    continue
                 for pat in pats:
                     for m in re.finditer(pat, fp):
                         written = int(m.group("v"))
@@ -186,6 +231,25 @@ def check_derived(verbose, problems):
             print(f"  {entry['name']}: {actual} (matches manifest)")
 
 
+def _is_declared_archive(text):
+    """
+    True if the document declares itself superseded in its own opening banner.
+
+    `versions/` covers archives identified by PATH. This covers the other kind: a
+    draft or an old master that is dead but still on disk. Requiring an invisible
+    per-paragraph marker for those would hide the status from the one person who
+    most needs it -- whoever opens the file next -- so the banner does both jobs.
+    Scoped to the head of the file so a passing mention cannot exempt a live one.
+    """
+    head = _demph(text[:900])
+    return ("superseded" in head and
+            ("do not" in head or "archive" in head or "provenance only" in head
+             or "not for submission" in head or "history, not current" in head
+             # PHI_S_MULTIAGENT_RESEARCH_REPORT.md's banner: the honest form for a
+             # dated result whose body is deliberately left as it was written.
+             or "dated record" in head or "body left as written" in head))
+
+
 def _is_frozen_archive(path):
     """
     A file under a `versions/` directory is a frozen prior version. It is SUPPOSED to
@@ -196,41 +260,61 @@ def _is_frozen_archive(path):
     return os.sep + "versions" + os.sep in path
 
 
+def retired_hits(entry, text, markers):
+    """
+    Every un-exempted match of one retired entry in one document.
+
+    Extracted 2026-08-17 so that tests exercise THE CHECKER rather than a copy of it.
+    A test that re-implements this loop would have passed happily while the real loop
+    was structurally incapable of firing -- which is exactly what happened to
+    `phi_s_pre_audit_numbers` for as long as it existed.
+
+    Yields (paragraph_offset, pattern, match).
+    """
+    pats = list(entry.get("banned", [])) + list(entry.get("paraphrases", []))
+    for off, para in paragraphs(text):
+        fp = flat(para)
+        for pat in pats:
+            m = re.search(pat, fp, re.I)
+            if not m or _negated(fp, m.start()):
+                continue
+            # Exemption is PROXIMITY-based, not whole-paragraph. A paragraph-wide
+            # exemption let a genuinely stale caveat hide anywhere in a long paragraph
+            # that happened to mention "withdrawn" -- which is how the Bell caveat
+            # survived in six documents past the first sweep. Markdown emphasis is
+            # stripped first: "is **false** of this module" does not contain the
+            # substring "is false", so bold silently defeated the exemption.
+            window = _demph(fp[max(0, m.start() - 300):m.end() + 300])
+            if entry.get("no_exempt"):
+                # Only the explicit hatch, and PARAGRAPH-scoped: it is a deliberate
+                # statement about this block, and a marker at the top of a long block
+                # was missed when this was proximity-scoped.
+                if "claims-ok" in _demph(fp):
+                    continue
+            elif any(mk in window for mk in markers):
+                continue
+            yield off, pat, m
+
+
 def check_retired(verbose, problems):
     markers = [m.lower() for m in MANIFEST.EXEMPT_MARKERS]
     for entry in MANIFEST.RETIRED:
         name = entry["name"]
         pats = list(entry.get("banned", [])) + list(entry.get("paraphrases", []))
         hits = 0
-        for path in tracked_docs():
+        for path in docs_to_scan():
             if _is_frozen_archive(path):
                 continue
             text = io.open(path, encoding="utf-8").read()
-            for off, para in paragraphs(text):
-                fp = flat(para)
-                for pat in pats:
-                    m = re.search(pat, fp, re.I)
-                    if not m or _negated(fp, m.start()):
-                        continue
-                    # Exemption is PROXIMITY-based, not whole-paragraph. A
-                    # paragraph-wide exemption let a genuinely stale caveat hide
-                    # anywhere in a long paragraph that happened to mention
-                    # "withdrawn" -- which is exactly how the Bell caveat
-                    # survived in six documents past the first sweep.
-                    # Strip markdown emphasis before looking for markers.
-                    # "is **false** of this module" does not contain the
-                    # substring "is false", so bold/italics silently defeated
-                    # the exemption and flagged a retraction note as a
-                    # surviving claim. Emphasis is formatting, not meaning.
-                    window = _demph(fp[max(0, m.start() - 300):m.end() + 300])
-                    if any(mk in window for mk in markers):
-                        continue
-                    if True:
-                        hits += 1
-                        rel = os.path.relpath(path, ROOT)
-                        problems.append(
-                            f"[{name}] {rel}:~{line_of(text, off)}: retired claim survives "
-                            f"un-exempted: ...{fp[max(0, m.start()-60):m.start()+90]}...")
+            if _is_declared_archive(text):
+                continue
+            for off, pat, m in retired_hits(entry, text, markers):
+                hits += 1
+                rel = os.path.relpath(path, ROOT)
+                fp = flat(text[off:off + 4000])
+                problems.append(
+                    f"[{name}] {rel}:~{line_of(text, off)}: retired claim survives "
+                    f"un-exempted: ...{fp[max(0, m.start()-60):m.start()+90]}...")
         if verbose and not hits:
             print(f"  {name}: clear ({len(pats)} patterns, incl. paraphrases)")
 
@@ -244,6 +328,15 @@ def main():
     args = ap.parse_args()
 
     problems = []
+
+    tracked = len(tracked_docs())
+    untracked = len(untracked_outbound_docs())
+    frozen = sum(1 for p in docs_to_scan() if _is_frozen_archive(p))
+    print(f"scanning {tracked} tracked + {untracked} untracked outbound .md "
+          f"({frozen} frozen archives skipped for retired-claim checks)")
+    if not untracked:
+        print("  NOTE: no untracked outbound docs found (submission/, outreach/ absent) — "
+              "this run says nothing about any manuscript.")
 
     print("counts")
     check_counts(args.fix, args.verbose, problems)

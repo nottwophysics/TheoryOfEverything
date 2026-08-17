@@ -207,7 +207,7 @@ since the derivation now succeeds; two obsolete shared tests in
 formula and linearity in acceleration, and the old
 `test_recover_newton_honestly_reports_failure` is superseded by
 `test_recover_newton` plus a retained negative control asserting the legacy route
-still fails. Suite: **396 passed, 1 xfailed** on the PUBLIC tree (437 collected).
+still fails. Suite: **396 passed, 1 xfailed** on the PUBLIC tree (485 collected).
 (Corrected 2026-08-15: 404 counted the private, gitignored
 `tests/test_integration_pkg.py`, which is not part of the public suite.)
 
@@ -231,5 +231,5 @@ verdict for the 3D legacy channel. Tracks A, B and C were already integrated
 (Experiments 21, 19, 12).
 
 Note the suite figures in this section are as of the reimplementation commit;
-the suite has since grown to 423 passed / 1 xfailed (437 collected) as the
+the suite has since grown to 423 passed / 1 xfailed (485 collected) as the
 vacuous legacy tests were converted.

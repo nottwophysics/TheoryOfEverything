@@ -90,6 +90,15 @@ MUTATIONS = [
      r"G_NEWTON = 6\.67430e-11", "G_NEWTON = 1.0e-11"),
     ("entanglement-chsh-constant", "quantum/entanglement.py",
      r"CHSH_S_value\": ", "CHSH_S_value\": 2.8284271247461903 or "),
+    # The guards guarding the guards. `phi_s_pre_audit_numbers` could never fire until
+    # 2026-08-17 because its patterns live only inside their own refutation, and the
+    # checker could not see a single manuscript because submission/ is gitignored.
+    # Both are now covered by tests/test_claims_guard.py; these mutations keep them so.
+    ("claims-no-exempt-off", "tools/claims.py",
+     r"\"no_exempt\": True,", "\"no_exempt\": False,"),
+    ("claims-scan-tracked-only", "tools/check_claims.py",
+     r"UNTRACKED_OUTBOUND = \[\"submission\", \"outreach\"\]",
+     "UNTRACKED_OUTBOUND = []"),
 ]
 
 
