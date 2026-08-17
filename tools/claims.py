@@ -89,6 +89,21 @@ RETIRED = [
             r"[Pp]hi cannot exceed",
             r"capped by the bipartition",
             r"maximum consciousness = maximum entanglement",
+            # Added 2026-08-17. The outreach claims ledger -- the file that gates every
+            # public statement -- carried "integrated information should be capped by
+            # entanglement (Phi <= S), so cutting entanglement, like anaesthesia, should
+            # cut Phi" with a green "say it like this" endorsement, for a month after the
+            # bound was falsified. It matched NONE of the patterns above: the list said
+            # "consciousness", the ledger said "integrated information"; the list said
+            # "bipartition", the ledger said "entanglement". A paraphrase register that
+            # only holds the wordings we happened to think of is not a register.
+            r"capped by entanglement",
+            r"bounded above by entanglement",
+            r"integrated information .{0,40}(capped|bounded) by",
+            # The anaesthesia inference was a consequence of the bound and does not
+            # survive it, but it can be stated without naming Phi or S at all.
+            r"cutting entanglement.{0,40}(should|would) (cut|reduce)",
+            r"an?a?esthesia.{0,60}(should|would) (cut|reduce|lower)",
         ],
     },
     {
@@ -226,4 +241,12 @@ EXEMPT_MARKERS = [
     "recommend", "off-message",
     # "Formerly X" / "reclassified" are retirement notes naming their own claim.
     "formerly", "reclassified", "no longer presented",
+    # Added 2026-08-17 with the widened Phi<=S paraphrases. Those patterns fire on any
+    # sentence that NAMES the conjecture -- including the setup sentence of a retraction
+    # ("Initial conjecture: Phi <= S ... we tested it and it failed"), which is exactly
+    # how an honest correction has to read. These three mark naming, not asserting.
+    # Deliberately NOT "preliminary" or "conjecture" alone: the retired ledger entry
+    # called itself a "Preliminary, falsifiable conjecture", so either would have
+    # exempted the very claim these patterns exist to catch.
+    "initial conjecture", "conjecture (preliminary)", "frozen prior",
 ]

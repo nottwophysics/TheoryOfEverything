@@ -186,6 +186,16 @@ def check_derived(verbose, problems):
             print(f"  {entry['name']}: {actual} (matches manifest)")
 
 
+def _is_frozen_archive(path):
+    """
+    A file under a `versions/` directory is a frozen prior version. It is SUPPOSED to
+    contain the wording that was retired -- that is what freezing it is for -- and
+    flagging it trains you to ignore the checker. Added 2026-08-17, when widening the
+    Phi<=S paraphrases lit up four frozen manuscripts at once.
+    """
+    return os.sep + "versions" + os.sep in path
+
+
 def check_retired(verbose, problems):
     markers = [m.lower() for m in MANIFEST.EXEMPT_MARKERS]
     for entry in MANIFEST.RETIRED:
@@ -193,6 +203,8 @@ def check_retired(verbose, problems):
         pats = list(entry.get("banned", [])) + list(entry.get("paraphrases", []))
         hits = 0
         for path in tracked_docs():
+            if _is_frozen_archive(path):
+                continue
             text = io.open(path, encoding="utf-8").read()
             for off, para in paragraphs(text):
                 fp = flat(para)

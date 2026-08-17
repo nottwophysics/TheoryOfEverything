@@ -236,7 +236,8 @@ established results.
 ### 6.2 "Consciousness signatures" and the IIT bridge (`predictions/consciousness_signatures.py`, `predictions/iit_bridge.py`)
 
 The central empirical claim here is the conjecture **Φ ≤ S_entanglement** (that
-integrated information is bounded by entanglement entropy), tested in
+integrated information is bounded by entanglement entropy) — since **falsified**,
+see the banner at the top of this file — tested in
 `IITEntanglementBridge.test_conjecture`. I ran it (seed 42, 50 trials):
 
 ```
