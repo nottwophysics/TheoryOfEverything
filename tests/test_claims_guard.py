@@ -151,3 +151,67 @@ def test_checker_scans_outbound_dirs_when_present():
         )
     if not checked_any:
         pytest.skip("no outbound .md present in this checkout (expected in CI)")
+
+
+# ---------------------------------------------------------------- cv/ and archives
+# Added 2026-08-18. Two gaps found the same afternoon, either of which alone would
+# have hidden a retired claim on a public author profile for seven weeks:
+#   1. `cv/` was not an outbound directory, so the PhilPapers CV was never scanned.
+#   2. Frozen archives were exempt from retired-claim checks but NOT from count
+#      checks, so adding cv/ (with its cv/versions/ snapshots) turned the checker
+#      permanently red — and a permanently red guard is one you learn to ignore.
+
+
+def test_cv_is_an_outbound_dir():
+    """
+    `cv/` is outbound. It sits on a public author profile.
+
+    Pinned at the configuration level, like submission/ and outreach/ above, because
+    the behavioural test cannot run where cv/ is absent (CI, mutation sandbox).
+    """
+    assert "cv" in check_claims.UNTRACKED_OUTBOUND, (
+        "cv/ must be scanned. The CV uploaded to PhilPapers carried a retired claim, a "
+        "superseded v1 DOI and two stale counts for seven weeks; it was found by hand, "
+        "not by this checker. 'Outbound' means a stranger can read it."
+    )
+
+
+def test_frozen_archive_is_exempt_from_count_checks(tmp_path, monkeypatch):
+    """
+    A frozen prior version must NOT be asked to report today's numbers.
+
+    Behavioural, not structural: two files are fed to the real counts checker with the
+    same wrong number, differing only in whether their path is under `versions/`. The
+    frozen one must be silent and the live one must complain — so this fails both if
+    the exemption disappears and if it over-fires and silences everything.
+    """
+    entry = next((e for e in MANIFEST.COUNTS if e["name"] == "test_total"), None)
+    if entry is None:
+        pytest.skip("no test_total count entry")
+
+    actual = check_claims.measure("test_total")
+    if actual is None:
+        pytest.skip("could not measure test_total")
+    stale = actual + 1000            # cannot collide with the real value
+
+    live = tmp_path / "live.md"
+    frozen = tmp_path / "versions" / "old.md"
+    frozen.parent.mkdir()
+    body = f"The suite has {stale} automated tests.\n"
+    live.write_text(body, encoding="utf-8")
+    frozen.write_text(body, encoding="utf-8")
+
+    monkeypatch.setattr(check_claims, "docs_to_scan",
+                        lambda: [str(live), str(frozen)])
+    problems = []
+    check_claims.check_counts(False, False, problems)
+
+    hits = [p for p in problems if str(stale) in p]
+    assert any("live.md" in p for p in hits), (
+        "the counts checker went silent on a LIVE document carrying a stale number — "
+        "the frozen-archive exemption is over-firing."
+    )
+    assert not any("old.md" in p for p in hits), (
+        "a file under versions/ was count-checked. Frozen snapshots are supposed to "
+        "carry the number of their day; flagging them forever is how a guard gets ignored."
+    )

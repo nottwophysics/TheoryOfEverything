@@ -96,9 +96,17 @@ MUTATIONS = [
     # Both are now covered by tests/test_claims_guard.py; these mutations keep them so.
     ("claims-no-exempt-off", "tools/claims.py",
      r"\"no_exempt\": True,", "\"no_exempt\": False,"),
+    # Pattern loosened 2026-08-18: it pinned the exact two-element list, so adding "cv"
+    # made it SKIP -- and a skip is not a pass. Match the assignment, not its contents.
     ("claims-scan-tracked-only", "tools/check_claims.py",
-     r"UNTRACKED_OUTBOUND = \[\"submission\", \"outreach\"\]",
+     r"UNTRACKED_OUTBOUND = \[[^\]]*\]",
      "UNTRACKED_OUTBOUND = []"),
+    # Added 2026-08-18 with the cv/ widening: if frozen archives stop being skipped for
+    # COUNT checks, every cv/versions/ snapshot demands today's test total and the
+    # checker goes permanently red -- which is how a guard gets ignored.
+    ("claims-frozen-counts-off", "tools/check_claims.py",
+     r"            if _is_frozen_archive\(path\):\n                continue\n",
+     ""),
 ]
 
 

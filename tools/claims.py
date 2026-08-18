@@ -130,6 +130,27 @@ RETIRED = [
         "paraphrases": [r"all 23 systems with nonzero"],
     },
     {
+        "name": "minimal_posit_every_no_collapse_adds",
+        "witness": "The non-determination isolates the minimal posit every no-collapse "
+                   "interpretation must add; taking that posit as ground yields a structural "
+                   "cosmopsychism on which a universal subject's self-relational structure is "
+                   "the Hilbert-space structure.",
+        "why": "RETIRED 2026-08-17 in the third editorial round. The paper's OWN menu table "
+               "refutes it: Wallace (2012) does not read cardinality off branch structure, so "
+               "the leading Everettian is already supplying the account rather than adding a "
+               "posit -- s2.5 now says so explicitly. Corrected wording: 'isolates what every "
+               "no-collapse interpretation owes: an account of what fixes the experiential "
+               "facts.' This is the first ARGUMENT-level retirement in this manifest; every "
+               "prior entry was a number or a physics demo. It survived seven weeks in the "
+               "public PhilPapers CV because cv/ was not scanned and the claim was never "
+               "registered here -- two independent gaps, either of which would have hidden it.",
+        "banned": [r"minimal posit",
+                   r"posit every no-collapse interpretation must add"],
+        "paraphrases": [r"every no-collapse interpretation must add",
+                        r"has to be posited",
+                        r"differ only in what they bolt on"],
+    },
+    {
         "name": "newton_non_recovery",
         "witness": "The demo is an honest Newton NON-recovery: the module does NOT recover Newton from the entropic argument.",
         "why": "STALE CORRECTION. gravity/entropic.py was reimplemented 2026-08-15 "

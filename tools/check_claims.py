@@ -86,7 +86,12 @@ def run_producer(name):
 # WAS IN ITS FIELD OF VIEW AT ALL. The published paper carried a retired claim through
 # eight green runs. A checker that is silent about what it did not read is worse than
 # one that never ran, so scan these when present and say so either way.
-UNTRACKED_OUTBOUND = ["submission", "outreach"]
+# `cv` added 2026-08-18. The PhilPapers CV is the single most-public artefact this
+# project has -- it sits on a public author profile -- and it was outside this list
+# for seven weeks while carrying a retired claim, a superseded v1 DOI and two stale
+# counts. It was found by hand, not by this checker. Outbound means "a stranger can
+# read it", not "it is a manuscript".
+UNTRACKED_OUTBOUND = ["submission", "outreach", "cv"]
 UNTRACKED_GLOBS = ["docs/PAPER*.md"]
 
 
@@ -180,6 +185,13 @@ def check_counts(fix, verbose, problems):
         # dated snapshot ("302, historical count at the time of writing") does
         # not match them in the first place and needs no exemption.
         for path in docs_to_scan():
+            # A frozen prior version is SUPPOSED to carry the count of its day; demanding
+            # it report today's is what trains you to ignore the checker. `_is_frozen_archive`
+            # already exempts these from retired-claim checks -- it was never applied here,
+            # which only showed up when cv/ (with its cv/versions/ archive) entered scope
+            # on 2026-08-18.
+            if _is_frozen_archive(path):
+                continue
             text = io.open(path, encoding="utf-8").read()
             new = text
             for off, para in paragraphs(text):
@@ -193,6 +205,14 @@ def check_counts(fix, verbose, problems):
                     continue
                 for pat in pats:
                     for m in re.finditer(pat, fp):
+                        # Reject a match that begins mid-number: "~1,700 automated
+                        # tests" (the PSF figure on the master CV) captured "700" and
+                        # was reported as a drifted test total. A digit, comma or
+                        # period immediately before the captured value means we have
+                        # sliced into a larger number, not found a count.
+                        vstart = m.start("v")
+                        if vstart > 0 and fp[vstart - 1] in "0123456789,.":
+                            continue
                         written = int(m.group("v"))
                         if written == actual:
                             continue

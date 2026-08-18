@@ -915,7 +915,7 @@ See [docs/PREDICTIONS.md](PREDICTIONS.md) for full details on F1–F5.
 
 ---
 
-### `tests/` — 485 Automated Tests
+### `tests/` — 490 Automated Tests
 
 Every module above has a corresponding test file. Tests validate mathematical properties, physical results, and framework invariants. Run with `pytest tests/ -v`.
 
