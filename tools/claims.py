@@ -70,6 +70,44 @@ DERIVED = [
     {"name": "phi_s_max_phi",    "producer": "phi_s_verdict", "key": "max_phi_bits",     "pinned": 4.012},
     {"name": "phi_s_max_S",      "producer": "phi_s_verdict", "key": "max_S_bits",       "pinned": 0.833},
     {"name": "phi_s_pearson",    "producer": "phi_s_verdict", "key": "pearson_r_phi_s",  "pinned": 0.643},
+    # Added 2026-08-21 (round 6). s3.1 of the manuscript prints these three as
+    # computed results -- "1,800 trials each in dimension 4", "1000 random
+    # orthonormal bases in dimension 3, where it fails on 256 of them" -- and
+    # NOTHING pinned them: tests/test_quantum.py asserts only `total_tests >= 100`
+    # and `0 < failure_rate <= 1`, so the module could return any figure and stay
+    # green while the paper kept quoting the old one. Round 4 CORRECTED "900 trials"
+    # to "1,800 ... in dimension 4" and did not pin it, which is this project's
+    # stop-one-layer-short pattern at a new site. All three are deterministic:
+    # dimension defaults to 4, the dim-3 sweep is 1000 bases under np.random.seed(42).
+    {"name": "gleason_uniqueness_trials", "producer": "gleason_counts",
+     "key": "uniqueness_trials_default_dim", "pinned": 1800},
+    {"name": "gleason_ks_bases",          "producer": "gleason_counts",
+     "key": "dispersion_free_bases_dim3",   "pinned": 1000},
+    {"name": "gleason_ks_failures",       "producer": "gleason_counts",
+     "key": "dispersion_free_failures_dim3", "pinned": 256},
+    # Added 2026-08-21 (round 8). Same gap as the gleason block above, at the one
+    # site round 6 did not reach: s2.4 prints "over 20 Haar-random ... unitaries on
+    # E alone ... rho_E moves by at least 0.42" -- the ONE genuinely measured
+    # quantity in that section -- and nothing pinned it. tests/test_unity_measured.py
+    # asserts only `min_rho_E_trace_norm_change > 1e-6`, so flipping the module's
+    # default seed from 42 to 7 takes the figure to 0.396 (making the manuscript
+    # sentence false) while the whole suite stays green and this checker still said
+    # OK. Verified by mutation on a scratch copy before the pin was written.
+    # Deterministic: UnityOfExperience() defaults to n_outcomes=3, seed=42 and
+    # environment_unitary_invariance() to n_trials=20.
+    # NOT pinned, deliberately: max_rho_SA_trace_norm_change (the 5.8e-16 in the same
+    # sentence). That figure is at machine precision and moves with BLAS -- it was
+    # measured at 5.64e-16 under the seed mutation -- so pinning its digits would be a
+    # checker that cries wolf. The manuscript states it as an upper bound, which is
+    # what makes it safe to leave unpinned.
+    # The 0.42 pin is deliberately TIGHTER than the sentence it guards: the paper says
+    # "at least 0.42", so a value that ROSE would keep the sentence true and still fail
+    # here. That failure is the intended one -- it means the printed digits no longer
+    # match the code and one of the two has to move.
+    {"name": "unity_env_trials",   "producer": "unity_env_counts",
+     "key": "trials",                       "pinned": 20},
+    {"name": "unity_env_min_rho_E", "producer": "unity_env_counts",
+     "key": "min_rho_E_trace_norm_change",  "pinned": 0.42},
 ]
 
 # ---------------------------------------------------------------------------
@@ -270,6 +308,59 @@ RETIRED = [
                    r"Novel predictions that distinguish the consciousness-first"],
         "paraphrases": [r"The framework states \*\*5 predictions\*\*",
                         r"makes 5 (novel|testable) predictions"],
+    },
+    {
+        # Registered 2026-08-21. Retired 2026-08-15 in the CODE, but no manifest entry
+        # was ever written, so the checker stayed green for six days while
+        # docs/EXPERIMENTS.md still listed "30/30 trials, 3 distinct cardinalities" as
+        # **Demonstrated** in its scoreboard and docs/MODULES.md advertised a
+        # "default 30/30 pass". Both are tracked, public files. This is the session-23
+        # lesson repeating at a different site: a retirement that lives only in the
+        # module that performed it is not registered anywhere that can catch it.
+        "name": "unity_30_of_30_robustness",
+        "witness": "Robustness: 30/30 trials confirm underdetermination across random amplitudes.",
+        "why": "Retired 2026-08-15: the amplitude sweep is structurally invariant -- three "
+               "of the four cardinalities are definitional, so the sweep cannot come out "
+               "False for any input and 30/30 was guaranteed before any trial ran. It is "
+               "not a robustness result and was never evidence for anything.",
+        "banned": [r"30/30 trials confirm",
+                   r"default 30/30 pass"],
+        "paraphrases": [r"30/30 (trials|pass)",
+                        r"30 of 30 (trials|runs)",
+                        r"all 30 trials",
+                        r"3 distinct cardinalities\b.{0,40}\bDemonstrated"],
+    },
+    {
+        # Registered 2026-08-21 (round 6). quantum/gleason.py retired these two
+        # self-descriptions on 2026-08-15 and recorded the retirement in its own
+        # HISTORY block -- inside a .py file, which this checker does not scan. So
+        # the retirement lived nowhere that could catch it, and FOUR tracked public
+        # docs went on asserting it: docs/GLEASON_PROBABILITY_GAP.md (the note
+        # gleason.py itself directs readers to, by name), docs/MODULES.md,
+        # docs/EXPERIMENTS.md and docs/GETTING_STARTED.md. Exactly the shape of
+        # unity_30_of_30_robustness above, six days later -- the lesson did not
+        # generalise from one module to the next, which is why it is a manifest
+        # entry now and not a note in a docstring.
+        "name": "gleason_verifies_and_proves_uniqueness",
+        "witness": "The repository module quantum/gleason.py verifies Gleason's conditions "
+                   "numerically for the Brahman Hilbert space, tests non-Born measures for "
+                   "contradictions, and demonstrates that no other rule is consistent.",
+        "why": "Retired 2026-08-15 in quantum/gleason.py. Everything the module computes is "
+               "on the EASY side of Gleason: Tr(rho P) >= 0, additivity and normalisation "
+               "hold for every density operator in every dimension, so the check cannot fail "
+               "and pins the implementation rather than the mathematics. demonstrate_uniqueness "
+               "refutes TWO sampled ray rules on ONE state, and its reference value for a 2-D "
+               "subspace is itself the Born weight, so it presupposes Born on subspaces. "
+               "Uniqueness in dim >= 3 is Gleason's theorem, CITED, not established by sampling.",
+        "banned": [r"verifies Gleason's conditions",
+                   r"demonstrates that no other rule is consistent"],
+        "paraphrases": [r"[Vv]erif\w+ (that )?Gleason'?s (theorem|conditions)",
+                        r"verif\w+ that the Brahman Hilbert space satisfies",
+                        r"verif\w+ that this Hilbert space satisfies",
+                        r"computational verification of mathematical facts",
+                        r"no other (probability )?rule is consistent",
+                        r"only consistent rule",
+                        r"the unique consistent probability measure"],
     },
 ]
 

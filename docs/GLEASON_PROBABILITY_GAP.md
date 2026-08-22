@@ -2,7 +2,7 @@
 
 **Supplementary to**: *A Non-Dual Interpretation of Quantum Mechanics: Consciousness as Ontological Primitive* (Chauhan, 2026)
 
-**Status**: Technical note. Engages referee-anticipated objections to the paper's use of Gleason's theorem as the source of the Born rule. The paper's §3.3 notes that Gleason is used by Everettians and QBists alike; this note closes the engagement with Kent (2010) and Baker (2007), who have argued that Gleason-based derivations do not in fact ground *probability*.
+**Status**: Technical note. Engages referee-anticipated objections to the paper's use of Gleason's theorem as the source of the Born rule. The paper's §3.1 notes that Gleason is used by Everettians and QBists alike and cites Kent (2010) and Baker (2007) without working through their arguments; this note works them through.
 
 ---
 
@@ -61,7 +61,7 @@ The combined effect of Kent and Baker: even granting Gleason, the Everettian doe
 
 ## 4. How the Paper's Framework Is Affected
 
-The paper's §3.3 observes that Gleason gives the Born rule and that this is a move shared with Everett and QBism. It does not address Kent or Baker. A referee sympathetic to either will ask:
+The paper's §3.1 observes that Gleason gives the Born rule and that this is a move shared with Everett and QBism, and cites Kent (2010) and Baker (2007) for the operational problem of probability without setting out their arguments. A referee sympathetic to either will ask:
 
 > If Everettian Gleason-based derivations are circular or incomplete, why isn't your use of Gleason equally affected? You share the formalism. What changes with the consciousness-primitive ontology?
 
@@ -99,7 +99,7 @@ None of this eliminates the gap entirely. It relocates it. In our framework, the
 
 > Why does the universal subject have Hilbert space structure, such that its natural measure is $\mathrm{Tr}(\rho P)$?
 
-This is a structural question about the subject's ontology, not a frequency question about outcomes. Following the paper's §3.8, we treat this as *intra-categorial* — a question about the internal structure of a single kind of thing — rather than *cross-categorial*, a question about a bridge between kinds. Intra-categorial questions are the normal business of foundational physics ("why does spacetime have a Lorentzian metric?"), and we do not claim to answer this one.
+This is a structural question about the subject's ontology, not a frequency question about outcomes. Following the paper's §8, we treat this as *intra-categorial* — a question about the internal structure of a single kind of thing — rather than *cross-categorial*, a question about a bridge between kinds. Intra-categorial questions are the normal business of foundational physics ("why does spacetime have a Lorentzian metric?"), and we do not claim to answer this one.
 
 Honestly stated: we have not derived probability from consciousness. We have *defined* what probability means in the consciousness-primitive ontology in a way that avoids the specific regresses Kent and Baker identify in Everett. Whether that redefinition counts as progress depends on whether one accepts that the question "what is probability *of*?" has a different natural answer when the ontology is non-dual.
 
@@ -119,9 +119,9 @@ Honestly stated: we have not derived probability from consciousness. We have *de
 
 ## 6. Relation to the Repository
 
-The repository module `quantum/gleason.py` verifies Gleason's conditions numerically for the Brahman Hilbert space ($\dim \geq 3$), tests non-Born measures for contradictions, and demonstrates that no other rule is consistent. It does not address the probability-gap question — that is the role of this note.
+The repository module `quantum/gleason.py` consistency-checks the implementation of $\mu(P) = \mathrm{Tr}(\rho P)$ against Gleason's conditions — which hold for every density operator in every dimension, so the check pins the implementation rather than the mathematics — and refutes two sampled non-Born ray rules on one state. It does not prove uniqueness, and says so. Nor does it address the probability-gap question — that is the role of this note.
 
-The repository modules `quantum/interpretations.py`, `quantum/operational_equivalence.py`, and `quantum/perspectival_asymmetry.py` compare the four interpretations across phenomena, verify operational equivalence with Everett on feasible experiments, and demonstrate that perspectival reduction is exact to machine precision. Together with this note, they constitute the technical basis of the paper's §3.3 and §4.3 claims.
+The repository modules `quantum/interpretations.py`, `quantum/operational_equivalence.py`, and `quantum/perspectival_asymmetry.py` tabulate the four interpretations across phenomena, set out the Everett equivalence as the analytic point it is rather than testing it, and illustrate the pure/mixed asymmetry, which is a theorem rather than a test. Together with this note they bear on the paper's §3.2 and §5.1; none of them establishes those sections' claims by computation.
 
 ---
 

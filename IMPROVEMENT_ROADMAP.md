@@ -2,7 +2,7 @@
 
 > **Dated internal record.** Suite counts and "[DONE]" statuses reflect the
 > repository at the time of writing (e.g. "250 passed", "237 passed" — the
-> current public suite is 490) and some assessments were superseded by the
+> current public suite is 502) and some assessments were superseded by the
 > 2026-08-15 adversarial review (notably: `quantum/tensor_network.py`, praised
 > below, was found to apply its tensors as no-ops — see the module's review
 > note). Read this file as history, not as current status.

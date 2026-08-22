@@ -1,21 +1,28 @@
 """
 Unity of Experience — what rho_SA does and does not fix
 
-The accompanying paper claims (section 4.3.2b):
+Paper cross-reference (corrected 2026-08-21).  The references here were
+stale: they pointed at "section 4.3.2b" of a draft that no longer exists and
+quoted text that is not in the current manuscript.  The live references are:
 
-    "Everett faces the 'preferred basis problem' at the level of experience:
-     why does each branch-copy of you experience a *unified* world rather
-     than a superposition? Decoherence answers this formally (pointer states),
-     but the question of why pointer states correspond to *unified experiences*
-     is not addressed."
+  * §2.2 — the four experiential readings consistent with one and the same
+    rho_SA.  That catalogue is analytic bookkeeping; it is part (B) below.
+  * §2.4 — factorization-dependence of the branch count; part (A) below.
+    The manuscript cites (A) as establishing factorization-dependence and
+    explicitly NOT as a witness for its claim (E): on a branch-counting
+    reading kappa = rank(rho_SA), which is a function of the accessible
+    state, and that is what disqualifies it from witnessing (E).
 
 REVIEW LABEL (2026-08-15) — read this before quoting any number from here.
 
 Two different things live in this module, and they are NOT the same kind of
 claim:
 
-  (A) MEASURED.  Two computations whose outcome depends on the state and
-      could come out the other way:
+  (A) IDENTITIES, INSTANTIATED -- not tests.  Two computations that exhibit
+      what rho_SA leaves open.  The invariances they report are identities of
+      the partial trace: they hold for every state, so no run could come out
+      otherwise, and what the runs pin is the implementation rather than the
+      mathematics.
 
       * ``environment_unitary_invariance()`` — apply a Haar-random unitary
         to the environment factor alone (I_S (x) I_A (x) U_E).  rho_SA is
@@ -32,7 +39,14 @@ claim:
         branches" read off rho_SA is a property of the chosen S/A/E split,
         not of the global state.
 
-      Both are honest, falsifiable statements about what rho_SA leaves open.
+      Neither invariance is falsifiable, and this module used to say they
+      were.  Tr_E is blind to any unitary on E, and rho_S to any unitary on
+      A (x) E, for every state; the rank drop follows from the construction
+      for every state of Schmidt rank at most dim A across S | (A (x) E)
+      (checked 2026-08-21 over random states in dimensions 2, 3, 4).  Stated
+      as theorems these are STRONGER than the seeded runs, which hold for one
+      state.  What the runs do measure is that the environment really moved,
+      and that the regrouping really is unitary and non-product.
 
   (B) ANALYTIC BOOKKEEPING, NOT EVIDENCE.  ``underdetermination_test()``
       catalogues four experiential interpretations and reports that they
@@ -49,10 +63,10 @@ claim:
 HISTORY: before the 2026-08-15 review this module reported "30/30 trials
 confirm underdetermination" as a robustness result.  That framing was
 withdrawn: the sweep is structurally invariant, so 30/30 was guaranteed
-before any trial ran.  The measured content in (A) was added at the same
+before any trial ran.  The computable content in (A) was added at the same
 time, because it is the part of the paper's claim that IS computable.
 
-STATUS: Supports paper section 4.3.2(b) via (A).  (B) is a taxonomy.
+STATUS: (A) is cited by §2.4 as factorization-dependence.  (B) is a taxonomy.
 """
 
 import numpy as np
@@ -187,13 +201,14 @@ class UnityOfExperience:
         }
 
     # ------------------------------------------------------------
-    # (A) MEASURED: what rho_SA is invariant under
+    # (A) INSTANTIATED IDENTITIES: what rho_SA is invariant under
     # ------------------------------------------------------------
 
     def environment_unitary_invariance(self, n_trials: int = 20,
                                        tol: float = 1e-14) -> dict:
         """
-        MEASURED.  rho_SA is blind to unitaries on the environment.
+        IDENTITY, INSTANTIATED.  rho_SA is blind to unitaries on the
+        environment -- for every state, not just this one.
 
         Apply I_S (x) I_A (x) U_E for Haar-random U_E and measure:
 
@@ -208,9 +223,11 @@ class UnityOfExperience:
         that reads an experiential fact off rho_SA is reading off an object
         that has already discarded that information.
 
-        Every flag returned is a comparison of measured floats against the
-        stated tolerance; a bug that made rho_SA move, or a U_E that failed
-        to move rho_E, would flip them.
+        The invariance itself could not have come out otherwise: it is the
+        partial-trace identity, so this run pins the implementation rather
+        than the mathematics.  What the trials genuinely measure is that the
+        environment moved -- rho_E and the individual records depend on the
+        draw.
         """
         n = self.n
         rng = np.random.default_rng(self.seed + 1)
@@ -267,14 +284,17 @@ class UnityOfExperience:
                 f"by at most {max_sa:.2e} in trace norm (tolerance {tol:.0e}) while "
                 f"rho_E moved by at least {min_e:.3f} and at least one environment "
                 f"record was rotated by at least {min_record:.3f}. rho_SA therefore "
-                "does not fix the environment record. This is measured, not assumed: "
-                "the flags are float comparisons that a broken reduction would fail."
+                "does not fix the environment record. The invariance is an identity "
+                "of the partial trace, instantiated here rather than tested; what the "
+                "trials measure is that the environment moved."
             ),
         }
 
-    def factorization_dependence(self, tol: float = 1e-12) -> dict:
+    def factorization_dependence(self, tol: float = 1e-12,
+                                 amplitudes: np.ndarray = None) -> dict:
         """
-        MEASURED.  The branch count read off rho_SA depends on the S/A/E split.
+        IDENTITY, INSTANTIATED.  The branch count read off rho_SA depends on
+        the S/A/E split.
 
         Apply the regrouping permutation R on A (x) E defined by
 
@@ -293,11 +313,23 @@ class UnityOfExperience:
 
         Hence "how many branches there are" is not a property of the global
         state; it is a property of the factorization chosen when the
-        environment was named.  Everything below is computed from the two
-        states; nothing is asserted.
+        environment was named.  The rank drop is guaranteed by the
+        construction rather than discovered by it -- any unitary on A (x) E
+        carrying the S | (A (x) E) Schmidt vectors of |Psi> into
+        |k>_A (x) |E_0> does the same, for every state of Schmidt rank at
+        most dim A.  Everything below is computed from the two states; what
+        is checked, and could fail, is that R is unitary and non-product and
+        that rho_S and the purity really are preserved.
+
+        ``amplitudes`` is a passthrough to ``post_measurement_state``, added
+        2026-08-21 so that the reported ranks can be probed on a state whose
+        rank is NOT n.  With the default state the pair (n, 1) is fixed by the
+        construction, so a report layer that simply returned those two
+        constants would agree with every check run on it -- which is not a
+        property of the result, only of testing the guaranteed case alone.
         """
         n = self.n
-        bundle = self.post_measurement_state()
+        bundle = self.post_measurement_state(amplitudes)
         psi = bundle["psi"]
 
         # Build R explicitly on the A (x) E space (index a*n + e).
@@ -385,8 +417,8 @@ class UnityOfExperience:
     def everett_superposed_map(self, rho_sa: np.ndarray, n: int) -> dict:
         """
         I2: A single experience over a SUPERPOSITION of outcomes.
-        This is what the paper's section 4.3.2(b) highlights: decoherence
-        does not rule this out — it only makes pointer states robust. A
+        This is one of the four readings catalogued in §2.2: decoherence
+        does not rule it out — it only makes pointer states robust. A
         hypothetical 'non-unified observer' would experience superposition.
 
         NOTE (2026-08-15 review): the cardinality 0 is part of the DEFINITION
@@ -528,7 +560,7 @@ class UnityOfExperience:
                 "distinct cardinalities of unified experience result. Since three "
                 "of the four cardinalities are fixed by the definition of the "
                 "position rather than read from rho_SA, this restates the "
-                "positions; it does not test them. The measured version of the "
+                "positions; it does not test them. The computed part of the "
                 "paper's claim is in environment_unitary_invariance() and "
                 "factorization_dependence(): rho_SA is provably blind to "
                 "environment unitaries, and the branch count it exhibits changes "
@@ -634,7 +666,7 @@ class UnityOfExperience:
             "environment_unitary_invariance": env_inv,
             "factorization_dependence": factorization,
             "measured_support": (
-                "Paper section 4.3.2(b), measured part: rho_SA is invariant "
+                "Paper §2.4: rho_SA is invariant "
                 f"(<= {env_inv['max_rho_SA_trace_norm_change']:.2e} in trace norm) under "
                 f"{env_inv['trials']} random environment unitaries that move rho_E by "
                 f">= {env_inv['min_rho_E_trace_norm_change']:.3f}; and a regrouping of the "
@@ -644,12 +676,13 @@ class UnityOfExperience:
                 "So rho_SA fixes neither the environment record nor the branch count."
             ),
             "paper_claim_supported": (
-                "Paper section 4.3.2(b): decoherence formalism does not address "
-                "why pointer states correspond to unified experiences. The "
+                "Paper §2.2: the decoherence formalism does not fix which "
+                "experiential reading obtains. The "
                 "four-interpretation catalogue below is ANALYTIC (three of the "
                 "four cardinalities are definitional, so it is True for every "
                 "input, including an undecohered rank-1 state) and is not "
-                "offered as evidence; the evidential content is the measured "
-                "invariance results above."
+                "offered as evidence. Neither are the two invariances above, which "
+                "are identities of the partial trace instantiated rather than "
+                "tested; what they exhibit is factorization-dependence."
             ),
         }

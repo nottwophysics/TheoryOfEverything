@@ -751,12 +751,12 @@ This computes all three channels and finds that window.
 
 **Class: `GleasonVerification`**
 
-The framework's most rigorous module. Verifies Gleason's theorem applies to the Brahman Hilbert space and proves the Born rule is the unique consistent probability measure.
+Consistency-checks the implemented measure μ(P) = Tr(ρP) against Gleason's conditions, and refutes two sampled non-Born ray rules on one state. Gleason's theorem itself is cited, not established here, and the module does not prove uniqueness — it says so in its own docstring.
 
 | Method | Description |
 |--------|-------------|
 | `GleasonVerification(dimension)` | Initialize with dimension ≥ 3 (raises error for dim < 3). |
-| `.verify_conditions(state)` | Verify all 4 Gleason conditions: C1 (dim≥3), C2 (non-negativity, 500 tests), C3 (additivity, 200 tests), C4 (normalization). |
+| `.verify_conditions(state)` | Consistency-check C1 (dim≥3), C2 (non-negativity, 500 tests), C3 (additivity, 200 tests), C4 (normalization) for the implemented μ(P) = Tr(ρP). These hold for every density operator, so this pins the implementation, not the mathematics. |
 | `.demonstrate_uniqueness(state)` | Test Born rule vs alternatives (amplitude, quartic). Born: 0/1800 violations. Alternatives: 1800/1800 violations. |
 | `.demonstrate_dim2_exception()` | Show dim=2 allows non-Born measures (qubits CAN have hidden variables). Dim≥3: Kochen-Specker fails 25.6%. |
 | `.axiom_reduction_proof()` | Chain: Sat-Chit-Ananda → Hilbert space → Gleason → Born rule → the framework's 7→4 axiom count. The Gleason step is established mathematics; the final count is hand-entered bookkeeping, and the method's own output says so. Not a proof of the reduction. |
@@ -852,7 +852,7 @@ Demonstrates the paper's hidden premise: observer ontology is part of the interp
 
 **Class: `UnityOfExperience`**
 
-Quantitatively supports the paper's §4.3.2(b) claim: decoherence fixes the reduced density matrix ρ_SA but does NOT fix experiential ontology. Multiple, pairwise-incompatible interpretations — Everett-unified, Everett-superposed, Copenhagen-classical, consciousness-primitive — all map to the same ρ_SA while disagreeing on the cardinality of unified experience.
+Supports the paper's §2.2 claim: the reduced density matrix ρ_SA fixes the operational facts but does NOT fix the experiential ones. Multiple, pairwise-incompatible interpretations — Everett-unified, Everett-superposed, Copenhagen-classical, consciousness-primitive — all map to the same ρ_SA while disagreeing on the cardinality of unified experience.
 
 | Method | Description |
 |--------|-------------|
@@ -864,8 +864,8 @@ Quantitatively supports the paper's §4.3.2(b) claim: decoherence fixes the redu
 | `.copenhagen_classical_map(...)` | Collapse-to-one-classical-outcome; cardinality = 1. |
 | `.subject_modes_map(...)` | One subject, N perspective-modes; cardinality = 1. |
 | `.underdetermination_test()` | Confirm 4 interpretations consistent with same ρ_SA, distinct cardinalities. |
-| `.sweep_robustness(n_trials)` | Repeat across random amplitude profiles (default 30/30 pass). |
-| `.run_all()` | Orchestrator. Returns full report supporting paper §4.3.2(b). |
+| `.sweep_robustness(n_trials)` | Repeats across random amplitude profiles. **Structurally invariant — the outcome is fixed before any trial runs, so the pass count is not a result** (retired as evidence 2026-08-15). |
+| `.run_all()` | Orchestrator. Returns the analytic catalogue (§2.2) and the measured factorization-dependence result (§2.4). |
 
 Companion technical note: [`docs/GLEASON_PROBABILITY_GAP.md`](GLEASON_PROBABILITY_GAP.md) addresses the related Kent (2010) and Baker (2007) critiques of Gleason-based Born rule derivations.
 
@@ -915,7 +915,7 @@ See [docs/PREDICTIONS.md](PREDICTIONS.md) for full details on F1–F5.
 
 ---
 
-### `tests/` — 490 Automated Tests
+### `tests/` — 502 Automated Tests
 
 Every module above has a corresponding test file. Tests validate mathematical properties, physical results, and framework invariants. Run with `pytest tests/ -v`.
 

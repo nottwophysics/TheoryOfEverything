@@ -74,6 +74,36 @@ def run_producer(name):
             return json.loads(out)
         except json.JSONDecodeError:
             return None
+    if name == "gleason_counts":
+        # Deterministic: dimension defaults to 4, both sweeps seed np.random with 42.
+        # Re-run rather than transcribed -- these are the figures s3.1 prints.
+        sys.path.insert(0, ROOT)
+        from quantum.gleason import GleasonVerification
+        gv = GleasonVerification()
+        uniq = gv.demonstrate_uniqueness()
+        d3 = gv.demonstrate_dim2_exception()["dim_3"]
+        return {
+            "uniqueness_trials_default_dim":
+                uniq["alternative_amplitude"]["additivity"]["tests"],
+            "dispersion_free_bases_dim3": d3["total_tests"],
+            "dispersion_free_failures_dim3":
+                int(round(d3["failure_rate"] * d3["total_tests"])),
+        }
+    if name == "unity_env_counts":
+        # Deterministic: UnityOfExperience() defaults (n_outcomes=3, seed=42) and
+        # environment_unitary_invariance() defaults (n_trials=20). Re-run, never
+        # transcribed -- these are the figures s2.4 prints.
+        sys.path.insert(0, ROOT)
+        from quantum.unity_of_experience import UnityOfExperience
+        res = UnityOfExperience().environment_unitary_invariance()
+        return {
+            "trials": res["trials"],
+            # Rounded to the two decimals the manuscript prints. The raw value is
+            # 0.42425511347782846; pinning the full float would fail on BLAS noise
+            # without any claim having changed.
+            "min_rho_E_trace_norm_change":
+                round(res["min_rho_E_trace_norm_change"], 2),
+        }
     return None
 
 
@@ -166,6 +196,45 @@ def _negated(text, start):
 
 
 
+def _renumber(actual):
+    """re.sub replacement that refuses to rewrite a value sliced out of a larger
+    number. Mirrors the mid-number test the detection loop applies."""
+    def repl(mm):
+        whole, subject = mm.group(0), mm.string
+        vs, ve = mm.start("v"), mm.end("v")      # absolute, not match-relative:
+        # the capture can sit at offset 0 of the match while the digits it was
+        # sliced out of sit just before it in the FILE ("~1,|496 automated tests").
+        if vs > 0 and subject[vs - 1] in "0123456789,.":
+            return whole
+        if ve < len(subject) and subject[ve] in "0123456789":
+            return whole
+        off = vs - mm.start(0)
+        return whole[:off] + str(actual) + whole[ve - mm.start(0):]
+    return repl
+
+
+def _renumber_text(text, pats, actual):
+    """Apply the count repair PARAGRAPH BY PARAGRAPH, honouring `claims-ok`.
+
+    The second half of the same 2026-08-21 defect: the repair used to run one
+    re.sub over the whole file, so a paragraph the report had skipped for its
+    explicit `claims-ok` hatch was rewritten anyway. Caught on a dry run against
+    submission/PoP/membership-enquiry-pop-society.md, which quotes the stale
+    "30 experiments / 237 automated tests" precisely in order to record that the
+    figures were superseded -- and would have had 237 rewritten to today's total,
+    falsifying a record of what a public deposit used to say.
+    """
+    parts = re.split(r"(\n\s*\n)", text)
+    renumber = _renumber(actual)
+    for i, part in enumerate(parts):
+        if i % 2 or "claims-ok" in flat(part).lower():
+            continue
+        for pat in pats:
+            part = re.sub(pat, renumber, part)
+        parts[i] = part
+    return "".join(parts)
+
+
 def check_counts(fix, verbose, problems):
     for entry in MANIFEST.COUNTS:
         name = entry["name"]
@@ -218,10 +287,18 @@ def check_counts(fix, verbose, problems):
                             continue
                         rel = os.path.relpath(path, ROOT)
                         if fix:
-                            new = re.sub(
-                                pat,
-                                lambda mm: mm.group(0).replace(mm.group("v"), str(actual)),
-                                new)
+                            # The mid-number guard above protects only the REPORT.
+                            # Until 2026-08-21 the repair below had none, so --fix
+                            # rewrote every match in the file including the ones
+                            # detection had just skipped: it turned the master CV's
+                            # PSF figure "~1,496 automated tests" into "~1,501",
+                            # silently, in a document that goes on a public author
+                            # profile. Caught by running it, not by reading it.
+                            # A guard that reports correctly and repairs wrongly is
+                            # worse than no guard, so the repair now carries the
+                            # same tests the report does -- mid-number AND the
+                            # explicit `claims-ok` hatch, per paragraph.
+                            new = _renumber_text(new, pats, actual)
                         else:
                             problems.append(
                                 f"[{name}] {rel}:~{line_of(text, off)}: says {written}, "

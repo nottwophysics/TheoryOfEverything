@@ -236,12 +236,12 @@ class OperationalEquivalence:
                     "measurable_difference": None,
                 },
                 "why_experience_exists": {
-                    "everett": "Not addressed (experience assumed functional/computational)",
+                    "everett": "Only a functionalist account of why there is something it is like to be a branch",
                     "advaita": "Experience is intrinsic to the primitive",
                     "measurable_difference": None,
                 },
                 "status_of_hard_problem": {
-                    "everett": "Outside scope — physics need not explain consciousness",
+                    "everett": "Bridged functionally; the bridge from functional structure to experience is cross-categorial",
                     "advaita": "Reframed — cross-categorial gap becomes an intra-categorial question",
                     "measurable_difference": None,
                 },

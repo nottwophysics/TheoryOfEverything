@@ -20,6 +20,7 @@ it, because a test that re-implements the loop would have passed happily while t
 real loop was dead.
 """
 import os
+import re
 import sys
 
 import pytest
@@ -215,3 +216,26 @@ def test_frozen_archive_is_exempt_from_count_checks(tmp_path, monkeypatch):
         "a file under versions/ was count-checked. Frozen snapshots are supposed to "
         "carry the number of their day; flagging them forever is how a guard gets ignored."
     )
+
+
+def test_fix_refuses_to_renumber_digits_sliced_out_of_a_larger_number():
+    """--fix must apply the SAME mid-number test the report applies.
+
+    Until 2026-08-21 it did not. The detection loop skipped "~1,496 automated
+    tests" correctly (the capture starts mid-number), and then the repair ran an
+    unguarded re.sub over the whole file and rewrote it anyway -- turning the
+    master CV's PSF figure into "~1,501" in a document that goes on a public
+    author profile. The guard reported correctly and repaired wrongly, which is
+    worse than not running at all. Found by running --fix, not by reading it.
+    """
+    pat = r"(?P<v>\d+) automated tests"
+    renumber = check_claims._renumber(501)
+
+    # Sliced out of a larger number: must be left exactly alone.
+    for untouched in ("~1,496 automated tests", "2,490 automated tests",
+                      "1.490 automated tests"):
+        assert re.sub(pat, renumber, untouched) == untouched, untouched
+
+    # A genuine count: must be rewritten to the measured value.
+    assert re.sub(pat, renumber, "a suite with 490 automated tests") == \
+        "a suite with 501 automated tests"

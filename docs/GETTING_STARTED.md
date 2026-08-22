@@ -37,7 +37,7 @@ The project is:
 - **A computational framework** — real Python code you can run
 - **31 experiments** — each demonstrating a specific concept with quantitative results
 - **7 visualizations** — publication-quality plots
-- **1 mathematically rigorous result** — the Born rule derived via Gleason's theorem
+- **1 result resting on established mathematics** — the Born rule via the cited Gleason theorem (the module runs the easy direction only)
 - **5 compatible physical programmes** (P1–P5 — none entailed by the framework's axioms; see docs/PREDICTIONS.md) and **5 falsification criteria**
 - **Honest about its limitations** — explicit about what is proven vs. aspirational
 
@@ -367,7 +367,7 @@ python main.py --experiment 17
 python main.py --experiment 18
 ```
 
-**What it does**: Verifies Gleason's theorem conditions (C1–C4) for the Brahman Hilbert space. Tests alternative probability rules. Proves the axiom reduction.
+**What it does**: Consistency-checks the implemented measure μ(P) = Tr(ρP) against Gleason's conditions (C1–C4). Refutes two sampled non-Born ray rules. Tabulates the framework's 7→4 axiom bookkeeping, which is arithmetic on hand-entered integers, not a proof.
 
 **Key results**:
 - All 4 Gleason conditions: **PASS**
@@ -379,12 +379,12 @@ python main.py --experiment 18
 - **Axiom reduction: Copenhagen 7 → Advaita 4 independent axioms**
 
 **Why this matters — and what it is not.** Gleason's theorem is a proven theorem
-of mathematics (1957), and verifying that this Hilbert space satisfies its
-conditions is a real computation. But the **7 → 4 axiom count is a philosophical
+of mathematics (1957), and the module runs its easy direction as a consistency
+check on the implemented measure. But the **7 → 4 axiom count is a philosophical
 and organisational claim**, not a mathematical one: the two figures are
 hand-entered enumerations of each framework's own axioms, so their difference is
 arithmetic. The module states this in its own output. Do not read the reduction
-as a theorem. The verification that the Brahman Hilbert space satisfies its conditions is computational verification of mathematical facts. The axiom reduction is a concrete, publishable result.
+as a theorem.
 
 ---
 
@@ -410,7 +410,7 @@ Generates 7 PNG files in the `output/` directory:
 
 ## 10. Running the Tests
 
-The project includes a comprehensive test suite with **490 automated tests** covering every module. Tests validate mathematical properties (normalization, Hermiticity, unitarity), physical results (Bell violation, Gleason conditions, entropy bounds), and framework invariants (singleton behavior, non-duality, sublation).
+The project includes a comprehensive test suite with **502 automated tests** covering every module. Tests validate mathematical properties (normalization, Hermiticity, unitarity), physical results (Bell violation, Gleason conditions, entropy bounds), and framework invariants (singleton behavior, non-duality, sublation).
 
 ### Run All Tests
 
@@ -626,7 +626,7 @@ This project goes the other direction: it starts from consciousness and derives 
 
 ### Is the Born rule really "derived"?
 
-The Born rule is shown to be the UNIQUE consistent probability measure on a Hilbert space of dimension ≥ 3 (Gleason's theorem, 1957). The framework verifies that the Brahman Hilbert space satisfies Gleason's conditions. So the Born rule is a theorem in this framework, not an independent axiom. This is mathematically rigorous.
+Gleason's theorem (1957) is the source of the uniqueness claim, and it is cited here, not re-derived: its hard direction quantifies over all frame functions, so no finite computation could establish it. What the module runs is the easy direction — a consistency check on the implemented measure. Given the theorem and axiom A2, the Born rule is a theorem in this framework rather than an independent axiom.
 
 What is NOT proven is that the Hilbert space itself must have the specific structure posited by axiom A2. That is assumed.
 

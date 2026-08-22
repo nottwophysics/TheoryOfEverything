@@ -22,7 +22,7 @@ python main.py --physics           # Experiments 9–31
 python main.py --everything        # All 31 + visualizations
 ```
 
-Validate with the automated test suite (490 tests):
+Validate with the automated test suite (502 tests):
 ```bash
 pytest tests/ -v                   # Run all tests
 pytest tests/test_quantum.py -v    # Test quantum module only
@@ -345,7 +345,7 @@ correspondence is the motivation for the demo, not its output. This is Advaita e
 
 ### Experiment 18: Gleason's Theorem — Born Rule as Theorem
 
-**Concept**: Verify that Gleason's theorem applies to the Brahman Hilbert space, proving the Born rule is a theorem rather than an axiom.
+**Concept**: Consistency-check the implemented measure against Gleason's conditions, and refute two sampled non-Born ray rules. Gleason's theorem is cited, not established here; that the Born rule is a theorem given the Hilbert-space structure rests on the cited theorem, not on this run.
 
 **Part 1: Gleason's Conditions**
 
@@ -360,7 +360,7 @@ correspondence is the motivation for the demo, not its output. This is Advaita e
 
 | Rule | Additivity Violations | Status |
 |------|----------------------|--------|
-| Born (P = \|⟨n\|ψ⟩\|²) | 0/1800 | **PASS — only consistent rule** |
+| Born (P = \|⟨n\|ψ⟩\|²) | 0/1800 | **PASS — no violation on the sampled tests** |
 | Amplitude (P ∝ \|⟨n\|ψ⟩\|) | 1800/1800 | FAIL |
 | Quartic (P ∝ \|⟨n\|ψ⟩\|⁴) | 1800/1800 | FAIL |
 
@@ -381,7 +381,7 @@ reduction is not a theorem**: it is arithmetic on the framework's own hand-enter
 enumeration of its axioms against Copenhagen's, and the module says so at runtime
 ("hand-entered integers; their difference is arithmetic, not a theorem …a
 philosophical/organisational claim, not a mathematical result established by this
-module"). Gleason's theorem (1957) is a proven theorem of mathematics. The verification is computational verification of mathematical facts. The axiom reduction is concrete and publishable.
+module"). What this module runs is the easy direction of Gleason — a consistency check on the implemented measure, which cannot fail for a valid density operator — plus a refutation of two sampled non-Born ray rules. The hard direction is cited, not computed.
 
 ---
 
@@ -631,8 +631,8 @@ These experiments were built to computationally support the claims of the accomp
 | What exists | Universal wave function | Universal conscious subject | No |
 | What branches are | Equally real worlds | Perspectives of one subject | No |
 | What observer is | Functional subsystem | Localized perspective | No |
-| Why experience exists | Not addressed | Intrinsic to the primitive | No |
-| Hard problem status | Outside scope | Reframed (cross→intra-categorial) | No |
+| Why experience exists | Only a functionalist account | Intrinsic to the primitive | No |
+| Hard problem status | Bridged functionally (cross-categorial) | Reframed (cross→intra-categorial) | No |
 
 **Significance**: Every empirical prediction is identical. The interpretations differ only in ontological description. This is precisely what the paper claims.
 
@@ -792,7 +792,7 @@ python main.py --experiment 29
 python main.py --experiment 30
 ```
 
-**Purpose**: Quantitatively supports the accompanying paper's §4.3.2(b) claim that decoherence leaves the unity of experience unexplained. Shows that multiple, pairwise-incompatible experiential ontologies — Everett-unified, Everett-superposed, Copenhagen-classical, and consciousness-primitive — are all consistent with the *same* reduced density matrix rho_SA.
+**Purpose**: Supports the accompanying paper's §2.2 claim that the reduced state leaves the experiential facts open. Shows that multiple, pairwise-incompatible experiential ontologies — Everett-unified, Everett-superposed, Copenhagen-classical, and consciousness-primitive — are all consistent with the *same* reduced density matrix rho_SA.
 
 **Method**:
 1. Construct the standard post-measurement state |Ψ⟩ = Σ c_n |n⟩_S |n⟩_A |E_n⟩ with orthogonal environment pointers.
@@ -805,10 +805,10 @@ python main.py --experiment 30
 **Key results**:
 - Reduced state rho_SA has trace 1, rank N, and is diagonal in the pointer basis (off-diagonal norm ≈ 0).
 - Four interpretations map to identical rho_SA but disagree on cardinality of unified experience: {0, 1, N}.
-- Robustness: 30/30 trials confirm underdetermination across random amplitudes.
+- Robustness: the amplitude sweep is **structurally invariant** — three of the four cardinalities are definitional, so the sweep cannot come out False for any input. Retired as evidence 2026-08-15; it is not a finding.
 - Conclusion: the identification of pointer states with unified experiences is a postulate ADDED to decoherence, not derived from it.
 
-**Paper support**: Makes §4.3.2(b) quantitatively defensible. Everett must assert unity alongside decoherence; the consciousness-primitive framework grounds unity in axiom A1 (the universal subject). The repository now contains a numerical demonstration that referees can run.
+**Paper support**: The four-reading catalogue is analytic bookkeeping (§2.2), not evidence. The measured content is the §2.4 factorization-dependence result, which the paper cites as establishing factorization-dependence and explicitly **not** as a witness for its claim (E).
 
 **Supporting note**: [`docs/GLEASON_PROBABILITY_GAP.md`](GLEASON_PROBABILITY_GAP.md) addresses the related Kent/Baker critiques of Gleason-based Born rule derivations.
 
@@ -855,7 +855,7 @@ than take the near-match as evidence of a derivation.
 | Everett-Advaita equivalence | shared formalism computed once | divergences are ontological only | **Analytic, not tested** (scoreboard deleted 2026-08-16) |
 | **Perspectival asymmetry** | **Exact (10⁻¹⁶)** | **All states, bases, env sizes — total always pure** | **Proven** |
 | **Observer centrality** | **4/4 open questions involve observer** | **Observer ontology is part of interpretive burden** | **Demonstrated** |
-| **Experiential underdetermination** | **30/30 trials, 3 distinct cardinalities** | **Decoherence does not fix experiential ontology (paper §4.3.2b)** | **Demonstrated** |
+| **Experiential underdetermination** | rho_SA invariant to 1e-14 under environment unitaries; rank(rho_SA) 3 -> 1 under an A(x)E regrouping | The branch count depends on the chosen factorization (paper §2.4) | **Measured** — the "30/30 trials" framing was **retired 2026-08-15**: the sweep is structurally invariant, so 30/30 was guaranteed before any trial ran |
 | Born rule uniqueness | 0/1800 violations | Only consistent probability rule in dim ≥ 3 | **Proven** |
 | **2+1D Einstein R-T correlation** | **0.94** | Circular by construction — entropy defined ∝ T₀₀ (Exp 20 caveat) | **Withdrawn as evidence** |
 | **3+1D Einstein R-T correlation** | **0.88** | Same circular construction in 3D (Exp 27 caveat) | **Withdrawn as evidence** |
