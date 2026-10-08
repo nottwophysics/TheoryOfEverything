@@ -38,11 +38,14 @@ numbers. Needs only `numpy` + `scipy` (the `toenv`/`tofe` env).
 |---|---|---|---|
 | 216 systems, seed 42 | 216 | 216 | `predictions/phi_s_systems.py::make_family` |
 | apparent Φ≤S hold rate ≈ permutation null | 0.7685 ≈ 0.7789 | 0.8935 ≈ 0.8939 | `phi_s_verdict.py` |
+| hold rate vs null, two-sided permutation p ≈ 0.21 | 0.208 | — | `phi_s_verdict.py` |
 | nonzero-Φ systems violating the bound | **50 of 51** (hold-rate among Φ>0 = 0.0196) | 23 of 23 | `phi_s_verdict.py` |
 | Φ reaches ≈4.0 bits; S ≤ ≈0.8 bits | max Φ = 4.012, max S = 0.833 | 2.384 / 0.833 | `phi_s_verdict.py` |
 | Pearson r(Φ,S) ≈ +0.64 | +0.643 (perm p ≈ 1e-4) | +0.65 | `phi_s_verdict.py` |
 | partial r(Φ,S \| Σ\|W\|) ≈ −0.07, p = 0.29 | −0.074 | −0.02 (p 0.77) | `partial_corr_phi_s.py` |
 | partial r(Φ,S \| Σ\|W\|, n) ≈ +0.06, p = 0.38 | +0.062 | +0.09 (p 0.17) | `partial_corr_phi_s.py` |
+| 216 matrices induce 34 distinct dynamics (threshold rule is scale-invariant) | 34 (n=3: 8, n=4: 26) | — | `phi_s_family_checks.py` |
+| S across transverse fields saturates at ≈1 bit, far below the 2-bit ceiling | family max S: 0.343 at h = 2, 0.833 at h = 1, 0.990 at h = 0.5, ≈1 bit for h ≲ 0.2; 1.0003 at h = 0.03 on the default grid (h ∈ [0.01, 2], step 0.01), where the gap E1−E0 ≈ 4e-4 — the digits past 1 bit are grid-dependent | — | `phi_s_family_checks.py` |
 
 `data/phi_s_partial_correlation.json` is the reference output for the second row
 pair, for a byte-level cross-check.
@@ -89,7 +92,7 @@ the family is processed).
 
 | stage | interpreter | key packages |
 |---|---|---|
-| analysis (`phi_s_verdict.py`, `partial_corr_phi_s.py`) | Python 3.13 (`toenv`/`tofe`) | numpy 2.5.1, scipy 1.18.0 — **no PyPhi** |
+| analysis (`phi_s_verdict.py`, `partial_corr_phi_s.py`, `phi_s_family_checks.py`) | Python 3.13 (`toenv`/`tofe`) | numpy 2.5.1, scipy 1.18.0 — **no PyPhi** |
 | upstream Φ (`validated_phi.py`) | Python 3.9 (`tofe-pyphi39`) | PyPhi 1.2.0 (Mayner et al. 2018, doi:10.1371/journal.pcbi.1006343), parallelism OFF |
 | upstream S (`entanglement_entropy.py`) | Python 3.13 | numpy, scipy |
 

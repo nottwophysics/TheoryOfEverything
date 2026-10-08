@@ -101,6 +101,17 @@ class TestEnvironmentUnitaryInvariance:
 # ----------------------------------------------------------------------
 
 class TestFactorizationDependence:
+    def test_claim_does_not_say_the_state_is_unchanged(self):
+        # The unitary changes the global state under a fixed split (active
+        # reading) or re-draws the A|E split (passive reading). The claim used
+        # to say the branch count was "not of the state", which contradicts
+        # the active reading the manuscript uses.
+        claim = UnityOfExperience(n_outcomes=3, seed=42).factorization_dependence()[
+            "measured_claim"]
+        assert "not of the state" not in claim
+        assert "not a function of rho_S" in claim
+        assert "fixed S/A/E factorization" in claim
+
     def test_regrouping_is_a_non_product_unitary(self):
         u = UnityOfExperience(n_outcomes=3, seed=42)
         res = u.factorization_dependence()

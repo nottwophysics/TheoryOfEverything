@@ -35,9 +35,12 @@ claim:
         product across the S | (A (x) E) cut but NOT a product across
         S (x) A (x) E (a regrouping/erasure permutation on A (x) E, operator
         Schmidt rank > 1 across A|E, checked here).  rho_S is invariant to
-        ~1e-16, yet rank(rho_SA) drops from n to 1.  So the "number of
-        branches" read off rho_SA is a property of the chosen S/A/E split,
-        not of the global state.
+        ~1e-16, yet rank(rho_SA) drops from n to 1.  Read actively, the
+        unitary changes the global state under a FIXED S/A/E split; read
+        passively, it keeps the state and re-draws the A|E split (not a mere
+        relabelling of A and E separately, since it is not a product).
+        Either way the "number of branches" read off rho_SA is not a function
+        of rho_S: it depends on more than the system's own reduced state.
 
       Neither invariance is falsifiable, and this module used to say they
       were.  Tr_E is blind to any unitary on E, and rho_S to any unitary on
@@ -382,8 +385,10 @@ class UnityOfExperience:
                 f"{operator_schmidt_rank} across A|E, so not a product U_A (x) U_E) "
                 f"leaves rho_S unchanged to {rho_s_change:.2e} in trace norm and "
                 f"keeps the global state pure, yet rank(rho_SA) goes "
-                f"{rank_before} -> {rank_after}. The branch count is therefore a "
-                "property of the chosen S/A/E factorization, not of the state."
+                f"{rank_before} -> {rank_after}. Read actively, the global state "
+                "changed under a fixed S/A/E factorization; read passively, the "
+                "A|E factorization was re-drawn. Either way the branch count is "
+                "not a function of rho_S."
             ),
         }
 

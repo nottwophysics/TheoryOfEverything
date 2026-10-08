@@ -11,7 +11,8 @@ needs the PyPhi env (see reproducibility/phi_s/README.md); this analysis does no
 
 Reproduces (cf. PHI_S_MULTIAGENT_RESEARCH_REPORT.md and manuscript §8):
   - N systems, N with Φ>0
-  - Φ≤S hold rate vs a permutation null (shuffle the Φ–S pairing)
+  - Φ≤S hold rate vs a permutation null (shuffle the Φ–S pairing), with a
+    two-sided permutation p for the difference
   - violations; hold rate among the Φ>0 systems (0.0 = every integrated system violates)
   - max Φ, max S
   - Pearson r(Φ,S) with permutation p; Spearman ρ
@@ -59,6 +60,11 @@ def main():
     hold_rate = float(holds.mean())
     null = [float((phi <= rng.permutation(S) + a.tol).mean()) for _ in range(a.nperm)]
     null_hold = float(np.mean(null))
+    # Two-sided permutation p for "the hold rate differs from the null": the
+    # share of shuffles at least as far from the null mean as the observed rate.
+    # Computed from the same draws, so no other output changes.
+    dev = abs(hold_rate - null_hold)
+    hold_p = (sum(abs(x - null_hold) >= dev for x in null) + 1) / (a.nperm + 1)
 
     nz = phi > 1e-6
     violations = int((~holds).sum())
@@ -80,6 +86,7 @@ def main():
         "n_phi_nonzero": int(nz.sum()),
         "hold_rate_phi_le_S": round(hold_rate, 4),
         "permutation_null_hold_rate": round(null_hold, 4),
+        "hold_rate_vs_null_p_two_sided": round(hold_p, 4),
         "violations": violations,
         "hold_rate_among_nonzero_phi": round(hold_rate_nz, 4),
         "max_phi_bits": round(float(phi.max()), 3),

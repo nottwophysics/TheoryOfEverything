@@ -139,7 +139,10 @@ def untracked_outbound_docs():
         if not os.path.isdir(base):
             continue
         for root, _dirs, files in os.walk(base):
-            found += [os.path.join(root, f) for f in files if f.endswith(".md")]
+            # "._*" are macOS AppleDouble resource forks (binary), left behind when
+            # the tree was restored from a Mac archive; they are not documents.
+            found += [os.path.join(root, f) for f in files
+                      if f.endswith(".md") and not f.startswith("._")]
     for pattern in UNTRACKED_GLOBS:
         found += glob.glob(os.path.join(ROOT, pattern))
     return found

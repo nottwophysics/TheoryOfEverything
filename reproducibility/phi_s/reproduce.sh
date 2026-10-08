@@ -20,12 +20,17 @@ echo "# interpreter: $PY"
 }
 
 echo "############################################################"
-echo "# 1/2  Phi <= S falsification  (predictions/phi_s_verdict.py)"
+echo "# 1/3  Phi <= S falsification  (predictions/phi_s_verdict.py)"
 echo "############################################################"
 PYTHONPATH=. "$PY" predictions/phi_s_verdict.py --csv "$CSV"
 
 echo
 echo "############################################################"
-echo "# 2/2  Phi-S connectivity confound  (predictions/partial_corr_phi_s.py)"
+echo "# 2/3  Phi-S connectivity confound  (predictions/partial_corr_phi_s.py)"
 echo "############################################################"
 PYTHONPATH=. "$PY" predictions/partial_corr_phi_s.py --csv "$CSV"
+echo
+echo "############################################################"
+echo "# 3/3  Family checks: distinct dynamics, S across h  (predictions/phi_s_family_checks.py)"
+echo "############################################################"
+PYTHONPATH=. "$PY" predictions/phi_s_family_checks.py
